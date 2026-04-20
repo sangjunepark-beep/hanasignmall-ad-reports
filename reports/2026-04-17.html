@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-04-17 · 하나사인몰 네이버 스마트스토어 광고 보고서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', -apple-system, Malgun Gothic, sans-serif; background: #0b1120; color: #e2e8f0; padding: 24px 16px; line-height: 1.6; min-height: 100vh; }
+  .container { max-width: 1000px; margin: 0 auto; background: #0f172a; border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; }
+  .header { background: linear-gradient(135deg,#020617,#1e293b); padding: 28px 32px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #1e293b; }
+  .naver-logo { background: #03C75A; color: #fff; padding: 8px 16px; border-radius: 6px; font-weight: 900; font-size: 18px; letter-spacing: -0.5px; font-family: Arial, sans-serif; flex-shrink: 0; }
+  .title-area { flex: 1; }
+  .agency { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+  .title { font-size: 22px; font-weight: 800; color: #f1f5f9; }
+  .subtitle { font-size: 13px; color: #94a3b8; margin-top: 3px; }
+  .body { padding: 24px 32px 32px; }
+
+  .overview { background: linear-gradient(135deg,#1e293b,#0f172a); border: 1px solid #334155; border-radius: 12px; padding: 22px 26px; margin-bottom: 16px; position: relative; overflow: hidden; }
+  .overview::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg,#34d399,#03C75A); }
+  .overview-label { font-size: 11px; color: #34d399; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
+  .overview-headline { font-size: 16px; color: #f1f5f9; font-weight: 700; line-height: 1.7; margin-bottom: 10px; }
+  .overview-body { font-size: 13px; color: #cbd5e1; line-height: 1.8; }
+  .overview-body strong { color: #f1f5f9; }
+
+  .compare-box { background: #0b1120; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .compare-box:last-of-type { margin-bottom: 24px; }
+  .compare-label { font-size: 11px; color: #64748b; line-height: 1.5; white-space: nowrap; }
+  .compare-label strong { color: #cbd5e1; display: block; font-size: 12px; font-weight: 700; }
+  .compare-items { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; }
+  .compare-item { color: #94a3b8; display: inline-flex; align-items: center; gap: 6px; }
+  .compare-item strong { color: #cbd5e1; font-weight: 600; }
+  .delta { font-weight: 700; font-size: 12px; white-space: nowrap; }
+  .delta.bad { color: #f87171; }
+  .delta.good { color: #34d399; }
+  .delta.neutral { color: #94a3b8; }
+
+  .kpi-group-title { font-size: 11px; color: #64748b; font-weight: 700; letter-spacing: 1px; margin: 6px 0; text-transform: uppercase; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .kpi { text-align: center; padding: 14px 8px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; }
+  .kpi.accent { background: linear-gradient(135deg,#172554,#1e293b); border: 1px solid #3b82f6; }
+  .kpi.highlight { background: linear-gradient(135deg,#14532d,#1e293b); border: 2px solid #34d399; }
+  .kpi-value { font-size: 18px; font-weight: 900; color: #f1f5f9; }
+  .kpi.accent .kpi-value { color: #93c5fd; }
+  .kpi.highlight .kpi-value { color: #34d399; font-size: 20px; }
+  .kpi-label { font-size: 10px; color: #64748b; margin-top: 3px; }
+  .kpi-delta { font-size: 10px; margin-top: 6px; font-weight: 700; }
+  .kpi-delta.bad { color: #f87171; }
+  .kpi-delta.good { color: #34d399; }
+  .kpi-delta.neutral { color: #94a3b8; }
+
+  .sales-ref { background: #0b1120; border: 1px dashed #334155; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .sales-ref-label { font-size: 11px; color: #64748b; line-height: 1.5; }
+  .sales-ref-label strong { color: #94a3b8; display: block; font-size: 12px; }
+  .sales-ref-items { display: flex; gap: 20px; flex-wrap: wrap; font-size: 12px; color: #94a3b8; }
+  .sales-ref-items strong { color: #cbd5e1; font-weight: 700; font-size: 13px; }
+  .ref-badge { background: #334155; color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+
+  .glossary { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 11px; color: #94a3b8; line-height: 1.8; }
+  .glossary strong { color: #cbd5e1; }
+
+  .section { margin-top: 24px; }
+  .section-title { font-size: 14px; font-weight: 700; color: #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #334155; }
+  .section-title .dot { width: 4px; height: 16px; border-radius: 2px; }
+  .section-title.campaign .dot { background: #60a5fa; }
+  .section-title.alert .dot { background: #fbbf24; }
+  .section-title.ai .dot { background: #a78bfa; }
+  .section-title.issue .dot { background: #22d3ee; }
+  .section-title.verdict .dot { background: #34d399; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead tr { background: #0b1120; color: #cbd5e1; }
+  thead th { padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 1px solid #334155; font-size: 11px; }
+  thead th.num { text-align: right; }
+  tbody td { padding: 10px 8px; border-bottom: 1px solid #1e293b; vertical-align: top; color: #cbd5e1; }
+  tbody td.num { text-align: right; }
+  tbody td.roas { font-weight: 700; }
+  tbody tr:hover { background: #1e293b; }
+  .camp-name { font-weight: 700; color: #f1f5f9; }
+  .camp-sub { font-size: 10px; color: #64748b; margin-top: 1px; }
+  .cell-delta { display: block; font-size: 10px; font-weight: 600; margin-top: 2px; }
+
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .tag.normal { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .tag.watch { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .tag.cs-check { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+  .tag.need-approval { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+
+  details { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0; margin-bottom: 8px; overflow: hidden; }
+  details[open] { background: #0f172a; border-color: #60a5fa; }
+  summary { padding: 14px 18px; cursor: pointer; font-size: 13px; font-weight: 600; color: #f1f5f9; display: flex; align-items: center; justify-content: space-between; list-style: none; gap: 10px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '▾'; font-size: 12px; color: #64748b; transition: transform 0.2s; flex-shrink: 0; }
+  details[open] summary::after { transform: rotate(180deg); color: #60a5fa; }
+  .alert-body { padding: 0 18px 16px; font-size: 12px; color: #cbd5e1; border-top: 1px dashed #334155; margin-top: 4px; padding-top: 14px; line-height: 1.8; }
+  .alert-meta { display: flex; gap: 8px; font-size: 11px; color: #94a3b8; margin-bottom: 10px; flex-wrap: wrap; }
+  .alert-meta span { padding: 2px 8px; background: #0b1120; border-radius: 4px; border: 1px solid #334155; }
+
+  .ai-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .ai-card h4 { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .ai-card .stage-tag { background: rgba(167,139,250,0.2); color: #a78bfa; padding: 2px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; border: 1px solid rgba(167,139,250,0.3); }
+  .ai-card .role { font-size: 11px; color: #64748b; margin-bottom: 10px; }
+  .ai-card .opinion { font-size: 12px; color: #cbd5e1; line-height: 1.9; white-space: pre-wrap; }
+  .ai-card .opinion strong { color: #f1f5f9; }
+  .ai-card .confidence { margin-top: 10px; font-size: 11px; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+  .confidence-bar { display: inline-block; width: 60px; height: 6px; background: #0b1120; border-radius: 3px; overflow: hidden; border: 1px solid #334155; }
+  .confidence-bar span { display: block; height: 100%; background: linear-gradient(90deg, #a78bfa, #c4b5fd); }
+
+  .verdict-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .verdict-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 8px; flex-wrap: wrap; }
+  .verdict-title { font-size: 13px; font-weight: 700; color: #f1f5f9; }
+  .verdict-action { font-size: 12px; color: #cbd5e1; margin-bottom: 10px; line-height: 1.7; }
+  .verdict-buttons { display: flex; gap: 8px; margin-top: 8px; }
+  .btn { display: inline-block; padding: 7px 18px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; }
+  .btn.approve { background: #16a34a; color: #fff; }
+  .btn.hold { background: #475569; color: #e2e8f0; }
+
+  .issue-card { background: linear-gradient(135deg,#082f49,#0c4a6e); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .issue-card h4 { font-size: 13px; font-weight: 700; color: #67e8f9; margin-bottom: 8px; }
+  .issue-levels { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .level-tag { font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 600; }
+  .level-tag.l1 { background: rgba(167,139,250,0.2); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.3); }
+  .level-tag.l2 { background: rgba(251,146,60,0.2); color: #fdba74; border: 1px solid rgba(251,146,60,0.3); }
+  .level-tag.l3 { background: rgba(96,165,250,0.2); color: #93c5fd; border: 1px solid rgba(96,165,250,0.3); }
+  .issue-body { font-size: 12px; color: #cbd5e1; line-height: 1.9; }
+  .issue-body strong { color: #67e8f9; }
+
+  .footer { text-align: center; padding: 16px; background: #020617; border-top: 1px solid #1e293b; }
+  .footer-title { font-size: 11px; color: #64748b; font-weight: 600; }
+  .footer-sub { font-size: 10px; color: #475569; margin-top: 2px; }
+
+  a { color: #60a5fa; text-decoration: none; font-weight: 700; }
+  a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .body { padding: 20px; }
+    .header { padding: 20px; flex-direction: column; align-items: flex-start; }
+    .compare-box { grid-template-columns: 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="naver-logo">NAVER</div>
+    <div class="title-area">
+      <div class="agency">하나사인몰 AI 광고 에이전트</div>
+      <div class="title">네이버 스마트스토어 광고 보고서</div>
+      <div class="subtitle">2026-04-17 (금요일) 데이터 기준 · 소재 1,270개 분석</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <!-- 오늘의 종합 결과 -->
+    <div class="overview">
+      <div class="overview-label">오늘의 종합 결과</div>
+      <div class="overview-headline">
+        광고비 684,530원 · 광고 직접 성과(온라인) <span style="color:#34d399">ROAS 473.3%</span> · 동기간 CS 매출 8,620,000원 동반
+      </div>
+      <div class="overview-body">
+        평일 정상 운영 수준입니다. 온라인 매출 3,240,000원(결제 47건)으로 <strong>평일 기대치(280~350만원) 상위권</strong>.
+        CS 매출도 평일 기준치(800~900만원) 내 안정적. 전일(04-16 목) 및 주간 평균 대비 소폭 상승 추세.
+        오늘은 즉시 조치 필요 항목 없고, 관찰 1건(002 더바른사인 예산 증액 검토)만 있음.
+      </div>
+    </div>
+
+    <!-- 비교 박스 -->
+    <div class="compare-box">
+      <div class="compare-label"><strong>전일 대비</strong><span style="font-size:10px">(2026-04-16 목요일)</span></div>
+      <div class="compare-items">
+        <span class="compare-item">광고비 <strong>684,530</strong> <span class="delta neutral">▲ +1.9%</span></span>
+        <span class="compare-item">온라인 매출 <strong>3,240,000</strong> <span class="delta good">▲ +5.2%</span></span>
+        <span class="compare-item">온라인 ROAS <strong>473.3%</strong> <span class="delta good">▲ +15.0%p</span></span>
+        <span class="compare-item">CS 매출 <strong>8,620,000</strong> <span class="delta good">▲ +4.6%</span></span>
+      </div>
+    </div>
+    <div class="compare-box">
+      <div class="compare-label"><strong>주간 평균 대비</strong><span style="font-size:10px">(최근 5영업일)</span></div>
+      <div class="compare-items">
+        <span class="compare-item">광고비 <strong>684,530</strong> <span class="delta neutral">▼ -0.8%</span></span>
+        <span class="compare-item">온라인 매출 <strong>3,240,000</strong> <span class="delta good">▲ +2.9%</span></span>
+        <span class="compare-item">온라인 ROAS <strong>473.3%</strong> <span class="delta good">▲ +16.8%p</span></span>
+        <span class="compare-item">CS 매출 <strong>8,620,000</strong> <span class="delta good">▲ +1.4%</span></span>
+      </div>
+    </div>
+
+    <!-- KPI 1줄: 광고 활동 -->
+    <div class="kpi-group-title">📊 광고 활동</div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-value">198,241</div><div class="kpi-label">노출</div><div class="kpi-delta good">▲ +3.2%</div></div>
+      <div class="kpi"><div class="kpi-value">562</div><div class="kpi-label">클릭</div><div class="kpi-delta good">▲ +8.1%</div></div>
+      <div class="kpi"><div class="kpi-value">0.28%</div><div class="kpi-label">클릭률</div><div class="kpi-delta good">▲ +0.02%p</div></div>
+      <div class="kpi"><div class="kpi-value">684,530</div><div class="kpi-label">광고비 (원)</div><div class="kpi-delta neutral">▲ +1.9%</div></div>
+    </div>
+
+    <!-- 매출 결과 · 온라인 (확정) -->
+    <div class="kpi-group-title">📈 광고 직접 성과 · 온라인 스마트스토어 (확정)</div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="kpi highlight"><div class="kpi-value">3,240,000</div><div class="kpi-label">온라인 매출 (원)</div><div class="kpi-delta good">▲ +5.2%</div></div>
+      <div class="kpi"><div class="kpi-value">47</div><div class="kpi-label">결제 건수</div><div class="kpi-delta good">▲ +3건</div></div>
+      <div class="kpi highlight"><div class="kpi-value">473.3%</div><div class="kpi-label">온라인 ROAS</div><div class="kpi-delta good">▲ +15.0%p</div></div>
+    </div>
+
+    <!-- CS 동반 지표 -->
+    <div class="kpi-group-title">📞 동반 지표 · CS 전화·카톡·견적 유입 (광고 기여 <u>가능성</u>, 직접 매칭 불가)</div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="kpi accent"><div class="kpi-value">8,620,000</div><div class="kpi-label">CS 매출 (원)</div><div class="kpi-delta good">▲ +4.6%</div></div>
+      <div class="kpi accent"><div class="kpi-value">24</div><div class="kpi-label">CS 주문 건수</div><div class="kpi-delta good">▲ +2건</div></div>
+      <div class="kpi accent"><div class="kpi-value">359,167</div><div class="kpi-label">CS 평균 단가 (원)</div><div class="kpi-delta neutral">▼ -1.1%</div></div>
+    </div>
+
+    <!-- 참고 · 최대 추정 -->
+    <div class="kpi-group-title">📎 참고 · 최대 추정치 (CS 전부가 광고 유입이라 가정할 경우)</div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="kpi"><div class="kpi-value">11,860,000</div><div class="kpi-label">동기간 총 매출 (원)</div><div class="kpi-delta good">▲ +4.8%</div></div>
+      <div class="kpi"><div class="kpi-value">1,732.4%</div><div class="kpi-label">최대 추정 ROAS</div><div class="kpi-delta good">▲ +68.2%p</div></div>
+    </div>
+    <p style="font-size:11px;color:#64748b;margin:-4px 2px 16px;line-height:1.6">※ 실제 광고 기여도는 확정 ROAS 473.3%와 최대 추정 ROAS 1,732.4% 사이 어딘가. CS 유입 경로 중 광고 영향을 받은 비중은 통상 확정 불가.</p>
+
+    <!-- 영업 매출 (참조) -->
+    <div class="sales-ref">
+      <div class="sales-ref-label">
+        <strong>영업 매출 <span class="ref-badge">참조</span></strong>
+        <span>사인몰(영호) 수주 · 광고 무관</span>
+      </div>
+      <div class="sales-ref-items">
+        <span>당일 <strong>1,480,000원</strong> · 3건</span>
+        <span>전일 <strong>1,320,000원</strong> · 3건</span>
+        <span>주간 평균 <strong>1,410,000원</strong></span>
+      </div>
+    </div>
+
+    <div class="glossary">
+      <strong>📘 용어 풀이</strong> &nbsp;·&nbsp;
+      <strong>온라인 ROAS (확정)</strong>: 스마트스토어 결제 ÷ 광고비. <u>평일 기준치 300% 이상 = 정상</u> &nbsp;·&nbsp;
+      <strong>CS 매출</strong>: 전화·카톡·견적 유입 주문 (영호 제외). 광고 기여 가능성 있으나 매칭 불가 &nbsp;·&nbsp;
+      <strong>최대 추정 ROAS</strong>: CS 전부가 광고 유입이라 가정한 최대치 &nbsp;·&nbsp;
+      <strong>영업 매출</strong>: 사인몰(영호) 직접 수주 — 광고 무관
+    </div>
+
+    <!-- 캠페인별 실적 -->
+    <div class="section">
+      <div class="section-title campaign"><span class="dot"></span>📋 캠페인별 실적 (온라인 매출 기준)</div>
+      <p style="font-size:11px;color:#64748b;margin-bottom:10px">※ CS 매출은 캠페인·상품 단위 매칭 불가(문의 경유). 아래 표는 스마트스토어 결제만 반영.</p>
+      <table>
+        <thead><tr><th>캠페인</th><th class="num">소재</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">온라인 매출</th><th class="num">전일 매출</th><th>상태</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="camp-name">98 하나몰_main</div><div class="camp-sub">주력 캠페인 (최대 소재 수)</div></td>
+            <td class="num">372</td><td class="num">128,420</td><td class="num">284</td>
+            <td class="num">412,630원<span class="cell-delta delta neutral">▲ +1.2%</span></td>
+            <td class="num">1,540,000원<span class="cell-delta delta good">▲ +8.5%</span></td>
+            <td class="num" style="color:#64748b">1,420,000원</td>
+            <td><span class="tag normal">정상</span></td>
+          </tr>
+          <tr>
+            <td><div class="camp-name">001 하나몰</div><div class="camp-sub">하나사인몰 자사몰 카테고리</div></td>
+            <td class="num">692</td><td class="num">24,180</td><td class="num">142</td>
+            <td class="num">109,250원<span class="cell-delta delta neutral">▲ +2.1%</span></td>
+            <td class="num">720,000원<span class="cell-delta delta good">▲ +12.3%</span></td>
+            <td class="num" style="color:#64748b">641,000원</td>
+            <td><span class="tag normal">정상</span></td>
+          </tr>
+          <tr>
+            <td><div class="camp-name">002 더바른사인</div><div class="camp-sub">서브 브랜드 캠페인</div></td>
+            <td class="num">177</td><td class="num">17,820</td><td class="num">38</td>
+            <td class="num">28,940원<span class="cell-delta delta good">▼ -3.5%</span></td>
+            <td class="num">680,000원<span class="cell-delta delta good">▲ +18.9%</span></td>
+            <td class="num" style="color:#64748b">572,000원</td>
+            <td><span class="tag normal">정상</span></td>
+          </tr>
+          <tr>
+            <td><div class="camp-name">로켓출력공장</div><div class="camp-sub">신규 런칭 채널 (시트/페트/포맥스)</div></td>
+            <td class="num">16</td><td class="num">22,730</td><td class="num">62</td>
+            <td class="num">85,340원<span class="cell-delta delta good">▼ -5.2%</span></td>
+            <td class="num">185,000원<span class="cell-delta delta good">▲ +45.7%</span></td>
+            <td class="num" style="color:#64748b">127,000원</td>
+            <td><span class="tag watch">관찰</span></td>
+          </tr>
+          <tr>
+            <td><div class="camp-name">013 하나몰_검정오뚜기</div><div class="camp-sub">단일 상품군 소형 캠페인</div></td>
+            <td class="num">5</td><td class="num">460</td><td class="num">18</td>
+            <td class="num">24,810원<span class="cell-delta delta good">▼ -1.8%</span></td>
+            <td class="num">85,000원<span class="cell-delta delta good">▲ +100%</span></td>
+            <td class="num" style="color:#64748b">0원</td>
+            <td><span class="tag normal">정상</span></td>
+          </tr>
+          <tr>
+            <td><div class="camp-name">014 하나몰_슬림디자인 게시판 6구</div><div class="camp-sub">게시판 단일 모델</div></td>
+            <td class="num">3</td><td class="num">532</td><td class="num">12</td>
+            <td class="num">13,820원<span class="cell-delta delta neutral">± ±0%</span></td>
+            <td class="num">30,000원<span class="cell-delta delta good">▲ +100%</span></td>
+            <td class="num" style="color:#64748b">0원</td>
+            <td><span class="tag watch">관찰</span></td>
+          </tr>
+          <tr>
+            <td><div class="camp-name">021 더바른_영업중입간판</div><div class="camp-sub">단일 상품군 소형 캠페인</div></td>
+            <td class="num">1</td><td class="num">68</td><td class="num">2</td>
+            <td class="num">2,050원<span class="cell-delta delta neutral">± ±0%</span></td>
+            <td class="num">0원<span class="cell-delta delta neutral">= 0원</span></td>
+            <td class="num" style="color:#64748b">0원</td>
+            <td><span class="tag watch">관찰</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 관찰 항목 -->
+    <div class="section">
+      <div class="section-title alert"><span class="dot"></span>📌 관찰 항목 (2건) · 즉시 조치 불필요</div>
+
+      <details open>
+        <summary><span>002 더바른사인 — 전일 대비 매출 +18.9% · 3일 연속 상승세</span> <span class="tag watch">증액 검토</span></summary>
+        <div class="alert-body">
+          <div class="alert-meta"><span>광고비: 28,940원 ▼-3.5%</span><span>매출: 680,000원 ▲+18.9%</span><span>결제 38건</span></div>
+          광고비는 오히려 3.5% 감소했는데 매출이 +18.9% 상승. ROAS 약 2,350% 수준으로 캠페인별 최상위. 3일 연속 상승세가 확정되면 <strong>예산 10% 증액 검토 가능</strong>한 상황. 단, 상승세가 소재 단위 이벤트인지 전반적 수요 증가인지 다음 주 월요일 리포트로 재확인 권장.
+        </div>
+      </details>
+
+      <details>
+        <summary><span>로켓출력공장 — 런칭 19일차, 매출 +45.7% 회복세</span> <span class="tag watch">안정화 진행</span></summary>
+        <div class="alert-body">
+          <div class="alert-meta"><span>광고비: 85,340원 ▼-5.2%</span><span>매출: 185,000원 ▲+45.7%</span><span>ROAS 216.8%</span></div>
+          런칭 초기 ROAS 30% 이하 패턴에서 벗어나 216.8%까지 회복. 광고비 증액 없이도 매출 증가 중. <strong>안정화 단계 진입</strong>으로 판단, 현재 전략 유지 권장. 28일차 근처에서 추가 조정 검토.
+        </div>
+      </details>
+    </div>
+
+    <!-- AI 4단계 -->
+    <div class="section">
+      <div class="section-title ai"><span class="dot"></span>🤖 AI 의견 · 4단계 순차 검증 (온라인 ROAS 기준 · 평일 임계치 300%)</div>
+
+      <div class="ai-card">
+        <h4>1단계. 데이터 분석 <span class="stage-tag">현황 파악</span></h4>
+        <div class="role">숫자에서 이상 신호를 찾는 역할</div>
+        <div class="opinion">· <strong>광고 직접 성과 온라인 ROAS 473.3%</strong>로 평일 임계치(300%) 상회. 정상 운영 수준.
+· 전일 대비 +15.0%p, 주간 평균 대비 +16.8%p 상승 추세. 악화 신호 없음.
+· CS 매출 8,620,000원(+4.6%)도 평일 기준(800~900만원) 내 안정적.
+· 특이 신호: 002 더바른사인 +18.9% / 로켓출력공장 +45.7% 회복세. 악성 캠페인 없음.</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:94%"></span></span> 94% (높음)</div>
+      </div>
+
+      <div class="ai-card">
+        <h4>2단계. 개선 제안 <span class="stage-tag">조치안 도출</span></h4>
+        <div class="role">어떻게 고치면 좋을지 안을 만드는 역할</div>
+        <div class="opinion">오늘은 적극적 조치 불필요. 다음 2건만 관찰 대상:
+1. <strong>002 더바른사인</strong> — 3일 연속 상승세 확정 시 예산 10% 증액 검토 (단, 소재 단위 이벤트일 가능성 배제 필요)
+2. <strong>로켓출력공장</strong> — 런칭 19일차 안정화 진행 중. 현재 전략 유지, 28일차 근처에서 입찰 재조정 검토
+3. 나머지 캠페인 모두 현 수준 유지.</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:88%"></span></span> 88% (높음)</div>
+      </div>
+
+      <div class="ai-card">
+        <h4>3단계. 반박 검토 <span class="stage-tag">제안 재검증</span></h4>
+        <div class="role">2단계 제안이 정말 맞는지 반대 입장에서 다시 따져보는 역할</div>
+        <div class="opinion">· <strong>제안 1번(002 증액) 검토</strong>: ROAS 2,350%는 숫자가 높긴 하나 광고비 기저효과(원래 광고비가 3만원 수준으로 작음)일 가능성. 증액 시 ROAS 희석 가능. 3일 연속 상승 + 광고비 대비 절대 매출 지표도 같이 확인 후 판단.
+
+· <strong>제안 2번(로켓출력공장 유지)</strong>: +45.7% 상승이 일회성인지 추세인지 불확실. 1주 누적 확인 없이 "안정화" 단정은 이름.
+
+· 종합적으로 오늘은 <strong>"유의미한 조치 없음"이 최선</strong>. 변동성 있는 상승을 조급하게 잡으려 하면 오히려 역효과.</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:82%"></span></span> 82% (높음)</div>
+      </div>
+
+      <div class="ai-card">
+        <h4>4단계. 최종 판정 <span class="stage-tag">실행 분류</span></h4>
+        <div class="role">모든 의견 모아 최종 결정하는 역할</div>
+        <div class="opinion">· <strong>002 더바른사인 — 보류</strong>
+  3단계 반박 수용. 월요일(04-20) 리포트로 3일 연속 상승 확정 여부 재확인 후 증액 판단.
+
+· <strong>로켓출력공장 — 보류</strong>
+  1주 누적 추세 확인 후 28일차 재판정. 현재 전략 유지.
+
+· <strong>그 외 모든 캠페인 — 현 수준 유지</strong>
+  평일 임계치 상회, 조치 불필요.
+
+<strong>총 분류: 자동 실행 0건 · 사람 승인 필요 0건 · 보류 2건 (모두 관찰 지속)</strong></div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:90%"></span></span> 90% (높음)</div>
+      </div>
+    </div>
+
+    <!-- 현재 상황 맥락 -->
+    <div class="section">
+      <div class="section-title issue"><span class="dot"></span>🔍 현재 상황 맥락 · 보조 정보</div>
+
+      <div class="issue-card">
+        <h4>전반적 평일 안정세 유지 배경</h4>
+        <div class="issue-levels">
+          <span class="level-tag l1">업종·계절 요인</span>
+          <span class="level-tag l2">과거 패턴</span>
+        </div>
+        <div class="issue-body">
+          · <strong>업종·계절 요인</strong>: 4월 중순은 신학기 조달 마무리 후 야외 현수막(5~6월) 수요 전 간극이지만, 주간 아파트 안내판 수요는 꾸준. CS 8,620,000원 수준은 이 시기 정상.<br>
+          · <strong>과거 패턴</strong>: 최근 3개월 금요일 평균 온라인 ROAS 420~480% 범위. 오늘 473.3%는 평균 중상위. 특이점 없음.
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <h4>002 더바른사인 상승세 배경 가능성</h4>
+        <div class="issue-levels">
+          <span class="level-tag l1">업종·계절 요인</span>
+          <span class="level-tag l3">실시간 검색</span>
+        </div>
+        <div class="issue-body">
+          · <strong>업종·계절 요인</strong>: 봄 행사·캠페인 시즌 진입으로 서브 브랜드 노출 증가 가능성.<br>
+          · <strong>실시간 검색</strong>: 네이버 쇼핑 "더바른사인" 관련 키워드 검색량 주간 +12% 증가(추정). 경쟁사 노출 점유율 변동 없음.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-title">하나사인몰 AI 광고 에이전트</div>
+    <div class="footer-sub">1단계 데이터 분석 → 2단계 개선 제안 → 3단계 반박 검토 → 4단계 최종 판정</div>
+  </div>
+</div>
+</body>
+</html>
