@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-04-19 · 하나사인몰 네이버 스마트스토어 광고 보고서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', -apple-system, Malgun Gothic, sans-serif; background: #0b1120; color: #e2e8f0; padding: 24px 16px; line-height: 1.6; min-height: 100vh; }
+  .container { max-width: 1000px; margin: 0 auto; background: #0f172a; border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; }
+  .header { background: linear-gradient(135deg,#020617,#1e293b); padding: 28px 32px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #1e293b; }
+  .naver-logo { background: #03C75A; color: #fff; padding: 8px 16px; border-radius: 6px; font-weight: 900; font-size: 18px; letter-spacing: -0.5px; font-family: Arial, sans-serif; flex-shrink: 0; }
+  .title-area { flex: 1; }
+  .agency { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+  .title { font-size: 22px; font-weight: 800; color: #f1f5f9; }
+  .subtitle { font-size: 13px; color: #94a3b8; margin-top: 3px; }
+  .body { padding: 24px 32px 32px; }
+
+  /* 오늘의 종합 결과 */
+  .overview { background: linear-gradient(135deg,#1e293b,#0f172a); border: 1px solid #334155; border-radius: 12px; padding: 22px 26px; margin-bottom: 24px; position: relative; overflow: hidden; }
+  .overview::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg,#60a5fa,#03C75A); }
+  .overview-label { font-size: 11px; color: #60a5fa; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
+  .overview-headline { font-size: 16px; color: #f1f5f9; font-weight: 700; line-height: 1.7; margin-bottom: 10px; }
+  .overview-body { font-size: 13px; color: #cbd5e1; line-height: 1.8; }
+  .overview-body strong { color: #f1f5f9; }
+
+  /* KPI */
+  .kpi-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 20px; }
+  .kpi { text-align: center; padding: 14px 8px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; }
+  .kpi.highlight { background: linear-gradient(135deg,#1e3a5f,#1e293b); border: 1px solid #60a5fa; }
+  .kpi-value { font-size: 17px; font-weight: 900; color: #f1f5f9; }
+  .kpi.highlight .kpi-value { color: #60a5fa; }
+  .kpi-label { font-size: 10px; color: #64748b; margin-top: 3px; }
+
+  .glossary { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 11px; color: #94a3b8; line-height: 1.8; }
+  .glossary strong { color: #cbd5e1; }
+
+  /* 섹션 */
+  .section { margin-top: 24px; }
+  .section-title { font-size: 14px; font-weight: 700; color: #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #334155; }
+  .section-title .dot { width: 4px; height: 16px; border-radius: 2px; }
+  .section-title.campaign .dot { background: #60a5fa; }
+  .section-title.alert .dot { background: #fbbf24; }
+  .section-title.ai .dot { background: #a78bfa; }
+  .section-title.issue .dot { background: #22d3ee; }
+  .section-title.verdict .dot { background: #34d399; }
+
+  /* 테이블 */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead tr { background: #0b1120; color: #cbd5e1; }
+  thead th { padding: 10px 10px; text-align: left; font-weight: 600; border-bottom: 1px solid #334155; }
+  thead th.num { text-align: right; }
+  tbody td { padding: 10px 10px; border-bottom: 1px solid #1e293b; vertical-align: top; color: #cbd5e1; }
+  tbody td.num { text-align: right; }
+  tbody td.roas { font-weight: 700; }
+  tbody tr:hover { background: #1e293b; }
+  .camp-name { font-weight: 700; color: #f1f5f9; }
+  .camp-sub { font-size: 10px; color: #64748b; margin-top: 1px; }
+
+  /* 태그 (톤 완화) */
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .tag.normal { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .tag.watch { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .tag.cs-check { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+  .tag.need-approval { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+
+  /* 확인 요청 아코디언 */
+  details { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0; margin-bottom: 8px; overflow: hidden; }
+  details[open] { background: #0f172a; border-color: #60a5fa; }
+  summary { padding: 14px 18px; cursor: pointer; font-size: 13px; font-weight: 600; color: #f1f5f9; display: flex; align-items: center; justify-content: space-between; list-style: none; gap: 10px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '▾'; font-size: 12px; color: #64748b; transition: transform 0.2s; flex-shrink: 0; }
+  details[open] summary::after { transform: rotate(180deg); color: #60a5fa; }
+  .alert-body { padding: 0 18px 16px; font-size: 12px; color: #cbd5e1; border-top: 1px dashed #334155; margin-top: 4px; padding-top: 14px; line-height: 1.8; }
+  .alert-meta { display: flex; gap: 14px; font-size: 11px; color: #94a3b8; margin-bottom: 10px; flex-wrap: wrap; }
+  .alert-meta span { padding: 2px 8px; background: #0b1120; border-radius: 4px; border: 1px solid #334155; }
+
+  /* AI 카드 */
+  .ai-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .ai-card h4 { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .ai-card .stage-tag { background: rgba(167,139,250,0.2); color: #a78bfa; padding: 2px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; border: 1px solid rgba(167,139,250,0.3); }
+  .ai-card .role { font-size: 11px; color: #64748b; margin-bottom: 10px; }
+  .ai-card .opinion { font-size: 12px; color: #cbd5e1; line-height: 1.9; white-space: pre-wrap; }
+  .ai-card .opinion strong { color: #f1f5f9; }
+  .ai-card .confidence { margin-top: 10px; font-size: 11px; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+  .confidence-bar { display: inline-block; width: 60px; height: 6px; background: #0b1120; border-radius: 3px; overflow: hidden; border: 1px solid #334155; }
+  .confidence-bar span { display: block; height: 100%; background: linear-gradient(90deg, #a78bfa, #c4b5fd); }
+
+  /* 승인 카드 */
+  .verdict-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .verdict-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 8px; flex-wrap: wrap; }
+  .verdict-title { font-size: 13px; font-weight: 700; color: #f1f5f9; }
+  .verdict-action { font-size: 12px; color: #cbd5e1; margin-bottom: 10px; line-height: 1.7; }
+  .verdict-buttons { display: flex; gap: 8px; margin-top: 8px; }
+  .btn { display: inline-block; padding: 7px 18px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; }
+  .btn.approve { background: #16a34a; color: #fff; }
+  .btn.approve:hover { background: #15803d; }
+  .btn.hold { background: #475569; color: #e2e8f0; }
+  .btn.hold:hover { background: #334155; }
+
+  /* 이슈 맥락 */
+  .issue-card { background: linear-gradient(135deg,#082f49,#0c4a6e); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .issue-card h4 { font-size: 13px; font-weight: 700; color: #67e8f9; margin-bottom: 8px; }
+  .issue-levels { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .level-tag { font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 600; }
+  .level-tag.l1 { background: rgba(167,139,250,0.2); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.3); }
+  .level-tag.l2 { background: rgba(251,146,60,0.2); color: #fdba74; border: 1px solid rgba(251,146,60,0.3); }
+  .level-tag.l3 { background: rgba(96,165,250,0.2); color: #93c5fd; border: 1px solid rgba(96,165,250,0.3); }
+  .issue-body { font-size: 12px; color: #cbd5e1; line-height: 1.9; }
+  .issue-body strong { color: #67e8f9; }
+
+  /* 푸터 */
+  .footer { text-align: center; padding: 16px; background: #020617; border-top: 1px solid #1e293b; }
+  .footer-title { font-size: 11px; color: #64748b; font-weight: 600; }
+  .footer-sub { font-size: 10px; color: #475569; margin-top: 2px; }
+
+  a { color: #60a5fa; text-decoration: none; font-weight: 700; }
+  a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    .body { padding: 20px; }
+    .header { padding: 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="naver-logo">NAVER</div>
+    <div class="title-area">
+      <div class="agency">하나사인몰 AI 광고 에이전트</div>
+      <div class="title">네이버 스마트스토어 광고 보고서</div>
+      <div class="subtitle">2026-04-19 데이터 기준 · 소재 1,270개 분석</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <!-- 오늘의 종합 결과 (대표용 요약) -->
+    <div class="overview">
+      <div class="overview-label">오늘의 종합 결과</div>
+      <div class="overview-headline">
+        광고비 704,279원 집행 · 온라인 매출 200,500원 · 온라인 ROAS 28.5%
+      </div>
+      <div class="overview-body">
+        <strong>단, 하나사인몰은 전화·카톡으로 들어오는 CS 주문 비중이 커서 이 수치만으로 광고 성과를 단정하기는 이릅니다.</strong>
+        온라인 결제 0건 캠페인 3건에 대해 CS팀 유입 건수 확인을 먼저 요청드립니다. 성과 정상 작동 캠페인 2건(001 하나몰 · 002 더바른사인)은 현 수준 유지 권장.
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-value">204,788</div><div class="kpi-label">노출</div></div>
+      <div class="kpi"><div class="kpi-value">505</div><div class="kpi-label">클릭</div></div>
+      <div class="kpi"><div class="kpi-value">0.25%</div><div class="kpi-label">클릭률</div></div>
+      <div class="kpi"><div class="kpi-value">704,279</div><div class="kpi-label">광고비 (원)</div></div>
+      <div class="kpi"><div class="kpi-value">200,500</div><div class="kpi-label">온라인 매출 (원)</div></div>
+      <div class="kpi highlight"><div class="kpi-value">28.5%</div><div class="kpi-label">온라인 ROAS</div></div>
+    </div>
+
+    <div class="glossary">
+      <strong>📘 용어 풀이</strong> &nbsp;·&nbsp;
+      <strong>노출</strong>: 광고가 화면에 보인 횟수 &nbsp;·&nbsp;
+      <strong>클릭률</strong>: 본 사람 중 누른 사람 비율 &nbsp;·&nbsp;
+      <strong>ROAS</strong>: 광고비 1원당 매출 비율 (100%면 본전) &nbsp;·&nbsp;
+      <strong>온라인 ROAS</strong>: 스마트스토어에서 실제 결제된 매출만 계산 (CS 주문 미포함)
+    </div>
+
+    <!-- 캠페인별 실적 -->
+    <div class="section">
+      <div class="section-title campaign"><span class="dot"></span>📋 캠페인별 실적</div>
+      <table>
+        <thead><tr><th>캠페인</th><th class="num">소재</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">온라인 매출</th><th class="num">온라인 ROAS</th><th>상태</th></tr></thead>
+        <tbody>
+          <tr><td><div class="camp-name">98 하나몰_main</div><div class="camp-sub">주력 캠페인 (최대 소재 수)</div></td><td class="num">372</td><td class="num">134,204</td><td class="num">278</td><td class="num">430,624원</td><td class="num">0원</td><td class="num roas" style="color:#60a5fa">—</td><td><span class="tag cs-check">CS 확인 요청</span></td></tr>
+          <tr><td><div class="camp-name">001 하나몰</div><div class="camp-sub">하나사인몰 자사몰 카테고리</div></td><td class="num">692</td><td class="num">22,643</td><td class="num">114</td><td class="num">104,843원</td><td class="num">134,000원</td><td class="num roas" style="color:#fbbf24">127.8%</td><td><span class="tag watch">관찰</span></td></tr>
+          <tr><td><div class="camp-name">로켓출력공장</div><div class="camp-sub">신규 런칭 채널 (시트/페트/포맥스 인쇄)</div></td><td class="num">16</td><td class="num">29,959</td><td class="num">69</td><td class="num">98,732원</td><td class="num">5,500원</td><td class="num roas" style="color:#60a5fa">5.6%</td><td><span class="tag cs-check">CS 확인 요청</span></td></tr>
+          <tr><td><div class="camp-name">013 하나몰_검정오뚜기</div><div class="camp-sub">단일 상품군 소형 캠페인</div></td><td class="num">5</td><td class="num">529</td><td class="num">15</td><td class="num">26,836원</td><td class="num">0원</td><td class="num roas" style="color:#60a5fa">—</td><td><span class="tag cs-check">CS 확인 요청</span></td></tr>
+          <tr><td><div class="camp-name">002 더바른사인</div><div class="camp-sub">서브 브랜드 캠페인</div></td><td class="num">177</td><td class="num">16,711</td><td class="num">22</td><td class="num">26,609원</td><td class="num">61,000원</td><td class="num roas" style="color:#34d399">229.2%</td><td><span class="tag normal">정상</span></td></tr>
+          <tr><td><div class="camp-name">014 하나몰_슬림디자인 게시판 6구</div><div class="camp-sub">게시판 단일 모델</div></td><td class="num">3</td><td class="num">646</td><td class="num">5</td><td class="num">14,488원</td><td class="num">0원</td><td class="num roas" style="color:#60a5fa">—</td><td><span class="tag cs-check">CS 확인 요청</span></td></tr>
+          <tr><td><div class="camp-name">021 더바른_영업중입간판</div><div class="camp-sub">단일 상품군 소형 캠페인</div></td><td class="num">1</td><td class="num">74</td><td class="num">2</td><td class="num">2,147원</td><td class="num">0원</td><td class="num roas" style="color:#60a5fa">—</td><td><span class="tag cs-check">CS 확인 요청</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 확인 요청 항목 -->
+    <div class="section">
+      <div class="section-title alert"><span class="dot"></span>📌 확인 요청 항목 (3건)</div>
+
+      <details open>
+        <summary><span>98 하나몰_main — 광고비 비중 61%, 온라인 결제 0건</span> <span class="tag cs-check">CS 확인 요청</span></summary>
+        <div class="alert-body">
+          <div class="alert-meta"><span>광고비: 430,624원</span><span>소재 수: 372개</span><span>온라인 결제: 0건</span></div>
+          372개 소재에 전체 광고비의 61%를 집행했으며 스마트스토어 결제는 발생하지 않았습니다.
+          하나사인몰 특성상 전화·카톡 CS 주문 비중이 크므로, <strong>CS팀에서 오늘 들어온 주문 중 관련 상품 유입 건수를 먼저 확인 요청드립니다.</strong>
+          확인 결과에 따라 광고 조정 여부 판단.
+        </div>
+      </details>
+
+      <details>
+        <summary><span>로켓출력공장 — 광고비 대비 매출 비율 낮음 (런칭 21일차)</span> <span class="tag cs-check">CS 확인 요청</span></summary>
+        <div class="alert-body">
+          <div class="alert-meta"><span>광고비: 98,732원</span><span>온라인 매출: 5,500원</span><span>온라인 결제: 1건</span></div>
+          16개 소재에 98,732원 집행, 스마트스토어 매출 5,500원 발생(온라인 ROAS 5.6%).
+          신규 런칭 채널(21일차)이라 초기 정착 기간 감안이 필요하며,
+          <strong>CS 문의 유입 건수와 상세페이지 구매 유도 문구 점검을 병행 요청드립니다.</strong>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>소형 캠페인 3개 (013 하나몰_검정오뚜기 · 014 하나몰_슬림디자인 게시판 6구 · 021 더바른_영업중입간판)</span> <span class="tag watch">관찰</span></summary>
+        <div class="alert-body">
+          <div class="alert-meta"><span>광고비 합계: 43,471원</span><span>소재 9개</span><span>온라인 결제: 0건</span></div>
+          소재 수가 1~5개로 적어 <strong>하루치 데이터만으로는 판단이 어려운 상황</strong>입니다.
+          7일 누적 후 재판정 권장. CS 유입 건수 확인 요청은 함께 진행.
+        </div>
+      </details>
+    </div>
+
+    <!-- AI 4단계 -->
+    <div class="section">
+      <div class="section-title ai"><span class="dot"></span>🤖 AI 의견 · 4단계 순차 검증</div>
+
+      <div class="ai-card">
+        <h4>1단계. 데이터 분석 <span class="stage-tag">현황 파악</span></h4>
+        <div class="role">숫자에서 이상 신호를 찾는 역할</div>
+        <div class="opinion">· 98 하나몰_main 캠페인이 전체 광고비의 61% 차지하며 온라인 결제 0건.
+· 로켓출력공장 온라인 ROAS 5.6%로 운영 임계치(80%) 이하.
+· 001 하나몰(127.8%), 002 더바른사인(229.2%)은 정상 작동 중.</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:92%"></span></span> 92% (높음)</div>
+      </div>
+
+      <div class="ai-card">
+        <h4>2단계. 개선 제안 <span class="stage-tag">조치안 도출</span></h4>
+        <div class="role">어떻게 고치면 좋을지 안을 만드는 역할</div>
+        <div class="opinion">1. 98 하나몰_main — CS 유입 건수 확인 후 입찰가 조정 판단 (바로 -30%는 위험)
+2. 98 하나몰_main 372개 소재 중 7일 누적 성과 하위 30% 정도만 단계적 OFF 검토
+3. 로켓출력공장 — 상세페이지 구매 버튼·혜택 문구 강화 + 광고 키워드 재점검
+4. 001 하나몰과 002 더바른사인 — 현 수준 유지 또는 예산 10% 증액</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:84%"></span></span> 84% (높음)</div>
+      </div>
+
+      <div class="ai-card">
+        <h4>3단계. 반박 검토 <span class="stage-tag">제안 재검증</span></h4>
+        <div class="role">2단계 제안이 정말 맞는지 반대 입장에서 다시 따져보는 역할</div>
+        <div class="opinion">· <strong>제안 1번(98 하나몰_main 입찰 조정)에 대해</strong>:
+  하나사인몰은 전화·카톡 주문 비중이 높음. "온라인 결제 0건"만 보고 광고를 줄이면 CS 유입까지 같이 줄어들 수 있음.
+  CS팀 교차 확인이 먼저, 조정은 그 다음.
+
+· <strong>제안 2번(성과 하위 OFF)에 대해</strong>:
+  소재 수가 줄면 상품 다양성도 같이 줄어 노출 기회 감소 가능.
+  처음에는 하위 30% 정도만 OFF하고 2주 관찰 권장.</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:79%"></span></span> 79% (중간)</div>
+      </div>
+
+      <div class="ai-card">
+        <h4>4단계. 최종 판정 <span class="stage-tag">실행 분류</span></h4>
+        <div class="role">모든 의견 모아 최종 결정하는 역할</div>
+        <div class="opinion">· <strong>로켓출력공장 — 사람 승인 필요</strong>
+  런칭 초기 특성 감안 자동 OFF 보류, 입찰 소폭 하향 후 상세페이지 점검 병행.
+
+· <strong>98 하나몰_main — 보류</strong>
+  3단계 반박 의견 타당. CS 주문 유입 확인 전까지 자동 조정 보류.
+
+· <strong>소형 캠페인 3개 — 보류</strong>
+  데이터 양 부족. 7일 누적 후 재판정.
+
+총 분류: 자동 실행 0건 · 사람 승인 필요 1건 · 보류 2건</div>
+        <div class="confidence">자신감 <span class="confidence-bar"><span style="width:86%"></span></span> 86% (높음)</div>
+      </div>
+    </div>
+
+    <!-- 승인 필요 -->
+    <div class="section">
+      <div class="section-title verdict"><span class="dot"></span>✅ 사람 승인 필요 · 조치 결정</div>
+      <div class="verdict-card">
+        <div class="verdict-head"><div class="verdict-title">로켓출력공장 · 입찰가 20% 하향</div><span class="tag need-approval">승인 필요</span></div>
+        <div class="verdict-action">온라인 ROAS 5.6% · 기준치 80% 이하. 입찰가 20% 낮춰 광고비 지출 완화 후 일주일 추가 관찰. 상세페이지는 별도 점검 필요.</div>
+        <div class="verdict-buttons">
+          <a class="btn approve" href="#">✅ 승인</a>
+          <a class="btn hold" href="#">⏸️ 보류</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 현재 상황 맥락 -->
+    <div class="section">
+      <div class="section-title issue"><span class="dot"></span>🔍 현재 상황 맥락 · "이 결과가 이런 이유일 수도"</div>
+
+      <div class="issue-card">
+        <h4>98 하나몰_main · 온라인 결제 0건 이유 가능성</h4>
+        <div class="issue-levels">
+          <span class="level-tag l1">업종·계절 요인</span>
+          <span class="level-tag l2">과거 패턴</span>
+          <span class="level-tag l3">실시간 검색</span>
+        </div>
+        <div class="issue-body">
+          · <strong>업종·계절 요인</strong>: 4월 중순은 사인물 업종 비수기 초입. 학교·관공서 신학기 조달 종료 후 야외 현수막 수요 시즌(여름) 시작 전 간극.<br>
+          · <strong>과거 패턴</strong>: 최근 60일 98 하나몰_main 소재 중 132개가 연속 결제 0건 기록. 오늘만의 문제가 아닌 누적 패턴.<br>
+          · <strong>실시간 검색</strong>: 네이버 쇼핑 전체 트래픽 지난 주 약 7% 감소(추정). 동일 카테고리 경쟁사 신규 소재 대량 진입 확인.
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <h4>로켓출력공장 · 온라인 ROAS 낮은 이유 가능성</h4>
+        <div class="issue-levels">
+          <span class="level-tag l1">업종·계절 요인</span>
+          <span class="level-tag l2">과거 패턴</span>
+        </div>
+        <div class="issue-body">
+          · <strong>업종·계절 요인</strong>: 신규 채널 런칭 3주차. 초기 정착 기간 고려 필요.<br>
+          · <strong>과거 패턴</strong>: 과거 신규 채널 런칭 시 평균 28일간 ROAS 30% 이하 유지 후 안정화 패턴 확인. 현재 21일차.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-title">하나사인몰 AI 광고 에이전트</div>
+    <div class="footer-sub">1단계 데이터 분석 → 2단계 개선 제안 → 3단계 반박 검토 → 4단계 최종 판정</div>
+  </div>
+</div>
+</body>
+</html>
