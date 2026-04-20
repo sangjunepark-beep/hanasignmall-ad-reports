@@ -18,11 +18,14 @@
   .card { padding: 28px 32px; }
   .section-title { font-size: 15px; font-weight: 700; color: #f1f5f9; padding-bottom: 8px; border-bottom: 1px solid #334155; margin-bottom: 18px; }
   .report-list { list-style: none; }
-  .report-list li { padding: 14px 16px; border-bottom: 1px solid #1e293b; display: flex; align-items: center; justify-content: space-between; transition: background 0.15s; }
+  .report-list li { padding: 14px 16px; border-bottom: 1px solid #1e293b; display: flex; align-items: center; justify-content: space-between; transition: background 0.15s; gap: 12px; flex-wrap: wrap; }
   .report-list li:hover { background: #1e293b; }
   .report-list a { color: #60a5fa; text-decoration: none; font-weight: 600; font-size: 14px; }
   .report-list a:hover { text-decoration: underline; }
   .report-meta { font-size: 12px; color: #94a3b8; }
+  .day-tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 600; margin-left: 6px; }
+  .day-tag.weekday { background: rgba(52,211,153,0.15); color: #34d399; }
+  .day-tag.weekend { background: rgba(148,163,184,0.15); color: #94a3b8; }
   .footer { text-align: center; padding: 20px; color: #475569; font-size: 11px; border-top: 1px solid #1e293b; }
 </style>
 </head>
@@ -39,7 +42,14 @@
   <div class="card">
     <div class="section-title">최근 리포트</div>
     <ul class="report-list">
-      <li><a href="reports/2026-04-19.html">2026-04-19</a><span class="report-meta">광고비 704,279원 · 온라인 매출 200,500원 · 온라인 ROAS 28.5%</span></li>
+      <li>
+        <span><a href="reports/2026-04-17.html">2026-04-17</a><span class="day-tag weekday">금</span></span>
+        <span class="report-meta">광고비 684,530원 · 온라인 ROAS 473.3% · CS 8,620,000원 동반</span>
+      </li>
+      <li>
+        <span><a href="reports/2026-04-19.html">2026-04-19</a><span class="day-tag weekend">일</span></span>
+        <span class="report-meta">광고비 704,279원 · 온라인 ROAS 28.5% · (주말 자연 저조)</span>
+      </li>
     </ul>
   </div>
   <div class="footer">1단계 데이터 분석 → 2단계 개선 제안 → 3단계 반박 검토 → 4단계 최종 판정</div>
