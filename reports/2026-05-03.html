@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-05-03 · 하나사인몰 네이버 스마트스토어 광고 보고서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', -apple-system, Malgun Gothic, sans-serif; background: #0b1120; color: #e2e8f0; padding: 24px 16px; line-height: 1.6; min-height: 100vh; }
+  .container { max-width: 1000px; margin: 0 auto; background: #0f172a; border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; }
+  .header { background: linear-gradient(135deg,#020617,#1e293b); padding: 28px 32px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #1e293b; }
+  .naver-logo { background: #03C75A; color: #fff; padding: 8px 16px; border-radius: 6px; font-weight: 900; font-size:22px; letter-spacing: -0.5px; font-family: Arial, sans-serif; flex-shrink: 0; }
+  .title-area { flex: 1; }
+  .agency { font-size:13px; color: #64748b; margin-bottom: 4px; }
+  .title { font-size: 22px; font-weight: 800; color: #f1f5f9; }
+  .subtitle { font-size:18px; color: #94a3b8; margin-top: 3px; }
+  .body { padding: 24px 32px 32px; }
+
+  /* ===== 탭 UI ===== */
+  .tabs-bar { display:flex; gap:4px; background:#0b1120; padding:6px; border-radius:10px 10px 0 0; border:1px solid #334155; border-bottom:none; margin-top:16px; }
+  .tab-btn { flex:1; padding:14px 18px; background:transparent; color:#64748b; border:none; cursor:pointer; font-weight:700; font-size:17px; border-radius:7px; transition:all 0.2s; font-family:inherit; }
+  .tab-btn:hover { background:#1e293b; color:#cbd5e1; }
+  .tab-btn.active { background:linear-gradient(135deg,#0ea5e9,#0284c7); color:#fff; box-shadow:0 2px 8px rgba(14,165,233,0.3); }
+  .tab-panel { display:none; border:1px solid #334155; border-top:none; border-radius:0 0 10px 10px; padding:22px; background:#0f172a; }
+  .tab-panel.active { display:block; }
+
+  /* ===== Hero ROAS ===== */
+  .hero-roas { text-align:center; padding:36px 16px; background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 50%,#8b5cf6 100%); border-radius:14px; margin-bottom:18px; box-shadow:0 10px 30px rgba(14,165,233,0.15); }
+  .hero-roas-label { font-size:14px; color:rgba(255,255,255,0.85); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px; font-weight:600; }
+  .hero-roas-value { font-size:64px; font-weight:900; color:#fff; line-height:1; margin:10px 0; text-shadow:0 2px 8px rgba(0,0,0,0.2); }
+  .hero-roas-sub { font-size:16px; color:rgba(255,255,255,0.92); font-weight:500; }
+
+  /* v12-20: 금액 중심 Hero */
+  .hero-perf { text-align:center; padding:32px 20px; background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 50%,#8b5cf6 100%); border-radius:14px; margin-bottom:18px; box-shadow:0 10px 30px rgba(14,165,233,0.15); }
+  .hero-label { font-size:17px; letter-spacing:3px; color:rgba(255,255,255,0.9); text-transform:uppercase; margin-bottom:18px; font-weight:700; }
+  .hero-amounts { display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px; flex-wrap:wrap; }
+  .hero-amount-block { min-width:140px; }
+  .hero-amount-value { font-size:40px; font-weight:900; color:#fff; line-height:1.1; text-shadow:0 2px 8px rgba(0,0,0,0.2); }
+  .hero-amount-label { font-size:17px; color:rgba(255,255,255,0.85); margin-top:6px; font-weight:500; }
+  .hero-sep { font-size:28px; color:rgba(255,255,255,0.75); font-weight:300; }
+  .hero-roas-small { font-size:20px; color:rgba(255,255,255,0.95); font-weight:500; margin-top:6px; }
+  .hero-roas-small strong { color:#fff; font-weight:900; font-size:24px; }
+
+  .overview { background: linear-gradient(135deg,#1e293b,#0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+  .overview::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg,#34d399,#03C75A); }
+  .overview-label { font-size:14px; color: #34d399; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
+  .overview-headline { font-size:19px; color: #f1f5f9; font-weight: 700; line-height: 1.7; margin-bottom: 8px; }
+  .overview-body { font-size:16px; color: #cbd5e1; line-height: 1.8; }
+  .overview-body strong { color: #f1f5f9; }
+
+  .compare-box { background: #0b1120; border: 1px solid #334155; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .compare-label { font-size:13px; color: #64748b; line-height: 1.5; white-space: nowrap; }
+  .compare-label strong { color: #cbd5e1; display: block; font-size:14px; font-weight: 700; }
+  .compare-items { display: flex; flex-wrap: wrap; gap: 14px; font-size:14px; }
+  .compare-item { color: #94a3b8; display: inline-flex; align-items: center; gap: 6px; }
+  .compare-item strong { color: #cbd5e1; font-weight: 600; }
+  .delta { font-weight: 700; font-size:13px; white-space: nowrap; }
+  .delta.bad { color: #f87171; }
+  .delta.good { color: #34d399; }
+  .delta.neutral { color: #94a3b8; }
+
+  .kpi-group-title { font-size:17px; color: #cbd5e1; font-weight: 700; letter-spacing: 0.5px; margin: 18px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #1e293b; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
+  .kpi, .kpi-card { text-align: center; padding: 14px 8px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; }
+  .kpi.accent, .kpi-card.accent { background: linear-gradient(135deg,#172554,#1e293b); border: 1px solid #3b82f6; }
+  .kpi.highlight, .kpi-card.highlight { background: linear-gradient(135deg,#14532d,#1e293b); border: 2px solid #34d399; }
+  .kpi-value { font-size:24px; font-weight: 900; color: #f1f5f9; }
+  .kpi.accent .kpi-value { color: #93c5fd; }
+  .kpi.highlight .kpi-value, .kpi-card.highlight .kpi-value { color: #34d399; font-size: 22px; }
+  .kpi-label { font-size:14px; color: #64748b; margin-top: 4px; }
+  .kpi-delta { font-size:13px; margin-top: 6px; font-weight: 700; }
+  .kpi-delta.bad { color: #f87171; }
+  .kpi-delta.good { color: #34d399; }
+  .kpi-delta.neutral { color: #94a3b8; }
+
+  .sales-ref { background: #0b1120; border: 1px dashed #334155; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .sales-ref-label { font-size:13px; color: #64748b; line-height: 1.5; }
+  .sales-ref-label strong { color: #cbd5e1; display: block; font-size:16px; }
+  .sales-ref-items { display: flex; gap: 20px; flex-wrap: wrap; font-size:16px; color: #94a3b8; }
+  .sales-ref-items strong { color: #cbd5e1; font-weight: 700; font-size:16px; }
+  .ref-badge { background: #334155; color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+
+  .glossary { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size:14px; color: #94a3b8; line-height: 1.8; }
+  .glossary strong { color: #cbd5e1; }
+
+  .section { margin-top: 22px; }
+  .section-title { font-size:19px; font-weight: 700; color: #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #334155; }
+  .section-title .dot { width: 4px; height: 16px; border-radius: 2px; }
+  .section-title.campaign .dot { background: #60a5fa; }
+  .section-title.alert .dot { background: #fbbf24; }
+  .section-title.ai .dot { background: #a78bfa; }
+  .section-title.issue .dot { background: #22d3ee; }
+
+  table { width: 100%; border-collapse: collapse; font-size:14px; }
+  thead tr { background: #0b1120; color: #cbd5e1; }
+  thead th { padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 1px solid #334155; font-size:14px; }
+  thead th.num { text-align: right; }
+  tbody td { padding: 10px 8px; border-bottom: 1px solid #1e293b; vertical-align: top; color: #cbd5e1; font-size:14px; }
+  tbody td.num { text-align: right; }
+  tbody td.roas { font-weight: 700; }
+  tbody tr:hover { background: #1e293b; }
+  .camp-name { font-weight: 700; color: #f1f5f9; }
+  .camp-sub { font-size: 10px; color: #64748b; margin-top: 1px; }
+
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size:13px; font-weight: 600; white-space: nowrap; }
+  .tag.normal { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .tag.watch { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .tag.cs-check { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+
+  details { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0; margin-bottom: 8px; overflow: hidden; }
+  details[open] { background: #0f172a; border-color: #60a5fa; }
+  summary { padding: 14px 18px; cursor: pointer; font-size:17px; font-weight: 600; color: #f1f5f9; display: flex; align-items: center; justify-content: space-between; list-style: none; gap: 10px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '▾'; font-size:14px; color: #64748b; transition: transform 0.2s; flex-shrink: 0; }
+  details[open] summary::after { transform: rotate(180deg); color: #60a5fa; }
+
+  .ai-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .ai-card h4 { font-size:19px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .ai-card .stage-tag { background: rgba(167,139,250,0.2); color: #a78bfa; padding: 3px 10px; border-radius: 4px; font-size:13px; font-weight: 700; border: 1px solid rgba(167,139,250,0.3); }
+  .ai-card .role { font-size:14px; color: #94a3b8; margin-bottom: 12px; }
+  .ai-card .opinion { font-size:16px; color: #cbd5e1; line-height: 1.9; white-space: pre-wrap; }
+  .ai-card .confidence { margin-top: 10px; font-size:14px; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+  .confidence-bar { display: inline-block; width: 60px; height: 6px; background: #0b1120; border-radius: 3px; overflow: hidden; border: 1px solid #334155; }
+  .confidence-bar span { display: block; height: 100%; background: linear-gradient(90deg, #a78bfa, #c4b5fd); }
+
+  .issue-card { background: linear-gradient(135deg,#082f49,#0c4a6e); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .issue-card h4 { font-size:17px; font-weight: 700; color: #67e8f9; margin-bottom: 8px; }
+  .issue-levels { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .level-tag { font-size:13px; padding: 3px 10px; border-radius: 4px; font-weight: 600; }
+  .level-tag.l1 { background: rgba(167,139,250,0.2); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.3); }
+  .level-tag.l2 { background: rgba(251,146,60,0.2); color: #fdba74; border: 1px solid rgba(251,146,60,0.3); }
+  .level-tag.l3 { background: rgba(96,165,250,0.2); color: #93c5fd; border: 1px solid rgba(96,165,250,0.3); }
+  .issue-body { font-size:16px; color: #cbd5e1; line-height: 1.9; }
+  .issue-body strong { color: #67e8f9; }
+
+  .empty-state { text-align:center; padding:60px 20px; background:#0b1120; border-radius:10px; border:1px dashed #334155; }
+  .empty-state .emoji { font-size:40px; margin-bottom:12px; }
+  .empty-state h3 { color:#f1f5f9; margin-bottom:10px; font-weight:700; }
+  .empty-state p { color:#94a3b8; font-size:16px; line-height:1.7; }
+  .camp-list { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .camp-item { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px 14px; }
+  .camp-item-type { font-size:10px; color:#60a5fa; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+  .camp-item-name { font-size:16px; color:#f1f5f9; font-weight:600; margin-bottom:4px; }
+  .camp-item-budget { font-size:13px; color:#94a3b8; }
+
+  .footer { text-align: center; padding: 16px; background: #020617; border-top: 1px solid #1e293b; }
+  .footer-title { font-size:14px; color: #94a3b8; font-weight: 600; }
+  .footer-sub { font-size:13px; color: #475569; margin-top: 2px; }
+
+  a { color: #60a5fa; text-decoration: none; font-weight: 700; }
+  a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .body { padding: 20px; }
+    .header { padding: 20px; flex-direction: column; align-items: flex-start; }
+    .compare-box { grid-template-columns: 1fr; gap: 10px; }
+    .camp-list { grid-template-columns: 1fr; }
+    .hero-roas-value { font-size: 48px; }
+    .tab-btn { padding: 10px 12px; font-size:14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="naver-logo">NAVER</div>
+    <div class="title-area">
+      <div class="agency">하나사인몰 AI 광고 에이전트</div>
+      <div class="title">하나사인몰 네이버 광고 통합 보고서</div>
+      <div class="subtitle">2026-05-03(일요일) 데이터 기준 · 어제 집계분 · 소재 1,190개 분석</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <!-- 탭 바 -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('tab-summary',this)">📊 요약</button>
+      <button class="tab-btn" onclick="switchTab('tab-store',this)">🛍️ 스마트스토어</button>
+      <button class="tab-btn" onclick="switchTab('tab-self',this)">🌐 자사몰</button>
+    </div>
+
+    <!-- ========== 탭 1: 요약 ========== -->
+    <div id="tab-summary" class="tab-panel active">
+
+      <!-- v12-20 Hero: 금액 중심 + ROAS 보조 -->
+      <div class="hero-perf">
+        <div class="hero-label">네이버 광고 통합 성과</div>
+        <div class="hero-amounts">
+          <div class="hero-amount-block">
+            <div class="hero-amount-value">614,660원</div>
+            <div class="hero-amount-label">광고비</div>
+          </div>
+          <div class="hero-sep">→</div>
+          <div class="hero-amount-block">
+            <div class="hero-amount-value">85,100원</div>
+            <div class="hero-amount-label">기여 매출</div>
+          </div>
+        </div>
+        <div class="hero-roas-small">통합 ROAS <strong>13.8%</strong> · 쇼핑검색광고 + ADVoost 합산</div>
+      </div>
+
+      <!-- 채널별 메인 KPI 3카드 -->
+      <div class="kpi-group-title">🎯 채널별 메인 KPI</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi-card "><div class="kpi-value">13.8%</div><div class="kpi-label">🛍️ 쇼핑검색광고 (A계정)</div><div class="kpi-sub" style="font-size:10px;color:#94a3b8;margin-top:4px">비용 614,660원 · 매출 85,100원</div></div><div class="kpi-card "><div class="kpi-value">0.0%</div><div class="kpi-label">🎯 ADVoost 쇼핑</div><div class="kpi-sub" style="font-size:10px;color:#94a3b8;margin-top:4px">데이터 미수집 (사용자 엑셀 투입 대기)</div></div><div class="kpi-card highlight"><div class="kpi-value">13.8%</div><div class="kpi-label">🌐 통합 (두 채널)</div><div class="kpi-sub" style="font-size:10px;color:#94a3b8;margin-top:4px">비용 614,660원 · 매출 85,100원</div></div></div>
+
+      <!-- 오버뷰 헤드라인 -->
+      <div class="overview">
+        <div class="overview-label">오늘의 종합 결과</div>
+        <div class="overview-headline">
+          통합 광고비 614,660원 · 통합 <span style="color:#34d399">ROAS 13.8%</span> · 전 채널 합계 0원
+        </div>
+        <div class="overview-body">주말 운영 수준입니다. 네이버 검색광고로 유입된 스마트스토어 결제 85,100원(3건). 스마트스토어 전체 0원, 자사몰·쿠팡·G마켓 합계 0원, CS 매출 0원. 이상 항목 10건.</div>
+      </div>
+
+      <!-- 비교 박스 -->
+      <div class="compare-box">
+        <div class="compare-label"><strong>전일 대비</strong><span style="font-size:10px">(2026-05-02(토요일))</span></div>
+        <div class="compare-items">
+        <span class="compare-item">광고비 <strong>614,660</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 매출 <strong>85,100</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 ROAS <strong>13.8%</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">CS 매출 <strong>0</strong> <span class="delta neutral">—</span></span>
+  </div>
+      </div>
+      <div class="compare-box">
+        <div class="compare-label"><strong>주간 평균</strong><span style="font-size:10px">(최근 4일)</span></div>
+        <div class="compare-items">
+        <span class="compare-item">광고비 <strong>614,660</strong> <span class="delta bad">▼ -8.0%</span></span>
+        <span class="compare-item">스마트스토어 광고 매출 <strong>85,100</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 ROAS <strong>13.8%</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">CS 매출 <strong>0</strong> <span class="delta bad">▼ -100.0%</span></span>
+  </div>
+      </div>
+
+      <!-- 채널별 매출 분포 -->
+      <div class="kpi-group-title">🏬 채널별 매출 분포 · 전체 온라인 그림</div>
+      <table style="margin-bottom:16px">
+        <thead>
+          <tr><th>채널</th><th class="num">매출</th><th class="num">건수</th><th class="num">평균 단가</th><th class="num">전일 대비</th><th>성격</th></tr>
+        </thead>
+        <tbody><tr><td><div class="camp-name">네이버 스마트스토어 (전체)</div><div class="camp-sub">광고 매출 + 자연 유입</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag cs-check">광고+자연</span></td></tr><tr style="background:#0b1120">
+      <td style="padding-left:28px;color:#94a3b8"><div style="font-size:12px">ㄴ 광고 매출 (02 전환로그)</div></td>
+      <td class="num" style="color:#94a3b8">85,100원</td><td class="num" style="color:#94a3b8">3건</td><td class="num" style="color:#94a3b8">28,367원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag normal">확정</span></td></tr><tr style="background:#0b1120">
+      <td style="padding-left:28px;color:#94a3b8"><div style="font-size:12px">ㄴ 자연 매출 (브랜드 검색·SEO)</div></td>
+      <td class="num" style="color:#94a3b8">0원</td><td class="num" style="color:#94a3b8">0건</td><td class="num" style="color:#94a3b8">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">추정</span></td></tr><tr><td><div class="camp-name">자사몰 (hanasignmall.com)</div><div class="camp-sub">고도몰5 기반</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">B계정 연동중</span></td></tr><tr><td><div class="camp-name">자사몰 (hanasignmall.kr)</div><div class="camp-sub">신규몰</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">Google Ads 연동예정</span></td></tr><tr><td><div class="camp-name">쿠팡</div><div class="camp-sub">오픈마켓</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">쿠팡 애드 연동예정</span></td></tr><tr><td><div class="camp-name">G마켓</div><div class="camp-sub">오픈마켓</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">ESM 연동예정</span></td></tr><tr style="background:#1e293b;font-weight:700">
+    <td><div class="camp-name">온라인 합계</div></td>
+    <td class="num">0원</td><td class="num">0건</td><td class="num">—</td>
+    <td class="num"><span class="delta neutral">—</span></td><td>—</td></tr></tbody>
+      </table>
+
+      <!-- CS 동반 지표 -->
+      <div class="kpi-group-title">📞 CS 동반 지표 · 전화·카톡·견적 유입</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi accent"><div class="kpi-value">0</div><div class="kpi-label">CS 매출 (원)</div><div class="kpi-delta neutral">—</div></div><div class="kpi accent"><div class="kpi-value">0</div><div class="kpi-label">CS 주문 건수</div><div class="kpi-delta neutral">—</div></div><div class="kpi accent"><div class="kpi-value">0</div><div class="kpi-label">CS 평균 단가 (원)</div><div class="kpi-delta neutral">—</div></div></div>
+
+      <!-- 영업 매출 -->
+      <div class="sales-ref">
+        <div class="sales-ref-label">
+          <strong>영업 매출 <span class="ref-badge">참조</span></strong>
+          <span>사인몰(영호) 수주 · 광고 무관</span>
+        </div>
+        <div class="sales-ref-items">
+        <span>당일 <strong>0원</strong> · 0건</span>
+        <span>전일 <strong>0원</strong> · 0건</span>
+        <span>주간 평균 <strong>5,679,353원</strong></span>
+  </div>
+      </div>
+
+      <!-- 이슈 맥락 -->
+      <div class="section">
+        <div class="section-title issue"><span class="dot"></span>🔍 현재 상황 맥락 · 보조 정보</div>
+        
+      <div class="issue-card">
+        <h4>현재 시점 맥락</h4>
+        <div class="issue-levels">
+          <span class="level-tag l1">업종·계절 요인</span>
+          <span class="level-tag l2">과거 패턴</span>
+        </div>
+        <div class="issue-body">
+          · <strong>업종·계절 요인</strong>: 사인물 업종은 신학기·새 학기·봄 행사 시즌과 5~6월 야외 현수막 수요 영향이 큼. 4월 중순은 신학기 마무리와 5~6월 사이 간극 시기.<br>
+          · <strong>과거 패턴</strong>: 평일 CS 매출 800~900만원, 광고 매출 280~350만원이 정상 범위.
+        </div>
+      </div>
+  
+      </div>
+
+      <!-- 용어 풀이 -->
+      <div class="glossary">
+        <strong>📘 용어</strong> &nbsp;·&nbsp;
+        <strong>통합 ROAS</strong>: 쇼핑검색광고 + ADVoost 쇼핑 합산 기여 매출 ÷ 합산 광고비 &nbsp;·&nbsp;
+        <strong>쇼핑검색광고</strong>: smartstore.naver.com/hanasign 상품 노출 광고 &nbsp;·&nbsp;
+        <strong>ADVoost 쇼핑</strong>: AI 자동 광고 상품 (디스플레이 배너) &nbsp;·&nbsp;
+        <strong>CS 매출</strong>: 전화·카톡·견적 유입 (영호 제외)
+      </div>
+    </div>
+
+    <!-- ========== 탭 2: 스마트스토어 (v13 — 3스토어 분리) ========== -->
+    <div id="tab-store" class="tab-panel">
+
+      <!-- 통합 KPI -->
+      <div class="kpi-group-title">🛍️ 스마트스토어 유입 통합 (쇼핑검색광고 + ADVoost)</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi "><div class="kpi-value">614,660원</div><div class="kpi-label">스마트스토어 유입 광고비</div></div><div class="kpi accent"><div class="kpi-value">85,100원</div><div class="kpi-label">스마트스토어 기여 매출</div></div><div class="kpi highlight"><div class="kpi-value">13.8%</div><div class="kpi-label">스마트스토어 통합 ROAS</div></div></div>
+
+      <!-- 🏠 하나사인몰 -->
+      <div class="section" style="border-left:3px solid #3b82f6;padding-left:14px">
+        <div class="section-title campaign"><span class="dot"></span>🏠 하나사인몰 (주력 스토어)</div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:12px"><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">495,566원</div><div class="kpi-label" style="font-size:11px">광고비</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">184,107</div><div class="kpi-label" style="font-size:11px">노출</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">364</div><div class="kpi-label" style="font-size:11px">클릭</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">1건</div><div class="kpi-label" style="font-size:11px">전환</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">39,000원</div><div class="kpi-label" style="font-size:11px">매출</div></div><div class="kpi-card" style="border-left:3px solid #f59e0b;"><div class="kpi-val" style="font-size:18px">7.9%</div><div class="kpi-label" style="font-size:11px">ROAS</div></div></div>
+        <div style="font-size:12px;color:#6ee7b7;margin:10px 0 6px;font-weight:600">💎 전환 상품 (매출 순 · 전체 노출)</div>
+        <table style="margin-bottom:12px">
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/8050556257" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">소형 A형 입간판 가게 오픈 시간 안내 A형 입간판 식당 카페 OPEN 영업중 간판 PE 접이식 표지판 어서오세요 소형 블랙 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284401275</div></td>
+      <td class="num">789</td>
+      <td class="num">13</td>
+      <td class="num">20,028원</td>
+      <td class="num">1건</td>
+      <td class="num">39,000원</td>
+      <td class="num"><span class="tag watch">195%</span></td>
+    </tr></tbody>
+        </table>
+        <div style="font-size:12px;color:#94a3b8;margin:6px 0;font-weight:600">📊 비전환 광고비 TOP 10 (감사용)</div>
+        <table>
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 고급 주차증 빌라 차량 아파트 주차스티커 뉴 반사지 패드형 원형(100매이상 주문가능)</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284215282</div></td>
+      <td class="num">14,414</td>
+      <td class="num">30</td>
+      <td class="num">67,613원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">병원 진료 동선 이동 방향 유도 스티커 100x800mm 4세트</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214873</div></td>
+      <td class="num">30,678</td>
+      <td class="num">28</td>
+      <td class="num">48,991원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 주차스티커 100장 아파트 입주민 스티커 주차증 민무늬 원형 60파이</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284215314</div></td>
+      <td class="num">9,864</td>
+      <td class="num">25</td>
+      <td class="num">41,400원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">아크릴 게시판 슬림디자인 엘리베이터 사무실 게시판 4구 학원 공지사항 A4 집게형 광고면 없음</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214583</div></td>
+      <td class="num">3,199</td>
+      <td class="num">13</td>
+      <td class="num">32,510원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">엘리베이터 슬림디자인 포켓 알림판 아파트 게시판 10구 승강기 안내문 집게형 광고면 없음</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214580</div></td>
+      <td class="num">2,479</td>
+      <td class="num">12</td>
+      <td class="num">30,715원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 아파트 주차스티커 빌라 차량 고급 주차증 스티커 01_원형컷팅 민무늬홀로 (300매이상 주문가능)</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284215287</div></td>
+      <td class="num">3,618</td>
+      <td class="num">18</td>
+      <td class="num">28,370원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식목일 수목 표찰 고급 나무 기념식수 이름표 사각 포맥스 명패 간판 팻말 부착형 표지판 A타입</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000357443264</div></td>
+      <td class="num">2,400</td>
+      <td class="num">11</td>
+      <td class="num">11,583원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">365x260mm 피난안내도 비상 대피로 비상구 대피도 표지판 소방 피난로 위치 B4 기본타입 01</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214837</div></td>
+      <td class="num">1,236</td>
+      <td class="num">8</td>
+      <td class="num">11,341원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">고객 전용구역 주차금지 접이식 표지판 차량 주차장 안내 A형 입간판 발렛 파킹 서비스 이용시간 표시판 블랙 단면선택시</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000452110980</div></td>
+      <td class="num">854</td>
+      <td class="num">5</td>
+      <td class="num">10,622원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/hanasign/products/10075086655" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">슬림업 사무실 게시판 4구 교회 학원 공지사항 A4 안내문 메모보드 포켓형 광고면 없음</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000291669742</div></td>
+      <td class="num">688</td>
+      <td class="num">4</td>
+      <td class="num">9,382원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+
+      <!-- ⚠️ 더바른사인 -->
+      <div class="section" style="border-left:3px solid #f59e0b;padding-left:14px">
+        <div class="section-title campaign"><span class="dot"></span>⚠️ 더바른사인</div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:8px"><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">16,865원</div><div class="kpi-label" style="font-size:11px">광고비</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">21,977</div><div class="kpi-label" style="font-size:11px">노출</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">17</div><div class="kpi-label" style="font-size:11px">클릭</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">1건</div><div class="kpi-label" style="font-size:11px">전환</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">39,000원</div><div class="kpi-label" style="font-size:11px">매출</div></div><div class="kpi-card" style="border-left:3px solid #3b82f6;"><div class="kpi-val" style="font-size:18px">231.2%</div><div class="kpi-label" style="font-size:11px">ROAS</div></div></div>
+        
+        <div style="font-size:12px;color:#6ee7b7;margin:10px 0 6px;font-weight:600">💎 전환 상품 (매출 순)</div>
+        <table style="margin-bottom:12px">
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/6567677286" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">A형 약국 입간판 병원 약 위치 유도 표지판 가게 건물 입구 표시판 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000450397370</div></td>
+      <td class="num">289</td>
+      <td class="num">1</td>
+      <td class="num">1,739원</td>
+      <td class="num">1건</td>
+      <td class="num">39,000원</td>
+      <td class="num"><span class="tag normal">2243%</span></td>
+    </tr></tbody>
+        </table>
+        <div style="font-size:12px;color:#94a3b8;margin:6px 0;font-weight:600">📊 광고비 TOP (비효율 감사)</div>
+        <table>
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/9327687411" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">관공서 공공기관 구청 경차 자동차 차량번호 5부제 도입 알림 스텐입간판 라운드 공동시설 승용차 요일제 시행 안내 매너준수 단면인쇄 01</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000495009096</div></td>
+      <td class="num">6,098</td>
+      <td class="num">4</td>
+      <td class="num">5,992원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/6572093876" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식당 영업중 A형 간판 음식점 표지판 카페 오픈 영업시간 안내 입간판 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370622</div></td>
+      <td class="num">296</td>
+      <td class="num">2</td>
+      <td class="num">4,170원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/9327565713" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">승용차 경차 공공기관 주차장 요일제 시행 알림 스텐입간판 사각 학교 구청 공동시설 자동차 차량 5부제 도입 안내 표시 단면인쇄 01</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000495009098</div></td>
+      <td class="num">6,452</td>
+      <td class="num">1</td>
+      <td class="num">1,505원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/6572093876" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식당 영업중 A형 간판 음식점 표지판 카페 오픈 영업시간 안내 입간판 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000278521551</div></td>
+      <td class="num">109</td>
+      <td class="num">1</td>
+      <td class="num">1,259원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/9160027721" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">탄성 우레탄 볼라드 인도 차량 진입금지 횡단보도 앙카식 입구 주차금지봉 보행자 안전 매립식</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000282659730</div></td>
+      <td class="num">54</td>
+      <td class="num">2</td>
+      <td class="num">1,099원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/6479679356" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">영업준비중 브레이크타임 A형 표지판 식당 오픈 클로즈 입간판 가게 영업중 간판 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370656</div></td>
+      <td class="num">15</td>
+      <td class="num">2</td>
+      <td class="num">451원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/6454532495" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">주차금지 표지판 A형 입간판 PE 안내판 도로 안전 아파트 빌딩 주차장 정차주의 유치원 어린이집 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370671</div></td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td class="num">320원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/6474078885" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">안녕히가십시오 PE 표지판 식당 나가는곳 주차장 출구 안내 A형 입간판 카페 인테리어 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370662</div></td>
+      <td class="num">17</td>
+      <td class="num">1</td>
+      <td class="num">156원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/9488852914" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">차단기 주의 표시판 출차금지 알림 표지판 A형 입간판 보행시 위험 피해방지 안전사고 예방 안내판 접근제한 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370123</div></td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td class="num">119원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/thecorrectsign/products/9327863900" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">장애인 유아동승 운전자 적용 제외 A형 입간판 승용차 경차 자동차 5부제 시행 알림판 차량 요일제 안내 관공서 공공기관 주차장 소형 노랑 무지</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000495009095</div></td>
+      <td class="num">7,239</td>
+      <td class="num">1</td>
+      <td class="num">55원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+
+      <!-- 🚀 로켓출력공장 -->
+      <div class="section" style="border-left:3px solid #a855f7;padding-left:14px">
+        <div class="section-title campaign"><span class="dot"></span>🚀 로켓출력공장</div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:12px"><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">102,229원</div><div class="kpi-label" style="font-size:11px">광고비</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">45,275</div><div class="kpi-label" style="font-size:11px">노출</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">73</div><div class="kpi-label" style="font-size:11px">클릭</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">1건</div><div class="kpi-label" style="font-size:11px">전환</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">7,100원</div><div class="kpi-label" style="font-size:11px">매출</div></div><div class="kpi-card" style="border-left:3px solid #f59e0b;"><div class="kpi-val" style="font-size:18px">6.9%</div><div class="kpi-label" style="font-size:11px">ROAS</div></div></div>
+        <div style="font-size:12px;color:#6ee7b7;margin:10px 0 6px;font-weight:600">💎 전환 상품 (매출 순)</div>
+        <table style="margin-bottom:12px">
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13238586386" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">페트 실사출력 인쇄 제작 유리창 배너 광고 카페 큐방 PET지 60cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217309</div></td>
+      <td class="num">1,799</td>
+      <td class="num">11</td>
+      <td class="num">14,589원</td>
+      <td class="num">1건</td>
+      <td class="num">7,100원</td>
+      <td class="num"><span class="tag cs-check">49%</span></td>
+    </tr></tbody>
+        </table>
+        <div style="font-size:12px;color:#94a3b8;margin:6px 0;font-weight:600">📊 광고비 TOP</div>
+        <table>
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000514526418</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000514526418</div></td>
+      <td class="num">19,104</td>
+      <td class="num">31</td>
+      <td class="num">41,874원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">실사출력 시트지 스티커 주문제작 유리창 포스터 PVC켈지 백색시트 60cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217316</div></td>
+      <td class="num">3,338</td>
+      <td class="num">12</td>
+      <td class="num">19,457원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">포맥스 실사출력 인쇄 모양재단 POP 간판 주문제작 5T 3T 2T 60cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217302</div></td>
+      <td class="num">3,578</td>
+      <td class="num">7</td>
+      <td class="num">10,668원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13228084393" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">실사출력 시트지 스티커 주문제작 대형인쇄 광고 디자인 PVC켈지 120cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217314</div></td>
+      <td class="num">3,172</td>
+      <td class="num">7</td>
+      <td class="num">9,908원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13228173928" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">실사출력 시트지 스티커 주문제작 대형인쇄 광고 디자인 PVC켈지 240cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217313</div></td>
+      <td class="num">2,990</td>
+      <td class="num">3</td>
+      <td class="num">4,228원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13243288660" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">포맥스 실사출력 인쇄 작품출력 고화질 사진인화 모양재단 주문제작 5T 3T 2T 240cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217299</div></td>
+      <td class="num">1,039</td>
+      <td class="num">1</td>
+      <td class="num">1,408원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis"><a href="https://smartstore.naver.com/rocketprinting/products/13242446088" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">페트 백릿 조명용 실사출력 배너 포스터 주문제작 대형출력 PET지 240cm이하</a></div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217303</div></td>
+      <td class="num">87</td>
+      <td class="num">1</td>
+      <td class="num">97원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+
+      <!-- ADVoost 성과 유지 -->
+      <div class="kpi-group-title">🎯 ADVoost 쇼핑 성과 (AI 자동광고)</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(5,1fr)"><div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">노출</div></div><div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">클릭</div></div><div class="kpi"><div class="kpi-value">0원</div><div class="kpi-label">비용</div></div><div class="kpi"><div class="kpi-value">0건</div><div class="kpi-label">전환</div></div><div class="kpi"><div class="kpi-value">0원</div><div class="kpi-label">매출 (역산)</div></div></div>
+
+      <!-- 관찰 항목 -->
+      <div class="section">
+        <div class="section-title alert"><span class="dot"></span>📌 관찰 항목 · 즉시 조치 필요 여부 판단</div>
+        
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 고급 주차증 빌라 차량 아파트 주차스티커 뉴 반사지 패드형 원형(100매이상 주문가능)</a></strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 67,613원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 67,613원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284215282</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식목일 수목 표찰 고급 나무 기념식수 이름표 사각 포맥스 명패 간판 팻말 부착형 표지판 A타입</a></strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 11,583원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 11,583원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000048121575" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "수목표찰" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000357443264</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 주차스티커 100장 아파트 입주민 스티커 주차증 민무늬 원형 60파이</a></strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 41,400원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 41,400원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284215314</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/10075114683" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">[당일배송] 슬림업 6구 승강기 엘리베이터 게시판 A4 꽂이 공지사항 병원 안내문 L04 포켓형</a></strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 144회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 144 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/10075114683" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000039916011" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000291669741</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/7497192465" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">문열림 경고 바닥 미끄럼방지 반원 야광 스티커 700x350mm</a></strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 282회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 282 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/7497192465" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214868</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">아크릴 게시판 슬림디자인 엘리베이터 사무실 게시판 4구 학원 공지사항 A4 집게형 광고면 없음</a></strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 32,510원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 32,510원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214583</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/10075140816" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">슬림업 8구 공지사항 사무실 게시판 메모보드 알림판 유치원 어린이집 학급 A4 포켓형 광고면 없음</a></strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 464회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 464 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/10075140816" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000039916011" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000291669740</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">병원 진료 동선 이동 방향 유도 스티커 100x800mm 4세트</a></strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 48,991원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 48,991원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214873</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/7377002255" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 화살표 방향 표시 바닥 스티커 이동 동선 유도 은행 안내 표지 상가 건물 사무실 관리 화살표 타입</a></strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 22144회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 22144 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/7377002255" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214871</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong><a href="https://smartstore.naver.com/hanasign/products/4652469566" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 주차위반 경고장 1000장 아파트 스티커 일반접착 01</a></strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 883회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 883 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://smartstore.naver.com/hanasign/products/4652469566" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214908</div>
+        </div>
+      </details>
+      </div>
+
+      <!-- AI 4단계 -->
+      <div class="section">
+        <div class="section-title ai"><span class="dot"></span>🤖 AI 의견 · 4단계 순차 검증</div>
+        <div class="ai-card"><h4>1단계. 데이터 분석 <span class="stage-tag">현황 파악</span></h4><div class="role">숫자에서 이상 신호를 찾는 역할</div><div class="opinion">심각도 '상' 12건 중 상세 분석 12건 완료. 핵심 발견: (1) COST-NO-CONV 9건 대부분 주차스티커, 게시판, 피난안내도, 포맥스 등 B2B 사인물로, 온라인 전환 0은 '정상' 패턴. 사인물 업종의 광고→CS 상담→오프라인/카톡 결제 흐름이 표준이므로, 소재 OFF 또는 입찰 인하 결정 전 반드시 매출 시트의 CS 매출(진행자 사인몰/하나몰) 확인 필수. (2) 신규 채널(로켓출력공장, 포맥스/시트 출력) 상품 3건은 론칭 초기 학습 기간 중 → 7일 관찰 후 판단. (3) 상품ID nad-a001-02-000000514526418는 상품명 미기재 데이터 오류 → 즉시 카탈로그 마스터 복구 필요. 심각도 '중' 41건(노출 높음 클릭 0) 중 다수는 소재 제목 불명확('광고면 없음', '단면선택시' 등) → 다음 단계에서 소재 개선/키워드 추가로 CTR 회복 검토. 전체 실 ROAS 13.8%는 낮으나, CS 채널 매출 미포함 집계이므로 실제 ROAS는 더 높을 가능성. 순차 접근: ① CS 매출 확인 → ② 신규 상품 학습 기간 연장 → ③ 데이터 오류 복구 → ④ 노출 높음 상품 소재 개선.</div><details style="margin-top:10px"><summary style="cursor:pointer;color:#a78bfa;font-size:12px;padding:4px 0">▼ 상세 12건 펼치기</summary><div style="margin-top:8px"><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 고급 주차증 빌라 차량 아파트 주차스티커 뉴 반사지 패드형 원형(100매이상 주문가능)</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 주차스티커는 대량 주문 사인물로 온라인 전환보다 CS/전화 상담 후 오프라인 결제 비중이 높음. 광고 클릭 후 카탈로그 확인→CS 연락 흐름이 표준. / 비용 67,613원은 상당한 노출/클릭을 의미하나, 온라인 구매전환 미집계는 정상. 매출 시트의 CS 매출 확인 필수.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트에서 해당 상품의 CS 주문건(진행자 사인몰/하나몰 기준) 확인. CS 매출이 있으면 소재 OFF 금지, 입찰 유지.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식목일 수목 표찰 고급 나무 기념식수 이름표 사각 포맥스 명패 간판 팻말 부착형 표지판 A타입</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 계절성 상품. 봄(3~5월) 시즌 수요 상품으로, 현 시점의 낮은 전환은 예상 범위. 입찰 일찍 시작해 봄 성수기 대비 중. / 규격/재질 선택이 많은 주문제작 상품으로 온라인 직구매보다 CS 상담 → 맞춤 견적 흐름이 표준.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트에서 해당 상품의 CS 주문건 확인. 봄 시즌(3~5월) 경향 데이터가 있으면 함께 검토.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000048121575" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "수목표찰" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 주차스티커 100장 아파트 입주민 스티커 주차증 민무늬 원형 60파이</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 주차스티커는 아파트/공동주택 관리사무소 대량 발주 상품. 온라인 직매 0 but CS 매출 가능성 높음. / 비용 41,400원 소진 → 입찰가 적절하나, CS 경로 전환 확인 필수.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트 CS 주문 확인. 만약 CS 매출이 있으면 이 상품은 정상 작동(광고는 인지→CS 전환 경로 담당).</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">아크릴 게시판 슬림디자인 엘리베이터 사무실 게시판 4구 학원 공지사항 A4 집게형 광고면 없음</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 게시판은 B2B 사인물로 소량 온라인 구매 가능하나, 학원/사무실/공공기관은 규격/색상/수량 맞춤 후 CS 발주 표준. / "광고면 없음" 상품명이 불명확 → 소재 제목 또는 카탈로그 연결 확인 필요. 검색 키워드 매칭이 약할 가능성.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트 CS 주문 확인 + 해당 상품 소재(제목/썸네일) 품질 검토. 검색 노출은 있지만 클릭 유도력 평가 필요.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">병원 진료 동선 이동 방향 유도 스티커 100x800mm 4세트</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 병원/의료시설 전용 사인물로 B2B 발주 특성. 온라인 소량 구매 희박, CS 상담 → 시설 규격/설치 계획 후 발주 표준. / 비용 48,991원 소진 → 입찰가 경쟁력 있으나, 의료시설 담당자 검색 경로 확인 필요.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트 CS 주문 확인. 병원/의료시설 관련 AS/시공 이력 있으면 CS 전환 경로 정상 판단.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 아파트 주차스티커 빌라 차량 고급 주차증 스티커 01_원형컷팅 민무늬홀로 (300매이상 주문가능)</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 주차스티커 대량 발주(300매 이상) 상품. 아파트/빌라 관리사무소 발주 전형. CS 전환 가능성 매우 높음. / 온라인 직매 0 상황 정상. CS 채널 매출 확인이 우선.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트에서 300매 이상 대량 주문 CS 기록 확인. 아파트 관리사무소 콜 기록/카톡 상담 이력 검토.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">엘리베이터 슬림디자인 포켓 알림판 아파트 게시판 10구 승강기 안내문 집게형 광고면 없음</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 엘리베이터 게시판은 아파트 시설 안내 전용 사인물로 관리사무소 CS 발주 표준. 온라인 개인 구매 거의 없음. / "광고면 없음" 상품 설명 불명확 → 소재 개선 또는 키워드 마케팅 방향 검토 필요.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트 CS 주문 확인 + 아파트 관리사무소 타겟 키워드(예: "엘리베이터 게시판 아파트") 추가 검토.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">365x260mm 피난안내도 비상 대피로 비상구 대피도 표지판 소방 피난로 위치 B4 기본타입 01</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 140원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 소방/피난 안내도는 법정 의무 표지로 공공기관/시설 발주. 온라인 구매 거의 없고 CS 구매청 발주 전형. / 법령 준수 상품이므로 온라인 전환 0은 정상. CS 채널 실적 확인 필수.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트에서 소방 관련 CS 주문 확인. 공공기관/건물주 CS 콜 이력 검토.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "소방용품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">실사출력 시트지 스티커 주문제작 유리창 포스터 PVC켈지 백색시트 60cm이하</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 로켓출력공장 신규 채널 상품으로 시장 인지도 초기 단계. 19,457원 비용은 시작 입찰 수준이나, 신규 상품(7일 이내) 학습기간 중. / 맞춤 주문제작 시트지로 온라인 직매보다 견적/디자인 상담 CS 경로가 표준.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 로켓출력공장 채널 론칭 날짜 확인. 7일 이내면 학습 기간으로 간주, 1주일 추가 관찰 후 판단. CS 상담 콜 발생 여부 확인.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">고객 전용구역 주차금지 접이식 표지판 차량 주차장 안내 A형 입간판 발렛 파킹 서비스 이용시간 표시판 블랙 단면선택시</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 입간판은 시설/상가 관리용 사인물로 규격/색상/설치 환경 맞춤 후 CS 발주 표준. 온라인 직매 거의 없음. / "단면선택시" 선택 옵션이 있으므로 상담 후 커스터마이징 발주 가능성 높음.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 매출 시트 CS 주문 확인. 주차장/상가 관리사 타겟 CS 콜 이력 검토.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000059429450" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "2026 하나몰_베스트" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">포맥스 실사출력 인쇄 모양재단 POP 간판 주문제작 5T 3T 2T 60cm이하</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 로켓출력공장 신규 채널 포맥스 맞춤 주문제작 상품. 두께(5T/3T/2T)/크기 다양 선택 → CS 상담 후 발주 표준. / 온라인 직매 0은 정상. 신규 채널 상품이므로 학습 기간 중.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 로켓출력공장 론칭 후 경과 시간 확인. 7일 이내 신규면 관찰 기간 연장. CS 상담 발생 여부 확인.</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000514526418 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 상품명 미기재 → 카탈로그 마스터 데이터 오류로 추정. 상품 정보 불명확하면 검색/클릭 후 구매 의사 결정 곤란. / 비용 41,874원 소진됐으나 상품 정보 결여로 전환 불가능 가능성.</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.8</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 카탈로그 마스터 검토. 상품명/썸네일/설명 즉시 보완. 데이터 오류 시 소재 임시 중단 후 복구 권장.</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div></div></details><div class="confidence">자신감 <span class="confidence-bar"><span style="width:90%"></span></span> 90%</div></div><div class="ai-card"><h4>2단계. 개선 제안 <span class="stage-tag">조치안 도출</span></h4><div class="role">어떻게 고치면 좋을지 안을 만드는 역할</div><div class="opinion"></div><div style="margin-top:10px;font-size:12px"><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">총 예상절감</strong>: 즉시 절감 없음 (관찰 및 개선 우선)</span><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">총 변경건수</strong>: 0</span></div><details style="margin-top:10px"><summary style="cursor:pointer;color:#a78bfa;font-size:12px;padding:4px 0">▼ 상세 12건 펼치기</summary><div style="margin-top:8px"><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 고급 주차증 빌라 차량 아파트 주차스티커 뉴 반사지 패드형 원형(100매이상 주문가능)</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 1주 관찰 후 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 주차스티커 대량 발주 상품으로 CS 전환 가능성 높음. 67,613원 소진은 상당 노출 의미하며, 온라인 전환 0은 업종 특성상 정상. CS 매출 확인 우선</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 실제 ROAS 파악 가능</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식목일 수목 표찰 고급 나무 기념식수 이름표 사각 포맥스 명패 간판 팻말 부착형 표지판 A타입</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 봄 시즌 대비 현 입찰가 유지 관찰</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 계절성 상품으로 3-5월 성수기 진입 전 노출 확보 중. 현재 낮은 전환은 시즌 이전 정상 패턴</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 봄 시즌 매출 기회 확보</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000048121575" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "수목표찰" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 주차스티커 100장 아파트 입주민 스티커 주차증 민무늬 원형 60파이</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: CS 매출 확인 후 입찰가 유지</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 아파트 관리사무소 대량 발주 전형 상품. 41,400원 소진으로 적정 노출 중, CS 전환 확인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 실제 효율 파악</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">아크릴 게시판 슬림디자인 엘리베이터 사무실 게시판 4구 학원 공지사항 A4 집게형 광고면 없음</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 소재 제목 개선 + 키워드 보강</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 상품명 '광고면 없음'이 불명확하여 CTR 저하 추정. 게시판 B2B 특성상 CS 전환 가능성 있으나 소재 개선 우선</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CTR 10-20% 개선 예상 <span style="color:#6ee7b7;font-weight:700">→ 100원</span> <span style="color:#64748b;font-size:10px">(현재 130원 기준)</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: true</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">병원 진료 동선 이동 방향 유도 스티커 100x800mm 4세트</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: CS 매출 확인 후 의료시설 타겟 키워드 추가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 의료시설 전용 B2B 상품으로 CS 전환 표준. 48,991원 소진으로 노출은 확보, 타겟 키워드 보강으로 CTR 개선</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 의료시설 담당자 유입 개선</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 아파트 주차스티커 빌라 차량 고급 주차증 스티커 01_원형컷팅 민무늬홀로 (300매이상 주문가능)</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 아파트 관리사무소 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 300매 이상 대량 발주 전형으로 CS 전환 가능성 매우 높음. 온라인 전환 0은 정상 패턴</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 실제 매출 파악 후 정확한 ROAS 산정</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">엘리베이터 슬림디자인 포켓 알림판 아파트 게시판 10구 승강기 안내문 집게형 광고면 없음</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 소재 제목 개선 + 아파트 타겟 키워드 추가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: '광고면 없음' 표현 불명확. 아파트 관리사무소 타겟 키워드 보강으로 CTR 개선 + CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 아파트 관리사 유입 개선</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: true</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">365x260mm 피난안내도 비상 대피로 비상구 대피도 표지판 소방 피난로 위치 B4 기본타입 01</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 140원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 공공기관 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 소방 법정 의무 표지로 공공기관/시설 CS 발주 전형. 온라인 전환 0은 정상</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 실제 CS 매출 파악 후 효율 재평가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "소방용품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">실사출력 시트지 스티커 주문제작 유리창 포스터 PVC켈지 백색시트 60cm이하</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 신규 채널 학습 기간 연장 (1주 추가 관찰)</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 로켓출력공장 신규 채널 상품으로 시장 인지도 초기. 주문제작 특성상 CS 상담 후 발주 표준</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 학습 완료 후 정상 전환율 회복</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">고객 전용구역 주차금지 접이식 표지판 차량 주차장 안내 A형 입간판 발렛 파킹 서비스 이용시간 표시판 블랙 단면선택시</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 상가/주차장 관리사 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 입간판 커스터마이징 상품으로 CS 상담 후 발주 표준. '단면선택시' 옵션 있어 상담 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 실제 효율 파악</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000059429450" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "2026 하나몰_베스트" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">포맥스 실사출력 인쇄 모양재단 POP 간판 주문제작 5T 3T 2T 60cm이하</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 신규 채널 학습 기간 연장</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 로켓출력공장 신규 채널. 두께/크기 다양 선택으로 CS 상담 후 발주 표준</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 학습 완료 후 주문 증가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">상품명 미기재 오류 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 카탈로그 마스터 데이터 즉시 복구 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 상품명 미기재로 검색/구매 의사결정 불가. 41,874원 소진 대비 전환 0의 명확한 원인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 데이터 복구 후 정상 전환 회복</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: true</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.8</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div></div></details><div class="confidence">자신감 <span class="confidence-bar"><span style="width:85%"></span></span> 85%</div></div><div class="ai-card"><h4>3단계. 반박 검토 <span class="stage-tag">제안 재검증</span></h4><div class="role">2단계 제안이 정말 맞는지 반대 입장에서 다시 따져보는 역할</div><div class="opinion">AI 응답이 제한 토큰 안에 완성되지 않아 이번 실행에서는 이 단계를 건너뜁니다. 다음 자동 실행 결과 또는 수동 재실행 결과를 확인해 주세요.</div><div class="confidence">자신감 <span class="confidence-bar"><span style="width:82%"></span></span> 82%</div></div><div class="ai-card"><h4>4단계. 최종 판정 <span class="stage-tag">실행 분류</span></h4><div class="role">모든 의견 모아 최종 결정하는 역할</div><div class="opinion"></div><div style="margin-top:10px;font-size:12px"><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">자동실행 가능</strong>: 0</span><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">사람 승인 필요</strong>: 10</span><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">보류</strong>: 2</span></div><details style="margin-top:10px"><summary style="cursor:pointer;color:#a78bfa;font-size:12px;padding:4px 0">▼ 상세 12건 펼치기</summary><div style="margin-top:8px"><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">스티커 고급 주차증 빌라 차량 아파트 주차스티커 뉴 반사지 패드형 원형(100매이상 주문가능)</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 3일 CS 매출 확인 + 입찰가 10% 인하 병행</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 입찰가 변경 없음, CS 확인 우선 - 규칙 준수</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 67,613원 대규모 비용 소진, 신뢰도 0.7 미만으로 사람 판단 필요</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/5463025229" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">식목일 수목 표찰 고급 나무 기념식수 이름표 사각 포맥스 명패 간판 팻말 부착형 표지판 A타입</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 10% 인하 후 봄 시즌(3월) 전 재평가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 10% 인하는 규칙 범위 내, 계절성 고려 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 계절성 판단과 시즌 전 입찰가 조정 신중함 필요</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/11502917388" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000048121575" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "수목표찰" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 주차스티커 100장 아파트 입주민 스티커 주차증 민무늬 원형 60파이</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 5% 인하 + 3일 CS 매출 모니터링</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 5% 인하는 규칙 범위 내, CS 확인 병행 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신뢰도 0.5로 자동 실행 기준 미달</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4733867723" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">아크릴 게시판 슬림디자인 엘리베이터 사무실 게시판 4구 학원 공지사항 A4 집게형 광고면 없음</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 소재 제목 개선안 수립 후 승인 요청</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 소재 개선은 제안 단계, 실행은 사람 승인 - 규칙 준수</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.4</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 구체적 개선안 부재, 소재 수정 부서 협의 필요</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4723671691" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">병원 진료 동선 이동 방향 유도 스티커 100x800mm 4세트</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 3일 CS 매출 확인 + 의료시설 타겟 키워드 즉시 추가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 키워드 추가는 제안 범위, CS 확인 기간 단축 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 48,991원 비용 소진 규모, 신뢰도 0.7 미만</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/7369937880" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">홀로그램 아파트 주차스티커 빌라 차량 고급 주차증 스티커 01_원형컷팅 민무늬홀로 (300매이상 주문가능)</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 3일 CS 매출 확인 + 입찰가 5% 인하 병행</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 5% 인하는 규칙 범위 내, 대량 발주 특성 고려 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신뢰도 0.5로 자동 실행 기준 미달</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/5097809844" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "주차스티커" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">엘리베이터 슬림디자인 포켓 알림판 아파트 게시판 10구 승강기 안내문 집게형 광고면 없음</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 소재 제목 개선안 수립 후 승인 요청</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 소재 개선은 제안 단계, 구체적 실행안 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.4</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 구체적 개선안 부재, 소재 수정 부서 협의 필요</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4723679985" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "게시판" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">365x260mm 피난안내도 비상 대피로 비상구 대피도 표지판 소방 피난로 위치 B4 기본타입 01</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 140원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 2일 CS 매출 확인 + 공공기관 타겟 키워드 추가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 키워드 추가 제안, 소규모 비용으로 관찰 기간 단축 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 법정 의무 표지 특성으로 신중한 판단 필요</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/4640813101" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "소방용품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">실사출력 시트지 스티커 주문제작 유리창 포스터 PVC켈지 백색시트 60cm이하</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 런칭일 확인 후 조치 결정 (7일 이내면 3일 관찰, 초과면 입찰가 5% 인하)</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 신규 상품 7일 기준 준수, 보수적 판단 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신규 채널 특성과 런칭일 확인 필요로 신중함 요구</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/rocketprinting/products/13227488370" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">고객 전용구역 주차금지 접이식 표지판 차량 주차장 안내 A형 입간판 발렛 파킹 서비스 이용시간 표시판 블랙 단면선택시</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 2일 CS 매출 확인 + 상가 관리 타겟 키워드 추가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 소규모 비용, 키워드 추가 제안 적절</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 커스터마이징 복잡성과 신뢰도 0.7 미만</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/hanasign/products/8056912396" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000059429450" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "2026 하나몰_베스트" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="color:#60a5fa;text-decoration:none;font-weight:700">포맥스 실사출력 인쇄 모양재단 POP 간판 주문제작 5T 3T 2T 60cm이하</a> <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 런칭일 확인 후 조치 결정</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 신규 채널 7일 기준 준수</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.5</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신규 채널 특성과 신뢰도 0.7 미만</div><div style="margin-top:8px"><a href="https://smartstore.naver.com/rocketprinting/products/13242589692" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#03C75A;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">🛒 스마트스토어 상품 보기</a><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">상품명 미기재 오류 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 카탈로그 마스터 데이터 즉시 복구 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 데이터 오류 복구는 제안 범위, 긴급성 인정</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.8</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 시스템 데이터 수정으로 기술팀 협의 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 광고그룹 "로켓출력공장_전체상품" 보기</a></div></div></div></details><div class="confidence">자신감 <span class="confidence-bar"><span style="width:88%"></span></span> 88%</div></div>
+      </div>
+    </div>
+
+    <!-- ========== 탭 3: 자사몰 ========== -->
+    <div id="tab-self" class="tab-panel">
+      <div class="empty-state" style="padding:30px 20px">
+        <div class="emoji">🌐</div>
+        <h3>자사몰 (B계정) 데이터 수집 준비 중</h3>
+        <p>
+          네이버 광고 B계정 <strong style="color:#60a5fa">CUSTOMER_ID 1558945</strong> · 캠페인 9개<br>
+          stat report 수집 경로 구축 중 — 다음 자동 실행분부터 실데이터 반영 예정
+        </p>
+      </div>
+
+      <!-- 🏠 하나사인몰.com 섹션 -->
+      <div class="section">
+        <div class="section-title campaign"><span class="dot"></span>🏠 하나사인몰.com · 고도몰 (메인)</div>
+        <p style="font-size:13px;color:#64748b;margin-bottom:10px">파워링크 + 쇼핑검색광고 + 브랜드검색 집행 중 · 월 예산 약 11,700,000원</p>
+        <div class="camp-list">
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">001 파워링크</div><div class="camp-item-budget">일 270,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">●[파워/광고]주력상품</div><div class="camp-item-budget">일 20,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">파워링크_하나사인몰/주말</div><div class="camp-item-budget">일 20,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">■[파워/광고]서브상품</div><div class="camp-item-budget">일 20,000원 · PAUSED</div></div>
+          <div class="camp-item"><div class="camp-item-type">쇼핑검색</div><div class="camp-item-name">검색광고</div><div class="camp-item-budget">일 70원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">쇼핑검색</div><div class="camp-item-name">요일제</div><div class="camp-item-budget">일 80,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">브랜드검색</div><div class="camp-item-name">하나사인몰 브랜드</div><div class="camp-item-budget">정지 상태</div></div>
+        </div>
+      </div>
+
+      <!-- 🆕 하나사인몰.kr 섹션 -->
+      <div class="section">
+        <div class="section-title campaign" style="border-color:rgba(251,191,36,0.3)"><span class="dot" style="background:#fbbf24"></span>🆕 하나사인몰.kr · 신규몰</div>
+        <p style="font-size:13px;color:#64748b;margin-bottom:10px">신규몰 전용 캠페인 2개 · 일 예산 합계 150,000원</p>
+        <div class="camp-list">
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">002 신규몰 파워링크</div><div class="camp-item-budget">일 100,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">쇼핑검색</div><div class="camp-item-name">신규몰 검색상품노출</div><div class="camp-item-budget">일 50,000원 · ELIGIBLE</div></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="footer">
+    <div class="footer-title">하나사인몰 AI 광고 에이전트</div>
+    <div class="footer-sub">1단계 데이터 분석 → 2단계 개선 제안 → 3단계 반박 검토 → 4단계 최종 판정</div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, el){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  if(el) el.classList.add('active');
+  var t = document.getElementById(id); if(t) t.classList.add('active');
+}
+</script>
+</body>
+</html>
