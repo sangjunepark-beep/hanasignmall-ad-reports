@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>네이버 검색광고 운영 카테고리 분석 (광고그룹 단위) — 2026-03 ~ 2026-04</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+  background: #F4F6FA;
+  color: #1A1F2E;
+  line-height: 1.6;
+  padding: 24px 16px 48px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
+  color: #fff;
+  padding: 32px 28px;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+}
+.hero .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.22);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.hero h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px; position: relative; z-index: 1; }
+.hero .meta { font-size: 14px; opacity: 0.92; position: relative; z-index: 1; }
+.hero .meta b { font-weight: 700; }
+.hero .verify {
+  display: inline-block;
+  margin-top: 10px;
+  background: rgba(0,0,0,0.18);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+section.box {
+  background: #fff;
+  border: 1px solid #E2E6ED;
+  border-top: none;
+  padding: 26px 28px 24px;
+}
+section.box.first { border-top: 1px solid #E2E6ED; }
+section.box.last { border-radius: 0 0 16px 16px; }
+section.box h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+section.box h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: #1E3A8A;
+  border-radius: 2px;
+}
+section.box .desc { font-size: 13px; color: #64748B; margin-bottom: 18px; }
+.method-card {
+  background: #DBEAFE;
+  border: 1px solid #93C5FD;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 12px;
+  color: #1E40AF;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.method-card b { font-weight: 700; }
+.method-card code {
+  background: rgba(30, 64, 175, 0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.compare-card {
+  background: #FEF9E7;
+  border: 1px solid #FDE68A;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 12.5px;
+  color: #92400E;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+.compare-card b { font-weight: 700; }
+.acc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+}
+.acc-head.acc-a {
+  background: linear-gradient(90deg, #EBF8FF 0%, #FFFFFF 100%);
+  border-left: 5px solid #0EA5E9;
+}
+.acc-head.acc-b {
+  background: linear-gradient(90deg, #F0FDF4 0%, #FFFFFF 100%);
+  border-left: 5px solid #10B981;
+}
+.acc-tag { font-size: 13px; font-weight: 800; color: #fff; padding: 4px 12px; border-radius: 6px; letter-spacing: 0.5px; }
+.acc-a .acc-tag { background: #0EA5E9; }
+.acc-b .acc-tag { background: #10B981; }
+.acc-title { font-size: 16px; font-weight: 800; color: #0F172A; }
+.acc-sub { font-size: 12px; color: #64748B; margin-left: auto; }
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.kpi { background: #F8FAFC; border-radius: 10px; padding: 14px; border: 1px solid #E2E8F0; }
+.kpi .label { font-size: 11px; color: #64748B; font-weight: 600; margin-bottom: 4px; }
+.kpi .val { font-size: 18px; font-weight: 800; color: #0F172A; letter-spacing: -0.4px; }
+.kpi .val .unit { font-size: 12px; font-weight: 600; color: #64748B; margin-left: 2px; }
+.kpi .sub { font-size: 10.5px; color: #64748B; margin-top: 2px; }
+.kpi.bg-blue { background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border-color: #BFDBFE; }
+.kpi.bg-green { background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); border-color: #A7F3D0; }
+.kpi.bg-amber { background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border-color: #FCD34D; }
+.kpi.bg-rose { background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); border-color: #FCA5A5; }
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+}
+table thead th {
+  background: #1E3A8A;
+  color: #fff;
+  padding: 11px 10px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 12px;
+  white-space: nowrap;
+}
+table thead th.a-head { background: #0369A1; }
+table thead th.b-head { background: #047857; }
+table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #F1F5F9;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+table tbody td.txt { text-align: left; }
+table tbody td.ctr { text-align: center; }
+table tbody td.tag {
+  font-weight: 700;
+  background: #FEF9E7;
+  color: #92400E;
+  text-align: center;
+  border-right: 1px solid #FDE68A;
+}
+table tbody tr.zero td { background: #F8FAFC; color: #94A3B8; }
+table tbody tr.etc td { background: #F1F5F9; color: #475569; font-style: italic; }
+table tbody tr.total-a td { background: #DBEAFE; font-weight: 800; color: #075985; border-top: 2px solid #0EA5E9; }
+table tbody tr.total-b td { background: #D1FAE5; font-weight: 800; color: #065F46; border-top: 2px solid #10B981; }
+table tbody tr.total td { background: #FFE699; font-weight: 800; color: #92400E; border-top: 2px solid #F59E0B; }
+table tbody tr.rank-1 td.tag { background: #FEE2E2; color: #991B1B; }
+table tbody tr.rank-2 td.tag { background: #FED7AA; color: #9A3412; }
+table tbody tr:last-child td { border-bottom: none; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.chart-wrap { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px; margin-top: 14px; }
+.chart-title { font-size: 13px; font-weight: 700; color: #1E3A8A; margin-bottom: 12px; text-align: center; }
+.insights { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.insight { background: #F8FAFC; border-radius: 12px; padding: 16px 18px; border-left: 4px solid #1E3A8A; }
+.insight.green { border-left-color: #10B981; background: linear-gradient(90deg, #F0FDF4 0%, #FFFFFF 100%); }
+.insight.red { border-left-color: #EF4444; background: linear-gradient(90deg, #FEF2F2 0%, #FFFFFF 100%); }
+.insight.amber { border-left-color: #F59E0B; background: linear-gradient(90deg, #FFFBEB 0%, #FFFFFF 100%); }
+.insight.blue { border-left-color: #3B82F6; background: linear-gradient(90deg, #EFF6FF 0%, #FFFFFF 100%); }
+.insight h3 { font-size: 14px; font-weight: 800; color: #0F172A; margin-bottom: 6px; }
+.insight p { font-size: 12.5px; color: #475569; line-height: 1.55; }
+.insight p strong { color: #0F172A; font-weight: 700; }
+.notes { background: #F8FAFC; border-radius: 8px; padding: 14px 18px; font-size: 12.5px; color: #64748B; border: 1px dashed #CBD5E1; }
+.notes ul { margin-left: 16px; }
+.notes li { margin-bottom: 4px; }
+footer { text-align: center; margin-top: 24px; font-size: 11px; color: #94A3B8; }
+@media (max-width: 820px) {
+  body { padding: 12px 8px 40px; }
+  .hero { padding: 22px 18px; border-radius: 12px 12px 0 0; }
+  .hero h1 { font-size: 19px; }
+  section.box { padding: 18px 14px 14px; }
+  section.box h2 { font-size: 16px; }
+  .split { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .kpi .val { font-size: 16px; }
+  .insights { grid-template-columns: 1fr; }
+  table { font-size: 11.5px; }
+  table thead th, table tbody td { padding: 8px 6px; }
+  .acc-head { padding: 12px 14px; flex-wrap: wrap; }
+  .acc-sub { margin-left: 0; flex-basis: 100%; margin-top: 4px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="badge">NAVER 검색광고 분석</span>
+    <h1>운영 카테고리별 광고비 — 검색광고 vs 파워링크</h1>
+    <div class="meta">집계 기간: <b>2026-03-01 ~ 2026-04-30</b> · 61일</div>
+  </div>
+
+  <section class="box first">
+    <h2>전체 합계 (검색광고 + 파워링크)</h2>
+    <div class="kpi-row">
+      <div class="kpi bg-blue">
+        <div class="label">전체 광고비</div>
+        <div class="val">49,308,523<span class="unit">원</span></div>
+        <div class="sub">검색광고 3,828만 + 파워링크 1,102만</div>
+      </div>
+      <div class="kpi bg-green">
+        <div class="label">전체 클릭</div>
+        <div class="val">43,112<span class="unit">회</span></div>
+        <div class="sub">검색광고 28,424 + 파워링크 14,688</div>
+      </div>
+      <div class="kpi bg-amber">
+        <div class="label">전체 평균 CPC</div>
+        <div class="val">1,144<span class="unit">원</span></div>
+        <div class="sub">검색광고 1,347 / 파워링크 751</div>
+      </div>
+      <div class="kpi bg-rose">
+        <div class="label">5카테고리 비중</div>
+        <div class="val">55.5<span class="unit">%</span></div>
+        <div class="sub">5카테고리 외 44.5%</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>카테고리</th><th>광고비(원)</th><th>클릭</th><th>평균 CPC(원)</th><th>광고 수</th><th>전체 비중</th></tr>
+      </thead>
+      <tbody>
+        <tr class="rank-1"><td class="tag">게시판</td><td>11,564,208</td><td>6,834</td><td>1,693</td><td class="ctr">299</td><td>23.5%</td></tr>
+        <tr class="rank-2"><td class="tag">주차스티커</td><td>10,548,832</td><td>6,101</td><td>1,729</td><td class="ctr">157</td><td>21.4%</td></tr>
+        <tr><td class="tag">A형입간판</td><td>3,955,032</td><td>3,806</td><td>1,039</td><td class="ctr">841</td><td>8.0%</td></tr>
+        <tr><td class="tag">오뚜기</td><td>1,227,567</td><td>1,345</td><td>913</td><td class="ctr">44</td><td>2.5%</td></tr>
+        <tr class="etc"><td class="ctr">4카테고리 외 (현수막/배너/안내판/바닥스티커 등)</td><td>22,012,884</td><td>25,026</td><td>880</td><td class="ctr">–</td><td>44.7%</td></tr>
+        <tr class="total"><td class="ctr">전체</td><td>49,308,523</td><td>43,112</td><td>1,144</td><td class="ctr">–</td><td>100%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="chart-wrap">
+      <div class="split">
+        <div>
+          <div class="chart-title">카테고리 광고비 비중 (검색광고 + 파워링크)</div>
+          <canvas id="chartTotal" height="200"></canvas>
+        </div>
+        <div>
+          <div class="chart-title">카테고리 평균 CPC (원)</div>
+          <canvas id="chartCpcAll" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 검색광고 -->
+  <section class="box">
+    <div class="acc-head acc-a">
+      <span class="acc-tag">검색광고</span>
+      <span class="acc-title">스마트스토어 쇼핑검색광고 (Customer 1728536)</span>
+      <span class="acc-sub">캠페인 12 / 광고그룹 128</span>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="label">전체 광고비</div><div class="val">38,284,422<span class="unit">원</span></div><div class="sub">한 달 평균 1,914만</div></div>
+      <div class="kpi"><div class="label">전체 클릭</div><div class="val">28,424<span class="unit">회</span></div></div>
+      <div class="kpi"><div class="label">평균 CPC</div><div class="val">1,347<span class="unit">원</span></div></div>
+      <div class="kpi"><div class="label">4카테고리 비중</div><div class="val">56.5<span class="unit">%</span></div></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th class="a-head">카테고리</th><th class="a-head">광고비(원)</th><th class="a-head">클릭</th><th class="a-head">평균 CPC</th><th class="a-head">광고 수</th><th class="a-head">검색광고 내 비중</th></tr>
+      </thead>
+      <tbody>
+        <tr class="rank-1"><td class="tag">주차스티커</td><td>8,984,088</td><td>4,874</td><td>1,843</td><td class="ctr">144</td><td>23.5%</td></tr>
+        <tr class="rank-2"><td class="tag">게시판</td><td>8,766,999</td><td>4,532</td><td>1,934</td><td class="ctr">294</td><td>22.9%</td></tr>
+        <tr><td class="tag">A형입간판</td><td>3,247,124</td><td>2,826</td><td>1,149</td><td class="ctr">841</td><td>8.5%</td></tr>
+        <tr><td class="tag">오뚜기</td><td>630,691</td><td>518</td><td>1,218</td><td class="ctr">42</td><td>1.6%</td></tr>
+        <tr class="etc"><td class="ctr">4카테고리 외</td><td>16,655,520</td><td>15,674</td><td>1,063</td><td class="ctr">–</td><td>43.5%</td></tr>
+        <tr class="total-a"><td class="ctr">검색광고 전체</td><td>38,284,422</td><td>28,424</td><td>1,347</td><td class="ctr">–</td><td>100%</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 파워링크 -->
+  <section class="box">
+    <div class="acc-head acc-b">
+      <span class="acc-tag">파워링크</span>
+      <span class="acc-title">자사몰 파워링크 (Customer 1558945)</span>
+      <span class="acc-sub">캠페인 9 / 광고그룹 76</span>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="label">전체 광고비</div><div class="val">11,024,101<span class="unit">원</span></div><div class="sub">한 달 평균 551만</div></div>
+      <div class="kpi"><div class="label">전체 클릭</div><div class="val">14,688<span class="unit">회</span></div></div>
+      <div class="kpi"><div class="label">평균 CPC</div><div class="val">751<span class="unit">원</span></div></div>
+      <div class="kpi"><div class="label">4카테고리 비중</div><div class="val">52.1<span class="unit">%</span></div></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th class="b-head">카테고리</th><th class="b-head">광고비(원)</th><th class="b-head">클릭</th><th class="b-head">평균 CPC</th><th class="b-head">광고 수</th><th class="b-head">파워링크 내 비중</th></tr>
+      </thead>
+      <tbody>
+        <tr class="rank-1"><td class="tag">게시판</td><td>2,797,209</td><td>2,302</td><td>1,215</td><td class="ctr">5</td><td>25.4%</td></tr>
+        <tr class="rank-2"><td class="tag">주차스티커</td><td>1,564,744</td><td>1,227</td><td>1,275</td><td class="ctr">13</td><td>14.2%</td></tr>
+        <tr><td class="tag">A형입간판</td><td>707,908</td><td>980</td><td>722</td><td class="ctr">1</td><td>6.4%</td></tr>
+        <tr><td class="tag">오뚜기</td><td>596,876</td><td>827</td><td>722</td><td class="ctr">2</td><td>5.4%</td></tr>
+        <tr class="etc"><td class="ctr">4카테고리 외</td><td>5,357,364</td><td>9,352</td><td>573</td><td class="ctr">–</td><td>48.6%</td></tr>
+        <tr class="total-b"><td class="ctr">파워링크 전체</td><td>11,024,101</td><td>14,688</td><td>751</td><td class="ctr">–</td><td>100%</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 검색광고 vs 파워링크 -->
+  <section class="box last">
+    <h2>검색광고 vs 파워링크 비교</h2>
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">카테고리</th>
+          <th colspan="3" class="a-head">검색광고 (스마트스토어)</th>
+          <th colspan="3" class="b-head">파워링크 (자사몰)</th>
+          <th rowspan="2">CPC<br>차이</th>
+        </tr>
+        <tr>
+          <th class="a-head">광고비</th><th class="a-head">클릭</th><th class="a-head">CPC</th>
+          <th class="b-head">광고비</th><th class="b-head">클릭</th><th class="b-head">CPC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="tag">게시판</td><td>8,766,999</td><td>4,532</td><td>1,934</td><td>2,797,209</td><td>2,302</td><td>1,215</td><td style="color:#10B981;font-weight:700;">파워링크가 클릭당 37% 더 저렴</td></tr>
+        <tr><td class="tag">주차스티커</td><td>8,984,088</td><td>4,874</td><td>1,843</td><td>1,564,744</td><td>1,227</td><td>1,275</td><td style="color:#10B981;font-weight:700;">파워링크가 클릭당 31% 더 저렴</td></tr>
+        <tr><td class="tag">A형입간판</td><td>3,247,124</td><td>2,826</td><td>1,149</td><td>707,908</td><td>980</td><td>722</td><td style="color:#10B981;font-weight:700;">파워링크가 클릭당 37% 더 저렴</td></tr>
+        <tr><td class="tag">오뚜기</td><td>630,691</td><td>518</td><td>1,218</td><td>596,876</td><td>827</td><td>722</td><td style="color:#10B981;font-weight:700;">파워링크가 클릭당 41% 더 저렴</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    하나사인몰 웹팀 · 박상준 차장 · 2026-05-04 · 별첨 엑셀 — <i>네이버검색광고_운영카테고리_매칭리스트.xlsx</i><br>
+    <span style="color:#cbd5e1">병행 보고서: 네이버검색광고_4단어_소재단위_보고서.html (v3 — 광고 소재 정확 매칭)</span>
+  </footer>
+</div>
+
+<script>
+const labels5 = ['게시판', '주차스티커', '입간판 (A형 외)', '오뚜기', 'A형입간판'];
+const colors5 = ['#10B981', '#3B82F6', '#8B5CF6', '#F59E0B', '#EF4444'];
+
+new Chart(document.getElementById('chartTotal'), {
+  type: 'doughnut',
+  data: {
+    labels: ['게시판','주차스티커','A형입간판','오뚜기','4카테고리 외'],
+    datasets: [{
+      data: [11564208, 10548832, 3955032, 1227567, 22012884],
+      backgroundColor: ['#10B981','#3B82F6','#EF4444','#F59E0B','#94A3B8'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: {
+      legend: { position: 'right', labels: { font: { family: 'Pretendard, Malgun Gothic', size: 11 } } },
+      tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed.toLocaleString()}원 (${(ctx.parsed/49308523*100).toFixed(1)}%)` } }
+    }
+  }
+});
+
+new Chart(document.getElementById('chartCpcAll'), {
+  type: 'bar',
+  data: {
+    labels: ['게시판','주차스티커','A형입간판','오뚜기'],
+    datasets: [{
+      label: '평균 CPC (원)',
+      data: [1693, 1729, 1039, 913],
+      backgroundColor: ['#10B981','#3B82F6','#EF4444','#F59E0B'],
+      borderRadius: 6,
+      barThickness: 38
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.parsed.y.toLocaleString()}원` } } },
+    scales: { y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() + '원' } } }
+  }
+});
+
+new Chart(document.getElementById('chartA'), {
+  type: 'bar',
+  data: {
+    labels: ['주차스티커','게시판','A형입간판','오뚜기','입간판 (A형 외)'],
+    datasets: [
+      { label: '광고비(원)', data: [8984088, 8766999, 3247124, 630691, 0], backgroundColor: '#0EA5E9', yAxisID: 'y', borderRadius: 4, barPercentage: 0.55 },
+      { label: '클릭(회)', data: [4874, 4532, 2826, 518, 0], backgroundColor: '#7DD3FC', yAxisID: 'y1', borderRadius: 4, barPercentage: 0.55 },
+      { type: 'line', label: 'CPC(원)', data: [1843, 1934, 1149, 1218, 0], borderColor: '#DC2626', backgroundColor: '#DC2626', yAxisID: 'y', tension: 0.2, pointRadius: 4 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      y: { beginAtZero: true, position: 'left', title: { display: true, text: '광고비 / CPC (원)' }, ticks: { callback: v => v.toLocaleString() } },
+      y1: { beginAtZero: true, position: 'right', title: { display: true, text: '클릭(회)' }, grid: { drawOnChartArea: false }, ticks: { callback: v => v.toLocaleString() } }
+    }
+  }
+});
+
+new Chart(document.getElementById('chartB'), {
+  type: 'bar',
+  data: {
+    labels: ['게시판','주차스티커','A형입간판','오뚜기','입간판 (A형 외)'],
+    datasets: [
+      { label: '광고비(원)', data: [2797209, 1564744, 707908, 596876, 77793], backgroundColor: '#10B981', yAxisID: 'y', borderRadius: 4, barPercentage: 0.55 },
+      { label: '클릭(회)', data: [2302, 1227, 980, 827, 90], backgroundColor: '#6EE7B7', yAxisID: 'y1', borderRadius: 4, barPercentage: 0.55 },
+      { type: 'line', label: 'CPC(원)', data: [1215, 1275, 722, 722, 864], borderColor: '#DC2626', backgroundColor: '#DC2626', yAxisID: 'y', tension: 0.2, pointRadius: 4 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      y: { beginAtZero: true, position: 'left', title: { display: true, text: '광고비 / CPC (원)' }, ticks: { callback: v => v.toLocaleString() } },
+      y1: { beginAtZero: true, position: 'right', title: { display: true, text: '클릭(회)' }, grid: { drawOnChartArea: false }, ticks: { callback: v => v.toLocaleString() } }
+    }
+  }
+});
+
+new Chart(document.getElementById('chartCmpCost'), {
+  type: 'bar',
+  data: {
+    labels: ['게시판','주차스티커','A형입간판','오뚜기','입간판 (A형 외)'],
+    datasets: [
+      { label: 'A 스마트스토어', data: [8766999, 8984088, 3247124, 630691, 0], backgroundColor: '#0EA5E9', borderRadius: 4 },
+      { label: 'B 자사몰', data: [2797209, 1564744, 707908, 596876, 77793], backgroundColor: '#10B981', borderRadius: 4 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() + '원' } } }
+  }
+});
+
+new Chart(document.getElementById('chartCmpCpc'), {
+  type: 'bar',
+  data: {
+    labels: ['게시판','주차스티커','A형입간판','오뚜기','입간판 (A형 외)'],
+    datasets: [
+      { label: 'A 스마트스토어', data: [1934, 1843, 1149, 1218, 0], backgroundColor: '#0EA5E9', borderRadius: 4 },
+      { label: 'B 자사몰', data: [1215, 1275, 722, 722, 864], backgroundColor: '#10B981', borderRadius: 4 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    plugins: { legend: { position: 'top' } },
+    scales: { y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString() + '원' } } }
+  }
+});
+</script>
+</body>
+</html>
