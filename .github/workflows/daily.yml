@@ -1,0 +1,35 @@
+name: Daily CEO Report (09:00 KST)
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build CEO Report
+        env:
+          A_KEY: ${{ secrets.NAVER_A_KEY }}
+          A_SEC: ${{ secrets.NAVER_A_SEC }}
+          B_KEY: ${{ secrets.NAVER_B_KEY }}
+          B_SEC: ${{ secrets.NAVER_B_SEC }}
+          G_DEV: ${{ secrets.G_DEV }}
+          G_OAUTH_C: ${{ secrets.G_OAUTH_C }}
+          G_OAUTH_S: ${{ secrets.G_OAUTH_S }}
+          G_REFRESH: ${{ secrets.G_REFRESH }}
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPO: ${{ github.event.repository.name }}
+          WORKSPACE_DIR: ${{ github.workspace }}/scripts
+        run: |
+          cd "$GITHUB_WORKSPACE/scripts"
+          python build_report.py
