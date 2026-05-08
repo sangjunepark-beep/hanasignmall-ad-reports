@@ -731,4 +731,28 @@ if GH_PAT and GH_OWNER and GH_REPO:
             sha = json.loads(urllib.request.urlopen(req,context=ctx,timeout=15).read()).get("sha")
         except: pass
         body = {"message": msg, "content": base64.b64encode(content_bytes).decode()}
-     
+        if sha: body["sha"] = sha
+        try:
+            req = urllib.request.Request(api, data=json.dumps(body).encode(), method="PUT",
+                headers={"Authorization":f"Bearer {GH_PAT}","Accept":"application/vnd.github+json","Content-Type":"application/json"})
+            urllib.request.urlopen(req,context=ctx,timeout=20).read()
+            return True
+        except Exception as e:
+            print(f"  GH push err {path}: {e}", file=sys.stderr); return False
+
+    content = new_src.encode("utf-8")
+    msg = f"ceo-report {TARGET} ({WEEKDAY})"
+    ok1 = gh_put(f"ceo-report/latest.html", content, msg)
+    ok2 = gh_put(f"ceo-report/{TARGET}.html", content, msg)
+    if ok1 and ok2:
+        print(f"  [GH push] latest.html + {TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/latest.html", file=sys.stderr)
+else:
+    print("  [GH push] 환경변수 미설정 — 스킵", file=sys.stderr)
+
+print(f"\n=== {TARGET} ({WEEKDAY}) 통합 ===")
+print(f"A: 광고비 {a_total['cost']:,}원 매출 {a_buy_total['v']:,}원 ROAS {a_roas}%")
+print(f"B: 광고비 {b_total['cost']:,}원 매출 {b_conv['v']:,}원 ROAS {b_roas}%")
+print(f"G: 광고비 {g_total['cost']:,}원 매출 {g_buy['v']:,}원 ROAS {g_roas}%")
+print(f"통합: 광고비 {combined['cost']:,}원 매출 {combined['buy_v']:,}원 ROAS {combined['roas']}%")
+print(f"비전환: {no_conv_total:,}원 ({no_conv_pct}%, {len(no_conv_groups)}그룹)")
+print(f"파일: {OUT}")
