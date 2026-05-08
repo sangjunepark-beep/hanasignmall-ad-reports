@@ -114,71 +114,75 @@ except: pass
 
 all_rows = []
 buy_map = {}
-try:
-    rows01 = gviz_csv(1416410435)
-    rows02 = gviz_csv(1885328367)
-    rows01_t = [r for r in rows01[1:] if r and r[0]==TARGET]
-    rows02_t = [r for r in rows02[1:] if r and r[0]==TARGET]
-    print(f"  시트 01:{len(rows01_t)} 02:{len(rows02_t)}", file=sys.stderr)
-    seen_keys = set()
-    for r in rows01_t:
-        while len(r)<11: r.append("")
-        k = (r[2], r[3], r[4])
-        if k in seen_keys: continue
-        seen_keys.add(k)
-        pid = r[4]
-        m = mp.get(pid,{})
-        all_rows.append({"campaign":r[2],"adgroup":r[3],"pid":pid,"imp":to_int(r[5]),"clk":to_int(r[6]),
-                         "cost":to_int(r[8]),"name":(r[10] or m.get("name","")).strip(),"url":m.get("url","")})
-    seen_buy = set()
-    for r in rows02_t:
-        while len(r)<10: r.append("")
-        if r[1] in seen_buy: continue
-        seen_buy.add(r[1])
-        buy_map[r[1]] = {"buy_n":to_int(r[2]),"buy_v":to_int(r[3]),"d_buy_n":to_int(r[4]),"d_buy_v":to_int(r[5]),
-                         "i_buy_n":to_int(r[6]),"i_buy_v":to_int(r[7]),"cart_n":to_int(r[8]),"cart_v":to_int(r[9])}
-except Exception as e:
-    print(f"  시트 err: {e}", file=sys.stderr)
+# A는 항상 API 직접 호출 (시트 캐시 시점 차이 제거)
+print("  [A API 직접 호출]", file=sys.stderr)
+a_camps_api = n_req(A_KEY,A_SEC,A_CID,"GET","/ncc/campaigns") or []
+a_cidx = {c["nccCampaignId"]:c["name"] for c in a_camps_api if isinstance(c,dict)}
+a_adgs_api = n_req(A_KEY,A_SEC,A_CID,"GET","/ncc/adgroups") or []
+a_aidx = {a["nccAdgroupId"]:a["name"] for a in a_adgs_api if isinstance(a,dict)}
+tsv = n_stat(A_KEY,A_SEC,A_CID,"AD")
+if tsv:
+    for line in tsv.splitlines():
+        cols = line.split("\t")
+        if len(cols)<12: continue
+        try:
+            imp = int(float(cols[-5].replace(",","")))
+            clk = int(float(cols[-4].replace(",","")))
+            cost = int(float(cols[-3].replace(",","")))
+        except: imp=clk=cost=0
+        cid=cols[2]; agid=cols[3]; pid=cols[5] if len(cols)>5 else ""
+        all_rows.append({"campaign":a_cidx.get(cid,cid),"adgroup":a_aidx.get(agid,agid),"pid":pid,
+                         "imp":imp,"clk":clk,"cost":cost,
+                         "name":mp.get(pid,{}).get("name",pid),"url":mp.get(pid,{}).get("url","")})
+tsv = n_stat(A_KEY,A_SEC,A_CID,"AD_CONVERSION")
+if tsv:
+    for line in tsv.splitlines():
+        cols = line.split("\t")
+        if len(cols)<13: continue
+        try:
+            pid=cols[5]; ctype=cols[10]
+            cnt=int(float(cols[11].replace(",",""))); val=int(float(cols[12].replace(",","")))
+        except: continue
+        if pid not in buy_map:
+            buy_map[pid]={"buy_n":0,"buy_v":0,"d_buy_n":0,"d_buy_v":0,"i_buy_n":0,"i_buy_v":0,"cart_n":0,"cart_v":0}
+        if ctype=="purchase":
+            buy_map[pid]["buy_n"]+=cnt; buy_map[pid]["buy_v"]+=val
+            buy_map[pid]["i_buy_n"]+=cnt; buy_map[pid]["i_buy_v"]+=val
+        elif ctype=="add_to_cart":
+            buy_map[pid]["cart_n"]+=cnt; buy_map[pid]["cart_v"]+=val
 
-if not all_rows:
-    print("  [A API fallback]", file=sys.stderr)
-    a_camps_api = n_req(A_KEY,A_SEC,A_CID,"GET","/ncc/campaigns") or []
-    a_cidx = {c["nccCampaignId"]:c["name"] for c in a_camps_api if isinstance(c,dict)}
-    a_adgs_api = n_req(A_KEY,A_SEC,A_CID,"GET","/ncc/adgroups") or []
-    a_aidx = {a["nccAdgroupId"]:a["name"] for a in a_adgs_api if isinstance(a,dict)}
-    tsv = n_stat(A_KEY,A_SEC,A_CID,"AD")
-    if tsv:
-        for line in tsv.splitlines():
-            cols = line.split("\t")
-            if len(cols)<12: continue
-            try:
-                imp = int(float(cols[-5].replace(",","")))
-                clk = int(float(cols[-4].replace(",","")))
-                cost = int(float(cols[-3].replace(",","")))
-            except: imp=clk=cost=0
-            cid=cols[2]; agid=cols[3]; pid=cols[5] if len(cols)>5 else ""
-            all_rows.append({"campaign":a_cidx.get(cid,cid),"adgroup":a_aidx.get(agid,agid),"pid":pid,
-                             "imp":imp,"clk":clk,"cost":cost,
-                             "name":mp.get(pid,{}).get("name",pid),"url":mp.get(pid,{}).get("url","")})
-    tsv = n_stat(A_KEY,A_SEC,A_CID,"AD_CONVERSION")
-    if tsv:
-        for line in tsv.splitlines():
-            cols = line.split("\t")
-            if len(cols)<13: continue
-            try:
-                pid=cols[5]; ctype=cols[10]
-                cnt=int(float(cols[11].replace(",",""))); val=int(float(cols[12].replace(",","")))
-            except: continue
-            if pid not in buy_map:
-                buy_map[pid]={"buy_n":0,"buy_v":0,"d_buy_n":0,"d_buy_v":0,"i_buy_n":0,"i_buy_v":0,"cart_n":0,"cart_v":0}
-            if ctype=="purchase":
-                buy_map[pid]["buy_n"]+=cnt; buy_map[pid]["buy_v"]+=val
-                buy_map[pid]["i_buy_n"]+=cnt; buy_map[pid]["i_buy_v"]+=val
-            elif ctype=="add_to_cart":
-                buy_map[pid]["cart_n"]+=cnt; buy_map[pid]["cart_v"]+=val
+# === ADVoost 데이터 합산 (콘솔과 일치) === #
+advoost = {"cost":0,"imp":0,"clk":0,"rows":0}
+ADV_PATHS = [
+    os.path.join(WORKSPACE, "애드부스트", "result.csv"),
+    os.path.join(os.path.dirname(__file__), "advoost.csv"),  # GitHub Actions용
+]
+for ap in ADV_PATHS:
+    if not os.path.exists(ap): continue
+    try:
+        with open(ap, encoding='utf-8-sig') as f:
+            rdr = csv.reader(f)
+            hdr = next(rdr)
+            ic = hdr.index('총비용') if '총비용' in hdr else -1
+            ii = hdr.index('노출수') if '노출수' in hdr else -1
+            il = hdr.index('클릭수') if '클릭수' in hdr else -1
+            for r in rdr:
+                if ic>=0 and len(r)>ic: advoost["cost"] += to_int(r[ic])
+                if ii>=0 and len(r)>ii: advoost["imp"] += to_int(r[ii])
+                if il>=0 and len(r)>il: advoost["clk"] += to_int(r[il])
+                advoost["rows"] += 1
+        print(f"  ADVoost: cost={advoost['cost']:,} imp={advoost['imp']:,} clk={advoost['clk']} ({advoost['rows']}행)", file=sys.stderr)
+        break
+    except Exception as e:
+        print(f"  ADVoost {ap} err: {e}", file=sys.stderr)
+if advoost["rows"]==0:
+    print("  ADVoost: 데이터 없음 (CSV 미입력)", file=sys.stderr)
 
-a_total = {"imp":sum(r["imp"] for r in all_rows),"clk":sum(r["clk"] for r in all_rows),
-           "cost":sum(r["cost"] for r in all_rows),"count":len(all_rows)}
+a_total = {"imp":sum(r["imp"] for r in all_rows)+advoost["imp"],
+           "clk":sum(r["clk"] for r in all_rows)+advoost["clk"],
+           "cost":sum(r["cost"] for r in all_rows)+advoost["cost"],
+           "count":len(all_rows),
+           "advoost":advoost}
 camp_agg = defaultdict(lambda:{"cost":0,"clk":0,"imp":0})
 for r in all_rows:
     c=camp_agg[r["campaign"]]; c["cost"]+=r["cost"]; c["clk"]+=r["clk"]; c["imp"]+=r["imp"]
@@ -727,27 +731,4 @@ if GH_PAT and GH_OWNER and GH_REPO:
             sha = json.loads(urllib.request.urlopen(req,context=ctx,timeout=15).read()).get("sha")
         except: pass
         body = {"message": msg, "content": base64.b64encode(content_bytes).decode()}
-        if sha: body["sha"] = sha
-        try:
-            req = urllib.request.Request(api, data=json.dumps(body).encode(), method="PUT",
-                headers={"Authorization":f"Bearer {GH_PAT}","Accept":"application/vnd.github+json","Content-Type":"application/json"})
-            urllib.request.urlopen(req,context=ctx,timeout=20).read()
-            return True
-        except Exception as e:
-            print(f"  GH push err {path}: {e}", file=sys.stderr); return False
-
-    content = new_src.encode("utf-8")
-    msg = f"ceo-report {TARGET} ({WEEKDAY})"
-    ok1 = gh_put(f"ceo-report/latest.html", content, msg)
-    ok2 = gh_put(f"ceo-report/{TARGET}.html", content, msg)
-    if ok1 and ok2:
-        print(f"  [GH push] latest.html + {TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/latest.html", file=sys.stderr)
-else:
-    print("  [GH push] 환경변수 미설정 — 스킵", file=sys.stderr)
-
-print(f"\n=== {TARGET} ({WEEKDAY}) 통합 ===")
-print(f"A: 광고비 {a_total['cost']:,}원 매출 {a_buy_total['v']:,}원 ROAS {a_roas}%")
-print(f"B: 광고비 {b_total['cost']:,}원 매출 {b_conv['v']:,}원 ROAS {b_roas}%")
-print(f"통합: 광고비 {combined['cost']:,}원 매출 {combined['buy_v']:,}원 ROAS {combined['roas']}%")
-print(f"비전환: {no_conv_total:,}원 ({no_conv_pct}%, {len(no_conv_groups)}그룹)")
-print(f"파일: {OUT}")
+     
