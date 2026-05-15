@@ -26,6 +26,8 @@ jobs:
           G_OAUTH_C: ${{ secrets.G_OAUTH_C }}
           G_OAUTH_S: ${{ secrets.G_OAUTH_S }}
           G_REFRESH: ${{ secrets.G_REFRESH }}
+          NAVER_DEV_ID: ${{ secrets.NAVER_DEV_ID }}
+          NAVER_DEV_SEC: ${{ secrets.NAVER_DEV_SEC }}
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ github.repository_owner }}
           GITHUB_REPO: ${{ github.event.repository.name }}

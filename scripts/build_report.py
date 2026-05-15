@@ -24,6 +24,9 @@ G_DEV = os.environ["G_DEV"]
 G_OAUTH_C = os.environ["G_OAUTH_C"]
 G_OAUTH_S = os.environ["G_OAUTH_S"]
 G_REFRESH = os.environ["G_REFRESH"]
+# 네이버 데이터랩 (오픈 API) — 키 없으면 자동 스킵
+NAVER_DEV_ID = os.environ.get("NAVER_DEV_ID","")
+NAVER_DEV_SEC = os.environ.get("NAVER_DEV_SEC","")
 
 WORKSPACE = "/sessions/modest-gifted-euler/mnt/단순등록자동화"
 if not os.path.isdir(WORKSPACE):
@@ -299,6 +302,42 @@ b_ctr = round(b_total["clk"]/b_total["imp"]*100,2) if b_total["imp"] else 0
 b_cpc = round(b_total["cost"]/b_total["clk"]) if b_total["clk"] else 0
 print(f"  B 광고비={b_total['cost']:,} 매출={b_conv['v']:,}", file=sys.stderr)
 
+# === B 고도몰 키워드 TOP20 (LIVE — StatReport KEYWORD) === #
+# 실패/포맷 불일치 시 b_kw=[] → overlay가 기존 04-27 고정값+배지 그대로 둠 (비파괴)
+b_kw = []
+try:
+    _kw_agg = {}
+    _ktsv = n_stat(B_KEY,B_SEC,B_CID,"KEYWORD")
+    if _ktsv:
+        for line in _ktsv.splitlines():
+            cols = line.split("\t")
+            if len(cols) < 12: continue
+            try:
+                kwid = cols[4]; agid = cols[3]
+                imp = int(float(cols[-5].replace(",","")))
+                clk = int(float(cols[-4].replace(",","")))
+                cost = int(float(cols[-3].replace(",","")))
+            except: continue
+            if not kwid: continue
+            a = _kw_agg.setdefault(kwid, {"agid":agid,"imp":0,"clk":0,"cost":0})
+            a["imp"]+=imp; a["clk"]+=clk; a["cost"]+=cost
+        # 상위 비용 키워드의 광고그룹만 키워드텍스트 조회 (호출 최소화)
+        _ktop = sorted(_kw_agg.items(), key=lambda x:-x[1]["cost"])[:30]
+        _kw_txt = {}
+        for _ag in {v["agid"] for _,v in _ktop if v["agid"]}:
+            try:
+                _ks = n_req(B_KEY,B_SEC,B_CID,"GET",f"/ncc/keywords?nccAdgroupId={_ag}") or []
+                for _k in _ks:
+                    if isinstance(_k,dict) and _k.get("nccKeywordId"):
+                        _kw_txt[_k["nccKeywordId"]] = _k.get("keyword","")
+            except: pass
+        b_kw = [{"kw":_kw_txt.get(kid,kid),"imp":v["imp"],"clk":v["clk"],"cost":v["cost"],
+                 "ctr":round(v["clk"]/v["imp"]*100,2) if v["imp"] else 0}
+                for kid,v in sorted(_kw_agg.items(), key=lambda x:-x[1]["cost"])[:20]]
+    print(f"  B 키워드 TOP20: {len(b_kw)}개 (KEYWORD 리포트)", file=sys.stderr)
+except Exception as _e:
+    print(f"  B 키워드 err: {_e}", file=sys.stderr); b_kw = []
+
 
 # === G 데이터 === #
 print("[3] Google Ads", file=sys.stderr)
@@ -373,6 +412,42 @@ g_roas = round(g_buy["v"]/g_total["cost"]*100,1) if g_total["cost"] else 0
 print(f"  G 광고비={g_total['cost']:,} 매출={g_buy['v']:,}", file=sys.stderr)
 
 
+# === 네이버 데이터랩 검색어 트렌드 === #
+print("[3b] DataLab", file=sys.stderr)
+datalab = {"ok": False, "groups": [], "start": "", "end": ""}
+if NAVER_DEV_ID and NAVER_DEV_SEC:
+    try:
+        _dl_end = datetime.datetime.strptime(TARGET,"%Y-%m-%d").date()
+        _dl_start = _dl_end - datetime.timedelta(days=84)
+        _dl_groups = [
+            {"groupName":"게시판","keywords":["게시판","아파트게시판","엘리베이터게시판"]},
+            {"groupName":"안내판","keywords":["안내판","표지판"]},
+            {"groupName":"주차스티커","keywords":["주차스티커","주차증"]},
+            {"groupName":"입간판","keywords":["입간판","A형입간판"]},
+            {"groupName":"현수막","keywords":["현수막","배너"]},
+        ]
+        _dl_body = json.dumps({"startDate":str(_dl_start),"endDate":str(_dl_end),
+                               "timeUnit":"week","keywordGroups":_dl_groups}).encode()
+        _dl_req = urllib.request.Request("https://openapi.naver.com/v1/datalab/search",
+            data=_dl_body, method="POST",
+            headers={"X-Naver-Client-Id":NAVER_DEV_ID,"X-Naver-Client-Secret":NAVER_DEV_SEC,
+                     "Content-Type":"application/json"})
+        _dl = json.loads(urllib.request.urlopen(_dl_req,context=ctx,timeout=20).read())
+        for r in _dl.get("results",[]):
+            vals = [round(p.get("ratio",0),1) for p in r.get("data",[])]
+            latest = vals[-1] if vals else 0
+            prior = vals[-5] if len(vals)>=5 else (vals[0] if vals else 0)
+            datalab["groups"].append({"name":r.get("title",""),"vals":vals,
+                "latest":latest,"prior":prior,"delta":round(latest-prior,1)})
+        datalab["ok"] = bool(datalab["groups"])
+        datalab["start"] = str(_dl_start); datalab["end"] = str(_dl_end)
+        print(f"  DataLab: {len(datalab['groups'])}군", file=sys.stderr)
+    except Exception as e:
+        print(f"  DataLab err: {e}", file=sys.stderr)
+else:
+    print("  DataLab: 키 미설정 — 스킵", file=sys.stderr)
+
+
 # === D 객체 === #
 total_combined_cost = a_total["cost"]+b_total["cost"]+g_total["cost"]
 b_share = round(b_total["cost"]/total_combined_cost*100,1) if total_combined_cost else 0
@@ -387,6 +462,7 @@ _health = {
     "a_data_missing": bool(len(all_rows) == 0),
     "g_auth_fail": bool(g_tok is None),
     "g_zero_sales": bool(g_total["cost"] > 0 and g_buy["v"] == 0),
+    "datalab_fail": bool(NAVER_DEV_ID and NAVER_DEV_SEC and not datalab["ok"]),
 }
 D = {
     "meta":{"date":TARGET,"weekday":WEEKDAY,"generated_at":GEN_AT,
@@ -405,6 +481,7 @@ D = {
     "no_conv_total":no_conv_total,
     "naver_b":{"total":b_total,"campaigns":b_camps,"adgroups":b_adgs,
                "active_per_camp":dict(b_camp_active),
+               "keywords":b_kw,
                "ctr":b_ctr,"cpc":b_cpc,"roas":b_roas,"share_pct":b_share},
     "b_conv":b_conv,
     "google":{"total":g_total,"buy_v":g_buy["v"],"buy_n":g_buy["n"],
@@ -414,6 +491,7 @@ D = {
     "device_a":{"M":{"imp":0,"clk":0,"cost":0},"P":{"imp":0,"clk":0,"cost":0}},
     "hour_a":{f"{h:02d}":{"imp":0,"clk":0,"cost":0} for h in range(24)},
     "combined":combined,
+    "datalab":datalab,
 }
 
 
@@ -458,7 +536,7 @@ new_src = new_src.replace("월요일", f"{WEEKDAY}요일")
 new_src = new_src.replace("(04-20~04-27)", f"(8일 추이 ~{TARGET})")
 
 # v2: 통합 CEO 히어로 컨테이너 (탭 위에 고정 — overlayCEOHero가 채움)
-new_src = new_src.replace('<div class="tabs">', '<div id="ceo-hero"></div>\n<div class="tabs">', 1)
+new_src = new_src.replace('<div class="tabs">', '<div id="ceo-hero"></div>\n<div id="naver-datalab"></div>\n<div class="tabs">', 1)
 
 # v2: 04-27 고정·미연동 섹션 명시 (보고일자 데이터로 오인 방지)
 _STALE = '<span class="badge" style="background:#7c2d12;color:#fdba74">⚠ 2026-04-27 고정값 · 일별 미연동</span>'
@@ -477,7 +555,7 @@ overlay_js = """
   function ratio1(a,b){return b>0?(a/b*100).toFixed(1)+'%':'0.0%';}
   function roundCpc(c,k){return k>0?Math.round(c/k):0;}
   document.addEventListener('DOMContentLoaded', function(){
-    overlayCEOHero(); overlayHeader(); overlayNoConv(); overlayB(); overlayG();
+    overlayCEOHero(); overlayHeader(); overlayNoConv(); overlayB(); overlayG(); overlayDataLab();
   });
   function escapeHtml(s){
     return String(s||'').replace(/[&<>"']/g, function(c){
@@ -643,6 +721,34 @@ overlay_js = """
           });
         }
       }
+      if(t.indexOf('키워드 TOP') >= 0){
+        var kws = nb.keywords || [];
+        if(kws.length){
+          var ktable = h2.parentElement.querySelector('table.dt');
+          if(ktable){
+            var ghs2 = ktable.querySelectorAll('tbody tr.gh');
+            ghs2.forEach(function(row, idx){
+              var gd = row.nextElementSibling;
+              if(idx >= kws.length){
+                row.style.display='none';
+                if(gd && gd.classList && gd.classList.contains('gd')) gd.style.display='none';
+                return;
+              }
+              var k = kws[idx]; var tds = row.querySelectorAll('td');
+              if(tds[1]) tds[1].textContent = k.kw || '';
+              if(tds[2]) tds[2].textContent = fmtN(k.imp);
+              if(tds[3]) tds[3].textContent = fmtN(k.clk);
+              if(tds[4]) tds[4].textContent = (k.ctr||0).toFixed(2)+'%';
+              if(tds[5]) tds[5].innerHTML = '<b>'+fmtN(k.cost)+'</b>';
+              // 광고그룹·랜딩 매핑은 미연동 → 펼침 비활성 (04-27 잔재 노출 방지)
+              row.removeAttribute('data-tgt'); row.style.cursor='default';
+              if(gd && gd.classList && gd.classList.contains('gd')) gd.style.display='none';
+            });
+            var kb = h2.querySelector('.badge');
+            if(kb){ kb.textContent='🟢 LIVE · '+(D.meta.date||''); kb.removeAttribute('style'); }
+          }
+        }
+      }
     });
   }
   function overlayG(){
@@ -762,6 +868,33 @@ overlay_js = """
         warnHtml+
         '<div style="margin-top:12px;font-size:11px;color:var(--muted)">※ 매출은 "구매" 전환만 집계 (장바구니·페이지조회 제외). 전화·견적 문의 전환은 미포함될 수 있음.</div>'+
       '</div>';
+  }
+  function overlayDataLab(){
+    var host=document.getElementById('naver-datalab');
+    if(!host) return;
+    var dl=D.datalab||{};
+    if(!dl.ok || !(dl.groups||[]).length){ host.innerHTML=''; return; }
+    function spark(vals){
+      var mx=Math.max.apply(null,(vals||[]).concat([1]));
+      return (vals||[]).map(function(v){
+        var h=Math.max(2,Math.round(v/mx*28));
+        return '<span style="display:inline-block;width:5px;height:'+h+'px;background:#60a5fa;margin-right:1px;vertical-align:bottom;border-radius:1px"></span>';
+      }).join('');
+    }
+    var rows=dl.groups.map(function(g){
+      var up=g.delta>0, flat=g.delta===0;
+      var col=up?'#5ee29b':(flat?'#94a3b8':'#fca5a5');
+      var arr=up?'▲':(flat?'–':'▼');
+      return '<div style="display:flex;align-items:center;gap:14px;padding:9px 0;border-bottom:1px solid var(--line2)">'+
+        '<div style="width:90px;font-weight:600;color:#fff;font-size:13px">'+escapeHtml(g.name)+'</div>'+
+        '<div style="flex:1;min-width:120px;height:30px;display:flex;align-items:flex-end">'+spark(g.vals)+'</div>'+
+        '<div style="width:140px;text-align:right;font-size:12px">최근 <b>'+g.latest+'</b> <span style="color:'+col+'">'+arr+' '+(g.delta>0?'+':'')+g.delta+'</span><div style="font-size:10px;color:var(--muted)">4주 전 '+g.prior+'</div></div>'+
+        '</div>';
+    }).join('');
+    host.innerHTML='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 16px">'+
+      '<div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">🔎 네이버 검색 수요 트렌드 <span style="font-size:11px;color:var(--muted);font-weight:500">'+escapeHtml(dl.start||'')+' ~ '+escapeHtml(dl.end||'')+' · 주간</span></div>'+
+      '<div style="font-size:11px;color:var(--muted);margin-bottom:10px">※ 데이터랩 상대 검색지수(그룹 내 최대=100). 절대 매출·검색량 아님 — 수요 방향 참고용</div>'+
+      rows+'</div>';
   }
 })();
 </script>
