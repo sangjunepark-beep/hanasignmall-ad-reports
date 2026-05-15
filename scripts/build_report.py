@@ -382,10 +382,17 @@ combined = {"imp":a_total["imp"]+b_total["imp"]+g_total["imp"],
             "buy_v":a_buy_total["v"]+b_conv["v"]+g_buy["v"]}
 combined["roas"]=round(combined["buy_v"]/combined["cost"]*100,1) if combined["cost"] else 0
 
+_health = {
+    "a_conv_suspect": bool(a_total["cost"] > 0 and a_buy_total["v"] == 0),
+    "a_data_missing": bool(len(all_rows) == 0),
+    "g_auth_fail": bool(g_tok is None),
+    "g_zero_sales": bool(g_total["cost"] > 0 and g_buy["v"] == 0),
+}
 D = {
     "meta":{"date":TARGET,"weekday":WEEKDAY,"generated_at":GEN_AT,
             "roas":a_roas,"cart_roas":cart_roas,
-            "no_conv_cost":no_conv_total,"no_conv_pct":no_conv_pct,"no_conv_count":len(no_conv_groups)},
+            "no_conv_cost":no_conv_total,"no_conv_pct":no_conv_pct,"no_conv_count":len(no_conv_groups),
+            "health":_health},
     "total":a_total,
     "top_cost":top_cost,"top_click":top_click,
     "campaigns":a_campaigns,
@@ -450,6 +457,17 @@ new_src = new_src.replace(">월요일<", f">{WEEKDAY}요일<")
 new_src = new_src.replace("월요일", f"{WEEKDAY}요일")
 new_src = new_src.replace("(04-20~04-27)", f"(8일 추이 ~{TARGET})")
 
+# v2: 통합 CEO 히어로 컨테이너 (탭 위에 고정 — overlayCEOHero가 채움)
+new_src = new_src.replace('<div class="tabs">', '<div id="ceo-hero"></div>\n<div class="tabs">', 1)
+
+# v2: 04-27 고정·미연동 섹션 명시 (보고일자 데이터로 오인 방지)
+_STALE = '<span class="badge" style="background:#7c2d12;color:#fdba74">⚠ 2026-04-27 고정값 · 일별 미연동</span>'
+new_src = new_src.replace('<span class="badge">PC CTR 2.3배 ↑</span>', _STALE)
+new_src = new_src.replace('<span class="badge">10~16시 60% 집중</span>', _STALE)
+new_src = new_src.replace(
+    '고도몰 키워드 TOP 20<span class="badge">클릭 시 광고그룹·랜딩 펼침</span>',
+    '고도몰 키워드 TOP 20' + _STALE)
+
 # JS Overlay
 overlay_js = """
 <script>
@@ -459,7 +477,7 @@ overlay_js = """
   function ratio1(a,b){return b>0?(a/b*100).toFixed(1)+'%':'0.0%';}
   function roundCpc(c,k){return k>0?Math.round(c/k):0;}
   document.addEventListener('DOMContentLoaded', function(){
-    overlayHeader(); overlayNoConv(); overlayB(); overlayG();
+    overlayCEOHero(); overlayHeader(); overlayNoConv(); overlayB(); overlayG();
   });
   function escapeHtml(s){
     return String(s||'').replace(/[&<>"']/g, function(c){
@@ -521,11 +539,11 @@ overlay_js = """
     document.querySelectorAll('h2').forEach(function(h2){
       if(h2.textContent.indexOf('비전환 광고비') >= 0){
         var b = h2.querySelector('.badge');
-        if(b) b.textContent = '광고비의 ' + (noConvPct||0).toFixed(1) + '%';
+        if(b) b.textContent = '스마트스토어 광고비의 ' + (noConvPct||0).toFixed(1) + '%';
         var desc = h2.nextElementSibling;
         if(desc && desc.classList && desc.classList.contains('desc')){
           var bold = desc.querySelector('b');
-          if(bold) bold.textContent = '총 ' + fmtN(noConvCost) + '원';
+          if(bold) bold.textContent = '총 ' + fmtN(noConvCost) + '원 (스마트스토어 기준)';
         }
       }
     });
@@ -707,13 +725,51 @@ overlay_js = """
       }
     });
   }
+  function overlayCEOHero(){
+    var host = document.getElementById('ceo-hero');
+    if(!host) return;
+    var c = D.combined||{};
+    var A = {cost:(D.total||{}).cost||0, rev:(D.buy_total||{}).v||0, roas:(D.meta||{}).roas||0};
+    var nb = D.naver_b||{}; var B = {cost:(nb.total||{}).cost||0, rev:(D.b_conv||{}).v||0, roas:nb.roas||0};
+    var g = D.google||{}; var G = {cost:(g.total||{}).cost||0, rev:g.buy_v||0, roas:g.roas||0};
+    var H = (D.meta||{}).health||{};
+    var warns = [];
+    if(H.a_data_missing) warns.push('스마트스토어(A) 광고 데이터 수집 실패 — 아래 수치 신뢰 불가');
+    else if(H.a_conv_suspect) warns.push('스마트스토어(A) 매출 0원 — 전환 API 미수신 가능성, 0원과 수집실패 구분 필요');
+    if(H.g_auth_fail) warns.push('구글애즈 인증 실패 — 구글 전 수치 누락');
+    else if(H.g_zero_sales) warns.push('구글애즈 매출 0원 — GTM 결제완료 추적 점검 필요');
+    var warnHtml = warns.length ? '<div style="margin-top:12px;padding:10px 14px;background:rgba(220,38,38,.14);border:1px solid rgba(248,113,113,.4);border-radius:8px;color:#fca5a5;font-size:12.5px;line-height:1.7">⚠ ' + warns.map(escapeHtml).join('<br>⚠ ') + '</div>' : '';
+    function chan(label, x, color){
+      return '<div style="flex:1;min-width:150px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-left:3px solid '+color+';border-radius:8px">'+
+        '<div style="font-size:11px;color:var(--muted);margin-bottom:4px">'+label+'</div>'+
+        '<div style="font-size:12.5px;line-height:1.7">광고비 <b>'+fmtN(x.cost)+'</b> · 매출 <b>'+fmtN(x.rev)+'</b><br>ROAS <b style="color:'+(x.roas>=100?'#5ee29b':(x.roas>0?'#fbbf24':'#fca5a5'))+'">'+Number(x.roas||0).toFixed(1)+'%</b></div></div>';
+    }
+    var roasColor = (c.roas>=100?'#5ee29b':(c.roas>0?'#fbbf24':'#fca5a5'));
+    host.innerHTML =
+      '<div style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:0 0 16px">'+
+        '<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">'+
+          '<div style="font-size:15px;font-weight:700;color:#fff">📊 통합 광고 성과 (스마트스토어+자사몰+구글)</div>'+
+          '<div style="font-size:11.5px;color:var(--muted)">'+escapeHtml((D.meta||{}).date||'')+' ('+escapeHtml((D.meta||{}).weekday||'')+') 단독</div>'+
+        '</div>'+
+        '<div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:14px">'+
+          '<div><div style="font-size:11px;color:var(--muted)">통합 광고비</div><div style="font-size:26px;font-weight:800;color:#fff">'+fmtN(c.cost)+'<span style="font-size:14px;font-weight:600">원</span></div></div>'+
+          '<div><div style="font-size:11px;color:var(--muted)">통합 매출 (구매전환)</div><div style="font-size:26px;font-weight:800;color:#fff">'+fmtN(c.buy_v)+'<span style="font-size:14px;font-weight:600">원</span></div></div>'+
+          '<div><div style="font-size:11px;color:var(--muted)">통합 ROAS</div><div style="font-size:26px;font-weight:800;color:'+roasColor+'">'+Number(c.roas||0).toFixed(1)+'<span style="font-size:14px;font-weight:600">%</span></div></div>'+
+        '</div>'+
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">'+
+          chan('🟢 스마트스토어 (A)', A, '#5ee29b') + chan('🔵 자사몰 파워링크 (B)', B, '#60a5fa') + chan('🟣 구글애즈 (G)', G, '#c4b5fd')+
+        '</div>'+
+        warnHtml+
+        '<div style="margin-top:12px;font-size:11px;color:var(--muted)">※ 매출은 "구매" 전환만 집계 (장바구니·페이지조회 제외). 전화·견적 문의 전환은 미포함될 수 있음.</div>'+
+      '</div>';
+  }
 })();
 </script>
 """
 
 new_src = new_src.replace("</body>", overlay_js + "\n</body>", 1)
 
-OUT = os.path.join(WORKSPACE, f"네이버광고_1차보고대시보드_{TARGET}.html")
+OUT = os.path.join(WORKSPACE, f"네이버광고_통합보고대시보드_v2_{TARGET}.html")
 open(OUT,"w",encoding="utf-8").write(new_src)
 print(f"[saved] {OUT} ({len(new_src):,}chars)", file=sys.stderr)
 
@@ -742,10 +798,10 @@ if GH_PAT and GH_OWNER and GH_REPO:
 
     content = new_src.encode("utf-8")
     msg = f"ceo-report {TARGET} ({WEEKDAY})"
-    ok1 = gh_put(f"ceo-report/latest.html", content, msg)
-    ok2 = gh_put(f"ceo-report/{TARGET}.html", content, msg)
+    ok1 = gh_put(f"ceo-report/v2-latest.html", content, msg + " v2")
+    ok2 = gh_put(f"ceo-report/v2-{TARGET}.html", content, msg + " v2")
     if ok1 and ok2:
-        print(f"  [GH push] latest.html + {TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/latest.html", file=sys.stderr)
+        print(f"  [GH push] v2-latest.html + v2-{TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/v2-latest.html", file=sys.stderr)
 else:
     print("  [GH push] 환경변수 미설정 — 스킵", file=sys.stderr)
 
