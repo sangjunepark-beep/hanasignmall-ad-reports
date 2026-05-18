@@ -1106,7 +1106,7 @@ _new_section = """
 """
 # 비전환 광고비 섹션 직전(h2 안 '비전환 광고비' 텍스트)에 삽입
 import re as _re_cnb
-_pat = _re_cnb.compile(r'(<div class="section">\s*<h2><span class="num"[^>]*>⚠</span>비전환 광고비)', _re_cnb.DOTALL)
+_pat = _re_cnb.compile(r'(<div class="section"[^>]*>\s*<h2[^>]*><span class="num"[^>]*>⚠</span>비전환)', _re_cnb.DOTALL)
 new_src = _pat.sub(_new_section + r'\1', new_src, count=1)
 
 new_src = new_src.replace("</body>", overlay_js + "\n</body>", 1)
