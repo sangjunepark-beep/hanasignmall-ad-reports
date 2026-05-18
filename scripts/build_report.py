@@ -1110,8 +1110,6 @@ def _renumber_main(html):
         return _re_num.sub(r'>[^<]+<', f'>{counter[0]}<', m.group(), count=1)
     new_main = _re_num.sub(r'<span class="num"[^>]*>[^<]+</span>', _repl, main_html)
     return new_main + rest
-new_src = _renumber_main(new_src)
-
 # === 신규: TOP 20 click_no_buy 상품 썸네일 fetch (GitHub Actions 환경에서 시도) ===
 def _fetch_thumb(url):
     try:
@@ -1181,6 +1179,9 @@ _new_section = """
 import re as _re_cnb
 _pat = _re_cnb.compile(r'(<div class="section"[^>]*>\s*<h2[^>]*><span class="num"[^>]*>⚠</span>비전환)', _re_cnb.DOTALL)
 new_src = _pat.sub(_new_section + r'\1', new_src, count=1)
+
+# === 메인 패널 num span 순차 재번호 (모든 처리 끝난 후 마지막에) ===
+new_src = _renumber_main(new_src)
 
 new_src = new_src.replace("</body>", overlay_js + "\n</body>", 1)
 
