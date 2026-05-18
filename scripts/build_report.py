@@ -151,6 +151,23 @@ if tsv:
         elif ctype=="add_to_cart":
             buy_map[pid]["cart_n"]+=cnt; buy_map[pid]["cart_v"]+=val
 
+# A all_rows dedupe — 네이버 stat report(reportTp=AD)가 같은 광고를 키워드/매체/디바이스별로 분할 반환.
+# 같은 PID가 한 그룹 안에서 수백 행으로 등장하는 이슈 대응 (2026-05-18 차장 지시).
+# 효과: 소재수 / TOP cost / TOP click / 비전환 items 표시에서 PID 중복 제거.
+# 광고비·매출·ROAS 합계 불변(분할된 cost를 합산해서 보존).
+_a_raw_count = len(all_rows)
+_dedup = {}
+for r in all_rows:
+    k = (r["pid"], r["campaign"], r["adgroup"])
+    if k not in _dedup:
+        _dedup[k] = {**r}
+    else:
+        _dedup[k]["imp"] += r["imp"]
+        _dedup[k]["clk"] += r["clk"]
+        _dedup[k]["cost"] += r["cost"]
+all_rows = list(_dedup.values())
+print(f"  A dedupe: raw {_a_raw_count} → unique {len(all_rows)} rows", file=sys.stderr)
+
 # === ADVoost 데이터 합산 (콘솔과 일치) === #
 # 2026-05-18 차장 지시: CSV stale(5/7 데이터 11일째 합산) 이슈로 일시 제외.
 # 재개 조건: ADVoost CSV에 일자 컬럼 포함 형식으로 다운로드 가능 확인 후 ADVOOST_ENABLED=True
@@ -749,16 +766,4 @@ if GH_PAT and GH_OWNER and GH_REPO:
     content = new_src.encode("utf-8")
     msg = f"ceo-report {TARGET} ({WEEKDAY})"
     ok1 = gh_put(f"ceo-report/latest.html", content, msg)
-    ok2 = gh_put(f"ceo-report/{TARGET}.html", content, msg)
-    if ok1 and ok2:
-        print(f"  [GH push] latest.html + {TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/latest.html", file=sys.stderr)
-else:
-    print("  [GH push] 환경변수 미설정 — 스킵", file=sys.stderr)
-
-print(f"\n=== {TARGET} ({WEEKDAY}) 통합 ===")
-print(f"A: 광고비 {a_total['cost']:,}원 매출 {a_buy_total['v']:,}원 ROAS {a_roas}%")
-print(f"B: 광고비 {b_total['cost']:,}원 매출 {b_conv['v']:,}원 ROAS {b_roas}%")
-print(f"G: 광고비 {g_total['cost']:,}원 매출 {g_buy['v']:,}원 ROAS {g_roas}%")
-print(f"통합: 광고비 {combined['cost']:,}원 매출 {combined['buy_v']:,}원 ROAS {combined['roas']}%")
-print(f"비전환: {no_conv_total:,}원 ({no_conv_pct}%, {len(no_conv_groups)}그룹)")
-print(f"파일: {OUT}")
+    ok2 = gh_put(f"ce
