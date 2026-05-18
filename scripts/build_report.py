@@ -998,9 +998,11 @@ overlay_js = """
       var nameCell = c.url ?
         '<a href="'+escapeHtml(c.url)+'" target="_blank" style="color:#fff;border-bottom:1px dotted rgba(255,255,255,0.3);text-decoration:none">'+escapeHtml(c.name||'-')+' ↗</a>' :
         escapeHtml(c.name||'-');
+      var thumbCell = c.thumb ?
+        '<img src="'+escapeHtml(c.thumb)+'" style="width:38px;height:38px;object-fit:cover;border-radius:4px;vertical-align:middle;margin-right:8px" loading="lazy">' : '';
       html += '<tr class="gh" data-tgt="cnb-'+i+'">' +
         '<td><span class="rank '+(i<3?'top1':'')+'">'+(i+1)+'</span></td>' +
-        '<td class="bold">'+nameCell+'</td>' +
+        '<td class="bold">'+thumbCell+nameCell+'</td>' +
         '<td class="r">'+fmtN(c.imp||0)+'</td>' +
         '<td class="r bold"><span class="bar" style="width:'+w+'px;background:#3b82f6"></span>'+fmtN(c.clk||0)+'</td>' +
         '<td class="r">'+ctr+'</td>' +
@@ -1088,6 +1090,68 @@ def _placeholderize(html):
     )
     return pattern.sub(lambda m: m.group(1) + '-' + (m.group(2) or '') + m.group(3), html)
 new_src = _placeholderize(new_src)
+
+# === 메인 패널 h2 num span 순차 재번호 (2번 제거 + 신규 섹션 + 이모지 통일) ===
+# 차장님 지시: "번호도 잘 맞추고"
+import re as _re_num
+def _renumber_main(html):
+    # p-naver-b 패널 시작 전까지를 메인 패널로 간주
+    cutoff = html.find('id="p-naver-b"')
+    if cutoff < 0:
+        cutoff = html.find('id="p-google"')
+    if cutoff < 0:
+        cutoff = len(html)
+    main_html = html[:cutoff]
+    rest = html[cutoff:]
+    counter = [0]
+    def _repl(m):
+        counter[0] += 1
+        # num span 내용을 순차 번호로 교체. 단 style은 보존
+        return _re_num.sub(r'>[^<]+<', f'>{counter[0]}<', m.group(), count=1)
+    new_main = _re_num.sub(r'<span class="num"[^>]*>[^<]+</span>', _repl, main_html)
+    return new_main + rest
+new_src = _renumber_main(new_src)
+
+# === 신규: TOP 20 click_no_buy 상품 썸네일 fetch (GitHub Actions 환경에서 시도) ===
+def _fetch_thumb(url):
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36"})
+        html = urllib.request.urlopen(req, context=ctx, timeout=6).read().decode('utf-8','ignore')
+        import re as _re_th
+        m = _re_th.search(r'<meta[^>]*property="og:image"[^>]*content="([^"]+)"', html)
+        if not m:
+            m = _re_th.search(r'<meta[^>]*content="([^"]+)"[^>]*property="og:image"', html)
+        return m.group(1) if m else ""
+    except Exception:
+        return ""
+print("  click_no_buy 썸네일 fetch 시작...", file=sys.stderr)
+import time as _time
+_thumb_ok = 0
+for _c in D.get("click_no_buy", []):
+    _c["thumb"] = _fetch_thumb(_c.get("url",""))
+    if _c["thumb"]: _thumb_ok += 1
+    _time.sleep(0.3)  # rate limit 회피
+print(f"  썸네일: {_thumb_ok}/{len(D.get('click_no_buy',[]))} 성공", file=sys.stderr)
+
+# D 객체 재직렬화 후 src에 다시 주입 (썸네일 반영)
+_s_d = new_src.find("const D = ")
+if _s_d > 0:
+    _i_d = _s_d + 10; _depth=0; _end=-1; _in_str=False; _esc=False
+    while _i_d < len(new_src):
+        _c2 = new_src[_i_d]
+        if _in_str:
+            if _esc: _esc=False
+            elif _c2=='\\': _esc=True
+            elif _c2=='"': _in_str=False
+        else:
+            if _c2=='"': _in_str=True
+            elif _c2=='{': _depth+=1
+            elif _c2=='}':
+                _depth-=1
+                if _depth==0: _end=_i_d+1; break
+        _i_d += 1
+    if _end > 0:
+        new_src = new_src[:_s_d+10] + json.dumps(D, ensure_ascii=False) + new_src[_end:]
 
 # === 2번 "클릭 — 상품군 전체" 섹션 제거 (1번 광고비 소진과 같은 데이터 다른 정렬 — 중복) ===
 # 2026-05-18 차장 지시: "어차피 필터로 소팅되니까 하나만"
