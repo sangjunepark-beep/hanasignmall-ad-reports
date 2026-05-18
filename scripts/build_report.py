@@ -210,8 +210,34 @@ camp_agg = defaultdict(lambda:{"cost":0,"clk":0,"imp":0})
 for r in all_rows:
     c=camp_agg[r["campaign"]]; c["cost"]+=r["cost"]; c["clk"]+=r["clk"]; c["imp"]+=r["imp"]
 a_campaigns = sorted([{"name":k or "(미상)",**v} for k,v in camp_agg.items()], key=lambda x:-x["cost"])
-top_cost = sorted(all_rows, key=lambda x:-x["cost"])[:20]
-top_click = sorted(all_rows, key=lambda x:-x["clk"])[:20]
+# 상품명 단위 합산 헬퍼 — 같은 상품을 여러 캠페인/광고그룹에 등록한 케이스 묶음 (2026-05-18 차장 지시)
+def _by_name(rows):
+    agg = {}
+    for _r in rows:
+        _k = (_r.get("name") or _r["pid"]).strip() or _r["pid"]
+        if _k not in agg:
+            agg[_k] = {**_r}
+            agg[_k]["_camps"] = {_r["campaign"]} if _r.get("campaign") else set()
+            agg[_k]["_grps"] = {_r["adgroup"]} if _r.get("adgroup") else set()
+            agg[_k]["_pids"] = {_r["pid"]} if _r.get("pid") else set()
+        else:
+            agg[_k]["imp"] += _r["imp"]
+            agg[_k]["clk"] += _r["clk"]
+            agg[_k]["cost"] += _r["cost"]
+            if _r.get("campaign"): agg[_k]["_camps"].add(_r["campaign"])
+            if _r.get("adgroup"): agg[_k]["_grps"].add(_r["adgroup"])
+            if _r.get("pid"): agg[_k]["_pids"].add(_r["pid"])
+    out = []
+    for v in agg.values():
+        v["_camps"] = sorted(v["_camps"])
+        v["_grps"] = sorted(v["_grps"])
+        v["_pids"] = sorted(v["_pids"])
+        v["_split_count"] = len(v["_pids"])  # 몇 개 별도 광고로 분산됐는지
+        out.append(v)
+    return out
+
+top_cost = sorted(_by_name(all_rows), key=lambda x:-x["cost"])[:20]
+top_click = sorted(_by_name(all_rows), key=lambda x:-x["clk"])[:20]
 
 a_buy_total={"n":0,"v":0,"d_n":0,"d_v":0,"i_n":0,"i_v":0}
 a_cart_total={"n":0,"v":0}
@@ -239,8 +265,14 @@ for r in all_rows:
     grp[g]["cost"]+=r["cost"]; grp[g]["clk"]+=r["clk"]; grp[g]["imp"]+=r["imp"]
     grp[g]["count"]+=1; grp[g]["items"].append(r)
     grp[g]["rev"]+=buy_map.get(r["pid"],{}).get("buy_v",0)
-no_conv_groups = sorted([{"name":k,"cost":v["cost"],"clk":v["clk"],"imp":v["imp"],"count":v["count"],"items":v["items"][:10]}
-                         for k,v in grp.items() if v["cost"]>0 and v["rev"]==0], key=lambda x:-x["cost"])
+_ncg_list = []
+for _k, _v in grp.items():
+    if _v["cost"]>0 and _v["rev"]==0:
+        _items_named = _by_name(_v["items"])
+        _items_named.sort(key=lambda x:-x["cost"])
+        _ncg_list.append({"name":_k,"cost":_v["cost"],"clk":_v["clk"],"imp":_v["imp"],
+                          "count":len(_items_named),"items":_items_named[:10]})
+no_conv_groups = sorted(_ncg_list, key=lambda x:-x["cost"])
 no_conv_total = sum(g["cost"] for g in no_conv_groups)
 no_conv_pct = round(no_conv_total/a_total["cost"]*100,1) if a_total["cost"] else 0
 a_roas = round(a_buy_total["v"]/a_total["cost"]*100,1) if a_total["cost"] else 0
