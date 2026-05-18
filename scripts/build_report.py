@@ -423,43 +423,65 @@ if g_tok:
                 agg[d]["conv"]+=float(m.get("conversions",0))
         g_trend=[{"date":k,**v} for k,v in sorted(agg.items())]
 
-    # === 구글애즈 광고별 final_urls 수집 (2026-05-18 차장 지시: 랜딩페이지 다르게 설정한 게 반영 안 됨) ===
-    g_adg_url = {}
-    g_camp_url = {}
-    rsp = gq(f"SELECT campaign.name, ad_group.name, ad_group_ad.ad.final_urls, "
-             f"metrics.cost_micros FROM ad_group_ad "
-             f"WHERE segments.date='{TARGET}' AND ad_group_ad.status='ENABLED' "
-             f"ORDER BY metrics.cost_micros DESC")
-    _adg_best = {}
+    # === 구글애즈 키워드별 final_urls 수집 (2026-05-18 차장 지시 후 수정) ===
+    # 차장님이 키워드(ad_group_criterion) 단위로 final_url을 다르게 설정 → keyword_view로 조회
+    g_kw_url = {}    # keyword text → url
+    g_kw_cost = {}   # keyword text → cost (캠페인 대표 URL 산정용)
+    g_kw_camp = {}   # keyword text → campaign name
+    rsp = gq(f"SELECT campaign.name, ad_group.name, "
+             f"ad_group_criterion.keyword.text, ad_group_criterion.final_urls, "
+             f"metrics.cost_micros FROM keyword_view "
+             f"WHERE segments.date='{TARGET}'")
     for ch in rsp or []:
         for row in ch.get("results",[]):
-            ad = row.get("adGroupAd",{}).get("ad",{}) or {}
-            urls = ad.get("finalUrls") or []
-            if not urls: continue
-            url = urls[0]
-            cn = row.get("campaign",{}).get("name","")
-            an = row.get("adGroup",{}).get("name","")
+            crit = row.get("adGroupCriterion",{}) or {}
+            kw = (crit.get("keyword",{}) or {}).get("text","")
+            urls = crit.get("finalUrls") or []
             cost = int(row.get("metrics",{}).get("costMicros","0"))//1000000
-            key = (cn, an)
-            prev = _adg_best.get(key)
-            if prev is None or cost > prev[0]:
-                _adg_best[key] = (cost, url)
-    for (cn, an), (cost, url) in _adg_best.items():
-        if an: g_adg_url[an] = url
+            cn = row.get("campaign",{}).get("name","")
+            if kw and urls:
+                # 같은 키워드가 여러 광고그룹에 있으면 cost 큰 쪽 채택
+                if kw not in g_kw_cost or cost > g_kw_cost[kw]:
+                    g_kw_url[kw] = urls[0]
+                    g_kw_cost[kw] = cost
+                    g_kw_camp[kw] = cn
+
+    # 캠페인 대표 URL = 그 캠페인 내 광고비 1등 키워드의 URL
+    g_camp_url = {}
     _camp_best = {}
-    for (cn, an), (cost, url) in _adg_best.items():
+    for kw, url in g_kw_url.items():
+        cn = g_kw_camp.get(kw,"")
+        cost = g_kw_cost.get(kw,0)
         if not cn: continue
-        prev = _camp_best.get(cn)
-        if prev is None or cost > prev[0]:
+        if cn not in _camp_best or cost > _camp_best[cn][0]:
             _camp_best[cn] = (cost, url)
     for cn, (cost, url) in _camp_best.items():
         g_camp_url[cn] = url
-    print(f"  G URL 매핑: 캠페인 {len(g_camp_url)}개, 광고그룹 {len(g_adg_url)}개", file=sys.stderr)
 
+    print(f"  G URL 매핑: 캠페인 {len(g_camp_url)}개, 키워드 {len(g_kw_url)}개", file=sys.stderr)
+
+    # 검색어 표 — 매칭된 키워드의 URL 사용
+    # search_term_view에 매칭 키워드를 받으려면 별도 쿼리 필요 → 검색어 text가 키워드와 동일/포함일 때 매핑
     for c in g_camps:
         c["url"] = g_camp_url.get(c["name"], "")
     for t in g_search_terms:
-        t["url"] = g_adg_url.get(t.get("adgroup",""), "")
+        term = (t.get("term") or "").strip()
+        # 1차: 정확히 일치하는 키워드
+        url = g_kw_url.get(term, "")
+        # 2차: 키워드가 검색어를 포함 또는 검색어가 키워드 포함 (부분 매칭)
+        if not url:
+            for kw, _u in g_kw_url.items():
+                if kw and (kw in term or term in kw):
+                    url = _u; break
+        # 3차: 캠페인 대표
+        if not url:
+            url = g_camp_url.get("기본웹트래픽","")
+        t["url"] = url
+
+    # D 객체에 키워드 단위 데이터도 노출 (디버그/추가 표시용)
+    g_keywords_top = sorted(
+        [{"text":k,"url":g_kw_url[k],"cost":g_kw_cost.get(k,0),"campaign":g_kw_camp.get(k,"")}
+         for k in g_kw_url], key=lambda x:-x["cost"])[:20]
 
 g_ctr = round(g_total["clk"]/g_total["imp"]*100,2) if g_total["imp"] else 0
 g_cpc = round(g_total["cost"]/g_total["clk"]) if g_total["clk"] else 0
@@ -497,6 +519,7 @@ D = {
     "google":{"total":g_total,"buy_v":g_buy["v"],"buy_n":g_buy["n"],
               "campaigns":g_camps,"devices":g_devices,
               "search_terms":g_search_terms,"trend":g_trend,
+              "keywords_top": g_keywords_top if 'g_keywords_top' in dir() else [],
               "ctr":g_ctr,"cpc":g_cpc,"roas":g_roas},
     "device_a":{"M":{"imp":0,"clk":0,"cost":0},"P":{"imp":0,"clk":0,"cost":0}},
     "hour_a":{f"{h:02d}":{"imp":0,"clk":0,"cost":0} for h in range(24)},
