@@ -398,13 +398,28 @@ if g_tok:
             if "구매" in act or "urchase" in act:
                 g_buy["v"]+=int(float(m.get("allConversionsValue",0)))
                 g_buy["n"]+=int(float(m.get("allConversions",0)))
-    rsp = gq(f"SELECT search_term_view.search_term,ad_group.name,metrics.clicks,metrics.cost_micros,metrics.conversions FROM search_term_view WHERE segments.date='{TARGET}' ORDER BY metrics.cost_micros DESC LIMIT 10")
+    rsp = gq(f"SELECT search_term_view.search_term, ad_group.name, "
+             f"segments.keyword.info.text, segments.search_term_match_type, "
+             f"metrics.clicks, metrics.cost_micros, metrics.conversions, metrics.impressions "
+             f"FROM search_term_view WHERE segments.date='{TARGET}' "
+             f"ORDER BY metrics.cost_micros DESC LIMIT 10")
+    _mt_label = {"EXACT":"정확매칭","PHRASE":"구문매칭","BROAD":"확장매칭","NEAR_EXACT":"유사매칭","NEAR_PHRASE":"유사구문"}
     for ch in rsp or []:
         for row in ch.get("results",[]):
             m=row["metrics"]
-            g_search_terms.append({"term":row["searchTermView"]["searchTerm"],"adgroup":row["adGroup"]["name"],
-                                    "clk":int(m.get("clicks","0")),"cost":int(m.get("costMicros","0"))//1000000,
-                                    "conv":float(m.get("conversions",0))})
+            seg = row.get("segments",{}) or {}
+            mt = seg.get("searchTermMatchType","") or ""
+            kw = (seg.get("keyword",{}) or {}).get("info",{}).get("text","") or ""
+            g_search_terms.append({
+                "term":row["searchTermView"]["searchTerm"],
+                "adgroup":row["adGroup"]["name"],
+                "clk":int(m.get("clicks","0")),"cost":int(m.get("costMicros","0"))//1000000,
+                "conv":float(m.get("conversions",0)),
+                "imp":int(m.get("impressions","0")),
+                "match_type":mt,
+                "match_label":_mt_label.get(mt, mt),
+                "matched_kw":kw,
+            })
     rsp = gq(f"SELECT segments.device,metrics.cost_micros,metrics.clicks FROM customer WHERE segments.date='{TARGET}'")
     for ch in rsp or []:
         for row in ch.get("results",[]):
@@ -466,17 +481,22 @@ if g_tok:
         c["url"] = g_camp_url.get(c["name"], "")
     for t in g_search_terms:
         term = (t.get("term") or "").strip()
-        # 1차: 정확히 일치하는 키워드
-        url = g_kw_url.get(term, "")
-        # 2차: 키워드가 검색어를 포함 또는 검색어가 키워드 포함 (부분 매칭)
+        mkw = (t.get("matched_kw") or "").strip()
+        # 1차: search_term_view가 알려준 매칭 키워드 직접 사용 (가장 정확)
+        url = g_kw_url.get(mkw, "") if mkw else ""
+        # 2차: 검색어와 정확히 같은 키워드
+        if not url:
+            url = g_kw_url.get(term, "")
+        # 3차: 부분 매칭
         if not url:
             for kw, _u in g_kw_url.items():
                 if kw and (kw in term or term in kw):
                     url = _u; break
-        # 3차: 캠페인 대표
+        # 4차: 캠페인 대표
         if not url:
             url = g_camp_url.get("기본웹트래픽","")
         t["url"] = url
+        t["url_kw"] = mkw or term  # 표시용 — 어느 키워드 URL 매핑됐는지
 
     # D 객체에 키워드 단위 데이터도 노출 (디버그/추가 표시용)
     g_keywords_top = sorted(
@@ -821,6 +841,50 @@ overlay_js = """
           }).join('');
         }
       }
+      // === 메인 "실제 사용자 검색어" 표 (g_st_0~9) 동적 채우기 ===
+    });
+
+    // 메인 검색어 표 갱신
+    var st = g.search_terms || [];
+    for(var i=0;i<10;i++){
+      var gh = document.querySelector('tr.gh[data-tgt="g_st_'+i+'"]');
+      var gd = document.getElementById('g_st_'+i);
+      if(!gh) continue;
+      if(i >= st.length){
+        gh.style.display='none';
+        if(gd) gd.style.display='none';
+        continue;
+      }
+      var t = st[i];
+      var tds = gh.querySelectorAll('td');
+      // 0:순위 1:검색어 2:매칭 3:노출 4:클릭 5:CTR 6:bar 7:광고비
+      if(tds[1]) tds[1].textContent = t.term || '';
+      if(tds[2]) tds[2].innerHTML = (t.match_label||'-') + ' <span style="color:var(--muted);font-size:10.5px;font-weight:400">('+(t.match_type||'')+')</span>';
+      if(tds[3]) tds[3].textContent = fmtN(t.imp||0);
+      if(tds[4]) tds[4].textContent = fmtN(t.clk||0);
+      if(tds[5]) tds[5].textContent = ratio2(t.clk||0, t.imp||0);
+      if(tds[7]){
+        var arr = tds[7].querySelector('.arr');
+        var arrHtml = arr ? arr.outerHTML : '<span class="arr">▼</span>';
+        tds[7].innerHTML = fmtN(t.cost||0) + ' ' + arrHtml;
+      }
+      // 펼침 안 광고그룹·헤드라인 → 매핑 키워드 · 랜딩 URL
+      if(gd){
+        var tbody = gd.querySelector('tbody');
+        if(tbody){
+          var kw = t.url_kw || t.matched_kw || t.term || '';
+          var urlCell = t.url ?
+            '<a href="'+t.url+'" target="_blank" style="color:#7dd3fc;border-bottom:1px dashed var(--muted);text-decoration:none">'+t.url+' ↗</a>' :
+            '<span style="color:var(--muted)">URL 없음</span>';
+          tbody.innerHTML =
+            '<tr><td style="padding:9px 14px;color:#fff;font-weight:500">'+ (t.adgroup||'') +'</td>' +
+            '<td style="padding:9px 14px"><div style="color:#a5b4fc;margin-bottom:3px">매칭 키워드: <b>'+kw+'</b></div>' + urlCell + '</td></tr>';
+        }
+      }
+    }
+
+    detailsAll.forEach(function(det){
+      var sumText = det.querySelector('summary').textContent || '';
       if(sumText.indexOf('디바이스') >= 0){
         var devLabel = {'MOBILE':'모바일','DESKTOP':'PC','TABLET':'태블릿'};
         var tbody = det.querySelector('tbody');
