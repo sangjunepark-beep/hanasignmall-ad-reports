@@ -595,18 +595,9 @@ overlay_js = """
   function ratio2(a,b){return b>0?(a/b*100).toFixed(2)+'%':'-';}
   function ratio1(a,b){return b>0?(a/b*100).toFixed(1)+'%':'0.0%';}
   function roundCpc(c,k){return k>0?Math.round(c/k):0;}
-  function _init_overlays(){
-    try { overlayHeader(); } catch(e){ console.error('overlayHeader',e); }
-    try { overlayNoConv(); } catch(e){ console.error('overlayNoConv',e); }
-    try { overlayB(); } catch(e){ console.error('overlayB',e); }
-    try { overlayG(); } catch(e){ console.error('overlayG',e); }
-  }
-  // readyState 체크 — DOMContentLoaded 이미 지나갔으면 즉시 실행
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', _init_overlays);
-  } else {
-    _init_overlays();
-  }
+  document.addEventListener('DOMContentLoaded', function(){
+    overlayHeader(); overlayNoConv(); overlayB(); overlayG();
+  });
   function escapeHtml(s){
     return String(s||'').replace(/[&<>"']/g, function(c){
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
@@ -687,18 +678,7 @@ overlay_js = """
     var panel = document.getElementById('p-naver-b');
     if(!panel) return;
     var cards = panel.querySelectorAll('.kpi .card');
-    if(cards[0]){
-      var v=cards[0].querySelector('.val'); if(v) v.textContent=fmtN(total.imp);
-      var s=cards[0].querySelector('.sub');
-      var mainC = (g.campaigns && g.campaigns.length) ? g.campaigns[0] : null;
-      if(s && mainC){
-        if(mainC.url){
-          s.innerHTML = '<a href="'+mainC.url+'" target="_blank" style="color:var(--sub);text-decoration:none;border-bottom:1px dashed var(--muted)">'+(mainC.name||'')+' ↗</a>';
-        } else {
-          s.textContent = mainC.name||'';
-        }
-      }
-    }
+    if(cards[0]){ var v=cards[0].querySelector('.val'); if(v) v.textContent=fmtN(total.imp); }
     if(cards[1]){
       var v=cards[1].querySelector('.val'); if(v) v.textContent=fmtN(total.clk);
       var s=cards[1].querySelector('.sub'); if(s) s.textContent='CTR '+ratio2(total.clk,total.imp);
