@@ -422,6 +422,45 @@ if g_tok:
                 agg[d]["clk"]+=int(m.get("clicks","0"))
                 agg[d]["conv"]+=float(m.get("conversions",0))
         g_trend=[{"date":k,**v} for k,v in sorted(agg.items())]
+
+    # === 구글애즈 광고별 final_urls 수집 (2026-05-18 차장 지시: 랜딩페이지 다르게 설정한 게 반영 안 됨) ===
+    g_adg_url = {}
+    g_camp_url = {}
+    rsp = gq(f"SELECT campaign.name, ad_group.name, ad_group_ad.ad.final_urls, "
+             f"metrics.cost_micros FROM ad_group_ad "
+             f"WHERE segments.date='{TARGET}' AND ad_group_ad.status='ENABLED' "
+             f"ORDER BY metrics.cost_micros DESC")
+    _adg_best = {}
+    for ch in rsp or []:
+        for row in ch.get("results",[]):
+            ad = row.get("adGroupAd",{}).get("ad",{}) or {}
+            urls = ad.get("finalUrls") or []
+            if not urls: continue
+            url = urls[0]
+            cn = row.get("campaign",{}).get("name","")
+            an = row.get("adGroup",{}).get("name","")
+            cost = int(row.get("metrics",{}).get("costMicros","0"))//1000000
+            key = (cn, an)
+            prev = _adg_best.get(key)
+            if prev is None or cost > prev[0]:
+                _adg_best[key] = (cost, url)
+    for (cn, an), (cost, url) in _adg_best.items():
+        if an: g_adg_url[an] = url
+    _camp_best = {}
+    for (cn, an), (cost, url) in _adg_best.items():
+        if not cn: continue
+        prev = _camp_best.get(cn)
+        if prev is None or cost > prev[0]:
+            _camp_best[cn] = (cost, url)
+    for cn, (cost, url) in _camp_best.items():
+        g_camp_url[cn] = url
+    print(f"  G URL 매핑: 캠페인 {len(g_camp_url)}개, 광고그룹 {len(g_adg_url)}개", file=sys.stderr)
+
+    for c in g_camps:
+        c["url"] = g_camp_url.get(c["name"], "")
+    for t in g_search_terms:
+        t["url"] = g_adg_url.get(t.get("adgroup",""), "")
+
 g_ctr = round(g_total["clk"]/g_total["imp"]*100,2) if g_total["imp"] else 0
 g_cpc = round(g_total["cost"]/g_total["clk"]) if g_total["clk"] else 0
 g_roas = round(g_buy["v"]/g_total["cost"]*100,1) if g_total["cost"] else 0
@@ -596,7 +635,18 @@ overlay_js = """
     var panel = document.getElementById('p-naver-b');
     if(!panel) return;
     var cards = panel.querySelectorAll('.kpi .card');
-    if(cards[0]){ var v=cards[0].querySelector('.val'); if(v) v.textContent=fmtN(total.imp); }
+    if(cards[0]){
+      var v=cards[0].querySelector('.val'); if(v) v.textContent=fmtN(total.imp);
+      var s=cards[0].querySelector('.sub');
+      var mainC = (g.campaigns && g.campaigns.length) ? g.campaigns[0] : null;
+      if(s && mainC){
+        if(mainC.url){
+          s.innerHTML = '<a href="'+mainC.url+'" target="_blank" style="color:var(--sub);text-decoration:none;border-bottom:1px dashed var(--muted)">'+(mainC.name||'')+' ↗</a>';
+        } else {
+          s.textContent = mainC.name||'';
+        }
+      }
+    }
     if(cards[1]){
       var v=cards[1].querySelector('.val'); if(v) v.textContent=fmtN(total.clk);
       var s=cards[1].querySelector('.sub'); if(s) s.textContent='CTR '+ratio2(total.clk,total.imp);
@@ -736,9 +786,12 @@ overlay_js = """
         var tbody = det.querySelector('tbody');
         if(tbody && st.length){
           tbody.innerHTML = st.map(function(t,i){
+            var _adgCell = (t.url) ?
+              '<a href="'+t.url+'" target="_blank" style="color:var(--sub);border-bottom:1px dashed var(--muted);text-decoration:none">'+(t.adgroup||'')+' ↗</a>' :
+              (t.adgroup||'');
             return '<tr><td style="padding:9px 12px;color:var(--muted)">'+ (i+1) +'</td>' +
               '<td style="padding:9px 12px;color:#fff;font-weight:500">'+ (t.term||'') +'</td>' +
-              '<td style="padding:9px 12px;color:var(--sub);font-size:12px">'+ (t.adgroup||'') +'</td>' +
+              '<td style="padding:9px 12px;font-size:12px">'+ _adgCell +'</td>' +
               '<td style="padding:9px 12px;text-align:right">'+ fmtN(t.clk) +'</td>' +
               '<td style="padding:9px 12px;text-align:right;font-weight:600">'+ fmtN(t.cost) +'</td>' +
               '<td style="padding:9px 12px;text-align:right">'+ Number(t.conv||0).toFixed(1) +'</td></tr>';
