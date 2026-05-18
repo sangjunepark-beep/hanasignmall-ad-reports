@@ -595,9 +595,18 @@ overlay_js = """
   function ratio2(a,b){return b>0?(a/b*100).toFixed(2)+'%':'-';}
   function ratio1(a,b){return b>0?(a/b*100).toFixed(1)+'%':'0.0%';}
   function roundCpc(c,k){return k>0?Math.round(c/k):0;}
-  document.addEventListener('DOMContentLoaded', function(){
-    overlayHeader(); overlayNoConv(); overlayB(); overlayG();
-  });
+  function _init_overlays(){
+    try { overlayHeader(); } catch(e){ console.error('overlayHeader',e); }
+    try { overlayNoConv(); } catch(e){ console.error('overlayNoConv',e); }
+    try { overlayB(); } catch(e){ console.error('overlayB',e); }
+    try { overlayG(); } catch(e){ console.error('overlayG',e); }
+  }
+  // readyState 체크 — DOMContentLoaded 이미 지나갔으면 즉시 실행
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init_overlays);
+  } else {
+    _init_overlays();
+  }
   function escapeHtml(s){
     return String(s||'').replace(/[&<>"']/g, function(c){
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
