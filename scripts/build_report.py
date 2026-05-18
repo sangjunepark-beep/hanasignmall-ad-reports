@@ -1112,13 +1112,22 @@ def _renumber_main(html):
     return new_main + rest
 # === 신규: TOP 20 click_no_buy 상품 썸네일 fetch (GitHub Actions 환경에서 시도) ===
 def _fetch_thumb(url):
+    if not url: return ""
+    # 모바일 URL로 변환 (smartstore → m.smartstore). desktop URL은 봇 차단됨
+    mobile = url.replace('://smartstore.', '://m.smartstore.')
     try:
-        req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36"})
-        html = urllib.request.urlopen(req, context=ctx, timeout=6).read().decode('utf-8','ignore')
+        req = urllib.request.Request(mobile, headers={
+            "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+            "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9",
+            "Accept-Language":"ko-KR,ko;q=0.9,en;q=0.8",
+        })
+        html = urllib.request.urlopen(req, context=ctx, timeout=8).read().decode('utf-8','ignore')
         import re as _re_th
         m = _re_th.search(r'<meta[^>]*property="og:image"[^>]*content="([^"]+)"', html)
         if not m:
             m = _re_th.search(r'<meta[^>]*content="([^"]+)"[^>]*property="og:image"', html)
+        if not m:
+            m = _re_th.search(r'(https://shop-phinf\.pstatic\.net/[^\s"\\)]+\.(?:jpg|png|jpeg|webp)[^\s"\\)]*)', html)
         return m.group(1) if m else ""
     except Exception:
         return ""
