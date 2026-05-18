@@ -1178,6 +1178,8 @@ _pat_click = _re_rm.compile(
     _re_rm.DOTALL
 )
 new_src = _pat_click.sub('', new_src, count=1)
+# g_click tbody 제거 후 renderAd 호출이 null 에러 → 호출 라인도 제거
+new_src = new_src.replace("renderAd('g_click','clk','click');", "", 1)
 
 # === 신규 섹션: "클릭있고 구매 전" 상품 (2026-05-18 차장 지시) ===
 # 위치: 5번 "비전환 광고비" 섹션 직전에 삽입
