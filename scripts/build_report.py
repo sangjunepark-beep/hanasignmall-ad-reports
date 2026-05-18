@@ -152,31 +152,37 @@ if tsv:
             buy_map[pid]["cart_n"]+=cnt; buy_map[pid]["cart_v"]+=val
 
 # === ADVoost 데이터 합산 (콘솔과 일치) === #
+# 2026-05-18 차장 지시: CSV stale(5/7 데이터 11일째 합산) 이슈로 일시 제외.
+# 재개 조건: ADVoost CSV에 일자 컬럼 포함 형식으로 다운로드 가능 확인 후 ADVOOST_ENABLED=True
+ADVOOST_ENABLED = False
 advoost = {"cost":0,"imp":0,"clk":0,"rows":0}
 ADV_PATHS = [
     os.path.join(WORKSPACE, "애드부스트", "result.csv"),
     os.path.join(os.path.dirname(__file__), "advoost.csv"),  # GitHub Actions용
 ]
-for ap in ADV_PATHS:
-    if not os.path.exists(ap): continue
-    try:
-        with open(ap, encoding='utf-8-sig') as f:
-            rdr = csv.reader(f)
-            hdr = next(rdr)
-            ic = hdr.index('총비용') if '총비용' in hdr else -1
-            ii = hdr.index('노출수') if '노출수' in hdr else -1
-            il = hdr.index('클릭수') if '클릭수' in hdr else -1
-            for r in rdr:
-                if ic>=0 and len(r)>ic: advoost["cost"] += to_int(r[ic])
-                if ii>=0 and len(r)>ii: advoost["imp"] += to_int(r[ii])
-                if il>=0 and len(r)>il: advoost["clk"] += to_int(r[il])
-                advoost["rows"] += 1
-        print(f"  ADVoost: cost={advoost['cost']:,} imp={advoost['imp']:,} clk={advoost['clk']} ({advoost['rows']}행)", file=sys.stderr)
-        break
-    except Exception as e:
-        print(f"  ADVoost {ap} err: {e}", file=sys.stderr)
-if advoost["rows"]==0:
-    print("  ADVoost: 데이터 없음 (CSV 미입력)", file=sys.stderr)
+if ADVOOST_ENABLED:
+    for ap in ADV_PATHS:
+        if not os.path.exists(ap): continue
+        try:
+            with open(ap, encoding='utf-8-sig') as f:
+                rdr = csv.reader(f)
+                hdr = next(rdr)
+                ic = hdr.index('총비용') if '총비용' in hdr else -1
+                ii = hdr.index('노출수') if '노출수' in hdr else -1
+                il = hdr.index('클릭수') if '클릭수' in hdr else -1
+                for r in rdr:
+                    if ic>=0 and len(r)>ic: advoost["cost"] += to_int(r[ic])
+                    if ii>=0 and len(r)>ii: advoost["imp"] += to_int(r[ii])
+                    if il>=0 and len(r)>il: advoost["clk"] += to_int(r[il])
+                    advoost["rows"] += 1
+            print(f"  ADVoost: cost={advoost['cost']:,} imp={advoost['imp']:,} clk={advoost['clk']} ({advoost['rows']}행)", file=sys.stderr)
+            break
+        except Exception as e:
+            print(f"  ADVoost {ap} err: {e}", file=sys.stderr)
+    if advoost["rows"]==0:
+        print("  ADVoost: 데이터 없음 (CSV 미입력)", file=sys.stderr)
+else:
+    print("  ADVoost: 비활성화 (ADVOOST_ENABLED=False, 2026-05-18 차장 지시)", file=sys.stderr)
 
 a_total = {"imp":sum(r["imp"] for r in all_rows)+advoost["imp"],
            "clk":sum(r["clk"] for r in all_rows)+advoost["clk"],
