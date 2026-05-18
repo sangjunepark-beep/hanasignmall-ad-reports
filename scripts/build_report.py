@@ -595,9 +595,20 @@ overlay_js = """
   function ratio2(a,b){return b>0?(a/b*100).toFixed(2)+'%':'-';}
   function ratio1(a,b){return b>0?(a/b*100).toFixed(1)+'%':'0.0%';}
   function roundCpc(c,k){return k>0?Math.round(c/k):0;}
-  document.addEventListener('DOMContentLoaded', function(){
-    overlayHeader(); overlayNoConv(); overlayB(); overlayG();
-  });
+  function _init_overlays(){
+    try { overlayHeader(); } catch(e){ console.error('overlayHeader',e); }
+    try { overlayNoConv(); } catch(e){ console.error('overlayNoConv',e); }
+    try { overlayB(); } catch(e){ console.error('overlayB',e); }
+    try { overlayG(); } catch(e){ console.error('overlayG',e); }
+    try { hideDirectIndirectCols(); } catch(e){ console.error('hideDirectIndirect',e); }
+    try { placeholderizeStaticCards(); } catch(e){ console.error('placeholderize',e); }
+    try { expandSlotsIfNeeded(); } catch(e){ console.error('expandSlots',e); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init_overlays);
+  } else {
+    _init_overlays();
+  }
   function escapeHtml(s){
     return String(s||'').replace(/[&<>"']/g, function(c){
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
@@ -891,9 +902,104 @@ overlay_js = """
       }
     });
   }
+
+  // === PATCH: direct/indirect 컬럼 hide (코드 d_buy_v 항상 0 — 영구 거짓 표시) ===
+  function hideDirectIndirectCols(){
+    document.querySelectorAll('table').forEach(function(t){
+      var ths = t.querySelectorAll('thead th');
+      var hideIdx = [];
+      ths.forEach(function(th, idx){
+        var tx = (th.textContent||'').trim();
+        if (tx === '직접' || tx === '간접' || tx === '직접매출' || tx === '간접매출') {
+          hideIdx.push(idx);
+          th.style.display = 'none';
+        }
+      });
+      if (hideIdx.length) {
+        t.querySelectorAll('tbody tr').forEach(function(tr){
+          var tds = tr.querySelectorAll(':scope > td');
+          hideIdx.forEach(function(i){ if (tds[i]) tds[i].style.display = 'none'; });
+        });
+      }
+    });
+    // desc 안 "●직접/●간접" 설명 문구 숨김
+    document.querySelectorAll('.desc').forEach(function(d){
+      var html = d.innerHTML;
+      if (html.indexOf('●직접') >= 0 || html.indexOf('●간접') >= 0) {
+        d.innerHTML = html.replace(/<span[^>]*>●직접[^<]*<\/span>[^<]*,?\s*<span[^>]*>●간접[^<]*<\/span>[^.]*\.?/g, '');
+      }
+    });
+  }
+
+  // === PATCH: 정적 카드 값을 placeholder로 (JS 실패 시 잘못된 값 노출 방지) ===
+  // JS overlay가 정상 실행되면 즉시 D 값으로 덮여서 영향 없음. 실패 시 '-' 표시되어 사고 인지 가능.
+  // 단, overlay 실행 전(이 함수 호출 직전)에는 정적값이 잠깐 보일 수 있으므로 overlay 다음에 호출.
+  // 이 함수는 정적값 detection 후 '-' 치환 (overlay가 이미 채운 값은 보존)
+  function placeholderizeStaticCards(){
+    // overlay 이후 호출이라 이미 정상 값이면 그대로 둠. 이 함수는 no-op.
+    // 정적값 사고 방지의 핵심은 _init_overlays의 try/catch + readyState 체크.
+  }
+
+  // === PATCH: 슬롯 부족 시 동적 확장 (B 캠페인 7개 > 슬롯 4개, 비전환 27개 > 슬롯 12개) ===
+  function expandSlotsIfNeeded(){
+    // 1) B 캠페인 트리 슬롯 확장
+    var bPanel = document.getElementById('p-naver-b');
+    if (bPanel && D.naver_b && D.naver_b.campaigns) {
+      var camps = D.naver_b.campaigns;
+      var firstGh = bPanel.querySelector('tr.gh[data-tgt="b_tree_0"]');
+      var firstGd = bPanel.querySelector('tr.gd[id="b_tree_0"]');
+      if (firstGh && firstGd) {
+        var existing = bPanel.querySelectorAll('tr.gh[data-tgt^="b_tree_"]').length;
+        for (var i = existing; i < camps.length; i++) {
+          var newGh = firstGh.cloneNode(true);
+          newGh.setAttribute('data-tgt', 'b_tree_'+i);
+          firstGd.parentNode.insertBefore(newGh, null);
+          var newGd = firstGd.cloneNode(true);
+          newGd.id = 'b_tree_'+i;
+          newGd.style.display = 'none';
+          firstGd.parentNode.appendChild(newGd);
+        }
+        // 추가 후 overlayB 재호출해서 새 슬롯 채움
+        try { overlayB(); } catch(e){ console.error('overlayB rerun',e); }
+      }
+    }
+    // 2) 비전환 그룹 슬롯 확장
+    if (D.no_conv_groups) {
+      var groups = D.no_conv_groups;
+      var firstNcGh = document.querySelector('tr.gh[data-tgt="g_noconv-0"]');
+      var firstNcGd = document.getElementById('g_noconv-0');
+      if (firstNcGh && firstNcGd) {
+        var existing = document.querySelectorAll('tr.gh[data-tgt^="g_noconv-"]').length;
+        for (var i = existing; i < groups.length; i++) {
+          var newGh = firstNcGh.cloneNode(true);
+          newGh.setAttribute('data-tgt', 'g_noconv-'+i);
+          firstNcGd.parentNode.appendChild(newGh);
+          var newGd = firstNcGd.cloneNode(true);
+          newGd.id = 'g_noconv-'+i;
+          newGd.style.display = 'none';
+          firstNcGd.parentNode.appendChild(newGd);
+        }
+        // 추가 후 overlayNoConv 재호출
+        try { overlayNoConv(); } catch(e){ console.error('overlayNoConv rerun',e); }
+      }
+    }
+  }
+
 })();
 </script>
 """
+
+# PATCH (2026-05-18): 카드 .val 정적값을 placeholder로 치환 (JS overlay 실패 시 잘못된 값 노출 방지)
+import re as _re_ph
+def _placeholderize(html):
+    # <div class="card ..."><div class="label">...</div><div class="val">VALUE<span class="unit">...</span></div>...
+    # VALUE를 '-'로 치환. 단위(span)는 보존.
+    pattern = _re_ph.compile(
+        r'(<div class="card[^"]*"><div class="label">[^<]+</div><div class="val">)[^<]+(<span[^>]*>[^<]+</span>)?(</div>)',
+        _re_ph.DOTALL
+    )
+    return pattern.sub(lambda m: m.group(1) + '-' + (m.group(2) or '') + m.group(3), html)
+new_src = _placeholderize(new_src)
 
 new_src = new_src.replace("</body>", overlay_js + "\n</body>", 1)
 
