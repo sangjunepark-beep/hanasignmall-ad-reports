@@ -273,6 +273,41 @@ for _k, _v in grp.items():
         _ncg_list.append({"name":_k,"cost":_v["cost"],"clk":_v["clk"],"imp":_v["imp"],
                           "count":len(_items_named),"items":_items_named[:10]})
 no_conv_groups = sorted(_ncg_list, key=lambda x:-x["cost"])
+
+# === click_no_buy — 클릭 있고 매출 0 상품 (상품명 단위 합산, TOP 20) ===
+# 차장님 요구 (2026-05-18): 오늘 클릭됐는데 아직 구매 전인 상품을 한 눈에 보여주기
+# 데이터 소스: all_rows + buy_map. 상품명 단위로 묶고 클릭순 정렬
+_buy_v_by_pid = {pid: b["buy_v"] for pid, b in buy_map.items() if b.get("buy_v",0) > 0}
+_cnb = {}
+for r in all_rows:
+    if r.get("clk", 0) <= 0: continue
+    if r.get("pid","") in _buy_v_by_pid: continue
+    key = (r.get("name") or r["pid"]).strip() or r["pid"]
+    if key not in _cnb:
+        _cnb[key] = {"name": key, "url": r.get("url",""),
+                     "clk":0, "cost":0, "imp":0,
+                     "_pids":set(), "_camps":set(), "_grps":set()}
+    c = _cnb[key]
+    c["clk"] += r["clk"]; c["cost"] += r["cost"]; c["imp"] += r["imp"]
+    c["_pids"].add(r.get("pid",""))
+    c["_camps"].add(r.get("campaign",""))
+    c["_grps"].add(r.get("adgroup",""))
+click_no_buy = []
+for v in _cnb.values():
+    click_no_buy.append({
+        "name": v["name"], "url": v["url"],
+        "clk": v["clk"], "cost": v["cost"], "imp": v["imp"],
+        "camps": sorted(v["_camps"]), "grps": sorted(v["_grps"]),
+        "pid_count": len(v["_pids"]),
+    })
+click_no_buy.sort(key=lambda x: (-x["clk"], -x["cost"]))
+click_no_buy_top = click_no_buy[:20]
+click_no_buy_total = {
+    "count": len(click_no_buy),
+    "clk_sum": sum(c["clk"] for c in click_no_buy),
+    "cost_sum": sum(c["cost"] for c in click_no_buy),
+}
+print(f"  click_no_buy: {len(click_no_buy)}개 상품 / 클릭 {click_no_buy_total['clk_sum']:,} / 광고비 {click_no_buy_total['cost_sum']:,}", file=sys.stderr)
 no_conv_total = sum(g["cost"] for g in no_conv_groups)
 no_conv_pct = round(no_conv_total/a_total["cost"]*100,1) if a_total["cost"] else 0
 a_roas = round(a_buy_total["v"]/a_total["cost"]*100,1) if a_total["cost"] else 0
@@ -532,6 +567,8 @@ D = {
               "no_conv_count":len(no_conv_groups),"direct_pct":direct_pct,"indirect_pct":indirect_pct},
     "no_conv_groups":no_conv_groups,
     "no_conv_total":no_conv_total,
+    "click_no_buy": click_no_buy_top,
+    "click_no_buy_total": click_no_buy_total,
     "naver_b":{"total":b_total,"campaigns":b_camps,"adgroups":b_adgs,
                "active_per_camp":dict(b_camp_active),
                "ctr":b_ctr,"cpc":b_cpc,"roas":b_roas,"share_pct":b_share},
@@ -600,6 +637,7 @@ overlay_js = """
     try { overlayNoConv(); } catch(e){ console.error('overlayNoConv',e); }
     try { overlayB(); } catch(e){ console.error('overlayB',e); }
     try { overlayG(); } catch(e){ console.error('overlayG',e); }
+    try { overlayClickNoBuy(); } catch(e){ console.error('overlayClickNoBuy',e); }
     try { hideDirectIndirectCols(); } catch(e){ console.error('hideDirectIndirect',e); }
     try { placeholderizeStaticCards(); } catch(e){ console.error('placeholderize',e); }
     try { expandSlotsIfNeeded(); } catch(e){ console.error('expandSlots',e); }
@@ -940,6 +978,56 @@ overlay_js = """
     // 정적값 사고 방지의 핵심은 _init_overlays의 try/catch + readyState 체크.
   }
 
+  // === 신규: 클릭있는데 구매 전 (2026-05-18) ===
+  function overlayClickNoBuy(){
+    var list = D.click_no_buy || [];
+    var total = D.click_no_buy_total || {count:0, clk_sum:0, cost_sum:0};
+    var badge = document.getElementById('cnb_badge');
+    if (badge) badge.textContent = '총 ' + (total.count||0) + '개 / 클릭 ' + fmtN(total.clk_sum||0) + ' / 광고비 ' + fmtN(total.cost_sum||0) + '원';
+    var tb = document.getElementById('cnb_tbody');
+    if (!tb) return;
+    if (!list.length) {
+      tb.innerHTML = '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--muted)">데이터 없음</td></tr>';
+      return;
+    }
+    var maxClk = Math.max.apply(null, list.map(function(c){return c.clk||0;})) || 1;
+    var html = '';
+    list.forEach(function(c, i){
+      var ctr = c.imp>0 ? (c.clk/c.imp*100).toFixed(2)+'%' : '-';
+      var w = Math.max(2, (c.clk||0)/maxClk*80);
+      var nameCell = c.url ?
+        '<a href="'+escapeHtml(c.url)+'" target="_blank" style="color:#fff;border-bottom:1px dotted rgba(255,255,255,0.3);text-decoration:none">'+escapeHtml(c.name||'-')+' ↗</a>' :
+        escapeHtml(c.name||'-');
+      html += '<tr class="gh" data-tgt="cnb-'+i+'">' +
+        '<td><span class="rank '+(i<3?'top1':'')+'">'+(i+1)+'</span></td>' +
+        '<td class="bold">'+nameCell+'</td>' +
+        '<td class="r">'+fmtN(c.imp||0)+'</td>' +
+        '<td class="r bold"><span class="bar" style="width:'+w+'px;background:#3b82f6"></span>'+fmtN(c.clk||0)+'</td>' +
+        '<td class="r">'+ctr+'</td>' +
+        '<td class="r">'+(c.camps?c.camps.length:0)+'</td>' +
+        '<td class="r bold">'+fmtN(c.cost||0)+'</td>' +
+        '</tr>';
+      // 펼침 — 캠페인/광고그룹 분산
+      var campsHtml = (c.camps||[]).map(function(x){return escapeHtml(x);}).join('<br>') || '-';
+      var grpsHtml = (c.grps||[]).map(function(x){return escapeHtml(x);}).join('<br>') || '-';
+      html += '<tr class="gd" id="cnb-'+i+'" style="display:none"><td colspan="7" style="background:#080b14;padding:14px">' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:11.5px">' +
+        '<div><div style="color:var(--muted);margin-bottom:6px">📂 분산된 캠페인 ('+(c.camps?c.camps.length:0)+')</div><div style="color:#fff;line-height:1.6">'+campsHtml+'</div></div>' +
+        '<div><div style="color:var(--muted);margin-bottom:6px">🎯 광고그룹 ('+(c.grps?c.grps.length:0)+')</div><div style="color:#fff;line-height:1.6">'+grpsHtml+'</div></div>' +
+        '</div></td></tr>';
+    });
+    tb.innerHTML = html;
+    // 펼침 토글 바인딩
+    tb.querySelectorAll('tr.gh').forEach(function(row){
+      row.style.cursor = 'pointer';
+      row.addEventListener('click', function(){
+        var id = row.getAttribute('data-tgt');
+        var gd = document.getElementById(id);
+        if (gd) gd.style.display = (gd.style.display==='none' ? 'table-row' : 'none');
+      });
+    });
+  }
+
   // === PATCH: 슬롯 부족 시 동적 확장 (B 캠페인 7개 > 슬롯 4개, 비전환 27개 > 슬롯 12개) ===
   function expandSlotsIfNeeded(){
     // 1) B 캠페인 트리 슬롯 확장
@@ -1000,6 +1088,26 @@ def _placeholderize(html):
     )
     return pattern.sub(lambda m: m.group(1) + '-' + (m.group(2) or '') + m.group(3), html)
 new_src = _placeholderize(new_src)
+
+# === 신규 섹션: "클릭있고 구매 전" 상품 (2026-05-18 차장 지시) ===
+# 위치: 5번 "비전환 광고비" 섹션 직전에 삽입
+_new_section = """
+<div class="section" id="sec-click-no-buy">
+  <h2><span class="num" style="background:#3b82f6">💡</span>클릭있는데 구매 전 — 잠재 후보<span class="badge" id="cnb_badge">-</span></h2>
+  <div class="desc">광고 클릭은 발생했지만 아직 구매로 이어지지 않은 상품. 상세페이지·가격·CS 통화 점검 / 입찰가 조정 검토. 상품행 클릭 시 캠페인·광고그룹 분산 펼침.</div>
+  <table class="dt" style="width:100%;table-layout:fixed">
+    <colgroup><col style="width:50px"><col><col style="width:70px"><col style="width:80px"><col style="width:90px"><col style="width:70px"><col style="width:100px"></colgroup>
+    <thead><tr>
+      <th>#</th><th>상품명</th><th class="r">노출</th><th class="r">클릭</th><th class="r">CTR</th><th class="r">캠페인수</th><th class="r">광고비 (원)</th>
+    </tr></thead>
+    <tbody id="cnb_tbody"></tbody>
+  </table>
+</div>
+"""
+# 비전환 광고비 섹션 직전(h2 안 '비전환 광고비' 텍스트)에 삽입
+import re as _re_cnb
+_pat = _re_cnb.compile(r'(<div class="section">\s*<h2><span class="num"[^>]*>⚠</span>비전환 광고비)', _re_cnb.DOTALL)
+new_src = _pat.sub(_new_section + r'\1', new_src, count=1)
 
 new_src = new_src.replace("</body>", overlay_js + "\n</body>", 1)
 
