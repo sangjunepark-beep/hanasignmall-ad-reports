@@ -998,18 +998,9 @@ overlay_js = """
       var nameCell = c.url ?
         '<a href="'+escapeHtml(c.url)+'" target="_blank" style="color:#fff;border-bottom:1px dotted rgba(255,255,255,0.3);text-decoration:none">'+escapeHtml(c.name||'-')+' ↗</a>' :
         escapeHtml(c.name||'-');
-      var thumbCell;
-      if (c.thumb) {
-        thumbCell = '<img src="'+escapeHtml(c.thumb)+'" style="width:38px;height:38px;object-fit:cover;border-radius:4px;vertical-align:middle;margin-right:8px" loading="lazy">';
-      } else {
-        // placeholder: 카테고리 색 + 첫 글자
-        var _n = (c.name || '?').trim();
-        var _ch = _n.charAt(0) || '?';
-        var _hash = 0; for (var _j=0; _j<_n.length; _j++) _hash = (_hash*31 + _n.charCodeAt(_j)) & 0xffffff;
-        var _hue = _hash % 360;
-        var _bg = 'hsl(' + _hue + ',45%,35%)';
-        thumbCell = '<span style="display:inline-flex;width:38px;height:38px;border-radius:4px;background:'+_bg+';color:#fff;align-items:center;justify-content:center;font-weight:700;font-size:14px;vertical-align:middle;margin-right:8px">'+escapeHtml(_ch)+'</span>';
-      }
+      var thumbCell = c.thumb ?
+        '<img src="'+escapeHtml(c.thumb)+'" style="width:38px;height:38px;object-fit:cover;border-radius:4px;vertical-align:middle;margin-right:8px" loading="lazy">' :
+        '';
       html += '<tr class="gh" data-tgt="cnb-'+i+'">' +
         '<td><span class="rank '+(i<3?'top1':'')+'">'+(i+1)+'</span></td>' +
         '<td class="bold">'+thumbCell+nameCell+'</td>' +
