@@ -1089,6 +1089,15 @@ def _placeholderize(html):
     return pattern.sub(lambda m: m.group(1) + '-' + (m.group(2) or '') + m.group(3), html)
 new_src = _placeholderize(new_src)
 
+# === 2번 "클릭 — 상품군 전체" 섹션 제거 (1번 광고비 소진과 같은 데이터 다른 정렬 — 중복) ===
+# 2026-05-18 차장 지시: "어차피 필터로 소팅되니까 하나만"
+import re as _re_rm
+_pat_click = _re_rm.compile(
+    r'<div class="section click">\s*<h2>[^<]*<span class="num">2</span>클릭 — 상품군 전체.*?<tbody id="g_click"></tbody>\s*</table>\s*</div>',
+    _re_rm.DOTALL
+)
+new_src = _pat_click.sub('', new_src, count=1)
+
 # === 신규 섹션: "클릭있고 구매 전" 상품 (2026-05-18 차장 지시) ===
 # 위치: 5번 "비전환 광고비" 섹션 직전에 삽입
 _new_section = """
