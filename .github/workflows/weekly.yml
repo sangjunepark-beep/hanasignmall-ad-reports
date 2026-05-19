@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       end_date:
-        description: '종료일 (YYYY-MM-DD, 비어두면 어제 KST)'
+        description: '종료일 (YYYY-MM-DD)'
         required: false
         default: ''
       days:
@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install deps
+        run: pip install openpyxl
       - name: Build Weekly Report
         env:
           A_KEY: ${{ secrets.NAVER_A_KEY }}
