@@ -191,34 +191,45 @@ for dt in DATES:
 b_adgs = sorted(b_adg.values(), key=lambda x:-x["cost"])
 print(f"  B 광고그룹 {len(b_adgs)}개", file=sys.stderr)
 
-# === 줄여도 될 광고 후보 분석 ===
-print(f"\n[2] 광고 효율 분석", file=sys.stderr)
-# 1. 즉시 OFF 후보: 광고비 >= 30,000 & 매출 0
-off_list = sorted([p for p in a_by_name if p["cost"]>=30000 and p["buy_v"]==0], key=lambda x:-x["cost"])[:15]
-# 2. CTR 매우 낮음: CTR < 0.1% & 노출 >= 5,000
-low_ctr_list = sorted([p for p in a_by_name if p["ctr"]<0.1 and p["imp"]>=5000], key=lambda x:-x["cost"])[:15]
-# 3. ROAS 마이너스: ROAS < 50% & 광고비 >= 50,000 & 매출 발생
-low_roas_list = sorted([p for p in a_by_name if 0<p["roas"]<50 and p["cost"]>=50000], key=lambda x:-x["cost"])[:15]
+# 실매출 시트
+print(f"\n[2] 실매출 시트", file=sys.stderr)
+sales_rows = []
+try:
+    rows = gviz_csv(SALES_SHEET, SALES_GID)
+    h = rows[0] if rows else []
+    iy=im=id_=imgr=iamt=-1
+    for i,col in enumerate(h):
+        col=(col or "").strip()
+        if col=="년": iy=i
+        elif col=="월": im=i
+        elif col=="일": id_=i
+        elif col=="진행자": imgr=i
+        elif col in ("총 금액","총금액"): iamt=i
+    print(f"  컬럼: 년={iy} 월={im} 일={id_} 진행자={imgr} 총금액={iamt}", file=sys.stderr)
+    if all(i>=0 for i in [iy,im,id_,imgr,iamt]):
+        for r in rows[1:]:
+            try:
+                y=int(float(r[iy])); mo=int(float(r[im])); d=int(float(r[id_]))
+                date=f"{y:04d}-{mo:02d}-{d:02d}"
+                if date<DATES[0] or date>DATES[-1]: continue
+                sales_rows.append({"date":date,"mgr":(r[imgr] or "").strip(),"amt":to_int(r[iamt])})
+            except: continue
+    print(f"  기간 내 {len(sales_rows)}건", file=sys.stderr)
+except Exception as e: print(f"  err: {e}", file=sys.stderr)
 
-def to_cut_item(p):
-    return {
-        "name": p["name"], "url": p.get("url",""), "mall": p.get("mall",""),
-        "imp": p["imp"], "clk": p["clk"], "ctr": p["ctr"], "cost": p["cost"],
-        "buy_v": p["buy_v"], "cart_v": p["cart_v"], "roas": p["roas"],
-        "camps": len(p.get("_camps",[]) if isinstance(p.get("_camps"),list) else p.get("_camps",set())),
-    }
-off_table = [to_cut_item(p) for p in off_list]
-low_ctr_table = [to_cut_item(p) for p in low_ctr_list]
-low_roas_table = [to_cut_item(p) for p in low_roas_list]
-cut_total_cost = sum(p["cost"] for p in off_list)
-print(f"  즉시 OFF: {len(off_table)}개 (절감 {cut_total_cost:,}원)", file=sys.stderr)
-print(f"  CTR 낮음: {len(low_ctr_table)}개", file=sys.stderr)
-print(f"  ROAS 낮음: {len(low_roas_table)}개", file=sys.stderr)
-
-# 비호환 변수 — sales 관련 stub
-sales_table = []
-sales_total_amt = 0
-sales_total_cnt = 0
+def cls_ch(mgr):
+    if "(영호)" in mgr: return "영업(영호)"
+    if mgr=="스마트스토어": return "스마트스토어"
+    if mgr=="고도몰5": return "자사몰(고도몰)"
+    if mgr=="신규몰": return "자사몰(신규몰)"
+    if mgr=="쿠팡(신)": return "쿠팡"
+    if mgr in ("G마켓","옥션"): return "G마켓/옥션"
+    if mgr.startswith("사인몰") or mgr.startswith("하나몰"): return "CS"
+    return f"기타({mgr})"
+sales_by_ch = defaultdict(lambda:{"cnt":0,"amt":0})
+for s in sales_rows:
+    ch = cls_ch(s["mgr"])
+    sales_by_ch[ch]["cnt"]+=1; sales_by_ch[ch]["amt"]+=s["amt"]
 
 # === 통계 출력 ===
 print(f"\n{'='*60}")
@@ -229,7 +240,11 @@ total_buy = sum(b["buy_v"] for b in a_buy.values()); total_cart = sum(b["cart_v"
 print(f"[A 스마트스토어]  광고비 {a_total['cost']:>10,} / 노출 {a_total['imp']:,} / 클릭 {a_total['clk']:,} / CTR {a_total['clk']/a_total['imp']*100:.2f}%")
 print(f"  매출 {total_buy:,}원 ({sum(b['buy_n'] for b in a_buy.values())}건) / 장바구니 {total_cart:,}원 / 상품 {len(a_by_name)}개")
 print()
-
+print(f"[실매출 시트 — 채널별]")
+for ch,v in sorted(sales_by_ch.items(), key=lambda x:-x[1]["amt"]):
+    print(f"  {ch:<20} {v['cnt']:>3}건  {v['amt']:>12,}원")
+print(f"  합계: {sum(v['cnt'] for v in sales_by_ch.values())}건  {sum(v['amt'] for v in sales_by_ch.values()):,}원")
+print()
 print(f"[A 상품 TOP 15 — 광고비순]")
 print(f"{'순위':>3} {'광고비':>8} {'클릭':>5} {'CTR':>7} {'매출':>9} {'장바구니':>9} {'상품명'}")
 for i,p in enumerate(a_by_name[:15],1):
@@ -295,6 +310,18 @@ for a in b_adgs[:50]:
 for p in table_data:
     p["cpc"] = round(p["cost"]/p["clk"]) if p["clk"] else 0
 
+# 줄여도 될 광고 후보 분석
+off_list = sorted([p for p in a_by_name if p["cost"]>=30000 and p["buy_v"]==0], key=lambda x:-x["cost"])[:15]
+low_ctr_list = sorted([p for p in a_by_name if p["ctr"]<0.1 and p["imp"]>=5000], key=lambda x:-x["cost"])[:15]
+low_roas_list = sorted([p for p in a_by_name if 0<p["roas"]<50 and p["cost"]>=50000], key=lambda x:-x["cost"])[:15]
+def _to_cut(p):
+    return {"name":p["name"],"url":p.get("url",""),"imp":p["imp"],"clk":p["clk"],"ctr":p["ctr"],
+            "cost":p["cost"],"buy_v":p["buy_v"],"cart_v":p["cart_v"],"roas":p["roas"]}
+cut_off = [_to_cut(p) for p in off_list]
+cut_low_ctr = [_to_cut(p) for p in low_ctr_list]
+cut_low_roas = [_to_cut(p) for p in low_roas_list]
+cut_off_total = sum(p["cost"] for p in off_list)
+
 D = {
     "meta": {
         "start": START.strftime("%Y-%m-%d"),
@@ -326,10 +353,7 @@ D = {
     "products": table_data,
     "b_adgroups": b_table,
     "day_trend": day_trend,
-    "cut": {
-        "off": off_table, "low_ctr": low_ctr_table, "low_roas": low_roas_table,
-        "off_total": cut_total_cost,
-    },
+    "cut": {"off":cut_off,"low_ctr":cut_low_ctr,"low_roas":cut_low_roas,"off_total":cut_off_total},
 }
 
 # 간단 HTML (다크 테마, 정렬 가능한 표)
@@ -453,61 +477,11 @@ html += """
 </div>
 
 <div class="section">
-  <h2><span class="num" style="background:#f59e0b">4</span>줄여도 될 광고 후보<span class="badge" style="background:#1e293b;color:#94a3b8;font-size:10px;padding:2px 8px;border-radius:4px;margin-left:8px">절감 후보 총 {D["cut"]["off_total"]:,}원</span></h2>
+  <h2><span class="num" style="background:#f59e0b">4</span>줄여도 될 광고 후보</h2>
   <div class="desc">광고비 들어가는데 매출 안 나오는 상품. 입찰 인하 / 광고 OFF / 상세페이지 개선 검토.</div>
-  
-  <div style="margin-bottom:16px;padding:12px;background:#0f172a;border-left:3px solid #ef4444;border-radius:4px">
-    <div style="color:#fca5a5;font-size:13px;font-weight:600;margin-bottom:8px">⚠ 즉시 OFF 후보 ({len(D["cut"]["off"])}개) — 광고비 ≥30,000원 & 매출 0</div>
-    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
-      <thead><tr style="color:#94a3b8;font-size:10.5px"><th style="text-align:left;padding:4px">#</th><th style="text-align:left">상품명</th><th class="r">광고비</th><th class="r">클릭</th><th class="r">CTR</th><th class="r">장바구니</th></tr></thead>
-      <tbody>
-"""
-for i,p in enumerate(D["cut"]["off"],1):
-    html += f'<tr><td style="color:#64748b;padding:4px">{i}</td><td style="color:#fff;font-weight:500">{p["name"][:55]}</td><td class="r" style="color:#fca5a5;font-weight:600">{p["cost"]:,}</td><td class="r">{p["clk"]}</td><td class="r">{p["ctr"]:.2f}%</td><td class="r" style="color:#fbbf24">{p["cart_v"]:,}</td></tr>'
-html += f"""
-      </tbody>
-    </table>
-  </div>
-
-  <div style="margin-bottom:16px;padding:12px;background:#0f172a;border-left:3px solid #f59e0b;border-radius:4px">
-    <div style="color:#fbbf24;font-size:13px;font-weight:600;margin-bottom:8px">⚠ CTR 매우 낮음 ({len(D["cut"]["low_ctr"])}개) — CTR &lt;0.1% & 노출 ≥5,000회 (광고문/키워드 mismatch 의심)</div>
-    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
-      <thead><tr style="color:#94a3b8;font-size:10.5px"><th style="text-align:left;padding:4px">#</th><th style="text-align:left">상품명</th><th class="r">광고비</th><th class="r">노출</th><th class="r">클릭</th><th class="r">CTR</th></tr></thead>
-      <tbody>
-"""
-for i,p in enumerate(D["cut"]["low_ctr"],1):
-    html += f'<tr><td style="color:#64748b;padding:4px">{i}</td><td style="color:#fff;font-weight:500">{p["name"][:55]}</td><td class="r">{p["cost"]:,}</td><td class="r">{p["imp"]:,}</td><td class="r">{p["clk"]}</td><td class="r" style="color:#fca5a5">{p["ctr"]:.2f}%</td></tr>'
-html += f"""
-      </tbody>
-    </table>
-  </div>
-
-  <div style="padding:12px;background:#0f172a;border-left:3px solid #a855f7;border-radius:4px">
-    <div style="color:#c4b5fd;font-size:13px;font-weight:600;margin-bottom:8px">⚠ ROAS 마이너스 ({len(D["cut"]["low_roas"])}개) — ROAS &lt;50% & 광고비 ≥50,000원 (수익성 낮음)</div>
-    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
-      <thead><tr style="color:#94a3b8;font-size:10.5px"><th style="text-align:left;padding:4px">#</th><th style="text-align:left">상품명</th><th class="r">광고비</th><th class="r">매출</th><th class="r">ROAS</th></tr></thead>
-      <tbody>
-"""
-for i,p in enumerate(D["cut"]["low_roas"],1):
-    html += f'<tr><td style="color:#64748b;padding:4px">{i}</td><td style="color:#fff;font-weight:500">{p["name"][:55]}</td><td class="r">{p["cost"]:,}</td><td class="r" style="color:#4ade80">{p["buy_v"]:,}</td><td class="r" style="color:#c4b5fd">{p["roas"]:.1f}%</td></tr>'
-html += """
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="section">
-  <h2><span class="num power">5</span>파워링크 (자사몰) — 광고그룹 TOP 50</h2>
-  <div class="desc">사인몰 + 이름(영업 영호 제외) = CS, 그 외 스마트스토어/쿠팡/자사몰/오픈마켓 = 채널별. 광고 매출과는 별개의 실제 결제 매출.</div>
-  <table style="width:100%;border-collapse:collapse;font-size:13px">
-    <thead><tr>
-      <th style="text-align:left;padding:10px;background:#0f172a;color:#94a3b8">채널</th>
-      <th style="text-align:right;padding:10px;background:#0f172a;color:#94a3b8">건수</th>
-      <th style="text-align:right;padding:10px;background:#0f172a;color:#94a3b8">금액 (원)</th>
-      <th style="text-align:right;padding:10px;background:#0f172a;color:#94a3b8">비중</th>
-    </tr></thead>
-    <tbody>
-"""
+  <div id="cut_off_area"></div>
+  <div id="cut_low_ctr_area" style="margin-top:14px"></div>
+  <div id="cut_low_roas_area" style="margin-top:14px"></div>
 </div>
 
 <div class="section">
@@ -693,6 +667,66 @@ function shortName(name){
 
 setupTable('atbl','atb',D.products,false);
 setupTable('btbl','btb',D.b_adgroups,true);
+
+// 줄여도 될 광고 — overlay
+function renderCutSection(areaId, title, color, list, cols){
+  const area = document.getElementById(areaId);
+  if (!area || !list || !list.length) {
+    if (area) area.innerHTML = '<div style="padding:10px;color:var(--muted);font-size:11.5px;border-left:3px solid '+color+';background:#0f172a;border-radius:4px">'+title+' — 해당 없음</div>';
+    return;
+  }
+  let html = '<div style="padding:12px;background:#0f172a;border-left:3px solid '+color+';border-radius:4px">';
+  html += '<div style="color:'+color+';font-size:13px;font-weight:600;margin-bottom:8px">'+title+' ('+list.length+'개)</div>';
+  html += '<table style="width:100%;border-collapse:collapse;font-size:11.5px"><thead><tr style="color:var(--muted);font-size:10.5px">';
+  cols.forEach(c => { html += '<th style="text-align:'+(c.r?'right':'left')+';padding:4px">'+c.t+'</th>'; });
+  html += '</tr></thead><tbody>';
+  list.forEach((p,i) => {
+    html += '<tr>';
+    cols.forEach(c => {
+      const v = c.fn(p, i);
+      html += '<td style="padding:4px;text-align:'+(c.r?'right':'left')+';color:'+(c.color||'#fff')+'">'+v+'</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  area.innerHTML = html;
+}
+
+renderCutSection('cut_off_area',
+  '⚠ 즉시 OFF 후보 (광고비 ≥30,000원 & 매출 0) — 절감 가능 '+fmt(D.cut.off_total)+'원',
+  '#ef4444', D.cut.off,
+  [
+    {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
+    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,55)+'</a>':(p.name||'').substring(0,55)},
+    {t:'광고비', r:true, fn:p=>fmt(p.cost), color:'#fca5a5'},
+    {t:'클릭', r:true, fn:p=>fmt(p.clk)},
+    {t:'CTR', r:true, fn:p=>p.ctr.toFixed(2)+'%'},
+    {t:'장바구니', r:true, fn:p=>p.cart_v>0?fmt(p.cart_v):'-', color:'#fbbf24'},
+  ]
+);
+renderCutSection('cut_low_ctr_area',
+  '⚠ CTR 매우 낮음 (CTR <0.1% & 노출 ≥5,000) — 광고문/키워드 mismatch 의심',
+  '#f59e0b', D.cut.low_ctr,
+  [
+    {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
+    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,55)+'</a>':(p.name||'').substring(0,55)},
+    {t:'광고비', r:true, fn:p=>fmt(p.cost)},
+    {t:'노출', r:true, fn:p=>fmt(p.imp)},
+    {t:'클릭', r:true, fn:p=>fmt(p.clk)},
+    {t:'CTR', r:true, fn:p=>p.ctr.toFixed(2)+'%', color:'#fca5a5'},
+  ]
+);
+renderCutSection('cut_low_roas_area',
+  '⚠ ROAS 낮음 (ROAS <50% & 광고비 ≥50,000원) — 수익성 점검',
+  '#a855f7', D.cut.low_roas,
+  [
+    {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
+    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,55)+'</a>':(p.name||'').substring(0,55)},
+    {t:'광고비', r:true, fn:p=>fmt(p.cost)},
+    {t:'매출', r:true, fn:p=>fmt(p.buy_v), color:'#4ade80'},
+    {t:'ROAS', r:true, fn:p=>p.roas.toFixed(1)+'%', color:'#c4b5fd'},
+  ]
+);
 </script>
 </body>
 </html>
