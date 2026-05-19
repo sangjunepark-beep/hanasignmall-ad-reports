@@ -484,49 +484,49 @@ html += """
 
 <script>
 const D = """ + json.dumps(D, ensure_ascii=False) + """;
-function fmt(n){{ return Number(n||0).toLocaleString('ko-KR'); }}
-function mallIcon(mall){{
-  const map = {{
+function fmt(n){ return Number(n||0).toLocaleString('ko-KR'); }
+function mallIcon(mall){
+  const map = {
     "하나몰": '<span style="display:inline-block;background:#10b981;color:#fff;width:18px;height:18px;border-radius:4px;font-size:10px;text-align:center;line-height:18px;font-weight:700;margin-right:6px;vertical-align:middle" title="하나몰">하</span>',
     "더바른사인": '<span style="display:inline-block;background:#3b82f6;color:#fff;width:18px;height:18px;border-radius:4px;font-size:10px;text-align:center;line-height:18px;font-weight:700;margin-right:6px;vertical-align:middle" title="더바른사인">바</span>',
     "로켓출력공장": '<span style="display:inline-block;background:#a855f7;color:#fff;width:18px;height:18px;border-radius:4px;font-size:10px;text-align:center;line-height:18px;font-weight:700;margin-right:6px;vertical-align:middle" title="로켓출력공장">로</span>',
-  }};
+  };
   return map[mall] || '<span style="display:inline-block;background:#475569;color:#fff;width:18px;height:18px;border-radius:4px;font-size:10px;text-align:center;line-height:18px;font-weight:700;margin-right:6px;vertical-align:middle" title="-">?</span>';
-}}
-function shortName(name){{
+}
+function shortName(name){
   if (!name) return '';
   // 0. 직접 매칭 — 가장 정확한 카테고리부터
   // 1. 게시판 시리즈 (디자인/타입 + 게시판 + 사이즈)
-  if (name.includes('게시판')) {{
+  if (name.includes('게시판')) {
     const subs = ['슬림업','슬림디자인','강화유리','아크릴','알미늄','포켓','집게','꽂이','엘리베이터','승강기','학원','학교','어린이집','유치원','병원','사무실'];
     const found = subs.filter(s => name.includes(s)).slice(0, 2);
     const sizeMatch = name.match(/(\d+구|\d+칸|A4|B4|A3|B3)/);
     return [...found, '게시판', sizeMatch?.[0]].filter(Boolean).join(' ');
-  }}
+  }
   // 2. A형 입간판 (내용 + A형입간판)
-  if (name.includes('A형 입간판') || name.includes('A형입간판')) {{
+  if (name.includes('A형 입간판') || name.includes('A형입간판')) {
     const subs = ['영업중','영업 중','OPEN','오픈','금연','주차금지','출입금지','오뚜기','금일휴업','휴무','외부차량','어서오세요','발렛','파킹','카페','식당','음식점','매장','병원','회의중','회의','휴업','노랑','블랙'];
     const found = subs.filter(s => name.includes(s)).slice(0, 2);
     return [...found, 'A형 입간판'].filter(Boolean).join(' ');
-  }}
-  if (name.includes('입간판')) {{
+  }
+  if (name.includes('입간판')) {
     const subs = ['영업중','오픈','금연','주차금지','오뚜기','외부차량','발렛','블랙','노랑','요일제','보호자','금일휴업','회의','학교'];
     const found = subs.filter(s => name.includes(s)).slice(0, 2);
     return [...found, '입간판'].filter(Boolean).join(' ');
-  }}
+  }
   // 3. 피난안내도
-  if (name.includes('피난안내도') || name.includes('피난 안내도')) {{
+  if (name.includes('피난안내도') || name.includes('피난 안내도')) {
     const sz = name.match(/(B[345]|A[345]|\d+x\d+mm?)/);
     return ['피난안내도', sz?.[0]].filter(Boolean).join(' ');
-  }}
+  }
   // 4. 주차스티커 / 주차증
-  if (name.includes('주차스티커') || name.includes('주차증')) {{
+  if (name.includes('주차스티커') || name.includes('주차증')) {
     const subs = ['홀로그램','민무늬','원형','사각','패드형','반사지','입주민','100매','200매','300매','500매','뉴'];
     const found = subs.filter(s => name.includes(s)).slice(0, 2);
     return [...found, '주차스티커'].filter(Boolean).join(' ');
-  }}
+  }
   // 5. 스티커 (용도)
-  if (name.includes('스티커')) {{
+  if (name.includes('스티커')) {
     const types = [
       ['CCTV','CCTV'],['녹화중','녹화중'],['녹화','녹화중'],
       ['소방관진입','소방관진입창'],['소방대진입','소방대진입'],['소방','소방안전'],
@@ -538,111 +538,111 @@ function shortName(name){{
       ['스승의날','스승의날'],['신년','신년'],['새해','새해'],
       ['엘리베이터','엘리베이터'],['승강기','승강기'],['주소','주소판'],['도로명','도로명']
     ];
-    for (const [k, label] of types) {{
+    for (const [k, label] of types) {
       if (name.includes(k)) return label + ' 스티커';
-    }}
+    }
     // 사이즈만이라도
     const sz = name.match(/(\d+x\d+mm?)/);
-    return sz ? `${{sz[0]}} 스티커` : '스티커';
-  }}
+    return sz ? `${sz[0]} 스티커` : '스티커';
+  }
   // 6. 표지판/안내판/알림판/명패/팻말
-  for (const cat of ['표지판','안내판','알림판','명패','팻말','푯말','간판']) {{
-    if (name.includes(cat)) {{
+  for (const cat of ['표지판','안내판','알림판','명패','팻말','푯말','간판']) {
+    if (name.includes(cat)) {
       const sub = ['금연','주차','출입금지','CCTV','녹화','경고','주의','금지','매장','병원','학원','학교','어린이집','유치원','어린이','노약자','휠체어'];
       const found = sub.filter(s => name.includes(s)).slice(0, 1);
       const mat = ['아크릴','포맥스','시트','강화유리','알미늄'].filter(s => name.includes(s)).slice(0, 1);
       return [...mat, ...found, cat].filter(Boolean).join(' ');
-    }}
-  }}
+    }
+  }
   // 7. 현수막/배너
-  if (name.includes('현수막') || name.includes('배너')) {{
+  if (name.includes('현수막') || name.includes('배너')) {
     const subs = ['오픈','축하','스승의날','신년','새해','구정','대형','어린이집','유치원','이벤트','졸업','입학','홍보','행사','골프','어버이날'];
     const found = subs.filter(s => name.includes(s)).slice(0, 2);
     return [...found, '현수막'].filter(Boolean).join(' ');
-  }}
+  }
   // 8. 실사출력 (재질 + 사이즈)
-  if (name.includes('실사출력') || name.includes('포맥스') || name.includes('페트') || name.includes('시트지') || name.includes('PVC켈지') || name.includes('PET지') || name.includes('폼보드')) {{
+  if (name.includes('실사출력') || name.includes('포맥스') || name.includes('페트') || name.includes('시트지') || name.includes('PVC켈지') || name.includes('PET지') || name.includes('폼보드')) {
     const mat = ['포맥스','페트','PVC켈지','PET지','시트지','폼보드'].filter(s => name.includes(s))[0] || '실사출력';
     const sz = name.match(/(\d+cm이하|\d+x\d+|\d+T)/);
     return [mat, sz?.[0]].filter(Boolean).join(' ');
-  }}
+  }
   // 9. 수목표찰
-  if (name.includes('수목표찰') || name.includes('기념식수') || name.includes('수목 표찰')) {{
+  if (name.includes('수목표찰') || name.includes('기념식수') || name.includes('수목 표찰')) {
     return '수목표찰';
-  }}
+  }
   // 10. 도로명/번호판
   if (name.includes('도로명') || name.includes('번호판')) return '도로명 번호판';
   // 11. 바닥
-  if (name.includes('바닥')) {{
+  if (name.includes('바닥')) {
     const sub = ['미끄럼','마킹','글자','스텐실','경고','주의'];
     const found = sub.filter(s => name.includes(s)).slice(0,1);
     return [...found, '바닥'].filter(Boolean).join(' ');
-  }}
+  }
   // fallback: 처음 18자
   return name.length > 18 ? name.substring(0, 18) + '…' : name;
-}}function setupTable(tblId, tbodyId, data, isB){{
+}function setupTable(tblId, tbodyId, data, isB){
   let sortKey = 'cost'; let sortDir = 'desc';
-  function render(){{
-    const list = [...data].sort((a,b)=>{{
+  function render(){
+    const list = [...data].sort((a,b)=>{
       let va = a[sortKey]; let vb = b[sortKey];
       if (typeof va === 'string') return sortDir==='asc' ? va.localeCompare(vb,'ko') : vb.localeCompare(va,'ko');
       return sortDir==='asc' ? (va-vb) : (vb-va);
-    }});
+    });
     const maxCost = Math.max(...list.map(p=>p.cost)) || 1;
     const tbody = document.getElementById(tbodyId);
-    tbody.innerHTML = list.map((p,i)=>{{
+    tbody.innerHTML = list.map((p,i)=>{
       const w = Math.max(2, p.cost/maxCost*60);
       const ctrCls = p.ctr >= 1.0 ? 'green' : (p.ctr >= 0.5 ? '' : 'muted');
-      if (isB) {{
+      if (isB) {
         return `<tr>
-          <td class="muted">${{i+1}}</td>
-          <td class="bold">${{p.name||'-'}}</td>
-          <td class="muted">${{p.campaign||'-'}}</td>
-          <td class="r bold"><span class="bar" style="width:${{w}}px"></span>${{fmt(p.cost)}}</td>
-          <td class="r muted">${{fmt(p.imp)}}</td>
-          <td class="r">${{fmt(p.clk)}}</td>
-          <td class="r ${{ctrCls}}">${{p.ctr.toFixed(2)}}%</td>
+          <td class="muted">${i+1}</td>
+          <td class="bold">${p.name||'-'}</td>
+          <td class="muted">${p.campaign||'-'}</td>
+          <td class="r bold"><span class="bar" style="width:${w}px"></span>${fmt(p.cost)}</td>
+          <td class="r muted">${fmt(p.imp)}</td>
+          <td class="r">${fmt(p.clk)}</td>
+          <td class="r ${ctrCls}">${p.ctr.toFixed(2)}%</td>
         </tr>`;
-      }}
+      }
       const short = shortName(p.name);
       const mallTag = mallIcon(p.mall);
-      const linked = p.url ? `<a href="${{p.url}}" target="_blank" title="${{p.name.replace(/"/g,'&quot;')}}">${{short}}</a>` : `<span title="${{p.name.replace(/"/g,'&quot;')}}">${{short}}</span>`;
-      const nm = `${{mallTag}}${{linked}}`;
+      const linked = p.url ? `<a href="${p.url}" target="_blank" title="${p.name.replace(/"/g,'&quot;')}">${short}</a>` : `<span title="${p.name.replace(/"/g,'&quot;')}">${short}</span>`;
+      const nm = `${mallTag}${linked}`;
       const roasCls = p.roas >= 300 ? 'green' : (p.roas >= 100 ? '' : (p.roas > 0 ? 'yellow' : 'muted'));
       return `<tr>
-        <td class="muted">${{i+1}}</td>
-        <td class="bold">${{nm}}</td>
-        <td class="r bold"><span class="bar" style="width:${{w}}px"></span>${{fmt(p.cost)}}</td>
-        <td class="r muted">${{fmt(p.imp)}}</td>
-        <td class="r">${{fmt(p.clk)}}</td>
-        <td class="r ${{ctrCls}}">${{p.ctr.toFixed(2)}}%</td>
-        <td class="r ${{p.buy_v>0?'green':''}}">${{p.buy_v>0?fmt(p.buy_v):'-'}}</td>
-        <td class="r muted">${{p.buy_n||'-'}}</td>
-        <td class="r ${{p.cart_v>0?'yellow':''}}">${{p.cart_v>0?fmt(p.cart_v):'-'}}</td>
-        <td class="r ${{roasCls}}">${{p.roas>0?p.roas.toFixed(1)+'%':'-'}}</td>
-        <td class="r muted">${{p.camps}}</td>
+        <td class="muted">${i+1}</td>
+        <td class="bold">${nm}</td>
+        <td class="r bold"><span class="bar" style="width:${w}px"></span>${fmt(p.cost)}</td>
+        <td class="r muted">${fmt(p.imp)}</td>
+        <td class="r">${fmt(p.clk)}</td>
+        <td class="r ${ctrCls}">${p.ctr.toFixed(2)}%</td>
+        <td class="r ${p.buy_v>0?'green':''}">${p.buy_v>0?fmt(p.buy_v):'-'}</td>
+        <td class="r muted">${p.buy_n||'-'}</td>
+        <td class="r ${p.cart_v>0?'yellow':''}">${p.cart_v>0?fmt(p.cart_v):'-'}</td>
+        <td class="r ${roasCls}">${p.roas>0?p.roas.toFixed(1)+'%':'-'}</td>
+        <td class="r muted">${p.camps}</td>
       </tr>`;
-    }}).join('');
-    document.querySelectorAll('#'+tblId+' th').forEach(th=>{{
+    }).join('');
+    document.querySelectorAll('#'+tblId+' th').forEach(th=>{
       th.classList.remove('asc','desc');
       const s = th.querySelector('.sort'); if (s) s.textContent = '⇅';
-      if (th.dataset.key === sortKey) {{
+      if (th.dataset.key === sortKey) {
         th.classList.add(sortDir);
         if (s) s.textContent = sortDir==='asc' ? '▲' : '▼';
-      }}
-    }});
-  }}
-  document.querySelectorAll('#'+tblId+' th').forEach(th=>{{
-    th.addEventListener('click', ()=>{{
+      }
+    });
+  }
+  document.querySelectorAll('#'+tblId+' th').forEach(th=>{
+    th.addEventListener('click', ()=>{
       const k = th.dataset.key;
       if (!k || k==='rank') return;
       if (sortKey === k) sortDir = (sortDir==='asc'?'desc':'asc');
-      else {{ sortKey = k; sortDir = 'desc'; }}
+      else { sortKey = k; sortDir = 'desc'; }
       render();
-    }});
-  }});
+    });
+  });
   render();
-}}
+}
 
 setupTable('atbl','atb',D.products,false);
 setupTable('btbl','btb',D.b_adgroups,true);
