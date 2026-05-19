@@ -1,8 +1,8 @@
-name: Daily CEO Report (09:00 KST)
+name: Daily CEO Report (10:00 KST)
 
 on:
   schedule:
-    - cron: '30 22 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:
 
 permissions:
