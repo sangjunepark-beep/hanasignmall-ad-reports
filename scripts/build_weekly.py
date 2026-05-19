@@ -508,19 +508,6 @@ html += """
     </tr></thead>
     <tbody>
 """
-for s in D["sales"]["table"]:
-    pct = round(s["amt"]/D["sales"]["total_amt"]*100, 1) if D["sales"]["total_amt"] else 0
-    html += f'<tr><td style="padding:9px 10px;color:#fff;font-weight:600">{s["ch"]}</td><td style="padding:9px 10px;text-align:right;color:#94a3b8">{s["cnt"]}건</td><td style="padding:9px 10px;text-align:right;color:#4ade80;font-weight:600">{s["amt"]:,}</td><td style="padding:9px 10px;text-align:right;color:#94a3b8">{pct}%</td></tr>'
-html += f"""
-      <tr style="border-top:2px solid #1e293b">
-        <td style="padding:11px 10px;color:#fff;font-weight:700">합계</td>
-        <td style="padding:11px 10px;text-align:right;color:#fff;font-weight:700">{D["sales"]["total_cnt"]}건</td>
-        <td style="padding:11px 10px;text-align:right;color:#4ade80;font-weight:700;font-size:15px">{D["sales"]["total_amt"]:,}원</td>
-        <td style="padding:11px 10px;text-align:right;color:#94a3b8">100%</td>
-      </tr>
-    </tbody>
-  </table>
-  <div style="margin-top:12px;color:#94a3b8;font-size:11.5px">광고 매출(A+B): {D['combined']['buy_v']:,}원 / 실매출: {D['sales']['total_amt']:,}원 — 실매출이 광고 매출의 {round(D['sales']['total_amt']/D['combined']['buy_v'],1) if D['combined']['buy_v'] else 0}배 (CS·전화·매장 경유 큰 비중)</div>
 </div>
 
 <div class="section">
