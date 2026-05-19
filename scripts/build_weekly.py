@@ -229,11 +229,7 @@ total_buy = sum(b["buy_v"] for b in a_buy.values()); total_cart = sum(b["cart_v"
 print(f"[A 스마트스토어]  광고비 {a_total['cost']:>10,} / 노출 {a_total['imp']:,} / 클릭 {a_total['clk']:,} / CTR {a_total['clk']/a_total['imp']*100:.2f}%")
 print(f"  매출 {total_buy:,}원 ({sum(b['buy_n'] for b in a_buy.values())}건) / 장바구니 {total_cart:,}원 / 상품 {len(a_by_name)}개")
 print()
-print(f"[실매출 시트 — 채널별]")
-for ch,v in sorted(sales_by_ch.items(), key=lambda x:-x[1]["amt"]):
-    print(f"  {ch:<20} {v['cnt']:>3}건  {v['amt']:>12,}원")
-print(f"  합계: {sum(v['cnt'] for v in sales_by_ch.values())}건  {sum(v['amt'] for v in sales_by_ch.values()):,}원")
-print()
+
 print(f"[A 상품 TOP 15 — 광고비순]")
 print(f"{'순위':>3} {'광고비':>8} {'클릭':>5} {'CTR':>7} {'매출':>9} {'장바구니':>9} {'상품명'}")
 for i,p in enumerate(a_by_name[:15],1):
