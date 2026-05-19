@@ -191,45 +191,60 @@ for dt in DATES:
 b_adgs = sorted(b_adg.values(), key=lambda x:-x["cost"])
 print(f"  B 광고그룹 {len(b_adgs)}개", file=sys.stderr)
 
-# 실매출 시트
-print(f"\n[2] 실매출 시트", file=sys.stderr)
+# 실매출 — 로컬 sales.xlsx 읽기 (영업 제외)
+print(f"\n[2] 실매출 (sales.xlsx)", file=sys.stderr)
 sales_rows = []
 try:
-    rows = gviz_csv(SALES_SHEET, SALES_GID)
-    h = rows[0] if rows else []
-    iy=im=id_=imgr=iamt=-1
-    for i,col in enumerate(h):
-        col=(col or "").strip()
-        if col=="년": iy=i
-        elif col=="월": im=i
-        elif col=="일": id_=i
-        elif col=="진행자": imgr=i
-        elif col in ("총 금액","총금액"): iamt=i
-    print(f"  컬럼: 년={iy} 월={im} 일={id_} 진행자={imgr} 총금액={iamt}", file=sys.stderr)
-    if all(i>=0 for i in [iy,im,id_,imgr,iamt]):
-        for r in rows[1:]:
+    import openpyxl
+    sales_path = os.path.join(os.path.dirname(__file__), "sales.xlsx")
+    if not os.path.exists(sales_path):
+        sales_path = os.path.join(WORKSPACE, "sales.xlsx")
+    if os.path.exists(sales_path):
+        wb = openpyxl.load_workbook(sales_path, data_only=True)
+        ws = wb.active
+        for row in ws.iter_rows(min_row=2, values_only=True):
             try:
-                y=int(float(r[iy])); mo=int(float(r[im])); d=int(float(r[id_]))
-                date=f"{y:04d}-{mo:02d}-{d:02d}"
-                if date<DATES[0] or date>DATES[-1]: continue
-                sales_rows.append({"date":date,"mgr":(r[imgr] or "").strip(),"amt":to_int(r[iamt])})
+                y = row[0]; mo = row[1]; d = row[2]
+                if y is None or mo is None or d is None: continue
+                y = int(y); mo = int(mo); d = int(d)
+                if y == 26: y = 2026
+                date = f"{y:04d}-{mo:02d}-{d:02d}"
+                if date < DATES[0] or date > DATES[-1]: continue
+                mgr = str(row[3] or "").strip()
+                amt = row[17]
+                if amt is None: continue
+                amt = int(float(amt))
+                sales_rows.append({"date":date,"mgr":mgr,"amt":amt})
             except: continue
-    print(f"  기간 내 {len(sales_rows)}건", file=sys.stderr)
-except Exception as e: print(f"  err: {e}", file=sys.stderr)
+        print(f"  기간 내 {len(sales_rows)}건", file=sys.stderr)
+    else:
+        print(f"  sales.xlsx 없음", file=sys.stderr)
+except Exception as e:
+    print(f"  err: {e}", file=sys.stderr)
 
 def cls_ch(mgr):
-    if "(영호)" in mgr: return "영업(영호)"
-    if mgr=="스마트스토어": return "스마트스토어"
-    if mgr=="고도몰5": return "자사몰(고도몰)"
-    if mgr=="신규몰": return "자사몰(신규몰)"
-    if mgr=="쿠팡(신)": return "쿠팡"
+    if "(영호)" in mgr: return None  # 영업 — 제외
+    if mgr == "스마트스토어": return "스마트스토어"
+    if mgr == "고도몰5": return "자사몰(고도몰)"
+    if mgr == "신규몰": return "자사몰(신규몰)"
+    if mgr == "쿠팡(신)": return "쿠팡"
     if mgr in ("G마켓","옥션"): return "G마켓/옥션"
-    if mgr.startswith("사인몰") or mgr.startswith("하나몰"): return "CS"
+    if mgr == "11번가": return "11번가"
+    if mgr == "네이버페이": return "네이버페이"
+    if mgr == "로켓출력공장": return "로켓출력공장"
+    if mgr == "하나몰": return "하나몰 직접"
+    if mgr.startswith("사인몰"): return "CS"
     return f"기타({mgr})"
 sales_by_ch = defaultdict(lambda:{"cnt":0,"amt":0})
 for s in sales_rows:
     ch = cls_ch(s["mgr"])
-    sales_by_ch[ch]["cnt"]+=1; sales_by_ch[ch]["amt"]+=s["amt"]
+    if ch is None: continue
+    sales_by_ch[ch]["cnt"] += 1
+    sales_by_ch[ch]["amt"] += s["amt"]
+sales_total_amt = sum(v["amt"] for v in sales_by_ch.values())
+sales_total_cnt = sum(v["cnt"] for v in sales_by_ch.values())
+sales_table = sorted([{"ch":k,"cnt":v["cnt"],"amt":v["amt"]} for k,v in sales_by_ch.items()], key=lambda x:-x["amt"])
+print(f"  실매출 채널별: {len(sales_table)}개, 합계 {sales_total_cnt}건/{sales_total_amt:,}원", file=sys.stderr)
 
 # === 통계 출력 ===
 print(f"\n{'='*60}")
@@ -341,6 +356,11 @@ D = {
     "products": table_data,
     "b_adgroups": b_table,
     "day_trend": day_trend,
+    "sales": {
+        "table": sales_table,
+        "total_amt": sales_total_amt,
+        "total_cnt": sales_total_cnt,
+    },
 }
 
 # 간단 HTML (다크 테마, 정렬 가능한 표)
@@ -464,7 +484,34 @@ html += """
 </div>
 
 <div class="section">
-  <h2><span class="num power">3</span>파워링크 (자사몰) — 광고그룹 TOP 50</h2>
+  <h2><span class="num" style="background:#f59e0b">4</span>실매출 (영업 제외) — 채널별 합계</h2>
+  <div class="desc">사인몰 + 이름(영업 영호 제외) = CS, 그 외 스마트스토어/쿠팡/자사몰/오픈마켓 = 채널별. 광고 매출과는 별개의 실제 결제 매출.</div>
+  <table style="width:100%;border-collapse:collapse;font-size:13px">
+    <thead><tr>
+      <th style="text-align:left;padding:10px;background:#0f172a;color:#94a3b8">채널</th>
+      <th style="text-align:right;padding:10px;background:#0f172a;color:#94a3b8">건수</th>
+      <th style="text-align:right;padding:10px;background:#0f172a;color:#94a3b8">금액 (원)</th>
+      <th style="text-align:right;padding:10px;background:#0f172a;color:#94a3b8">비중</th>
+    </tr></thead>
+    <tbody>
+"""
+for s in D["sales"]["table"]:
+    pct = round(s["amt"]/D["sales"]["total_amt"]*100, 1) if D["sales"]["total_amt"] else 0
+    html += f'<tr><td style="padding:9px 10px;color:#fff;font-weight:600">{s["ch"]}</td><td style="padding:9px 10px;text-align:right;color:#94a3b8">{s["cnt"]}건</td><td style="padding:9px 10px;text-align:right;color:#4ade80;font-weight:600">{s["amt"]:,}</td><td style="padding:9px 10px;text-align:right;color:#94a3b8">{pct}%</td></tr>'
+html += f"""
+      <tr style="border-top:2px solid #1e293b">
+        <td style="padding:11px 10px;color:#fff;font-weight:700">합계</td>
+        <td style="padding:11px 10px;text-align:right;color:#fff;font-weight:700">{D["sales"]["total_cnt"]}건</td>
+        <td style="padding:11px 10px;text-align:right;color:#4ade80;font-weight:700;font-size:15px">{D["sales"]["total_amt"]:,}원</td>
+        <td style="padding:11px 10px;text-align:right;color:#94a3b8">100%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;color:#94a3b8;font-size:11.5px">광고 매출(A+B): {D['combined']['buy_v']:,}원 / 실매출: {D['sales']['total_amt']:,}원 — 실매출이 광고 매출의 {round(D['sales']['total_amt']/D['combined']['buy_v'],1) if D['combined']['buy_v'] else 0}배 (CS·전화·매장 경유 큰 비중)</div>
+</div>
+
+<div class="section">
+  <h2><span class="num power">5</span>파워링크 (자사몰) — 광고그룹 TOP 50</h2>
   <div class="desc">파워링크는 광고그룹 단위로 운영. 자사몰(고도몰/신규몰) 트래픽 유도용. <b>컬럼 헤더 클릭하면 정렬 토글</b>.</div>
   <table id="btbl">
     <thead><tr>
