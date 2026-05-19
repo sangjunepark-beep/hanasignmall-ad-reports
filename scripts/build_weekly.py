@@ -310,17 +310,41 @@ for a in b_adgs[:50]:
 for p in table_data:
     p["cpc"] = round(p["cost"]/p["clk"]) if p["clk"] else 0
 
-# 줄여도 될 광고 후보 분석
-off_list = sorted([p for p in a_by_name if p["cost"]>=30000 and p["buy_v"]==0], key=lambda x:-x["cost"])[:15]
-low_ctr_list = sorted([p for p in a_by_name if p["ctr"]<0.1 and p["imp"]>=5000], key=lambda x:-x["cost"])[:15]
-low_roas_list = sorted([p for p in a_by_name if 0<p["roas"]<50 and p["cost"]>=50000], key=lambda x:-x["cost"])[:15]
+# === 줄여도 될 광고 후보 — 3그룹 분류 ===
+# 카테고리: 전화 주문 가능 (대량 주문 비중 큼)
+PHONE_CATS = ["주차스티커","주차증","바닥","현수막","배너","피난안내도","시트지","포맥스","페트","폼보드","실사출력","PVC켈지","PET지","대량"]
+def _is_phone(name):
+    return any(c in (name or "") for c in PHONE_CATS)
+def _cat_label(name):
+    n = name or ""
+    if "주차스티커" in n or "주차증" in n: return "📞 주차스티커 (전화↑)"
+    if "피난안내도" in n: return "📞 피난안내도 (전화↑)"
+    if "바닥" in n: return "📞 바닥 (전화↑)"
+    if "현수막" in n or "배너" in n: return "📞 현수막 (전화↑)"
+    if "포맥스" in n or "페트" in n or "시트지" in n or "PVC" in n or "PET" in n or "실사출력" in n or "폼보드" in n: return "📞 실사출력 (전화↑)"
+    if "게시판" in n: return "🛒 게시판"
+    if "안내판" in n or "표지판" in n or "알림판" in n: return "🛒 안내판"
+    if "입간판" in n: return "🛒 입간판"
+    if "스티커" in n: return "🛒 스티커"
+    return "🛒 기타"
 def _to_cut(p):
     return {"name":p["name"],"url":p.get("url",""),"imp":p["imp"],"clk":p["clk"],"ctr":p["ctr"],
-            "cost":p["cost"],"buy_v":p["buy_v"],"cart_v":p["cart_v"],"roas":p["roas"]}
-cut_off = [_to_cut(p) for p in off_list]
-cut_low_ctr = [_to_cut(p) for p in low_ctr_list]
-cut_low_roas = [_to_cut(p) for p in low_roas_list]
-cut_off_total = sum(p["cost"] for p in off_list)
+            "cost":p["cost"],"buy_v":p["buy_v"],"cart_v":p["cart_v"],"roas":p["roas"],
+            "cat":_cat_label(p["name"])}
+
+# Group 1: 확실히 줄일 — CTR <0.1% & 노출 >=5000 (관심도 자체 없음, 카테고리 무관)
+g1_clear = sorted([p for p in a_by_name if p["ctr"]<0.1 and p["imp"]>=5000], key=lambda x:-x["cost"])[:15]
+# Group 2: 재검토 (전화 주문 가능) — 광고비 >=30k & 매출 0 & PHONE_CATS
+g2_review = sorted([p for p in a_by_name if p["cost"]>=30000 and p["buy_v"]==0 and _is_phone(p["name"])], key=lambda x:-x["cost"])[:15]
+# Group 3: OFF 가능 — 광고비 >=30k & 매출 0 & 전화 카테고리 아님 (온라인 결제 카테고리)
+g3_off = sorted([p for p in a_by_name if p["cost"]>=30000 and p["buy_v"]==0 and not _is_phone(p["name"])], key=lambda x:-x["cost"])[:15]
+
+cut_clear = [_to_cut(p) for p in g1_clear]
+cut_review = [_to_cut(p) for p in g2_review]
+cut_off = [_to_cut(p) for p in g3_off]
+cut_clear_total = sum(p["cost"] for p in g1_clear)
+cut_review_total = sum(p["cost"] for p in g2_review)
+cut_off_total = sum(p["cost"] for p in g3_off)
 
 D = {
     "meta": {
@@ -353,7 +377,7 @@ D = {
     "products": table_data,
     "b_adgroups": b_table,
     "day_trend": day_trend,
-    "cut": {"off":cut_off,"low_ctr":cut_low_ctr,"low_roas":cut_low_roas,"off_total":cut_off_total},
+    "cut": {"clear":cut_clear,"review":cut_review,"off":cut_off,"clear_total":cut_clear_total,"review_total":cut_review_total,"off_total":cut_off_total},
 }
 
 # 간단 HTML (다크 테마, 정렬 가능한 표)
@@ -478,7 +502,7 @@ html += """
 
 <div class="section">
   <h2><span class="num" style="background:#f59e0b">4</span>줄여도 될 광고 후보</h2>
-  <div class="desc">광고비 들어가는데 매출 안 나오는 상품. 입찰 인하 / 광고 OFF / 상세페이지 개선 검토.</div>
+  <div class="desc">3그룹으로 분류 — <b style="color:#ef4444">명백히 OFF 가능</b>(온라인 결제 카테고리에서 매출 0) / <b style="color:#fbbf24">재검토 필요</b>(주차·바닥·현수막·실사출력 등 전화 주문 비중 큰 카테고리) / <b style="color:#a855f7">확실히 줄일</b>(CTR <0.1% — 관심도 자체가 없음). 카테고리 아이콘: 📞 = 전화 주문 가능, 🛒 = 온라인 결제 중심.</div>
   <div id="cut_off_area"></div>
   <div id="cut_low_ctr_area" style="margin-top:14px"></div>
   <div id="cut_low_roas_area" style="margin-top:14px"></div>
@@ -692,39 +716,43 @@ function renderCutSection(areaId, title, color, list, cols){
   area.innerHTML = html;
 }
 
+// 3그룹 분류 표시
 renderCutSection('cut_off_area',
-  '⚠ 즉시 OFF 후보 (광고비 ≥30,000원 & 매출 0) — 절감 가능 '+fmt(D.cut.off_total)+'원',
+  '✂ 명백히 OFF 가능 (광고비 ≥30,000원 & 매출 0 & 온라인 결제 카테고리) — 절감 약 '+fmt(D.cut.off_total)+'원',
   '#ef4444', D.cut.off,
   [
     {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
-    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,55)+'</a>':(p.name||'').substring(0,55)},
+    {t:'카테고리', fn:p=>p.cat, color:'#94a3b8'},
+    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,50)+'</a>':(p.name||'').substring(0,50)},
     {t:'광고비', r:true, fn:p=>fmt(p.cost), color:'#fca5a5'},
+    {t:'클릭', r:true, fn:p=>fmt(p.clk)},
+    {t:'CTR', r:true, fn:p=>p.ctr.toFixed(2)+'%'},
+  ]
+);
+renderCutSection('cut_low_ctr_area',
+  '🔍 재검토 필요 — 전화 주문 가능 카테고리 (광고비 ≥30,000원 & 매출 0) — '+fmt(D.cut.review_total)+'원',
+  '#f59e0b', D.cut.review,
+  [
+    {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
+    {t:'카테고리', fn:p=>p.cat, color:'#fbbf24'},
+    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,50)+'</a>':(p.name||'').substring(0,50)},
+    {t:'광고비', r:true, fn:p=>fmt(p.cost)},
     {t:'클릭', r:true, fn:p=>fmt(p.clk)},
     {t:'CTR', r:true, fn:p=>p.ctr.toFixed(2)+'%'},
     {t:'장바구니', r:true, fn:p=>p.cart_v>0?fmt(p.cart_v):'-', color:'#fbbf24'},
   ]
 );
-renderCutSection('cut_low_ctr_area',
-  '⚠ CTR 매우 낮음 (CTR <0.1% & 노출 ≥5,000) — 광고문/키워드 mismatch 의심',
-  '#f59e0b', D.cut.low_ctr,
+renderCutSection('cut_low_roas_area',
+  '⚡ 확실히 줄일 — CTR 매우 낮음 (CTR <0.1% & 노출 ≥5,000) — 관심도 자체가 없음',
+  '#a855f7', D.cut.clear,
   [
     {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
-    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,55)+'</a>':(p.name||'').substring(0,55)},
+    {t:'카테고리', fn:p=>p.cat, color:'#94a3b8'},
+    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,50)+'</a>':(p.name||'').substring(0,50)},
     {t:'광고비', r:true, fn:p=>fmt(p.cost)},
     {t:'노출', r:true, fn:p=>fmt(p.imp)},
     {t:'클릭', r:true, fn:p=>fmt(p.clk)},
     {t:'CTR', r:true, fn:p=>p.ctr.toFixed(2)+'%', color:'#fca5a5'},
-  ]
-);
-renderCutSection('cut_low_roas_area',
-  '⚠ ROAS 낮음 (ROAS <50% & 광고비 ≥50,000원) — 수익성 점검',
-  '#a855f7', D.cut.low_roas,
-  [
-    {t:'#', fn:(p,i)=>(i+1), color:'#64748b'},
-    {t:'상품명', fn:p=>p.url?'<a href="'+p.url+'" target="_blank" style="color:#fff">'+(p.name||'').substring(0,55)+'</a>':(p.name||'').substring(0,55)},
-    {t:'광고비', r:true, fn:p=>fmt(p.cost)},
-    {t:'매출', r:true, fn:p=>fmt(p.buy_v), color:'#4ade80'},
-    {t:'ROAS', r:true, fn:p=>p.roas.toFixed(1)+'%', color:'#c4b5fd'},
   ]
 );
 </script>
