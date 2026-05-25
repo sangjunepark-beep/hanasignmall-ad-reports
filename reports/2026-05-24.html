@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-05-24 · 하나사인몰 네이버 스마트스토어 광고 보고서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', -apple-system, Malgun Gothic, sans-serif; background: #0b1120; color: #e2e8f0; padding: 24px 16px; line-height: 1.6; min-height: 100vh; }
+  .container { max-width: 1000px; margin: 0 auto; background: #0f172a; border-radius: 14px; overflow: hidden; border: 1px solid #1e293b; }
+  .header { background: linear-gradient(135deg,#020617,#1e293b); padding: 28px 32px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #1e293b; }
+  .naver-logo { background: #03C75A; color: #fff; padding: 8px 16px; border-radius: 6px; font-weight: 900; font-size:22px; letter-spacing: -0.5px; font-family: Arial, sans-serif; flex-shrink: 0; }
+  .title-area { flex: 1; }
+  .agency { font-size:13px; color: #64748b; margin-bottom: 4px; }
+  .title { font-size: 22px; font-weight: 800; color: #f1f5f9; }
+  .subtitle { font-size:18px; color: #94a3b8; margin-top: 3px; }
+  .body { padding: 24px 32px 32px; }
+
+  /* ===== 탭 UI ===== */
+  .tabs-bar { display:flex; gap:4px; background:#0b1120; padding:6px; border-radius:10px 10px 0 0; border:1px solid #334155; border-bottom:none; margin-top:16px; }
+  .tab-btn { flex:1; padding:14px 18px; background:transparent; color:#64748b; border:none; cursor:pointer; font-weight:700; font-size:17px; border-radius:7px; transition:all 0.2s; font-family:inherit; }
+  .tab-btn:hover { background:#1e293b; color:#cbd5e1; }
+  .tab-btn.active { background:linear-gradient(135deg,#0ea5e9,#0284c7); color:#fff; box-shadow:0 2px 8px rgba(14,165,233,0.3); }
+  .tab-panel { display:none; border:1px solid #334155; border-top:none; border-radius:0 0 10px 10px; padding:22px; background:#0f172a; }
+  .tab-panel.active { display:block; }
+
+  /* ===== Hero ROAS ===== */
+  .hero-roas { text-align:center; padding:36px 16px; background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 50%,#8b5cf6 100%); border-radius:14px; margin-bottom:18px; box-shadow:0 10px 30px rgba(14,165,233,0.15); }
+  .hero-roas-label { font-size:14px; color:rgba(255,255,255,0.85); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px; font-weight:600; }
+  .hero-roas-value { font-size:64px; font-weight:900; color:#fff; line-height:1; margin:10px 0; text-shadow:0 2px 8px rgba(0,0,0,0.2); }
+  .hero-roas-sub { font-size:16px; color:rgba(255,255,255,0.92); font-weight:500; }
+
+  /* v12-20: 금액 중심 Hero */
+  .hero-perf { text-align:center; padding:32px 20px; background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 50%,#8b5cf6 100%); border-radius:14px; margin-bottom:18px; box-shadow:0 10px 30px rgba(14,165,233,0.15); }
+  .hero-label { font-size:17px; letter-spacing:3px; color:rgba(255,255,255,0.9); text-transform:uppercase; margin-bottom:18px; font-weight:700; }
+  .hero-amounts { display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px; flex-wrap:wrap; }
+  .hero-amount-block { min-width:140px; }
+  .hero-amount-value { font-size:40px; font-weight:900; color:#fff; line-height:1.1; text-shadow:0 2px 8px rgba(0,0,0,0.2); }
+  .hero-amount-label { font-size:17px; color:rgba(255,255,255,0.85); margin-top:6px; font-weight:500; }
+  .hero-sep { font-size:28px; color:rgba(255,255,255,0.75); font-weight:300; }
+  .hero-roas-small { font-size:20px; color:rgba(255,255,255,0.95); font-weight:500; margin-top:6px; }
+  .hero-roas-small strong { color:#fff; font-weight:900; font-size:24px; }
+
+  .overview { background: linear-gradient(135deg,#1e293b,#0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+  .overview::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg,#34d399,#03C75A); }
+  .overview-label { font-size:14px; color: #34d399; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
+  .overview-headline { font-size:19px; color: #f1f5f9; font-weight: 700; line-height: 1.7; margin-bottom: 8px; }
+  .overview-body { font-size:16px; color: #cbd5e1; line-height: 1.8; }
+  .overview-body strong { color: #f1f5f9; }
+
+  .compare-box { background: #0b1120; border: 1px solid #334155; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .compare-label { font-size:13px; color: #64748b; line-height: 1.5; white-space: nowrap; }
+  .compare-label strong { color: #cbd5e1; display: block; font-size:14px; font-weight: 700; }
+  .compare-items { display: flex; flex-wrap: wrap; gap: 14px; font-size:14px; }
+  .compare-item { color: #94a3b8; display: inline-flex; align-items: center; gap: 6px; }
+  .compare-item strong { color: #cbd5e1; font-weight: 600; }
+  .delta { font-weight: 700; font-size:13px; white-space: nowrap; }
+  .delta.bad { color: #f87171; }
+  .delta.good { color: #34d399; }
+  .delta.neutral { color: #94a3b8; }
+
+  .kpi-group-title { font-size:17px; color: #cbd5e1; font-weight: 700; letter-spacing: 0.5px; margin: 18px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #1e293b; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
+  .kpi, .kpi-card { text-align: center; padding: 14px 8px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; }
+  .kpi.accent, .kpi-card.accent { background: linear-gradient(135deg,#172554,#1e293b); border: 1px solid #3b82f6; }
+  .kpi.highlight, .kpi-card.highlight { background: linear-gradient(135deg,#14532d,#1e293b); border: 2px solid #34d399; }
+  .kpi-value { font-size:24px; font-weight: 900; color: #f1f5f9; }
+  .kpi.accent .kpi-value { color: #93c5fd; }
+  .kpi.highlight .kpi-value, .kpi-card.highlight .kpi-value { color: #34d399; font-size: 22px; }
+  .kpi-label { font-size:14px; color: #64748b; margin-top: 4px; }
+  .kpi-delta { font-size:13px; margin-top: 6px; font-weight: 700; }
+  .kpi-delta.bad { color: #f87171; }
+  .kpi-delta.good { color: #34d399; }
+  .kpi-delta.neutral { color: #94a3b8; }
+
+  .sales-ref { background: #0b1120; border: 1px dashed #334155; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .sales-ref-label { font-size:13px; color: #64748b; line-height: 1.5; }
+  .sales-ref-label strong { color: #cbd5e1; display: block; font-size:16px; }
+  .sales-ref-items { display: flex; gap: 20px; flex-wrap: wrap; font-size:16px; color: #94a3b8; }
+  .sales-ref-items strong { color: #cbd5e1; font-weight: 700; font-size:16px; }
+  .ref-badge { background: #334155; color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+
+  .glossary { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size:14px; color: #94a3b8; line-height: 1.8; }
+  .glossary strong { color: #cbd5e1; }
+
+  .section { margin-top: 22px; }
+  .section-title { font-size:19px; font-weight: 700; color: #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #334155; }
+  .section-title .dot { width: 4px; height: 16px; border-radius: 2px; }
+  .section-title.campaign .dot { background: #60a5fa; }
+  .section-title.alert .dot { background: #fbbf24; }
+  .section-title.ai .dot { background: #a78bfa; }
+  .section-title.issue .dot { background: #22d3ee; }
+
+  table { width: 100%; border-collapse: collapse; font-size:14px; }
+  thead tr { background: #0b1120; color: #cbd5e1; }
+  thead th { padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 1px solid #334155; font-size:14px; }
+  thead th.num { text-align: right; }
+  tbody td { padding: 10px 8px; border-bottom: 1px solid #1e293b; vertical-align: top; color: #cbd5e1; font-size:14px; }
+  tbody td.num { text-align: right; }
+  tbody td.roas { font-weight: 700; }
+  tbody tr:hover { background: #1e293b; }
+  .camp-name { font-weight: 700; color: #f1f5f9; }
+  .camp-sub { font-size: 10px; color: #64748b; margin-top: 1px; }
+
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size:13px; font-weight: 600; white-space: nowrap; }
+  .tag.normal { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .tag.watch { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .tag.cs-check { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+
+  details { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 0; margin-bottom: 8px; overflow: hidden; }
+  details[open] { background: #0f172a; border-color: #60a5fa; }
+  summary { padding: 14px 18px; cursor: pointer; font-size:17px; font-weight: 600; color: #f1f5f9; display: flex; align-items: center; justify-content: space-between; list-style: none; gap: 10px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '▾'; font-size:14px; color: #64748b; transition: transform 0.2s; flex-shrink: 0; }
+  details[open] summary::after { transform: rotate(180deg); color: #60a5fa; }
+
+  .ai-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .ai-card h4 { font-size:19px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .ai-card .stage-tag { background: rgba(167,139,250,0.2); color: #a78bfa; padding: 3px 10px; border-radius: 4px; font-size:13px; font-weight: 700; border: 1px solid rgba(167,139,250,0.3); }
+  .ai-card .role { font-size:14px; color: #94a3b8; margin-bottom: 12px; }
+  .ai-card .opinion { font-size:16px; color: #cbd5e1; line-height: 1.9; white-space: pre-wrap; }
+  .ai-card .confidence { margin-top: 10px; font-size:14px; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+  .confidence-bar { display: inline-block; width: 60px; height: 6px; background: #0b1120; border-radius: 3px; overflow: hidden; border: 1px solid #334155; }
+  .confidence-bar span { display: block; height: 100%; background: linear-gradient(90deg, #a78bfa, #c4b5fd); }
+
+  .issue-card { background: linear-gradient(135deg,#082f49,#0c4a6e); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .issue-card h4 { font-size:17px; font-weight: 700; color: #67e8f9; margin-bottom: 8px; }
+  .issue-levels { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .level-tag { font-size:13px; padding: 3px 10px; border-radius: 4px; font-weight: 600; }
+  .level-tag.l1 { background: rgba(167,139,250,0.2); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.3); }
+  .level-tag.l2 { background: rgba(251,146,60,0.2); color: #fdba74; border: 1px solid rgba(251,146,60,0.3); }
+  .level-tag.l3 { background: rgba(96,165,250,0.2); color: #93c5fd; border: 1px solid rgba(96,165,250,0.3); }
+  .issue-body { font-size:16px; color: #cbd5e1; line-height: 1.9; }
+  .issue-body strong { color: #67e8f9; }
+
+  .empty-state { text-align:center; padding:60px 20px; background:#0b1120; border-radius:10px; border:1px dashed #334155; }
+  .empty-state .emoji { font-size:40px; margin-bottom:12px; }
+  .empty-state h3 { color:#f1f5f9; margin-bottom:10px; font-weight:700; }
+  .empty-state p { color:#94a3b8; font-size:16px; line-height:1.7; }
+  .camp-list { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .camp-item { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px 14px; }
+  .camp-item-type { font-size:10px; color:#60a5fa; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+  .camp-item-name { font-size:16px; color:#f1f5f9; font-weight:600; margin-bottom:4px; }
+  .camp-item-budget { font-size:13px; color:#94a3b8; }
+
+  .footer { text-align: center; padding: 16px; background: #020617; border-top: 1px solid #1e293b; }
+  .footer-title { font-size:14px; color: #94a3b8; font-weight: 600; }
+  .footer-sub { font-size:13px; color: #475569; margin-top: 2px; }
+
+  a { color: #60a5fa; text-decoration: none; font-weight: 700; }
+  a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .body { padding: 20px; }
+    .header { padding: 20px; flex-direction: column; align-items: flex-start; }
+    .compare-box { grid-template-columns: 1fr; gap: 10px; }
+    .camp-list { grid-template-columns: 1fr; }
+    .hero-roas-value { font-size: 48px; }
+    .tab-btn { padding: 10px 12px; font-size:14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="naver-logo">NAVER</div>
+    <div class="title-area">
+      <div class="agency">하나사인몰 AI 광고 에이전트</div>
+      <div class="title">하나사인몰 네이버 광고 통합 보고서</div>
+      <div class="subtitle">2026-05-24(일요일) 데이터 기준 · 어제 집계분 · 소재 1,120개 분석</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <!-- 탭 바 -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('tab-summary',this)">📊 요약</button>
+      <button class="tab-btn" onclick="switchTab('tab-store',this)">🛍️ 스마트스토어</button>
+      <button class="tab-btn" onclick="switchTab('tab-self',this)">🌐 자사몰</button>
+    </div>
+
+    <!-- ========== 탭 1: 요약 ========== -->
+    <div id="tab-summary" class="tab-panel active">
+
+      <!-- v12-20 Hero: 금액 중심 + ROAS 보조 -->
+      <div class="hero-perf">
+        <div class="hero-label">네이버 광고 통합 성과</div>
+        <div class="hero-amounts">
+          <div class="hero-amount-block">
+            <div class="hero-amount-value">458,305원</div>
+            <div class="hero-amount-label">광고비</div>
+          </div>
+          <div class="hero-sep">→</div>
+          <div class="hero-amount-block">
+            <div class="hero-amount-value">253,000원</div>
+            <div class="hero-amount-label">기여 매출</div>
+          </div>
+        </div>
+        <div class="hero-roas-small">통합 ROAS <strong>55.2%</strong> · 쇼핑검색광고 + ADVoost 합산</div>
+      </div>
+
+      <!-- 채널별 메인 KPI 3카드 -->
+      <div class="kpi-group-title">🎯 채널별 메인 KPI</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi-card "><div class="kpi-value">55.2%</div><div class="kpi-label">🛍️ 쇼핑검색광고 (A계정)</div><div class="kpi-sub" style="font-size:10px;color:#94a3b8;margin-top:4px">비용 458,305원 · 매출 253,000원</div></div><div class="kpi-card "><div class="kpi-value">0.0%</div><div class="kpi-label">🎯 ADVoost 쇼핑</div><div class="kpi-sub" style="font-size:10px;color:#94a3b8;margin-top:4px">데이터 미수집 (사용자 엑셀 투입 대기)</div></div><div class="kpi-card highlight"><div class="kpi-value">55.2%</div><div class="kpi-label">🌐 통합 (두 채널)</div><div class="kpi-sub" style="font-size:10px;color:#94a3b8;margin-top:4px">비용 458,305원 · 매출 253,000원</div></div></div>
+
+      <!-- 오버뷰 헤드라인 -->
+      <div class="overview">
+        <div class="overview-label">오늘의 종합 결과</div>
+        <div class="overview-headline">
+          통합 광고비 458,305원 · 통합 <span style="color:#34d399">ROAS 55.2%</span> · 전 채널 합계 253,000원
+        </div>
+        <div class="overview-body">주말 운영 수준입니다. 네이버 검색광고로 유입된 스마트스토어 결제 253,000원(5건). 스마트스토어 전체 253,000원, 자사몰·쿠팡·G마켓 합계 0원, CS 매출 0원. 이상 항목 10건.</div>
+      </div>
+
+      <!-- 비교 박스 -->
+      <div class="compare-box">
+        <div class="compare-label"><strong>전일 대비</strong><span style="font-size:10px">(날짜 미확인)</span></div>
+        <div class="compare-items">
+        <span class="compare-item">광고비 <strong>458,305</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 매출 <strong>253,000</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 ROAS <strong>55.2%</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">CS 매출 <strong>0</strong> <span class="delta neutral">—</span></span>
+  </div>
+      </div>
+      <div class="compare-box">
+        <div class="compare-label"><strong>주간 평균</strong><span style="font-size:10px">(최근 5일)</span></div>
+        <div class="compare-items">
+        <span class="compare-item">광고비 <strong>458,305</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 매출 <strong>253,000</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">스마트스토어 광고 ROAS <strong>55.2%</strong> <span class="delta neutral">—</span></span>
+        <span class="compare-item">CS 매출 <strong>0</strong> <span class="delta neutral">—</span></span>
+  </div>
+      </div>
+
+      <!-- 채널별 매출 분포 -->
+      <div class="kpi-group-title">🏬 채널별 매출 분포 · 전체 온라인 그림</div>
+      <table style="margin-bottom:16px">
+        <thead>
+          <tr><th>채널</th><th class="num">매출</th><th class="num">건수</th><th class="num">평균 단가</th><th class="num">전일 대비</th><th>성격</th></tr>
+        </thead>
+        <tbody><tr><td><div class="camp-name">네이버 스마트스토어 (전체)</div><div class="camp-sub">광고 매출 + 자연 유입</div></td>
+      <td class="num">253,000원</td><td class="num">undefined건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag cs-check">광고+자연</span></td></tr><tr style="background:#0b1120">
+      <td style="padding-left:28px;color:#94a3b8"><div style="font-size:12px">ㄴ 광고 매출 (02 전환로그)</div></td>
+      <td class="num" style="color:#94a3b8">253,000원</td><td class="num" style="color:#94a3b8">5건</td><td class="num" style="color:#94a3b8">50,600원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag normal">확정</span></td></tr><tr style="background:#0b1120">
+      <td style="padding-left:28px;color:#94a3b8"><div style="font-size:12px">ㄴ 자연 매출 (브랜드 검색·SEO)</div></td>
+      <td class="num" style="color:#94a3b8">0원</td><td class="num" style="color:#94a3b8">0건</td><td class="num" style="color:#94a3b8">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">추정</span></td></tr><tr><td><div class="camp-name">자사몰 (hanasignmall.com)</div><div class="camp-sub">고도몰5 기반</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">B계정 연동중</span></td></tr><tr><td><div class="camp-name">자사몰 (hanasignmall.kr)</div><div class="camp-sub">신규몰</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">Google Ads 연동예정</span></td></tr><tr><td><div class="camp-name">쿠팡</div><div class="camp-sub">오픈마켓</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">쿠팡 애드 연동예정</span></td></tr><tr><td><div class="camp-name">G마켓</div><div class="camp-sub">오픈마켓</div></td>
+      <td class="num">0원</td><td class="num">0건</td><td class="num">0원</td>
+      <td class="num"><span class="delta neutral">—</span></td>
+      <td><span class="tag watch">ESM 연동예정</span></td></tr><tr style="background:#1e293b;font-weight:700">
+    <td><div class="camp-name">온라인 합계</div></td>
+    <td class="num">253,000원</td><td class="num">0건</td><td class="num">—</td>
+    <td class="num"><span class="delta neutral">—</span></td><td>—</td></tr></tbody>
+      </table>
+
+      <!-- CS 동반 지표 -->
+      <div class="kpi-group-title">📞 CS 동반 지표 · 전화·카톡·견적 유입</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi accent"><div class="kpi-value">0</div><div class="kpi-label">CS 매출 (원)</div><div class="kpi-delta neutral">—</div></div><div class="kpi accent"><div class="kpi-value">0</div><div class="kpi-label">CS 주문 건수</div><div class="kpi-delta neutral">—</div></div><div class="kpi accent"><div class="kpi-value">0</div><div class="kpi-label">CS 평균 단가 (원)</div><div class="kpi-delta neutral">—</div></div></div>
+
+      <!-- 영업 매출 -->
+      <div class="sales-ref">
+        <div class="sales-ref-label">
+          <strong>영업 매출 <span class="ref-badge">참조</span></strong>
+          <span>사인몰(영호) 수주 · 광고 무관</span>
+        </div>
+        <div class="sales-ref-items">
+        <span>당일 <strong>0원</strong> · 0건</span>
+        <span>전일 <strong>0원</strong> · 0건</span>
+        <span>주간 평균 <strong>0원</strong></span>
+  </div>
+      </div>
+
+      <!-- 이슈 맥락 -->
+      <div class="section">
+        <div class="section-title issue"><span class="dot"></span>🔍 현재 상황 맥락 · 보조 정보</div>
+        
+      <div class="issue-card">
+        <h4>현재 시점 맥락</h4>
+        <div class="issue-levels">
+          <span class="level-tag l1">업종·계절 요인</span>
+          <span class="level-tag l2">과거 패턴</span>
+        </div>
+        <div class="issue-body">
+          · <strong>업종·계절 요인</strong>: 사인물 업종은 신학기·새 학기·봄 행사 시즌과 5~6월 야외 현수막 수요 영향이 큼. 4월 중순은 신학기 마무리와 5~6월 사이 간극 시기.<br>
+          · <strong>과거 패턴</strong>: 평일 CS 매출 800~900만원, 광고 매출 280~350만원이 정상 범위.
+        </div>
+      </div>
+  
+      </div>
+
+      <!-- 용어 풀이 -->
+      <div class="glossary">
+        <strong>📘 용어</strong> &nbsp;·&nbsp;
+        <strong>통합 ROAS</strong>: 쇼핑검색광고 + ADVoost 쇼핑 합산 기여 매출 ÷ 합산 광고비 &nbsp;·&nbsp;
+        <strong>쇼핑검색광고</strong>: smartstore.naver.com/hanasign 상품 노출 광고 &nbsp;·&nbsp;
+        <strong>ADVoost 쇼핑</strong>: AI 자동 광고 상품 (디스플레이 배너) &nbsp;·&nbsp;
+        <strong>CS 매출</strong>: 전화·카톡·견적 유입 (영호 제외)
+      </div>
+    </div>
+
+    <!-- ========== 탭 2: 스마트스토어 (v13 — 3스토어 분리) ========== -->
+    <div id="tab-store" class="tab-panel">
+
+      <!-- 통합 KPI -->
+      <div class="kpi-group-title">🛍️ 스마트스토어 유입 통합 (쇼핑검색광고 + ADVoost)</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi "><div class="kpi-value">458,305원</div><div class="kpi-label">스마트스토어 유입 광고비</div></div><div class="kpi accent"><div class="kpi-value">253,000원</div><div class="kpi-label">스마트스토어 기여 매출</div></div><div class="kpi highlight"><div class="kpi-value">55.2%</div><div class="kpi-label">스마트스토어 통합 ROAS</div></div></div>
+
+      <!-- 🏠 하나사인몰 -->
+      <div class="section" style="border-left:3px solid #3b82f6;padding-left:14px">
+        <div class="section-title campaign"><span class="dot"></span>🏠 하나사인몰 (주력 스토어)</div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:12px"><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">340,788원</div><div class="kpi-label" style="font-size:11px">광고비</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">142,926</div><div class="kpi-label" style="font-size:11px">노출</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">257</div><div class="kpi-label" style="font-size:11px">클릭</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">4건</div><div class="kpi-label" style="font-size:11px">전환</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">225,000원</div><div class="kpi-label" style="font-size:11px">매출</div></div><div class="kpi-card" style="border-left:3px solid #f59e0b;"><div class="kpi-val" style="font-size:18px">66.0%</div><div class="kpi-label" style="font-size:11px">ROAS</div></div></div>
+        <div style="font-size:12px;color:#6ee7b7;margin:10px 0 6px;font-weight:600">💎 전환 상품 (매출 순 · 전체 노출)</div>
+        <table style="margin-bottom:12px">
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000282097722</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000282097722</div></td>
+      <td class="num">313</td>
+      <td class="num">2</td>
+      <td class="num">3,743원</td>
+      <td class="num">2건</td>
+      <td class="num">126,000원</td>
+      <td class="num"><span class="tag normal">3366%</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000282097721</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000282097721</div></td>
+      <td class="num">620</td>
+      <td class="num">3</td>
+      <td class="num">7,266원</td>
+      <td class="num">1건</td>
+      <td class="num">63,000원</td>
+      <td class="num"><span class="tag normal">867%</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000296118751</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000296118751</div></td>
+      <td class="num">626</td>
+      <td class="num">2</td>
+      <td class="num">3,892원</td>
+      <td class="num">1건</td>
+      <td class="num">36,000원</td>
+      <td class="num"><span class="tag normal">925%</span></td>
+    </tr></tbody>
+        </table>
+        <div style="font-size:12px;color:#94a3b8;margin:6px 0;font-weight:600">📊 비전환 광고비 TOP 10 (감사용)</div>
+        <table>
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000284215282</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284215282</div></td>
+      <td class="num">9,380</td>
+      <td class="num">25</td>
+      <td class="num">57,282원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000284214873</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214873</div></td>
+      <td class="num">29,840</td>
+      <td class="num">36</td>
+      <td class="num">54,305원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000284215314</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284215314</div></td>
+      <td class="num">2,207</td>
+      <td class="num">17</td>
+      <td class="num">29,546원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000284214583</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214583</div></td>
+      <td class="num">3,177</td>
+      <td class="num">13</td>
+      <td class="num">29,061원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000284214837</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284214837</div></td>
+      <td class="num">1,039</td>
+      <td class="num">10</td>
+      <td class="num">13,939원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000452110980</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000452110980</div></td>
+      <td class="num">521</td>
+      <td class="num">5</td>
+      <td class="num">10,812원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000460243960</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000460243960</div></td>
+      <td class="num">650</td>
+      <td class="num">5</td>
+      <td class="num">6,812원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000282086236</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000282086236</div></td>
+      <td class="num">184</td>
+      <td class="num">5</td>
+      <td class="num">6,160원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000284215287</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000284215287</div></td>
+      <td class="num">950</td>
+      <td class="num">4</td>
+      <td class="num">5,357원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000282097725</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000282097725</div></td>
+      <td class="num">442</td>
+      <td class="num">4</td>
+      <td class="num">5,337원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+
+      <!-- ⚠️ 더바른사인 -->
+      <div class="section" style="border-left:3px solid #f59e0b;padding-left:14px">
+        <div class="section-title campaign"><span class="dot"></span>⚠️ 더바른사인</div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:8px"><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">18,068원</div><div class="kpi-label" style="font-size:11px">광고비</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">18,064</div><div class="kpi-label" style="font-size:11px">노출</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">12</div><div class="kpi-label" style="font-size:11px">클릭</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">1건</div><div class="kpi-label" style="font-size:11px">전환</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">28,000원</div><div class="kpi-label" style="font-size:11px">매출</div></div><div class="kpi-card" style="border-left:3px solid #3b82f6;"><div class="kpi-val" style="font-size:18px">155.0%</div><div class="kpi-label" style="font-size:11px">ROAS</div></div></div>
+        
+        <div style="font-size:12px;color:#6ee7b7;margin:10px 0 6px;font-weight:600">💎 전환 상품 (매출 순)</div>
+        <table style="margin-bottom:12px">
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000311370622</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370622</div></td>
+      <td class="num">494</td>
+      <td class="num">5</td>
+      <td class="num">10,413원</td>
+      <td class="num">1건</td>
+      <td class="num">28,000원</td>
+      <td class="num"><span class="tag watch">269%</span></td>
+    </tr></tbody>
+        </table>
+        <div style="font-size:12px;color:#94a3b8;margin:6px 0;font-weight:600">📊 광고비 TOP (비효율 감사)</div>
+        <table>
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000495009098</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000495009098</div></td>
+      <td class="num">5,181</td>
+      <td class="num">2</td>
+      <td class="num">3,292원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000450397370</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000450397370</div></td>
+      <td class="num">165</td>
+      <td class="num">1</td>
+      <td class="num">1,694원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000495009096</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000495009096</div></td>
+      <td class="num">4,933</td>
+      <td class="num">1</td>
+      <td class="num">1,287원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000495009095</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000495009095</div></td>
+      <td class="num">5,257</td>
+      <td class="num">1</td>
+      <td class="num">1,029원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000282659730</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000282659730</div></td>
+      <td class="num">106</td>
+      <td class="num">1</td>
+      <td class="num">196원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000311370220</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000311370220</div></td>
+      <td class="num">4</td>
+      <td class="num">1</td>
+      <td class="num">157원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+
+      <!-- 🚀 로켓출력공장 -->
+      <div class="section" style="border-left:3px solid #a855f7;padding-left:14px">
+        <div class="section-title campaign"><span class="dot"></span>🚀 로켓출력공장</div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr);margin-bottom:12px"><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">99,449원</div><div class="kpi-label" style="font-size:11px">광고비</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">27,823</div><div class="kpi-label" style="font-size:11px">노출</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">68</div><div class="kpi-label" style="font-size:11px">클릭</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">0건</div><div class="kpi-label" style="font-size:11px">전환</div></div><div class="kpi-card" style=""><div class="kpi-val" style="font-size:18px">0원</div><div class="kpi-label" style="font-size:11px">매출</div></div><div class="kpi-card" style="border-left:3px solid #f59e0b;"><div class="kpi-val" style="font-size:18px">0.0%</div><div class="kpi-label" style="font-size:11px">ROAS</div></div></div>
+        <div style="font-size:12px;color:#6ee7b7;margin:10px 0 6px;font-weight:600">💎 전환 상품 (매출 순)</div>
+        <table style="margin-bottom:12px">
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr><td colspan="7" style="text-align:center;color:#94a3b8;padding:12px">전환 상품 없음</td></tr></tbody>
+        </table>
+        <div style="font-size:12px;color:#94a3b8;margin:6px 0;font-weight:600">📊 광고비 TOP</div>
+        <table>
+          <thead><tr><th>상품</th><th class="num">노출</th><th class="num">클릭</th><th class="num">광고비</th><th class="num">전환</th><th class="num">매출</th><th class="num">ROAS</th></tr></thead>
+          <tbody><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217316</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217316</div></td>
+      <td class="num">4,455</td>
+      <td class="num">20</td>
+      <td class="num">30,972원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217302</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217302</div></td>
+      <td class="num">1,894</td>
+      <td class="num">17</td>
+      <td class="num">26,792원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217309</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217309</div></td>
+      <td class="num">3,167</td>
+      <td class="num">11</td>
+      <td class="num">14,452원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217314</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217314</div></td>
+      <td class="num">4,066</td>
+      <td class="num">8</td>
+      <td class="num">11,073원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217301</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217301</div></td>
+      <td class="num">1,292</td>
+      <td class="num">6</td>
+      <td class="num">8,070원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217312</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217312</div></td>
+      <td class="num">3,649</td>
+      <td class="num">3</td>
+      <td class="num">4,238원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217313</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217313</div></td>
+      <td class="num">3,676</td>
+      <td class="num">2</td>
+      <td class="num">2,433원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr><tr>
+      <td><div class="camp-name" style="max-width:380px;overflow:hidden;text-overflow:ellipsis">nad-a001-02-000000490217311</div><div style="font-size:10px;color:#64748b">nad-a001-02-000000490217311</div></td>
+      <td class="num">3,805</td>
+      <td class="num">1</td>
+      <td class="num">1,419원</td>
+      <td class="num">0건</td>
+      <td class="num">0원</td>
+      <td class="num"><span class="tag cs-check">—</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+
+      <!-- ADVoost 성과 유지 -->
+      <div class="kpi-group-title">🎯 ADVoost 쇼핑 성과 (AI 자동광고)</div>
+      <div class="kpi-grid" style="grid-template-columns:repeat(5,1fr)"><div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">노출</div></div><div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">클릭</div></div><div class="kpi"><div class="kpi-value">0원</div><div class="kpi-label">비용</div></div><div class="kpi"><div class="kpi-value">0건</div><div class="kpi-label">전환</div></div><div class="kpi"><div class="kpi-value">0원</div><div class="kpi-label">매출 (역산)</div></div></div>
+
+      <!-- 관찰 항목 -->
+      <div class="section">
+        <div class="section-title alert"><span class="dot"></span>📌 관찰 항목 · 즉시 조치 필요 여부 판단</div>
+        
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000282128903</strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 111회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 111 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000039919025" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000282128903</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000284214583</strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 29,061원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 29,061원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214583</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000284215282</strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 57,282원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 57,282원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284215282</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000284214837</strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 13,939원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 13,939원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214837</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000284215314</strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 29,546원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 29,546원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284215314</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000282087091</strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 143회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 143 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000039918237" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000282087091</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000284214868</strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 311회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 311 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000284214868</div>
+        </div>
+      </details>
+      <details  style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000311370114</strong><br><span style="font-size:12px;color:#94a3b8">노출되는데 클릭이 없음</span></span>
+          <span style="padding:4px 10px;background:#f59e0b;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">관찰 권장</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>노출 137회인데 클릭 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 노출 137 / 클릭 0 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000039992117" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000311370114</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000490217316</strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 30,972원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 30,972원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000490217316</div>
+        </div>
+      </details>
+      <details open style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;margin-bottom:8px">
+        <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <span style="flex:1"><strong>nad-a001-02-000000490217314</strong><br><span style="font-size:12px;color:#94a3b8">광고비만 나가고 매출 0</span></span>
+          <span style="padding:4px 10px;background:#ef4444;color:#fff;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">즉시 확인 필요</span>
+        </summary>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:13px;color:#cbd5e1;line-height:1.7">
+          <div style="margin-bottom:6px"><strong style="color:#f1f5f9">무엇이 일어났나요?</strong><br>비용 11,073원 소진, 구매전환 0건</div>
+          <div style="margin-bottom:6px;font-size:12px;color:#94a3b8">📊 현재: 비용 11,073원 / 전환 0건 · 전일: - · 변동: -</div>
+          
+          <div style="margin-top:10px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div>
+          <div style="margin-top:8px;font-size:10px;color:#64748b">상품ID: nad-a001-02-000000490217314</div>
+        </div>
+      </details>
+      </div>
+
+      <!-- AI 4단계 -->
+      <div class="section">
+        <div class="section-title ai"><span class="dot"></span>🤖 AI 의견 · 4단계 순차 검증</div>
+        <div class="ai-card"><h4>1단계. 데이터 분석 <span class="stage-tag">현황 파악</span></h4><div class="role">숫자에서 이상 신호를 찾는 역할</div><div class="opinion">이상 탐지 53건 중 심각도 '상' 10건(COST-NO-CONV)과 '중' 43건(노출 0클릭)으로 양극화. 가장 중요한 점은 **온라인 전환 0 ≠ 매출 0**이라는 사인물 업종 특성. 심각도 상 10건 모두 CS 매출 시트 확인이 최우선. 진행자가 '영호'면 영업 매출로 광고 무관, 그 외(사인몰/하나몰)면 광고 관련 CS 전환임. 심각도 중 43건은 노출 수는 충분(107~3205회)하나 클릭 0인 상태. 이는 (1)소재 썸네일/카피 부적절, (2)키워드 타겟 미스매치, (3)경쟁사 입찰가 밀려남 등이 원인. 단, 이들 중 다수도 CS 경로 카톡/전화 주문 가능성 있음. **권장**: (A) 즉시 구매전환매출 시트 전체 검토, (B) CS 매출 확인되면 현재 소재 유지, (C) CS 매출 0이면 소재/키워드 재검토 또는 입찰 10~20% 조정 검토. 동일 방향 연속 조정 전 사람 승인 필수.</div><details style="margin-top:10px"><summary style="cursor:pointer;color:#a78bfa;font-size:12px;padding:4px 0">▼ 상세 10건 펼치기</summary><div style="margin-top:8px"><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214583 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 온라인 전환 0이지만 CS/전화 매출 여부 확인 필요 (사인물 업종 특성상 카톡/전화 주문 비중 높음) / 소재 자체 부적절 또는 타겟 키워드 미스매치로 인한 클릭부족</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: CS 매출 시트 확인 (진행자명 확인). 온라인 전환 0이어도 영업 매출 있으면 소재 OFF 금지</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284215282 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 57,282원 소진에 비해 높은 비용 대비 클릭 부족 또는 낮은 전환율 / CS 매출 존재 가능성. 매출 시트 확인 필수</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.55</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 구매전환매출 컬럼 확인. 비용 대비 광고 노출/클릭 추가 데이터 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214873 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 54,305원 누적 비용으로 가장 큰 손실. CS 매출 여부 즉시 확인 필요 / 입찰가 과다 또는 키워드 정확성 문제 가능성</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.55</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 영업 매출(진행자 '영호') 또는 구매전환매출 확인. 있으면 유지, 없으면 재검토</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217316 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 30,972원 비용 소진, 온라인 전환 0. CS 경로 매출 여부 확인 필수 / 사인물 특성상 고객이 카탈로그 확인 후 직접 문의하는 경향</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: CS 시트의 구매전환매출 및 진행자 확인</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214837 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 140원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 13,939원 소진, 온라인 전환 0. 상대적으로 낮은 비용이지만 0 전환은 부정적 신호 / 신규 상품(런칭 7일 이내 가능) 또는 학습 부족 상태일 가능성</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.65</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 상품 런칭일 확인. 신규면 학습 기간 추가 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284215314 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 29,546원 비용으로 온라인 전환 없음. CS 매출 여부 미확인 / 키워드 또는 소재의 관련성 부족 가능성</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 구매전환매출 시트 확인</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217314 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 11,073원 소진, 0 전환. 비용 규모는 중간이나 효율 부족 / CS 매출 존재 가능성 높음</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.65</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 구매전환매출 확인</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000452110980 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 10,812원 비용으로 0 전환. 상대적 낮은 비용이지만 효율 부족 / 키워드 부정확 또는 대상층 미스매치 가능성</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.65</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: CS 매출 확인. 없으면 키워드 재검토</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000059429450" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217309 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 14,452원 소진, 0 전환. CS 경로 매출 여부 확인 필수 / 신규 상품 가능성 또는 시장 수요 부족</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 구매전환매출 및 상품 런칭일 확인</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217302 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span> <span style="background:#374151;color:#a78bfa;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">광고비만 나가고 매출 0</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">왜 그런가요?</strong>: 26,792원 비용 소진, 0 전환. CS 매출 존재 가능성 / 중상 수준 비용에 효율 0은 재평가 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">더 봐야 할 것</strong>: 구매전환매출 시트 확인. 없으면 입찰 재조정 또는 소재 개선</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div></div></details><div class="confidence">자신감 <span class="confidence-bar"><span style="width:90%"></span></span> 90%</div></div><div class="ai-card"><h4>2단계. 개선 제안 <span class="stage-tag">조치안 도출</span></h4><div class="role">어떻게 고치면 좋을지 안을 만드는 역할</div><div class="opinion"></div><div style="margin-top:10px;font-size:12px"><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">총 예상절감</strong>: 일 약 800-1200원</span><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">총 변경건수</strong>: 2</span></div><details style="margin-top:10px"><summary style="cursor:pointer;color:#a78bfa;font-size:12px;padding:4px 0">▼ 상세 10건 펼치기</summary><div style="margin-top:8px"><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214583 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 1주 관찰 후 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 130</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 현재 입찰가 130원으로 이미 최저 수준. CS 경유 전환 가능성 높아 성급한 조정 위험</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 정확한 ROAS 산정 가능</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.8</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284215282 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 1주 관찰 후 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 130</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 57,282원 비용 대비 130원 입찰가는 적정 수준. CS 매출 여부 확인 필수</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 존재시 ROAS 개선, 미존재시 추가 조치 검토</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.75</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214873 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 입찰가 130원 → 100원 (-23.1%)</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 130</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">👉 변경할 입찰가</strong>: 100</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 54,305원으로 최대 손실 상품. CS 매출 확인과 병행하여 비용 절감 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 일 광고비 약 15-20% 절감, 노출량 소폭 감소 예상 <span style="color:#6ee7b7;font-weight:700">→ 100원</span> <span style="color:#64748b;font-size:10px">(현재 130원 기준)</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: true</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.7</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217316 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 1주 관찰 후 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 120</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 30,972원 비용, 120원 입찰가로 적정 수준. 사인물 특성상 CS 경유 주문 가능성</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 정확한 효율 판단 가능</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.8</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214837 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 140원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 입찰가 140원 → 110원 (-21.4%)</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 140</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">👉 변경할 입찰가</strong>: 110</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 13,939원 비용으로 상대적 적지만 신규 상품 가능성 고려하여 보수적 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 학습 기간 유지하며 비용 10-15% 절감 <span style="color:#6ee7b7;font-weight:700">→ 120원</span> <span style="color:#64748b;font-size:10px">(현재 140원 기준)</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: true</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.72</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284215314 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 1주 관찰 후 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 130</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 29,546원 비용에 130원 입찰가는 적정. CS 매출 여부 우선 확인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 키워드 관련성 재검토</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.75</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217314 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 1주 관찰 후 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">현재 입찰가</strong>: 120</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 11,073원 비용에 120원 입찰가로 적정. CS 경유 매출 가능성 높음</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 확인 후 정확한 효율 측정</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.8</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000452110980 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 키워드 재검토 및 CS 매출 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 10,812원 비용으로 비교적 적지만 키워드 부정확 가능성. 입찰가 정보 부족</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 키워드 정확성 개선 후 클릭률 향상</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000059429450" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217309 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: 상품 런칭일 확인 및 1주 관찰</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 14,452원 비용에 신규 상품 가능성. 학습 기간 고려 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: 신규 상품이면 추가 학습 기간 부여</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.65</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217302 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">할 일</strong>: CS 매출 확인 후 소재 개선 검토</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">근거</strong>: 26,792원 중상급 비용에 0 전환. CS 매출 없으면 소재 품질 문제 가능성</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">기대 효과</strong>: CS 매출 미확인시 소재 교체로 전환율 개선</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">승인필요</strong>: false</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.7</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div></div></details><div class="confidence">자신감 <span class="confidence-bar"><span style="width:85%"></span></span> 85%</div></div><div class="ai-card"><h4>3단계. 반박 검토 <span class="stage-tag">제안 재검증</span></h4><div class="role">2단계 제안이 정말 맞는지 반대 입장에서 다시 따져보는 역할</div><div class="opinion">AI 응답이 제한 토큰 안에 완성되지 않아 이번 실행에서는 이 단계를 건너뜁니다. 다음 자동 실행 결과 또는 수동 재실행 결과를 확인해 주세요.</div><div class="confidence">자신감 <span class="confidence-bar"><span style="width:82%"></span></span> 82%</div></div><div class="ai-card"><h4>4단계. 최종 판정 <span class="stage-tag">실행 분류</span></h4><div class="role">모든 의견 모아 최종 결정하는 역할</div><div class="opinion"></div><div style="margin-top:10px;font-size:12px"><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">자동실행 가능</strong>: 0</span><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">사람 승인 필요</strong>: 5</span><span style="display:inline-block;margin-right:14px;padding:2px 8px;background:#334155;border-radius:3px"><strong style="color:#a78bfa">보류</strong>: 5</span></div><details style="margin-top:10px"><summary style="cursor:pointer;color:#a78bfa;font-size:12px;padding:4px 0">▼ 상세 10건 펼치기</summary><div style="margin-top:8px"><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214583 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 130원 → 90원 (-30.8%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 30% 인하 한계 적용, 최소 입찰가 70원 이상 확인</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.65</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 29,061원 손실에도 불구하고 CS 매출 확인 없이는 신뢰도 0.7 미만. 사인물 업종 특성상 카톡/전화 주문 가능성 있어 성급한 조치 위험</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179742" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284215282 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 130원 → 100원 (-23.1%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 30% 인하 한계 내, 최소 입찰가 기준 충족</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.72</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 57,282원으로 최대 손실 상품. 10% 초과 변경이므로 승인 필요하나, CS 매출 미확인 상태에서 리스크 존재</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214873 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 130원 → 100원 (-23.1%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 30% 인하 한계 내, 승인 필요 기준 적용</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.75</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 54,305원 최대 손실에 10% 초과 변경. 비평 의견 반영하여 키워드/소재 재검토 병행 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179754" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217316 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 120원 → 100원 (-16.7%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 10% 초과 변경으로 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.73</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 30,972원 손실에 신뢰도 0.7 이상이나, CS 매출 미확인 상태에서 10% 초과 변경은 승인 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284214837 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 140원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 140원 → 110원 (-21.4%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 30% 인하 한계 내, 승인 필요 기준 적용</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.72</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신규 상품 가능성과 13,939원 손실을 고려한 보수적 조치. 10% 초과 변경으로 승인 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179753" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000284215314 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 130원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 130원 → 110원 (-15.4%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 10% 초과 변경으로 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.71</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 29,546원 손실에 비평 의견 반영하여 즉시 조치. 키워드 관련성 재검토 병행 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000040179777" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217314 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 120원 → 100원 (-16.7%) 인하</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 10% 초과 변경으로 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.74</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 사람 승인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신뢰도 0.7 이상이나 CS 매출 미확인 상태에서 10% 초과 변경은 승인 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000452110980 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 150원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 정보 확인 후 판단 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 입찰가 데이터 부족으로 규칙 적용 불가</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.6</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 입찰가 정보 부족으로 정확한 조치 불가. 신뢰도 0.7 미만으로 사람 판단 필요</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000059429450" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217309 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 런칭일 확인 후 조건부 조치</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 신규 상품 여부에 따른 조건부 적용</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.65</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 신규 상품(런칭 7일 이내) 여부 확인 필요. 신뢰도 0.7 미만으로 성급한 조치 위험</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div><div style="padding:10px 12px;background:#0b1120;border:1px solid #334155;border-radius:8px;margin:6px 0"><div style="font-weight:700;font-size:13px;color:#f1f5f9">nad-a001-02-000000490217302 <span style="background:#064e3b;color:#6ee7b7;padding:2px 6px;border-radius:3px;font-size:10px;margin-left:6px">현재 입찰가 120원</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">최종조치</strong>: 입찰가 정보 확인 후 10-15% 인하 <span style="color:#6ee7b7;font-weight:700">→ 100원</span> <span style="color:#64748b;font-size:10px">(현재 120원 기준)</span></div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">규칙검증</strong>: 입찰가 정보 확인 필요</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">AI 확신</strong>: 0.68</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">결정</strong>: 보류</div><div style="margin:3px 0;font-size:12px;color:#cbd5e1"><strong style="color:#94a3b8">이유</strong>: 26,792원 손실에도 불구하고 입찰가 정보 부족. CS 매출 확인과 병행 필요하나 신뢰도 0.7 미만</div><div style="margin-top:8px"><a href="https://ads.naver.com/manage/ad-accounts/1872088/sa/adgroups/grp-a001-02-000000064035299" target="_blank" style="display:inline-block;padding:6px 12px;margin-right:6px;background:#5b47e0;color:#fff;text-decoration:none;border-radius:5px;font-size:11px;font-weight:700">📊 해당 광고그룹 보기</a></div></div></div></details><div class="confidence">자신감 <span class="confidence-bar"><span style="width:88%"></span></span> 88%</div></div>
+      </div>
+    </div>
+
+    <!-- ========== 탭 3: 자사몰 ========== -->
+    <div id="tab-self" class="tab-panel">
+      <div class="empty-state" style="padding:30px 20px">
+        <div class="emoji">🌐</div>
+        <h3>자사몰 (B계정) 데이터 수집 준비 중</h3>
+        <p>
+          네이버 광고 B계정 <strong style="color:#60a5fa">CUSTOMER_ID 1558945</strong> · 캠페인 9개<br>
+          stat report 수집 경로 구축 중 — 다음 자동 실행분부터 실데이터 반영 예정
+        </p>
+      </div>
+
+      <!-- 🏠 하나사인몰.com 섹션 -->
+      <div class="section">
+        <div class="section-title campaign"><span class="dot"></span>🏠 하나사인몰.com · 고도몰 (메인)</div>
+        <p style="font-size:13px;color:#64748b;margin-bottom:10px">파워링크 + 쇼핑검색광고 + 브랜드검색 집행 중 · 월 예산 약 11,700,000원</p>
+        <div class="camp-list">
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">001 파워링크</div><div class="camp-item-budget">일 270,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">●[파워/광고]주력상품</div><div class="camp-item-budget">일 20,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">파워링크_하나사인몰/주말</div><div class="camp-item-budget">일 20,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">■[파워/광고]서브상품</div><div class="camp-item-budget">일 20,000원 · PAUSED</div></div>
+          <div class="camp-item"><div class="camp-item-type">쇼핑검색</div><div class="camp-item-name">검색광고</div><div class="camp-item-budget">일 70원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">쇼핑검색</div><div class="camp-item-name">요일제</div><div class="camp-item-budget">일 80,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">브랜드검색</div><div class="camp-item-name">하나사인몰 브랜드</div><div class="camp-item-budget">정지 상태</div></div>
+        </div>
+      </div>
+
+      <!-- 🆕 하나사인몰.kr 섹션 -->
+      <div class="section">
+        <div class="section-title campaign" style="border-color:rgba(251,191,36,0.3)"><span class="dot" style="background:#fbbf24"></span>🆕 하나사인몰.kr · 신규몰</div>
+        <p style="font-size:13px;color:#64748b;margin-bottom:10px">신규몰 전용 캠페인 2개 · 일 예산 합계 150,000원</p>
+        <div class="camp-list">
+          <div class="camp-item"><div class="camp-item-type">파워링크</div><div class="camp-item-name">002 신규몰 파워링크</div><div class="camp-item-budget">일 100,000원 · ELIGIBLE</div></div>
+          <div class="camp-item"><div class="camp-item-type">쇼핑검색</div><div class="camp-item-name">신규몰 검색상품노출</div><div class="camp-item-budget">일 50,000원 · ELIGIBLE</div></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="footer">
+    <div class="footer-title">하나사인몰 AI 광고 에이전트</div>
+    <div class="footer-sub">1단계 데이터 분석 → 2단계 개선 제안 → 3단계 반박 검토 → 4단계 최종 판정</div>
+  </div>
+</div>
+
+<script>
+function switchTab(id, el){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  if(el) el.classList.add('active');
+  var t = document.getElementById(id); if(t) t.classList.add('active');
+}
+</script>
+</body>
+</html>
