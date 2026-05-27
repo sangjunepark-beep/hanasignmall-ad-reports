@@ -1,8 +1,11 @@
-name: Daily CEO Report (10:00 KST)
+name: Daily CEO Report (target 08:00 KST)
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    # 03:17 KST (18:17 UTC 전일) 시작 의도
+    # GitHub Actions schedule이 최근 ~4h 지연되는 패턴 → 실측 ~07:17 KST 실행 예상
+    # 비정시(:17)로 잡아 정시 큐 지연 회피
+    - cron: '17 18 * * *'
   workflow_dispatch:
 
 permissions:
