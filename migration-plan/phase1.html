@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phase 1 실행 계획 — 매출 영향 최소 광고 5개</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg:#0a0e1a; --bg-2:#131a2b; --bg-3:#1a2238;
+    --border:#2d3a58; --text:#f1f5f9; --text-muted:#94a3b8; --text-dim:#64748b;
+    --green:#03c75a; --green-bg:rgba(3,199,90,0.12); --green-dim:#028a3f;
+    --orange:#fb923c; --orange-bg:rgba(251,146,60,0.1);
+    --red:#ef4444; --red-bg:rgba(239,68,68,0.1);
+    --gold:#facc15; --gold-bg:rgba(250,204,21,0.1);
+    --blue:#60a5fa; --blue-bg:rgba(96,165,250,0.1);
+  }
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--text);
+    font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .container{max-width:1200px;margin:0 auto;padding:48px 24px 80px}
+  .back{display:inline-block;color:var(--text-muted);text-decoration:none;font-size:13px;margin-bottom:18px}
+  .back:hover{color:var(--blue)}
+  h1{font-size:32px;font-weight:800;margin:0 0 10px;letter-spacing:-1px;line-height:1.25}
+  .sub{color:var(--text-muted);font-size:16px}
+  .meta{color:var(--text-dim);font-size:13px;margin-top:12px}
+  .divider{margin:32px 0;height:1px;background:var(--border)}
+  
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0}
+  .sb{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+  .sb-label{font-size:12px;color:var(--text-dim);font-weight:600;margin-bottom:6px}
+  .sb-val{font-size:24px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums}
+  .sb-sub{font-size:12px;color:var(--text-muted);margin-top:4px}
+  .sb.green .sb-val{color:#86efac}
+  .sb.gold .sb-val{color:var(--gold)}
+  
+  section{margin-top:48px}
+  h2{font-size:24px;font-weight:800;margin:0 0 18px;display:flex;align-items:center;gap:12px;letter-spacing:-0.5px}
+  h2 .num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+    background:var(--blue);color:#0c1e3a;border-radius:10px;font-size:18px;font-weight:800}
+  
+  .conclusion{background:linear-gradient(135deg,var(--green-bg),var(--blue-bg));
+    border:2px solid var(--green-dim);border-radius:14px;padding:24px 28px;font-size:17px;line-height:1.75;margin-bottom:24px}
+  .conclusion b{color:var(--text)}
+  .conclusion .green{color:#86efac;font-weight:700}
+  .conclusion .gold{color:var(--gold);font-weight:700}
+  
+  /* 광고그룹 카드 */
+  .group-card{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;
+    padding:22px;margin-bottom:18px;border-left:5px solid var(--green-dim)}
+  .group-card.zero{border-left-color:var(--blue)}
+  .group-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;
+    padding-bottom:12px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:14px}
+  .group-name{font-size:20px;font-weight:800;color:var(--text)}
+  .group-rank{display:inline-block;width:28px;height:28px;background:var(--bg-3);color:var(--text-muted);
+    border-radius:50%;text-align:center;line-height:28px;font-weight:800;font-size:13px;margin-right:10px;
+    vertical-align:middle}
+  .group-stats{display:flex;gap:18px;font-size:14px;color:var(--text-muted)}
+  .group-stats b{color:var(--text);font-weight:700;font-variant-numeric:tabular-nums}
+  .group-stats .lo{color:#86efac;font-weight:700}
+  .group-stats .no{color:var(--text-dim)}
+  
+  .group-url{font-size:12px;color:var(--text-dim);margin-bottom:14px;
+    background:var(--bg-3);padding:8px 12px;border-radius:6px;word-break:break-all}
+  .group-url a{color:var(--blue);text-decoration:none}
+  .group-url a:hover{text-decoration:underline}
+  
+  .kw-table{width:100%;border-collapse:collapse;font-size:14px}
+  .kw-table th{text-align:left;padding:8px 10px;color:var(--text-dim);
+    font-size:12px;font-weight:600;border-bottom:1px solid var(--border)}
+  .kw-table td{padding:10px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}
+  .kw-table tbody tr:last-child td{border-bottom:none}
+  .kw-table .r{text-align:right}
+  .kw-table .kw{font-weight:600;color:var(--text)}
+  
+  /* 실행 방법 박스 */
+  .exec-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .exec{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:24px}
+  .exec.green{border-color:var(--green-dim)}
+  .exec.gold{border-color:var(--gold)}
+  .exec-name{font-size:18px;font-weight:800;margin-bottom:8px;color:var(--text)}
+  .exec.green .exec-name{color:#86efac}
+  .exec.gold .exec-name{color:var(--gold)}
+  .exec-time{font-size:13px;color:var(--text-dim);margin-bottom:14px}
+  .exec-desc{font-size:15px;color:var(--text-muted);line-height:1.65}
+  .exec-desc ol{margin:8px 0 0;padding-left:20px}
+  .exec-desc li{margin-bottom:5px}
+  
+  /* 측정 방법 */
+  .measure-box{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:24px}
+  .measure-row{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border)}
+  .measure-row:last-child{border-bottom:none}
+  .measure-no{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--blue);
+    color:#0c1e3a;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .measure-text{font-size:15px;color:var(--text);line-height:1.65}
+  .measure-text b{color:var(--blue)}
+  .measure-text .sub{display:block;color:var(--text-muted);font-size:13px;margin-top:3px}
+  
+  /* 위험 */
+  .risk-box{background:var(--gold-bg);border:1px solid var(--gold);border-radius:12px;
+    padding:18px 22px;margin-top:18px;font-size:15px;line-height:1.7;color:#fde68a}
+  .risk-box b{color:var(--gold)}
+  
+  footer{margin-top:80px;padding-top:32px;border-top:1px solid var(--border);color:var(--text-dim);font-size:13px;text-align:center}
+  
+  @media (max-width:900px){
+    .summary,.exec-grid{grid-template-columns:1fr 1fr}
+    h1{font-size:24px}h2{font-size:20px}
+    body{font-size:16px}
+  }
+</style></head><body>
+<div class="container">
+
+<a href="latest.html" class="back">← 전체 검토 보고서로</a>
+<h1>Phase 1 실행 계획</h1>
+<div class="sub">매출 영향 최소·측정 가능한 광고 5개 — 다음 미팅 결재용</div>
+<div class="meta">작성 2026년 05월 29일 · 17일 영업일 데이터 기반</div>
+
+<div class="conclusion">
+<b>대상</b>: .com 광고그룹 38개 중 <b class="green">매출 영향 가장 작은 5개</b>를 골랐습니다.<br>
+<b>예상 영향</b>: 끄거나 .kr로 옮겨도 <b class="gold">한 달 매출 손실 약 30만원 이하</b>, 광고비 절약 <b class="green">월 22만원</b>.<br>
+<b>핵심</b>: 클릭은 어느 정도 있어서 (월 약 800회) 변화 감지 가능 — 실험으로서 의미 있음.
+</div>
+
+<div class="summary">
+  <div class="sb"><div class="sb-label">대상 광고그룹</div><div class="sb-val">5개</div><div class="sb-sub">.com 38개 중 선별</div></div>
+  <div class="sb green"><div class="sb-label">월 광고비 절약 (예상)</div><div class="sb-val">216,356</div><div class="sb-sub">17일 122,602원</div></div>
+  <div class="sb gold"><div class="sb-label">월 광고 매출 손실 (예상)</div><div class="sb-val">304,764</div><div class="sb-sub">17일 172,700원 (4건)</div></div>
+  <div class="sb"><div class="sb-label">월 클릭 (측정용)</div><div class="sb-val">790회</div><div class="sb-sub">17일 448회</div></div>
+</div>
+
+<section>
+<h2><span class="num">1</span>대상 광고 5개 (안전한 순)</h2>
+<div class="group-card zero">
+  <div class="group-head">
+    <div>
+      <span class="group-rank">1</span><span class="group-name">08 단차주의</span>
+    </div>
+    <div class="group-stats">
+      <span>광고비 <b>24,232원</b></span>
+      <span>클릭 <b>143</b></span>
+      <span>광고 매출 <b class="no">0원</b></span>
+      <span>건수 <b>0건</b> (직접 0·간접 0)</span>
+    </div>
+  </div>
+  <div class="group-url">현재 연결 페이지 → <a href="http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030" target="_blank">http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030</a></div>
+  <div style="font-size:13px;color:var(--text-dim);font-weight:700;margin-bottom:8px;letter-spacing:0.5px">주요 키워드 (17일 광고비 기준 상위 5개)</div>
+  <table class="kw-table">
+    <thead><tr><th>키워드</th><th class="r">광고비</th><th class="r">클릭</th><th class="r">노출</th></tr></thead><tbody><tr><td class="kw">미끄럼방지스티커</td><td class="r">5,909원</td><td class="r">29</td><td class="r">1,929</td></tr><tr><td class="kw">계단주의</td><td class="r">995원</td><td class="r">4</td><td class="r">218</td></tr><tr><td class="kw">단차주의</td><td class="r">800원</td><td class="r">11</td><td class="r">338</td></tr><tr><td class="kw">포맥스</td><td class="r">764원</td><td class="r">2</td><td class="r">47</td></tr><tr><td class="kw">푯말제작</td><td class="r">662원</td><td class="r">3</td><td class="r">156</td></tr></tbody></table></div><div class="group-card zero">
+  <div class="group-head">
+    <div>
+      <span class="group-rank">2</span><span class="group-name">03 방화문스티커</span>
+    </div>
+    <div class="group-stats">
+      <span>광고비 <b>27,643원</b></span>
+      <span>클릭 <b>78</b></span>
+      <span>광고 매출 <b class="no">0원</b></span>
+      <span>건수 <b>0건</b> (직접 0·간접 0)</span>
+    </div>
+  </div>
+  <div class="group-url">현재 연결 페이지 → <a href="http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&amp;recentCount=10" target="_blank">http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB...</a></div>
+  <div style="font-size:13px;color:var(--text-dim);font-weight:700;margin-bottom:8px;letter-spacing:0.5px">주요 키워드 (17일 광고비 기준 상위 5개)</div>
+  <table class="kw-table">
+    <thead><tr><th>키워드</th><th class="r">광고비</th><th class="r">클릭</th><th class="r">노출</th></tr></thead><tbody><tr><td class="kw">비상구</td><td class="r">3,151원</td><td class="r">0</td><td class="r">675</td></tr><tr><td class="kw">피난안내도제작</td><td class="r">1,610원</td><td class="r">4</td><td class="r">171</td></tr><tr><td class="kw">비상대피로</td><td class="r">1,496원</td><td class="r">1</td><td class="r">322</td></tr><tr><td class="kw">비상구표지판</td><td class="r">1,447원</td><td class="r">0</td><td class="r">303</td></tr><tr><td class="kw">벽스티커</td><td class="r">1,428원</td><td class="r">0</td><td class="r">403</td></tr></tbody></table></div><div class="group-card zero">
+  <div class="group-head">
+    <div>
+      <span class="group-rank">3</span><span class="group-name">04 말뚝안내판</span>
+    </div>
+    <div class="group-stats">
+      <span>광고비 <b>41,128원</b></span>
+      <span>클릭 <b>85</b></span>
+      <span>광고 매출 <b class="no">0원</b></span>
+      <span>건수 <b>0건</b> (직접 0·간접 0)</span>
+    </div>
+  </div>
+  <div class="group-url">현재 연결 페이지 → <a href="http://hanasignmall.com/goods/goods_list.php?cateCd=001006" target="_blank">http://hanasignmall.com/goods/goods_list.php?cateCd=001006</a></div>
+  <div style="font-size:13px;color:var(--text-dim);font-weight:700;margin-bottom:8px;letter-spacing:0.5px">주요 키워드 (17일 광고비 기준 상위 5개)</div>
+  <table class="kw-table">
+    <thead><tr><th>키워드</th><th class="r">광고비</th><th class="r">클릭</th><th class="r">노출</th></tr></thead><tbody><tr><td class="kw">팻말</td><td class="r">10,159원</td><td class="r">22</td><td class="r">4,680</td></tr><tr><td class="kw">텃밭팻말</td><td class="r">2,734원</td><td class="r">4</td><td class="r">535</td></tr><tr><td class="kw">주차꼬깔콘</td><td class="r">2,041원</td><td class="r">2</td><td class="r">386</td></tr><tr><td class="kw">전면주차</td><td class="r">1,714원</td><td class="r">11</td><td class="r">609</td></tr><tr><td class="kw">푯말</td><td class="r">1,608원</td><td class="r">1</td><td class="r">442</td></tr></tbody></table></div><div class="group-card">
+  <div class="group-head">
+    <div>
+      <span class="group-rank">4</span><span class="group-name">10 개인과외교습자표찰</span>
+    </div>
+    <div class="group-stats">
+      <span>광고비 <b>12,654원</b></span>
+      <span>클릭 <b>64</b></span>
+      <span>광고 매출 <b class="lo">9,000원</b></span>
+      <span>건수 <b>1건</b> (직접 1·간접 0)</span>
+    </div>
+  </div>
+  <div class="group-url">현재 연결 페이지 → <a href="http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009678" target="_blank">http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009678</a></div>
+  <div style="font-size:13px;color:var(--text-dim);font-weight:700;margin-bottom:8px;letter-spacing:0.5px">주요 키워드 (17일 광고비 기준 상위 5개)</div>
+  <table class="kw-table">
+    <thead><tr><th>키워드</th><th class="r">광고비</th><th class="r">클릭</th><th class="r">노출</th></tr></thead><tbody><tr><td class="kw">패찰</td><td class="r">2,345원</td><td class="r">3</td><td class="r">529</td></tr><tr><td class="kw">개인과외교습자</td><td class="r">1,339원</td><td class="r">7</td><td class="r">354</td></tr><tr><td class="kw">개인과외교습자신고</td><td class="r">740원</td><td class="r">2</td><td class="r">537</td></tr><tr><td class="kw">아크릴케이스</td><td class="r">616원</td><td class="r">0</td><td class="r">45</td></tr><tr><td class="kw">현판</td><td class="r">349원</td><td class="r">0</td><td class="r">28</td></tr></tbody></table></div><div class="group-card">
+  <div class="group-head">
+    <div>
+      <span class="group-rank">5</span><span class="group-name">02 소방관진입창</span>
+    </div>
+    <div class="group-stats">
+      <span>광고비 <b>16,945원</b></span>
+      <span>클릭 <b>78</b></span>
+      <span>광고 매출 <b class="lo">163,700원</b></span>
+      <span>건수 <b>3건</b> (직접 3·간접 0)</span>
+    </div>
+  </div>
+  <div class="group-url">현재 연결 페이지 → <a href="http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332" target="_blank">http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332</a></div>
+  <div style="font-size:13px;color:var(--text-dim);font-weight:700;margin-bottom:8px;letter-spacing:0.5px">주요 키워드 (17일 광고비 기준 상위 5개)</div>
+  <table class="kw-table">
+    <thead><tr><th>키워드</th><th class="r">광고비</th><th class="r">클릭</th><th class="r">노출</th></tr></thead><tbody><tr><td class="kw">화재경보기</td><td class="r">5,311원</td><td class="r">5</td><td class="r">1,125</td></tr><tr><td class="kw">소방관진입창스티커</td><td class="r">1,646원</td><td class="r">13</td><td class="r">468</td></tr><tr><td class="kw">소방관진입창</td><td class="r">1,202원</td><td class="r">23</td><td class="r">1,156</td></tr><tr><td class="kw">화재감지기</td><td class="r">949원</td><td class="r">0</td><td class="r">103</td></tr><tr><td class="kw">위험표시</td><td class="r">550원</td><td class="r">0</td><td class="r">114</td></tr></tbody></table></div>
+</section>
+
+<section>
+<h2><span class="num">2</span>실행 방법 — 옵션 2개</h2>
+<div class="exec-grid">
+
+<div class="exec gold">
+  <div class="exec-name">옵션 A. 광고를 .kr로 옮기기 (이전)</div>
+  <div class="exec-time">반나절 작업 + 1~2개월 관찰</div>
+  <div class="exec-desc">
+    위 5개 광고그룹의 <b>연결 페이지를 .com에서 .kr로 변경</b>.
+    <ol>
+      <li>각 광고그룹의 .com URL을 같은 상품의 .kr URL로 교체 (네이버 광고 API로 일괄 가능)</li>
+      <li>변경 후 매주 .kr 매출 + CS 매출 변동 추적</li>
+      <li>1~2개월 후 비교</li>
+    </ol>
+    <b>장점</b>: 광고 자체는 유지, 단지 도착지만 바꿈. 매출 영향 최소.
+  </div>
+</div>
+
+<div class="exec green">
+  <div class="exec-name">옵션 B. 광고를 일시 끄기 (OFF 실험)</div>
+  <div class="exec-time">즉시 OFF + 1~2개월 관찰</div>
+  <div class="exec-desc">
+    위 5개 광고그룹을 <b>일시 정지</b> (status를 PAUSED로).
+    <ol>
+      <li>네이버 광고 관리 → 광고그룹 5개 일시중지</li>
+      <li>광고비 월 22만원 절약</li>
+      <li>1~2개월 동안 자사몰 + CS 매출 변동 추적</li>
+      <li>매출 안 떨어지면 → 광고 효과 작은 거 → 더 큰 광고그룹도 같은 방식 적용 가능</li>
+    </ol>
+    <b>장점</b>: 광고 효과 측정에 가장 정확. .kr 이전 시점에 광고 옮기지 않고 단순 OFF로도 충분.
+  </div>
+</div>
+
+</div>
+
+<div class="risk-box">
+<b>참고</b> — 두 옵션 다 매출 영향은 비슷하게 작음. 다만 <b>대표가 ".com→.kr 옮긴다"는 방향이라면 옵션 A</b>, <b>"광고 효과 측정"이 우선이라면 옵션 B</b>가 적합.
+</div>
+</section>
+
+<section>
+<h2><span class="num">3</span>매출 변동 추적 방법</h2>
+<div class="measure-box">
+
+  <div class="measure-row">
+    <div class="measure-no">1</div>
+    <div class="measure-text">
+      <b>매주 월요일 보고서로 확인</b>
+      <span class="sub">기존 주간 보고서 (weekly-product/latest.html)에 5개 광고그룹 + 자사몰 .kr 매출 추적 섹션 추가</span>
+    </div>
+  </div>
+  
+  <div class="measure-row">
+    <div class="measure-no">2</div>
+    <div class="measure-text">
+      <b>지표 4가지를 매주 비교</b>
+      <span class="sub">① 5개 광고그룹의 광고 클릭 (옵션 A는 그대로, B는 0) · ② 자사몰 .kr 매출 · ③ CS 매출 · ④ 자사몰 합산 매출 (.com+.kr)</span>
+    </div>
+  </div>
+  
+  <div class="measure-row">
+    <div class="measure-no">3</div>
+    <div class="measure-text">
+      <b>4주 이후 판단</b>
+      <span class="sub">광고 매출 손실(예상 월 30만원) 이하면 정상. 그 이상 떨어지면 광고가 측정 밖에서 매출 견인하던 것</span>
+    </div>
+  </div>
+  
+  <div class="measure-row">
+    <div class="measure-no">4</div>
+    <div class="measure-text">
+      <b>롤백 조건</b>
+      <span class="sub">자사몰 합산 매출이 전월 대비 -15% 이상 떨어지면 즉시 광고 복원 + 재검토</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<footer>
+하나사인몰 웹팀 · Phase 1 실행 계획 · 대표 결재용
+</footer>
+</div></body></html>
