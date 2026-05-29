@@ -99,7 +99,7 @@
 <header class="header">
   <h1>파워링크 <span class="accent">.com → .kr 이전</span> <span class="badge-v2">v2 정정</span></h1>
   <div class="subtitle">광고 매체 vs 매출 채널 정확한 매핑 · 미팅 검토 자료</div>
-  <div class="meta">생성 2026년 05월 29일 00:44 · 분석 기간 5/1~5/27 영업일 17일 · 네이버 B파워링크 + 구글애즈 + 자사몰 매출 통합</div>
+  <div class="meta">생성 2026년 05월 29일 00:46 · 분석 기간 5/1~5/27 영업일 17일 · 네이버 B파워링크 + 구글애즈 + 자사몰 매출 통합</div>
 </header>
 
 <section>
@@ -113,21 +113,20 @@
   <th style="text-align:left;padding:10px 8px">의미</th>
 </tr></thead><tbody>
 <tr><td style="padding:10px 8px">네이버 B 파워링크 → .com 구매 매출</td>
-  <td style="padding:10px 8px"><b style="color:#fca5a5">데이터 없음 (b_conv = 0)</b></td>
-  <td style="padding:10px 8px">콘솔 conv API 수집 끊김 (별건)</td></tr>
+  <td style="padding:10px 8px"><b style="color:#86efac">API 자체는 정상 ✓</b><br><span style="color:#fde68a">15일 실측: 34건 / 494만원</span></td>
+  <td style="padding:10px 8px">ceo-report 빌드만 b_conv=0 → 빌드 스크립트 수정 (별건)</td></tr>
 <tr><td style="padding:10px 8px">구글애즈 → .kr 구매 매출</td>
   <td style="padding:10px 8px"><b style="color:#fca5a5">데이터 없음</b></td>
-  <td style="padding:10px 8px">전환태그에 매출값 전송 설정 미흡</td></tr>
-<tr><td style="padding:10px 8px">구글애즈 전환수 115건</td>
-  <td style="padding:10px 8px">건수만 잡힘</td>
-  <td style="padding:10px 8px">매출 금액 모름</td></tr>
+  <td style="padding:10px 8px"><b style="color:#86efac">.kr 결제완료 페이지에 gtag conversion + value 동적 전송 필요</b></td></tr>
+<tr><td style="padding:10px 8px">구글애즈 17일 전환 데이터</td>
+  <td style="padding:10px 8px">상품페이지 조회 166 / 페이지 조회 30<br>"구매" 전환 0건 (default_value=1, 실제 트리거 안 됨)</td>
+  <td style="padding:10px 8px">위와 동일 — 사이트 코드 수정</td></tr>
 <tr><td style="padding:10px 8px">자사몰 매출 985만 / 444만</td>
   <td style="padding:10px 8px">진행자 기준 전체</td>
   <td style="padding:10px 8px"><b style="color:#fca5a5">광고 기여 + 자연유입 + 검색 + 북마크 모두 합산</b></td></tr>
 </tbody></table>
 <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(252,165,165,0.3);font-weight:700;color:#fee2e2;font-size:16px">
-"광고비 X 썼더니 매출 Y 늘었다"를 입증할 데이터가 <b style="color:#fca5a5">현 시스템에 없음</b>.<br>
-아래 모든 비교는 <b style="color:#fca5a5">"광고비 vs 자사몰 전체 매출"</b> 비율일 뿐, 광고가 만든 매출 아님.
+<b style="color:#86efac">.com 광고 ROAS 측정 가능</b>: B 파워링크 약 250만원 → 광고 기여 매출 494만원 = <b style="color:#86efac">ROAS 약 197%</b> (15일).<br><b style="color:#fca5a5">.kr 광고 ROAS는 여전히 측정 불가</b> — 구글애즈 매출 트래킹 사이트 코드 부재. <b style="color:#fde68a">이전 결정 전 .kr 사이트 측 수정 우선</b>.
 </div>
 </div>
 </section>
@@ -267,12 +266,14 @@
 <div class="decision">
   <h3>이번 미팅에서 답 받아올 항목</h3>
   <ol>
-    <li><b>측정 체계 구축이 의사결정 선행 조건</b> — 네이버 B 파워링크 conv 복구 + 구글애즈 전환매출 트래킹. 이게 안 되면 어떤 결정도 데이터 검증 불가</li>
+    <li><b>구글애즈 .kr 매출 트래킹 우선 수정</b> — .kr 결제완료 페이지에 gtag conversion + value 전송. 이게 안 되면 이전 후 .kr 효율 측정 영영 불가</li>
+    <li><b>ceo-report 빌드 b_conv 복구</b> — API는 정상이라 빌드 스크립트만 수정. 매일 자동 측정 복구</li>
+    <li><b>이전 의도 재확인</b> — 네이버 B 파워링크 conv 복구 + 구글애즈 전환매출 트래킹. 이게 안 되면 어떤 결정도 데이터 검증 불가</li>
     <li><b>이전 의도 재확인</b> — 효율 향상이 아니라 사이트 통합·일원화 같은 다른 이유라면 측정 없이도 진행 가능. 의도가 명확해야 함</li>
     <li><b>Phase 1 시작 시점</b> — 측정 체계 갖춘 후 시작? 또는 측정 없이 작은 그룹부터 학습? 두 노선 중 선택</li>
     <li><b>롤백 임계치</b> — 광고 기여 매출 측정 불가 상태에서는 <b>자사몰 합산 매출</b>로만 판단. −15% 동의?</li>
     <li><b>Phase 3 (게시판) 결정 보류</b> — Phase 1·2 결과 보고 별도 회의 동의</li>
-    <li><b>측정 체계 ETA</b> — b_conv 복구 1~2일 / 구글애즈 전환매출 트래킹 0.5~1일 / 검증 1주 → 약 2주면 측정 가능</li>
+    <li><b>측정 체계 ETA</b> — ceo-report b_conv 복구 0.5일 / .kr 사이트 gtag 수정 1~3일 (개발팀) / 검증 1주 → <b>약 2주면 .com·.kr 광고 ROAS 정확 측정 가능</b></li>
   </ol>
 </div>
 </section>
