@@ -144,7 +144,8 @@
     <div class="side-divider"></div>
     <div class="side-row"><span style="font-weight:700;color:var(--text)">광고비 합계</span><b style="font-size:18px">2,527,424원</b></div>
     <div class="side-row" style="background:rgba(3,199,90,0.1);padding:8px 10px;border-radius:6px;margin-top:6px"><span style="font-weight:700;color:#86efac">광고 직접 기여 매출</span><b style="font-size:18px;color:#86efac">472만원 (ROAS 159%)</b></div>
-    <div class="side-row" style="margin-top:2px"><span style="color:var(--text-dim);font-size:12px">B 파워링크 b_conv · 30건 · 15일 영업일</span><b></b></div>
+    <div class="side-row" style="margin-top:2px"><span style="color:var(--text-dim);font-size:12px">B 파워링크 b_conv · 34건 · 15일 영업일</span><b></b></div>
+    <div class="side-row" style="margin-top:4px;padding:6px 10px;background:rgba(96,165,250,0.08);border-radius:6px"><span style="font-size:12px;color:#93c5fd">└ 직접 27% (14건/134만) · 간접 73% (20건/360만)</span><b></b></div>
     <div class="side-row"><span style="font-weight:700;color:var(--text)">자사몰 매출 (고도몰5)</span><b style="font-size:18px">9,849,900원</b></div>
     <div class="side-row"><span>· 건수</span><b>88건</b></div>
     <div class="side-main">자사몰 전체 / 광고비 = 390%</div>
@@ -162,7 +163,8 @@
     <div class="side-divider"></div>
     <div class="side-row"><span style="font-weight:700;color:var(--text)">광고비 합계</span><b style="font-size:18px">1,574,118원</b></div>
     <div class="side-row" style="background:rgba(239,68,68,0.1);padding:8px 10px;border-radius:6px;margin-top:6px"><span style="font-weight:700;color:#fca5a5">광고 직접 기여 매출</span><b style="font-size:18px;color:#fca5a5">0원 (ROAS 0%)</b></div>
-    <div class="side-row" style="margin-top:2px"><span style="color:var(--text-dim);font-size:12px">구글애즈 conv · 5월 17일 영업일 · 단 트래킹 OK 광고 효과 자체 0</span><b></b></div>
+    <div class="side-row" style="margin-top:2px"><span style="color:var(--text-dim);font-size:12px">구글애즈 conv · 5월 17일 영업일</span><b></b></div>
+    <div class="side-row" style="margin-top:4px;padding:6px 10px;background:rgba(239,68,68,0.08);border-radius:6px"><span style="font-size:11px;color:#fca5a5">삼중 검증 ① 네이버 b_conv .kr 광고그룹=0 · ② 구글애즈 API 구매=0 · ③ 광고일=매출일 시점 일치하지만 트래킹은 못 잡음</span><b></b></div>
     <div class="side-row"><span style="font-weight:700;color:var(--text)">자사몰 매출 (신규몰)</span><b style="font-size:18px">4,439,400원</b></div>
     <div class="side-row"><span>· 건수</span><b>36건</b></div>
     <div class="side-main">자사몰 전체 / 광고비 = 282%</div>
@@ -292,5 +294,34 @@
 </div>
 </section>
 
+
+<section>
+<h2><span class="num">7</span>.kr 광고 매출 0원 — 삼중 검증 결과 <span class="sub">· 측정 한계의 증명</span></h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+  <div style="background:var(--bg-2);border:1px solid var(--green-dim);border-radius:12px;padding:20px">
+    <div style="font-size:11px;color:var(--text-dim);font-weight:700;margin-bottom:8px">검증 ① 네이버 b_conv</div>
+    <div style="font-size:18px;font-weight:800;color:#86efac;margin-bottom:8px">.kr 광고그룹 = 0건</div>
+    <div style="font-size:13px;color:var(--text-muted);line-height:1.6">광고그룹 URL을 기준으로 .com/.kr 분리. .com만 34건/494만원 잡힘. .kr 광고그룹 광고비 44만 썼는데 b_conv 매출 0원.</div>
+  </div>
+  <div style="background:var(--bg-2);border:1px solid var(--green-dim);border-radius:12px;padding:20px">
+    <div style="font-size:11px;color:var(--text-dim);font-weight:700;margin-bottom:8px">검증 ② 구글애즈 API</div>
+    <div style="font-size:18px;font-weight:800;color:#86efac;margin-bottom:8px">구매 conv = 0건</div>
+    <div style="font-size:13px;color:var(--text-muted);line-height:1.6">5/1~5/27 모든 conversion_action 조회. "구매"·"장바구니"·"결제 시작"·"네이버페이" 전부 0. 페이지 조회·상품페이지 조회만 196건 잡힘 (구매 아님).</div>
+  </div>
+  <div style="background:var(--bg-2);border:1px solid var(--gold);border-radius:12px;padding:20px">
+    <div style="font-size:11px;color:var(--text-dim);font-weight:700;margin-bottom:8px">검증 ③ 시점 매칭 (반증)</div>
+    <div style="font-size:18px;font-weight:800;color:var(--gold);margin-bottom:8px">광고일=매출일 일치 ⚠</div>
+    <div style="font-size:13px;color:var(--text-muted);line-height:1.6">광고비 쓰는 날에 신규몰 매출도 함께 발생. 5/15 광고 6.7만 → 매출 88만, 5/26 광고 15만 → 매출 75만 등. <b style="color:var(--gold)">트래킹은 못 잡지만 광고 영향 있을 가능성 시사</b>. 카톡·전화·UTM 없는 직접 입력 경로 추정.</div>
+  </div>
+</div>
+<div style="background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:18px">
+  <div style="font-size:15px;font-weight:700;margin-bottom:10px;color:var(--text)">결론</div>
+  <div style="font-size:14px;color:var(--text-muted);line-height:1.7">
+    측정 시스템 두 개(네이버·구글) 모두 .kr 광고→직접 구매 = <b style="color:#fca5a5">0원으로 일치</b>.<br>
+    그러나 광고 소진일과 매출 발생일이 시간적으로 일치 → <b style="color:var(--gold)">광고 효과가 측정 밖 경로(카톡·전화·CS)에서 발생했을 가능성</b>.<br>
+    <b style="color:var(--text)">진짜 답은 광고 OFF 실험 1~2개월</b>. .kr 광고비 165만/월 끄고 신규몰 매출·CS 매출 변동 추적이 유일한 검증법.
+  </div>
+</div>
+</section>
 <footer>하나사인몰 웹팀 · 네이버 + 구글애즈 통합 분석 · 미팅 검토 자료 v2</footer>
 </div></body></html>
