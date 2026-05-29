@@ -217,35 +217,33 @@
     .popup { width: calc(100vw - 32px); }
   }
 
-  /* 효율 의견 토글 */
   .opinion-toggle {
-    display: flex; align-items: center; gap: 6px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
     font-size: 12px; color: var(--text-muted); font-weight: 600;
     user-select: none; margin-right: 8px;
   }
   .opinion-toggle input { cursor: pointer; accent-color: #03c75a; width: 14px; height: 14px; }
   .opinion-toggle:hover { color: var(--text); }
   .popup-opinion {
-    padding: 14px 16px; background: linear-gradient(135deg, rgba(96,165,250,0.06), rgba(3,199,90,0.04));
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(96,165,250,0.08), rgba(3,199,90,0.05));
     border-bottom: 1px solid var(--border-light);
-    font-size: 12.5px; line-height: 1.7; color: var(--text);
-    animation: fadeIn 0.2s ease-out;
+    font-size: 13px; line-height: 1.7;
   }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
   .popup-opinion .op-row { display: flex; gap: 8px; margin: 4px 0; align-items: flex-start; }
   .popup-opinion .op-tag {
     display: inline-block; padding: 1px 8px; border-radius: 4px;
     font-size: 10px; font-weight: 800; flex-shrink: 0; letter-spacing: 0.3px;
+    min-width: 36px; text-align: center;
   }
   .popup-opinion .op-tag.ok { background: rgba(3,199,90,0.18); color: #86efac; }
   .popup-opinion .op-tag.warn { background: rgba(250,204,21,0.18); color: var(--gold); }
   .popup-opinion .op-tag.no { background: rgba(239,68,68,0.18); color: #fca5a5; }
   .popup-opinion .op-tag.info { background: rgba(96,165,250,0.18); color: #93c5fd; }
-  .popup-opinion .op-text { color: var(--text); font-weight: 500; }
+  .popup-opinion .op-text { color: var(--text); font-weight: 500; line-height: 1.55; }
   .popup-opinion .op-text b { color: var(--text); font-weight: 800; }
-  .popup-opinion .op-text .v { color: #86efac; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .popup-opinion .op-text .v { color: #86efac; font-weight: 700; }
   .popup-opinion .op-text .x { color: #fca5a5; font-weight: 700; }
-  .popup-opinion .op-divider { height: 1px; background: var(--border); margin: 8px 0; }
 
 </style>
 </head><body>
@@ -319,9 +317,10 @@ function openPopup(week, type, ch, anchorEl){
   pop.style.top = (top + offset) + 'px';
   
   const popId = 'pop_' + popupIdx;
-  let html = `<div class="popup-head ${isAd?'ad':'sales'}">
+  // week, type, ch를 data-* 속성으로 안전하게 저장
+  let html = `<div class="popup-head ${isAd?'ad':'sales'}" data-popid="${popId}">
     <div class="title">${title}</div>
-    <label class="opinion-toggle"><input type="checkbox" onchange="toggleOpinion('${popId}', ${JSON.stringify(week).replace(/"/g, '&quot;')}, '${type}', ${JSON.stringify(ch).replace(/"/g, '&quot;')})"> 💡 효율 의견</label>
+    <label class="opinion-toggle"><input type="checkbox" class="op-cb"> 💡 효율 의견</label>
     <button class="popup-close" aria-label="닫기">×</button>
   </div><div id="${popId}_op" class="popup-opinion" style="display:none"></div><div class="popup-body">`;
   if(items.length === 0){
@@ -345,6 +344,29 @@ function openPopup(week, type, ch, anchorEl){
   
   // 닫기
   pop.querySelector('.popup-close').addEventListener('click', () => pop.remove());
+  
+  // 효율 의견 토글
+  const cb = pop.querySelector('.op-cb');
+  if (cb) {
+    pop.dataset.week = week;
+    pop.dataset.type = type;
+    pop.dataset.ch = ch;
+    cb.addEventListener('change', () => {
+      const div = pop.querySelector('.popup-opinion');
+      if (cb.checked) {
+        const rows = type === 'ad' ? analyzeAd(week) : analyzeSales(week, ch);
+        let opHtml = '';
+        rows.forEach(r => {
+          const tagLabel = {ok:'강점', warn:'주의', no:'약점', info:'정보'}[r.tag] || '';
+          opHtml += `<div class="op-row"><span class="op-tag ${r.tag}">${tagLabel}</span><span class="op-text">${r.html}</span></div>`;
+        });
+        div.innerHTML = opHtml;
+        div.style.display = 'block';
+      } else {
+        div.style.display = 'none';
+      }
+    });
+  }
   
   // 드래그
   const head = pop.querySelector('.popup-head');
@@ -389,8 +411,6 @@ function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-
-// === 효율 의견 분석 ===
 function categorize(kw) {
   const t = String(kw);
   if (/주차스티커|오뚜기|주차증|주차금지/.test(t)) return '주차스티커';
@@ -409,20 +429,19 @@ function fmtWon(n){
   if (!n) return '0원';
   if (n >= 100000000) return (n/100000000).toFixed(2) + '억';
   if (n >= 10000000) return (n/10000000).toFixed(1) + '천만';
-  if (n >= 10000) return (n/10000).toFixed(0) + '만';
-  return n.toLocaleString('ko-KR') + '원';
+  if (n >= 10000) return (n/10000).toFixed(0) + '만원';
+  return Number(n).toLocaleString('ko-KR') + '원';
 }
 
 function analyzeAd(week) {
   const d = POPUP_DATA[week];
-  if (!d || !d.ad_click) return '데이터 없음';
+  if (!d || !d.ad_click) return [{tag:'no', html:'데이터 없음'}];
   const items = d.ad_click;
   const top3 = items.slice(0, 3);
   const total = items.reduce((s, x) => s + x[1], 0);
   const top3_clk = top3.reduce((s, x) => s + x[1], 0);
   const conc = total ? Math.round(top3_clk / total * 100) : 0;
   
-  // 카테고리 분포
   const cats = {};
   items.forEach(x => {
     const c = categorize(x[0]);
@@ -432,7 +451,6 @@ function analyzeAd(week) {
   const top_cat = cat_sorted[0] || ['', 0];
   const top_cat_pct = total ? Math.round(top_cat[1] / total * 100) : 0;
   
-  // 매출 매칭 — 광고 Top이 매출에도 등장
   const sales = (d.sales && d.sales['전체']) || [];
   const sales_kws = new Set(sales.map(x => x[0]));
   const matched = top3.filter(x => sales_kws.has(x[0]));
@@ -441,9 +459,9 @@ function analyzeAd(week) {
   rows.push({tag:'info', html:`상위 3 키워드 <b>${top3.map(x => escapeHtml(x[0])).join(', ')}</b>`});
   rows.push({tag:'info', html:`상위 3이 전체 클릭의 <b>${conc}%</b> · 1위 카테고리 <b>${top_cat[0]}</b>(${top_cat_pct}%)`});
   if (matched.length >= 2) {
-    rows.push({tag:'ok', html:`상위 3 중 <span class="v">${matched.length}개</span>가 매출에도 등장 — 광고-매출 매칭 양호`});
+    rows.push({tag:'ok', html:`상위 3 중 <span class="v">${matched.length}개</span>가 매출에도 등장 — 광고↔매출 매칭 양호`});
   } else if (matched.length === 1) {
-    rows.push({tag:'warn', html:`상위 3 중 1개만 매출 매칭 — 클릭 많은데 매출 안 나는 키워드 검토`});
+    rows.push({tag:'warn', html:`상위 3 중 1개만 매출 매칭 — 클릭은 많은데 매출 안 나는 키워드 검토 필요`});
   } else {
     rows.push({tag:'no', html:`상위 3 중 <span class="x">0개</span>만 매출 매칭 — 광고 키워드와 매출 키워드 따로 노는 상태`});
   }
@@ -462,7 +480,6 @@ function analyzeSales(week, ch) {
   const top3_v = top3.reduce((s, x) => s + (x[2] || 0), 0);
   const conc = total ? Math.round(top3_v / total * 100) : 0;
   
-  // 카테고리
   const cats = {};
   items.forEach(x => {
     const c = categorize(x[0]);
@@ -474,20 +491,19 @@ function analyzeSales(week, ch) {
   const top_cat = cat_sorted[0];
   const top_cat_pct = total ? Math.round(top_cat[1].v / total * 100) : 0;
   
-  // 평균 단가
   const avg = total_n ? Math.round(total / total_n) : 0;
-  const top1_avg = top3[0][1] ? Math.round(top3[0][2] / top3[0][1]) : 0;
+  const top1_avg = top3[0] && top3[0][1] ? Math.round(top3[0][2] / top3[0][1]) : 0;
   
-  // 광고 매칭
   const ad_kws = new Set((d.ad_click || []).map(x => x[0]));
   const matched_in_ad = top3.filter(x => ad_kws.has(x[0])).length;
   
   const rows = [];
   rows.push({tag:'info', html:`총 <b>${fmtWon(total)}</b> · ${total_n}건 · 평균 ${fmtWon(avg)}/건`});
-  rows.push({tag:'info', html:`1위 키워드 <b>${escapeHtml(top3[0][0])}</b> <span class="v">${fmtWon(top3[0][2])}</span> (전체의 ${total?Math.round(top3[0][2]/total*100):0}%)`});
+  if (top3[0]) {
+    rows.push({tag:'info', html:`1위 키워드 <b>${escapeHtml(top3[0][0])}</b> <span class="v">${fmtWon(top3[0][2])}</span> (전체의 ${total?Math.round(top3[0][2]/total*100):0}%)`});
+  }
   rows.push({tag:'info', html:`상위 카테고리 <b>${top_cat[0]}</b> ${fmtWon(top_cat[1].v)} (<b>${top_cat_pct}%</b>) · 집중도 상위 3=${conc}%`});
   
-  // 평가
   if (top_cat_pct >= 50) {
     rows.push({tag:'ok', html:`<b>${top_cat[0]}</b> 카테고리에 매출 절반 이상 집중 — 광고 우선순위 명확`});
   }
@@ -496,29 +512,12 @@ function analyzeSales(week, ch) {
   } else if (matched_in_ad === 0) {
     rows.push({tag:'warn', html:`매출 상위 3 중 광고 상위 매칭 <span class="x">0개</span> — 광고 키워드 확대 후보`});
   }
-  // 고단가 vs 저단가
   if (top1_avg >= avg * 2 && top1_avg >= 1000000) {
-    rows.push({tag:'ok', html:`1위 키워드 단가 <b>${fmtWon(top1_avg)}</b> 평균의 ${(top1_avg/avg).toFixed(1)}배 — 고단가 제품`});
+    rows.push({tag:'ok', html:`1위 키워드 단가 <b>${fmtWon(top1_avg)}</b> 평균의 ${(top1_avg/avg).toFixed(1)}배 — 고단가`});
   }
   return rows;
 }
 
-function toggleOpinion(popId, week, type, ch) {
-  const div = document.getElementById(popId + '_op');
-  if (!div) return;
-  if (div.style.display === 'none' || !div.style.display) {
-    const rows = type === 'ad' ? analyzeAd(week) : analyzeSales(week, ch);
-    let html = '';
-    rows.forEach(r => {
-      const tagLabel = {ok:'강점', warn:'주의', no:'약점', info:'정보'}[r.tag] || '';
-      html += `<div class="op-row"><span class="op-tag ${r.tag}">${tagLabel}</span><span class="op-text">${r.html}</span></div>`;
-    });
-    div.innerHTML = html;
-    div.style.display = 'block';
-  } else {
-    div.style.display = 'none';
-  }
-}
 
 function showTab(i){
   document.querySelectorAll('.tab-btn').forEach((b,idx)=>b.classList.toggle('active', idx===i));
