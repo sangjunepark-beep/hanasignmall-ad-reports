@@ -1,0 +1,4455 @@
+[
+  {
+    "nccAdId": "nad-a001-01-000000159092242",
+    "nccAdgroupId": "grp-a001-01-000000017762689",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=024"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:23:58.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159090406",
+    "nccAdgroupId": "grp-a001-01-000000017762711",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "주차스티커 전문 공장/끈적임 없는 무점착 스티커, 아파트주차스티커 맞춤형 제작.",
+      "headline": "주차스티커 공장 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-11-20T01:07:02.000Z",
+    "regTm": "2021-11-15T06:20:44.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000108977285",
+    "nccAdgroupId": "grp-a001-01-000000017762711",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "끈적이지 않는 무점착 스티커제작, 주차스티커, 아파트주차스티커, 맞춤형 제작.",
+      "headline": "무점착 스티커제작 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-03-18T02:25:20.000Z",
+    "regTm": "2020-10-15T05:36:42.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094285",
+    "nccAdgroupId": "grp-a001-01-000000017762742",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "소방 안전표지판, 소방대진입창 스티커 등 맞춤형 인쇄물 제작 / 빠른상담 당일출고",
+      "headline": " 소방사인물 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:27:33.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094978",
+    "nccAdgroupId": "grp-a001-01-000000017762755",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "A형입간판, 배너입간판, 스텐입간판, 4천업체 제작, UV인쇄기법으로 변형이없음",
+      "headline": "입간판 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=021007",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=021007"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=021007",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=021007"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:28:53.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094463",
+    "nccAdgroupId": "grp-a001-01-000000017762843",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "표지판,안내판,UV인쇄,스티커 주문제작, 사인물 전문제작",
+      "headline": "하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:27:55.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094539",
+    "nccAdgroupId": "grp-a001-01-000000017762859",
+    "customerId": 1558945,
+    "inspectStatus": "PENDING",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "대량주문 아크릴,PC,PET,포맥스,단프라 등 친절상담/빠른배송 하나사인몰",
+      "headline": "칸막이 대량주문 빠른발송",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:39.000Z",
+    "regTm": "2021-11-15T06:28:06.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_DISAPPROVED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094089",
+    "nccAdgroupId": "grp-a001-01-000000017762868",
+    "customerId": 1558945,
+    "inspectStatus": "PENDING",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "고퀄리티 스티커 / 바닥시트,금속특수시트 등 원하는 장소에 따라 시트타입 선택가능",
+      "headline": "사회적거리두기 스티커",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:39.000Z",
+    "regTm": "2021-11-15T06:27:22.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_DISAPPROVED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094615",
+    "nccAdgroupId": "grp-a001-01-000000017764384",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001001001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001001001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001001001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001001001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:28:17.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085593",
+    "nccAdgroupId": "grp-a001-01-000000017765280",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=024"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:37.000Z",
+    "regTm": "2021-11-15T06:02:42.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000161404880",
+    "nccAdgroupId": "grp-a001-01-000000017765281",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "고퀄리티 스티커 / 바닥시트,금속특수시트 등 원하는 장소에 따라 시트타입 선택가능",
+      "headline": "거리두기 상품 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%AC%ED%9A%8C%EC%A0%81%EA%B1%B0%EB%A6%AC%EB%91%90%EA%B8%B0&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-12-01T02:32:18.000Z",
+    "regTm": "2021-12-01T02:32:14.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085797",
+    "nccAdgroupId": "grp-a001-01-000000017765282",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "소방 안전표지판, 소방대진입창 스티커, 소방차전용구역 등, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%8C%EB%B0%A9&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:05:22.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086294",
+    "nccAdgroupId": "grp-a001-01-000000017765283",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "주차스티커 전문 공장/끈적임 없는 무점착 스티커, 아파트주차스티커 맞춤형 제작.",
+      "headline": "주차스티커 공장 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:07:48.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000108977933",
+    "nccAdgroupId": "grp-a001-01-000000017765283",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "끈적이지 않는 무점착 스티커제작, 주차스티커, 아파트주차스티커, 맞춤형 제작.",
+      "headline": "무점착 스티커제작 하나사인몰",
+      "mobile": {
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "preNccAdId": "nad-a001-01-000000108977299",
+    "delFlag": false,
+    "editTm": "2021-03-18T07:26:24.000Z",
+    "regTm": "2020-10-15T05:42:40.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086362",
+    "nccAdgroupId": "grp-a001-01-000000017765285",
+    "customerId": 1558945,
+    "inspectStatus": "PENDING",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "대량주문 아크릴,PC,PET,포맥스,단프라 등 친절상담/빠른배송 하나사인몰",
+      "headline": "칸막이 대량주문 빠른발송",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B9%B8%EB%A7%89%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:39.000Z",
+    "regTm": "2021-11-15T06:08:09.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_DISAPPROVED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086592",
+    "nccAdgroupId": "grp-a001-01-000000017765286",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001001001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001001001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001001001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001001001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:09:30.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086028",
+    "nccAdgroupId": "grp-a001-01-000000017765316",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "A형입간판, 배너입간판, 스텐입간판, 4천업체 제작, UV인쇄기법으로 변형이없음",
+      "headline": "하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=021",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=021"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=021",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=021"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:07:04.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086195",
+    "nccAdgroupId": "grp-a001-01-000000017765468",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "표지판,안내판,UV인쇄,스티커 주문제작, 사인물 전문제작",
+      "headline": "하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:07:30.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094777",
+    "nccAdgroupId": "grp-a001-01-000000017769024",
+    "customerId": 1558945,
+    "inspectStatus": "PENDING",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "정품 항균필름 접착/비접착. 끈적이가 남지않는 접착식 / 롤타입 등",
+      "headline": "99.999%사멸 항균필름",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:39.000Z",
+    "regTm": "2021-11-15T06:28:31.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_DISAPPROVED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000317003626",
+    "nccAdgroupId": "grp-a001-01-000000017769059",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "바이러스 착용 관련 안내문/스티커 제작",
+      "headline": "하나사인몰 마스크착용 안내판",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-08-22T08:16:28.000Z",
+    "regTm": "2024-08-22T08:16:27.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159089941",
+    "nccAdgroupId": "grp-a001-01-000000017769061",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:20:11.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159090025",
+    "nccAdgroupId": "grp-a001-01-000000017769064",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:어린이집} {keyword:유치원} 공공기관 외 고퀄리티 안내판",
+      "headline": "사인물전문 하나사인몰 {keyword:안내판}",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:20:27.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159090828",
+    "nccAdgroupId": "grp-a001-01-000000017769065",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com",
+        "punyCode": "http://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com",
+        "punyCode": "http://hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:21:10.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159093646",
+    "nccAdgroupId": "grp-a001-01-000000017769066",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "미끄럼방지매트 먼지털이매트 로고매트 맞춤형 매트",
+      "headline": "코일매트 맘보매트 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=040",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=040"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=040",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=040"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:26:32.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159089780",
+    "nccAdgroupId": "grp-a001-01-000000017769067",
+    "customerId": 1558945,
+    "inspectStatus": "PENDING",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "철제형,포맥스형,스티커 타입등 다양한 타입 제작가능 사인물 전문",
+      "headline": "산사태 위험지역 안내 표지판",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:39.000Z",
+    "regTm": "2021-11-15T06:19:42.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_DISAPPROVED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159089841",
+    "nccAdgroupId": "grp-a001-01-000000017769068",
+    "customerId": 1558945,
+    "inspectStatus": "PENDING",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "스티커,안내판,금속특수시트 등 다양한 타입 가능",
+      "headline": "올바른 손씻기 6단계 안내판",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:39.000Z",
+    "regTm": "2021-11-15T06:19:56.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_DISAPPROVED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094349",
+    "nccAdgroupId": "grp-a001-01-000000017769069",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 인쇄물 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:27:45.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159092311",
+    "nccAdgroupId": "grp-a001-01-000000017769079",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "안내판/표지판, 구조물, 현수막/배너, 구조물, 안전물품, 기타물품",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=007",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=007"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=007",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=007"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:24:09.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159094800",
+    "nccAdgroupId": "grp-a001-01-000000017769082",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "빠르고 친절하게! 최상의 품질을 자부합니다.",
+      "headline": "현수막 주문제작 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=006",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=006"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:28:42.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085612",
+    "nccAdgroupId": "grp-a001-01-000000017788364",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "안내판/표지판, 구조물, 현수막/배너, 구조물, 안전물품, 기타물품",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=007",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=007"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=007",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=007"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:37.000Z",
+    "regTm": "2021-11-15T06:03:00.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085681",
+    "nccAdgroupId": "grp-a001-01-000000017788365",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "미끄럼방지매트 먼지털이매트 로고매트 맞춤형 매트",
+      "headline": "코일매트 맘보매트 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=040",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=040"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=040",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=040"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:04:06.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000161404704",
+    "nccAdgroupId": "grp-a001-01-000000017788366",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "하나사인몰 바이러스 감염 관련 안내문/스티커 제작",
+      "headline": "감염예방상품 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-12-01T02:32:05.000Z",
+    "regTm": "2021-12-01T02:31:47.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000161405009",
+    "nccAdgroupId": "grp-a001-01-000000017788367",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "철제형,포맥스형,스티커 타입등 다양한 타입 제작가능 사인물 전문",
+      "headline": "산사태 위험표지판 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%82%B0%EC%82%AC%ED%83%9C&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-12-01T02:32:54.000Z",
+    "regTm": "2021-12-01T02:32:47.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000161405168",
+    "nccAdgroupId": "grp-a001-01-000000017788368",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "스티커,안내판,금속특수시트 등 다양한 타입 가능",
+      "headline": "손씻기 안내판 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%86%90%EC%94%BB%EA%B8%B0"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-12-01T02:33:18.000Z",
+    "regTm": "2021-12-01T02:33:11.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085849",
+    "nccAdgroupId": "grp-a001-01-000000017788369",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:05:43.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085865",
+    "nccAdgroupId": "grp-a001-01-000000017788370",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:어린이집} {keyword:유치원} 공공기관 외 고퀄리티 안내판",
+      "headline": "사인물전문 하나사인몰 {keyword:안내판}",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:05:51.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086006",
+    "nccAdgroupId": "grp-a001-01-000000017788371",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 인쇄물 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=104&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:06:55.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159087073",
+    "nccAdgroupId": "grp-a001-01-000000017788372",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com",
+        "punyCode": "http://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com",
+        "punyCode": "http://hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:11:10.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000161404474",
+    "nccAdgroupId": "grp-a001-01-000000017788373",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "정품 항균필름 접착/비접착. 끈적이가 남지않는 접착식 / 롤타입 등",
+      "headline": "항균력99.99% 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%ED%95%AD%EA%B7%A0&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-12-01T02:31:53.000Z",
+    "regTm": "2021-12-01T02:30:56.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159087125",
+    "nccAdgroupId": "grp-a001-01-000000017788375",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "빠르고 친절하게! 최상의 품질을 자부합니다.",
+      "headline": "현수막 주문제작 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=006",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=006"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:11:31.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085501",
+    "nccAdgroupId": "grp-a001-01-000000018907509",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "보호자 동승 표지 차량 고휘도반사지, 7만원이상 무료배송, 도로교통법 시행령",
+      "headline": "보호자 동승 표지 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:01:36.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159093529",
+    "nccAdgroupId": "grp-a001-01-000000019432328",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "비상 대피로 유도 스티커, 소화기사용방법 안내판, 비상구 야광 스티커",
+      "headline": "비상 대피로스티커 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:26:20.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085619",
+    "nccAdgroupId": "grp-a001-01-000000019432773",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "비상 대피로 유도 스티커, 소화기사용방법 안내판, 비상구 야광 스티커",
+      "headline": "비상 대피로스티커 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EB%8C%80%ED%94%BC%EB%A1%9C&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:03:12.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159090685",
+    "nccAdgroupId": "grp-a001-01-000000019787970",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "축광 옥상출입문 표지, 완광기 위치 안내판, 바닥 금연스티커, 소화전 스티커",
+      "headline": "축광 안전 스티커 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:20:55.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086338",
+    "nccAdgroupId": "grp-a001-01-000000019788366",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "축광 옥상출입문 표지, 완광기 위치 안내판, 바닥 금연스티커, 소화전 스티커",
+      "headline": "축광 안전 스티커 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%B6%95%EA%B4%91&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:08:00.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085637",
+    "nccAdgroupId": "grp-a001-01-000000020997247",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:03:33.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159090918",
+    "nccAdgroupId": "grp-a001-01-000000021089716",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "보호자 동승 표지 차량 고휘도반사지, 7만원이상 무료배송, 도로교통법 시행령",
+      "headline": "보호자 동승 표지 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%98%B8&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:21:21.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085661",
+    "nccAdgroupId": "grp-a001-01-000000021673050",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작.",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:03:53.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085511",
+    "nccAdgroupId": "grp-a001-01-000000021955614",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "MSDS표지,스티커, 포맥스 등 다양한 산업안전 표지 전문 사인몰",
+      "headline": "안전 표지 전문몰 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=003004",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=003004"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=003004",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=003004"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:01:46.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159089626",
+    "nccAdgroupId": "grp-a001-01-000000021957598",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "MSDS표지,스티커, 포맥스 등 다양한 산업안전 표지 전문 사인몰",
+      "headline": "안전 표지 전문몰 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=003004",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_list.php?cateCd=003004"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=003004",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=003004"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:19:23.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085693",
+    "nccAdgroupId": "grp-a001-01-000000023260719",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "관리소용품, 안내판/표지판, 구조물, 현수막/배너, 구조물, 안전물품, 기타물품",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_view.php?goodsNo=1000000595",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_view.php?goodsNo=1000000595"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_view.php?goodsNo=1000000595",
+        "punyCode": "http://hanasignmall.com/goods/goods_view.php?goodsNo=1000000595"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:37.000Z",
+    "regTm": "2021-11-15T06:04:18.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159085971",
+    "nccAdgroupId": "grp-a001-01-000000023661530",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "일자형,다각형,미끄럼방지,투명,금속타입 등 다양한타입",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_view.php?goodsNo=1000007457",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_view.php?goodsNo=1000007457"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_view.php?goodsNo=1000007457",
+        "punyCode": "http://hanasignmall.com/goods/goods_view.php?goodsNo=1000007457"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:36.000Z",
+    "regTm": "2021-11-15T06:06:33.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000159086067",
+    "nccAdgroupId": "grp-a001-01-000000023942318",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "도로명 주소 안내 표지판/현판/사인물 전문/빠른상담 맞춤디자인",
+      "headline": "도로명주소 안내판 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%86%8C%EC%95%88%EB%82%B4%ED%8C%90&recentCount=10",
+        "punyCode": "http://m.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%86%8C%EC%95%88%EB%82%B4%ED%8C%90&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%86%8C%EC%95%88%EB%82%B4%ED%8C%90&recentCount=10",
+        "punyCode": "http://hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%86%8C%EC%95%88%EB%82%B4%ED%8C%90&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2021-11-16T02:39:35.000Z",
+    "regTm": "2021-11-15T06:07:22.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000279653883",
+    "nccAdgroupId": "grp-a001-01-000000039545475",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 안내판, 게시판, 인쇄물, 배너, 입간판 전문업체 견적문의 환영!",
+      "headline": "깔끔한 {keyword:입간판}은 하나사인몰!",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-10-28T08:00:47.000Z",
+    "regTm": "2023-12-26T08:17:22.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000279160977",
+    "nccAdgroupId": "grp-a001-01-000000039545475",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 안내판, 게시판, 인쇄물, 배너, 입간판 전문업체 견적문의 환영!",
+      "headline": "깔끔한 {keyword:입간판}은 하나사인몰!",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-10-28T08:00:53.000Z",
+    "regTm": "2023-12-21T06:28:43.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286374225",
+    "nccAdgroupId": "grp-a001-01-000000039545475",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 안내판, 게시판, 인쇄물, 배너, 입간판 전문업체 맞춤제작/견적문의 환영!",
+      "headline": "{keyword:매장용품} 전문몰 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T00:58:54.000Z",
+    "regTm": "2024-02-07T00:58:51.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000289978733",
+    "nccAdgroupId": "grp-a001-01-000000039545475",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 안내판, 게시판, 인쇄물, 배너, 입간판 전문업체 견적문의 환영!",
+      "headline": "{keyword:매장용품} 입간판은 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=112013"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-04T12:04:15.000Z",
+    "regTm": "2024-03-04T12:04:10.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286484303",
+    "nccAdgroupId": "grp-a001-01-000000040010038",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "메탈, 강화유리, 자석 각종 재질 {keyword:게시판} 주문제작 하나사인몰",
+      "headline": "{keyword:승강기게시판} 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-02-05T13:57:41.000Z",
+    "regTm": "2024-02-07T08:30:57.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000471647069",
+    "nccAdgroupId": "grp-a001-01-000000040010038",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "슬림업 초경량 {keyword:게시판} 아크릴 갈바 강화유리 주문제작부터 시공까지 완벽하게",
+      "headline": "{keyword:승강기게시판} 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-02-05T13:57:41.000Z",
+    "regTm": "2026-02-05T13:57:35.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000472041046",
+    "nccAdgroupId": "grp-a001-01-000000040010038",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "초경량 슬림 {keyword:게시판} 아크릴 갈바 강화유리 전재질 주문제작 시공 1:1 친절상담",
+      "headline": "{keyword:엘리베이터 게시판} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "https://www.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "https://www.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "https://www.hanasignmall.com/goods/goods_list.php?cateCd=024",
+        "punyCode": "https://www.hanasignmall.com/goods/goods_list.php?cateCd=024"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-02-06T14:43:06.000Z",
+    "regTm": "2026-02-06T14:43:02.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286506969",
+    "nccAdgroupId": "grp-a001-01-000000040328937",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "내리막길 오르막길 {keyword:넘어짐}주의 {keyword:단차주의}스티커 미끄럼방지 유포지 포맥스 금속특수소재",
+      "headline": "{keyword:단차주의} 스티커 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:39:05.000Z",
+    "regTm": "2024-02-07T09:00:48.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286506825",
+    "nccAdgroupId": "grp-a001-01-000000040328937",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "내리막길 오르막길 {keyword:넘어짐}주의 {keyword:단차주의}스티커 미끄럼방지 유포지 포맥스 금속특수소재",
+      "headline": "{keyword:계단조심} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T09:00:37.000Z",
+    "regTm": "2024-02-07T09:00:34.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286506975",
+    "nccAdgroupId": "grp-a001-01-000000040328937",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "내리막길 오르막길 {keyword:넘어짐}주의 {keyword:단차주의}스티커 미끄럼방지 유포지 포맥스 금속특수소재",
+      "headline": "{keyword:경고스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009030"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T09:00:54.000Z",
+    "regTm": "2024-02-07T09:00:51.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000291008254",
+    "nccAdgroupId": "grp-a001-01-000000040331207",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "튼튼하게 오래 사용하는 고품질 {keyword:매립식 안내판} 제작 하나사인몰",
+      "headline": "전면주차 {keyword:매립식 안내판} 전문",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:37:40.000Z",
+    "regTm": "2024-03-11T06:37:38.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000291008295",
+    "nccAdgroupId": "grp-a001-01-000000040331207",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "튼튼하게 오래 사용하는 고품질 {keyword:매립식 안내판} 제작 하나사인몰",
+      "headline": "화단보호 {keyword:매립식 안내판} 전문",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:38:25.000Z",
+    "regTm": "2024-03-11T06:38:21.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286487359",
+    "nccAdgroupId": "grp-a001-01-000000040331207",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "튼튼하게 오래 사용하는 고품질 {keyword:매립식} {keyword:안내판} 제작 하나사인몰",
+      "headline": "화단보호 {keyword:매립식 안내판} 전문",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:38:25.000Z",
+    "regTm": "2024-02-07T08:36:23.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000291008281",
+    "nccAdgroupId": "grp-a001-01-000000040331207",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "튼튼하게 오래 사용하는 고품질 {keyword:매립식 안내판} 제작 하나사인몰",
+      "headline": "잔디보호 {keyword:매립식 안내판} 전문",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006",
+        "punyCode": "http://hanasignmall.com/goods/goods_list.php?cateCd=001006"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:38:14.000Z",
+    "regTm": "2024-03-11T06:38:10.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286507369",
+    "nccAdgroupId": "grp-a001-01-000000040331208",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "간편하게 썻다 지웠다! 보드마카 타입 {keyword:소방안전관리자현황표}",
+      "headline": "{keyword:소방안전관리자현황표} 현황판",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T09:02:58.000Z",
+    "regTm": "2024-02-07T09:02:52.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286507297",
+    "nccAdgroupId": "grp-a001-01-000000040331208",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "간편하게 썻다 지웠다! 보드마카 타입 {keyword:소방안전관리자현황표}",
+      "headline": "{keyword:소방안전관리자} 현황표 제작",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009137"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T09:02:30.000Z",
+    "regTm": "2024-02-07T09:02:28.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000327368429",
+    "nccAdgroupId": "grp-a001-01-000000040332086",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "반사지/야광지/단면/양면가능! 선명하고 뚜렷한 고퀄리티 인쇄 {keyword:소방관진입창 스티커}",
+      "headline": "하나사인몰 {keyword:소방관진입창} 특허",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-10-30T04:51:01.000Z",
+    "regTm": "2024-10-30T04:51:01.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286178093",
+    "nccAdgroupId": "grp-a001-01-000000040332086",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "반사지/야광지/단면/양면가능! 선명하고 뚜렷한 고퀄리티 인쇄 {keyword:소방관진입창 스티커}",
+      "headline": "하나사인몰 {keyword:소방관진입창} 전문",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000007332"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-06T02:01:53.000Z",
+    "regTm": "2024-02-06T02:01:48.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286488527",
+    "nccAdgroupId": "grp-a001-01-000000040332101",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:방화문 스티커} 안전 표시 스티커 안내판 제작 전문  하나사인몰",
+      "headline": "{keyword:방화문스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:37:18.000Z",
+    "regTm": "2024-02-07T08:37:11.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000327082462",
+    "nccAdgroupId": "grp-a001-01-000000040332101",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:방화문 스티커} 안전 표시 스티커 안내판 제작 전문  하나사인몰",
+      "headline": "{keyword:방화문스티커} 표기는하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EB%B0%A9%ED%99%94%EB%AC%B8&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-10-29T03:06:29.000Z",
+    "regTm": "2024-10-29T02:49:45.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000306011169",
+    "nccAdgroupId": "grp-a001-01-000000040332101",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:방화셔터 스티커} 안전 표시 스티커 안내판 제작 전문  하나사인몰",
+      "headline": "{keyword:방화셔터 스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009599",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009599"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009599",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009599"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-06-11T07:55:23.000Z",
+    "regTm": "2024-06-11T07:55:19.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286498270",
+    "nccAdgroupId": "grp-a001-01-000000040332102",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "홀로그램/메탈/반사/야광 등 다양한 타입 {keyword:주차스티커}제작 가능!",
+      "headline": "{keyword:주차스티커제작} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:38:53.000Z",
+    "regTm": "2024-02-07T08:47:52.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286498010",
+    "nccAdgroupId": "grp-a001-01-000000040332102",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "홀로그램/메탈/반사/야광 등 다양한 타입 {keyword:주차스티커}제작 가능!",
+      "headline": "{keyword:차량 주차 스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:47:42.000Z",
+    "regTm": "2024-02-07T08:47:37.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286491499",
+    "nccAdgroupId": "grp-a001-01-000000040332102",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "홀로그램/메탈/반사/야광 등 다양한 타입 {keyword:주차스티커}제작 가능!",
+      "headline": "{keyword:주차카드} 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:41:51.000Z",
+    "regTm": "2024-02-07T08:41:46.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286492305",
+    "nccAdgroupId": "grp-a001-01-000000040332102",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "홀로그램/메탈/반사/야광 등 다양한 타입 {keyword:주차스티커}제작 가능!",
+      "headline": "아파트 {keyword:주차스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-03-11T06:38:46.000Z",
+    "regTm": "2024-02-07T08:42:23.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286491015",
+    "nccAdgroupId": "grp-a001-01-000000040332102",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "홀로그램/메탈/반사/야광 등 다양한 타입 {keyword:주차스티커}제작 가능!",
+      "headline": "{keyword:아파트 주차스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=104001"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:41:27.000Z",
+    "regTm": "2024-02-07T08:41:20.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000285219942",
+    "nccAdgroupId": "grp-a001-01-000000040332103",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "자국이 남지않고 저렴한 리무벌 / 쉽게 붙였다떼는 무점착 소재 {keyword:요일제스티커}",
+      "headline": "차량 5부제 {keyword:요일제스티커}",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-01-30T12:45:12.000Z",
+    "regTm": "2024-01-30T12:45:11.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000285219983",
+    "nccAdgroupId": "grp-a001-01-000000040332103",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "기본에 충실해 눈에 잘 띄는 디자인 차량 {keyword:요일제스티커}",
+      "headline": "{keyword:요일제스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:40:25.000Z",
+    "regTm": "2024-01-30T12:45:36.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000285219933",
+    "nccAdgroupId": "grp-a001-01-000000040332103",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "자국이 남지않고 저렴한 리무벌 / 쉽게 붙였다떼는 무점착 소재 {keyword:요일제스티커}",
+      "headline": "{keyword:요일제스티커} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:40:26.000Z",
+    "regTm": "2024-01-30T12:44:57.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286490118",
+    "nccAdgroupId": "grp-a001-01-000000040332103",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "자국이 남지않고 저렴한 리무벌 / 쉽게 붙였다떼는 무점착 소재 {keyword:요일제스티커}",
+      "headline": "{keyword:5부제}차량 스티커 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000010836"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T08:40:27.000Z",
+    "regTm": "2024-02-07T08:40:21.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000313593815",
+    "nccAdgroupId": "grp-a001-01-000000040332230",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "뛰어난 시안성과 고품질의 다양한 디자인  {keyword:주차금지표지판} 맞춤제작",
+      "headline": "{keyword:주차금지 표지판} 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80%ED%91%9C%EC%A7%80%ED%8C%90&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80%ED%91%9C%EC%A7%80%ED%8C%90&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80%ED%91%9C%EC%A7%80%ED%8C%90&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%A7%80%ED%91%9C%EC%A7%80%ED%8C%90&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-07-30T04:26:37.000Z",
+    "regTm": "2024-07-30T04:26:34.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286506111",
+    "nccAdgroupId": "grp-a001-01-000000040332230",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "뛰어난 시안성과 고품질의 다양한 디자인  {keyword:주차금지표지판} 맞춤제작",
+      "headline": "A형 입간판 {keyword:주차금지표지판}",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=021",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=021"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=021",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=021"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-10-28T08:01:16.000Z",
+    "regTm": "2024-02-07T08:58:19.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286503668",
+    "nccAdgroupId": "grp-a001-01-000000040332230",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "뛰어난 시안성과 고품질의 다양한 디자인  {keyword:주차금지표지판} 맞춤제작",
+      "headline": "{keyword:주차금지}오뚜기 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=003002010",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=003002010"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=003002010",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_list.php?cateCd=003002010"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-10-28T08:01:18.000Z",
+    "regTm": "2024-02-07T08:53:16.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000286507482",
+    "nccAdgroupId": "grp-a001-01-000000040332263",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "자석/스티커 타입 {keyword:개인과외교습자표찰} 제작 하나사인몰",
+      "headline": "{keyword:개인과외교습자} 신고현황",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009678",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009678"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009678",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_view.php?goodsNo=1000009678"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-07T09:03:37.000Z",
+    "regTm": "2024-02-07T09:03:32.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000289338300",
+    "nccAdgroupId": "grp-a001-01-000000040835780",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "학급 학원 학교 유치원 안내판 신학기 용품은 하나사인몰에서!",
+      "headline": "{keyword:환경구성} 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-02-28T07:09:43.000Z",
+    "regTm": "2024-02-28T07:09:38.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000289338684",
+    "nccAdgroupId": "grp-a001-01-000000040835780",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:학급} 안내판 학교 {keyword:유치원} 신학기 용품",
+      "headline": "{keyword:환경구성} 용품 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/",
+        "punyCode": "http://www.hanasignmall.com/"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/",
+        "punyCode": "http://www.hanasignmall.com/"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-07-30T05:13:23.000Z",
+    "regTm": "2024-02-28T07:10:23.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000289338460",
+    "nccAdgroupId": "grp-a001-01-000000040835780",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:환경구성} 어린이 스티커 안내판 제작 전문 하나사인몰",
+      "headline": "{keyword:환경구성} 전문 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-07-30T05:13:36.000Z",
+    "regTm": "2024-02-28T07:10:02.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000289321684",
+    "nccAdgroupId": "grp-a001-01-000000040835780",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "{keyword:학급} 안내판 학교 {keyword:유치원} 신학기 용품",
+      "headline": "{keyword:환경구성} 용품 하나사인몰",
+      "mobile": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_search.php?keyword=%EC%96%B4%EB%A6%B0%EC%9D%B4&recentCount=10"
+      }
+    },
+    "adAttr": {},
+    "userLock": true,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2024-07-30T05:14:13.000Z",
+    "regTm": "2024-02-28T06:16:42.000Z",
+    "status": "PAUSED",
+    "statusReason": "AD_PAUSED"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000302398342",
+    "nccAdgroupId": "grp-a001-01-000000042528825",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "final": "http://www.hanasignmall.com/goods/goods_main.php?sno=23&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_main.php?sno=23&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20"
+      },
+      "pc": {
+        "final": "http://www.hanasignmall.com/goods/goods_main.php?sno=23&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com/goods/goods_main.php?sno=23&sort=orderCnt+desc%2Cg.regDt+desc&pageNum=20"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "preNccAdId": "nad-a001-01-000000271665742",
+    "delFlag": false,
+    "editTm": "2024-05-20T00:44:06.000Z",
+    "regTm": "2024-05-20T00:44:02.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000302398343",
+    "nccAdgroupId": "grp-a001-01-000000042528825",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작",
+      "headline": "사인물 전문 하나사인몰",
+      "mobile": {
+        "final": "http://www.hanasignmall.com",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      },
+      "pc": {
+        "final": "http://www.hanasignmall.com",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "preNccAdId": "nad-a001-01-000000271666057",
+    "delFlag": false,
+    "editTm": "2024-05-20T00:44:06.000Z",
+    "regTm": "2024-05-20T00:44:02.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000302398344",
+    "nccAdgroupId": "grp-a001-01-000000042528825",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작",
+      "headline": "맞춤형 디자인 하나사인몰",
+      "mobile": {
+        "final": "http://www.hanasignmall.com/board/list.php?bdId=qa",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com/board/list.php?bdId=qa"
+      },
+      "pc": {
+        "final": "http://www.hanasignmall.com/board/list.php?bdId=qa",
+        "display": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com/board/list.php?bdId=qa"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "preNccAdId": "nad-a001-01-000000271664910",
+    "delFlag": false,
+    "editTm": "2024-05-20T00:44:06.000Z",
+    "regTm": "2024-05-20T00:44:02.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000453821971",
+    "nccAdgroupId": "grp-a001-01-000000047201400",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com/goods/event_sale.php?sno=52",
+        "punyCode": "https://m.hanasignmall.com/goods/event_sale.php?sno=52"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "https://hanasignmall.com/goods/event_sale.php?sno=52",
+        "punyCode": "https://hanasignmall.com/goods/event_sale.php?sno=52"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-12-26T06:30:12.000Z",
+    "regTm": "2025-12-26T06:30:06.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002206366",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "{keyword:바닥시트}원하는곳 어디든 부착"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072872160",
+        "nccAdId": "nad-a001-01-000000453821971",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:30:06.000Z",
+        "editTm": "2025-12-26T15:30:06.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206367",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "{keyword:금속스티커}특수시트 전문쇼핑몰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072872161",
+        "nccAdId": "nad-a001-01-000000453821971",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:30:06.000Z",
+        "editTm": "2025-12-26T15:30:06.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206368",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "쉽고 빠른설치 가능{keyword:바닥표지판}"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072872162",
+        "nccAdId": "nad-a001-01-000000453821971",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:30:06.000Z",
+        "editTm": "2025-12-26T15:30:06.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002209033",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "반사, 축광, 노면, 특수시트 및 광고용 어떤것이든!"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072872163",
+        "nccAdId": "nad-a001-01-000000453821971",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-12-26T15:30:06.000Z",
+        "editTm": "2025-12-26T15:30:06.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206370",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "방향 표시 스티커부터 금속 스티커까지 한 곳에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072872164",
+        "nccAdId": "nad-a001-01-000000453821971",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-12-26T15:30:06.000Z",
+        "editTm": "2025-12-26T15:30:06.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000344939987",
+    "nccAdgroupId": "grp-a001-01-000000047201400",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-01-08T05:49:34.000Z",
+    "regTm": "2025-01-08T05:49:29.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002206366",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "{keyword:바닥시트}원하는곳 어디든 부착"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024116113",
+        "nccAdId": "nad-a001-01-000000344939987",
+        "linkType": "HEADLINE",
+        "regTm": "2025-01-08T14:49:29.000Z",
+        "editTm": "2025-01-08T14:49:29.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206367",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "{keyword:금속스티커}특수시트 전문쇼핑몰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024116114",
+        "nccAdId": "nad-a001-01-000000344939987",
+        "linkType": "HEADLINE",
+        "regTm": "2025-01-08T14:49:29.000Z",
+        "editTm": "2025-01-08T14:49:29.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206368",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "쉽고 빠른설치 가능{keyword:바닥표지판}"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024116115",
+        "nccAdId": "nad-a001-01-000000344939987",
+        "linkType": "HEADLINE",
+        "regTm": "2025-01-08T14:49:29.000Z",
+        "editTm": "2025-01-08T14:49:29.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002209033",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "반사, 축광, 노면, 특수시트 및 광고용 어떤것이든!"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024116116",
+        "nccAdId": "nad-a001-01-000000344939987",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-01-08T14:49:29.000Z",
+        "editTm": "2025-01-08T14:49:29.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206370",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "방향 표시 스티커부터 금속 스티커까지 한 곳에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024116117",
+        "nccAdId": "nad-a001-01-000000344939987",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-01-08T14:49:29.000Z",
+        "editTm": "2025-01-08T14:49:29.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000345362300",
+    "nccAdgroupId": "grp-a001-01-000000047201400",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-01-09T07:20:13.000Z",
+    "regTm": "2025-01-09T07:20:10.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002218957",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "알루미늄 시트로 튼튼"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024190872",
+        "nccAdId": "nad-a001-01-000000345362300",
+        "linkType": "HEADLINE",
+        "regTm": "2025-01-09T16:20:10.000Z",
+        "editTm": "2025-01-09T16:20:10.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218958",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "어느 바닥이든 착착착"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024190873",
+        "nccAdId": "nad-a001-01-000000345362300",
+        "linkType": "HEADLINE",
+        "regTm": "2025-01-09T16:20:10.000Z",
+        "editTm": "2025-01-09T16:20:10.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218959",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "시인성도 한번에"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024190874",
+        "nccAdId": "nad-a001-01-000000345362300",
+        "linkType": "HEADLINE",
+        "regTm": "2025-01-09T16:20:10.000Z",
+        "editTm": "2025-01-09T16:20:10.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218960",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "쉽고 빠른 부착으로 시간 절약까지 한번에"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024190875",
+        "nccAdId": "nad-a001-01-000000345362300",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-01-09T16:20:10.000Z",
+        "editTm": "2025-01-09T16:20:10.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218961",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "오래써도 변함없는 품질 하나사인몰 시트지"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000024190876",
+        "nccAdId": "nad-a001-01-000000345362300",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-01-09T16:20:10.000Z",
+        "editTm": "2025-01-09T16:20:10.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000357498360",
+    "nccAdgroupId": "grp-a001-01-000000048124651",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-02-24T06:37:43.000Z",
+    "regTm": "2025-02-24T06:37:38.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002546941",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "고품격 수목장 명패"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026986086",
+        "nccAdId": "nad-a001-01-000000357498360",
+        "linkType": "HEADLINE",
+        "regTm": "2025-02-24T15:37:38.000Z",
+        "editTm": "2025-02-24T15:37:38.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546942",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "영원한 안식처, 특별한 표시"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026986087",
+        "nccAdId": "nad-a001-01-000000357498360",
+        "linkType": "HEADLINE",
+        "regTm": "2025-02-24T15:37:38.000Z",
+        "editTm": "2025-02-24T15:37:38.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546943",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "추모공원용 고급 표찰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026986088",
+        "nccAdId": "nad-a001-01-000000357498360",
+        "linkType": "HEADLINE",
+        "regTm": "2025-02-24T15:37:38.000Z",
+        "editTm": "2025-02-24T15:37:38.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546944",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "수목장부터 공원까지, 다양한 장소 필요 물품 완비"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026986089",
+        "nccAdId": "nad-a001-01-000000357498360",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-02-24T15:37:38.000Z",
+        "editTm": "2025-02-24T15:37:38.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546945",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "오래도록 간직될 소중한 기억, 여기에 새겨보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026986090",
+        "nccAdId": "nad-a001-01-000000357498360",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-02-24T15:37:38.000Z",
+        "editTm": "2025-02-24T15:37:38.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546946",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "단 하나뿐인 표찰, 하나사인몰에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026986091",
+        "nccAdId": "nad-a001-01-000000357498360",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-02-24T15:37:38.000Z",
+        "editTm": "2025-02-24T15:37:38.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000357490513",
+    "nccAdgroupId": "grp-a001-01-000000048124651",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-02-24T06:26:02.000Z",
+    "regTm": "2025-02-24T06:25:56.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002546803",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "고품격 수목표찰 제작소"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026985307",
+        "nccAdId": "nad-a001-01-000000357490513",
+        "linkType": "HEADLINE",
+        "regTm": "2025-02-24T15:25:56.000Z",
+        "editTm": "2025-02-24T15:25:56.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546804",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "차원이 다른 수목표찰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026985308",
+        "nccAdId": "nad-a001-01-000000357490513",
+        "linkType": "HEADLINE",
+        "regTm": "2025-02-24T15:25:56.000Z",
+        "editTm": "2025-02-24T15:25:56.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546805",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "나무마다 개성있는 명패 달기"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026985309",
+        "nccAdId": "nad-a001-01-000000357490513",
+        "linkType": "HEADLINE",
+        "regTm": "2025-02-24T15:25:56.000Z",
+        "editTm": "2025-02-24T15:25:56.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546806",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "빛바램 걱정 없이 반영구적으로 사용 가능한 나무 표찰, 지금 바로 주문하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026985310",
+        "nccAdId": "nad-a001-01-000000357490513",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-02-24T15:25:56.000Z",
+        "editTm": "2025-02-24T15:25:56.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546807",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "기억에 남는 특별한 선물, 수목표찰 제작은 하나사인몰에서"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026985311",
+        "nccAdId": "nad-a001-01-000000357490513",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-02-24T15:25:56.000Z",
+        "editTm": "2025-02-24T15:25:56.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546808",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "감각적인 디자인부터 꼼꼼한 제작까지 한 번에 해결하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000026985312",
+        "nccAdId": "nad-a001-01-000000357490513",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-02-24T15:25:56.000Z",
+        "editTm": "2025-02-24T15:25:56.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000396156455",
+    "nccAdgroupId": "grp-a001-01-000000052242821",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-07-08T23:35:04.000Z",
+    "regTm": "2025-07-08T23:34:56.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000003661772",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "지금 바로 안전 작업 준비!"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408161",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:56.000Z",
+        "editTm": "2025-07-09T08:34:56.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661773",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "올여름 무더위 대비 완료"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408162",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661774",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "역대급 더위 예정! 대비하자"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408163",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661761",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염에도 안전하게"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408164",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661775",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "건설현장 폭염 대피소 설치"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408165",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661776",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "재난급 폭염 대비책"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408166",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661777",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "땀 흘리는 현장엔 필수템"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408167",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661778",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염 대비 용품 모음전 지금 시작합니다"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408168",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661779",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염 속 안전한 건설 현장 만들기, 하나사인몰과 함께하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408169",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661780",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염 경고 메시지판, 하나사인몰에서 제작하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408170",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661781",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염 대피소 안내 표지판, 하나사인몰에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408171",
+        "nccAdId": "nad-a001-01-000000396156455",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:34:57.000Z",
+        "editTm": "2025-07-09T08:34:57.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000396156408",
+    "nccAdgroupId": "grp-a001-01-000000052242821",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-07-08T23:33:00.000Z",
+    "regTm": "2025-07-08T23:32:59.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000003661761",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염에도 안전하게"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408125",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661762",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "여름철 온열질환 대비하자"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408126",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661763",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "무더위 속 안전제일"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408127",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661764",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "지금 바로 재난대처용품"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408128",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661765",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "역대급 더위 예정일 임박"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408129",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661766",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "건설현장 더위사냥"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408130",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661767",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "뜨거운 여름 필수템"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408131",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661768",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "건설 현장 필수템, 하나사인몰에서 한방에 해결하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408132",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661769",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "폭염 대피소 안내 표지판, 하나사인몰에서 제작하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408133",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661770",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "무더위 속 휴식 시간 확보 필수, 잊지 마세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408134",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003661771",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "열사병 예방 3대 기본 수칙 준비도 역시 하나사인몰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000038408135",
+        "nccAdId": "nad-a001-01-000000396156408",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-09T08:32:59.000Z",
+        "editTm": "2025-07-09T08:32:59.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000400747605",
+    "nccAdgroupId": "grp-a001-01-000000052840813",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://m.hanasignmall.com",
+        "final": "https://m.hanasignmall.com",
+        "punyCode": "https://m.hanasignmall.com"
+      },
+      "pc": {
+        "display": "http://www.hanasignmall.com",
+        "final": "http://www.hanasignmall.com",
+        "punyCode": "http://www.hanasignmall.com"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-07-24T04:57:09.000Z",
+    "regTm": "2025-07-24T04:57:03.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000003798347",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "민생회복소비쿠폰 굿디자인"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741442",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003798348",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "민생회복소비쿠폰 하나사인몰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741443",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003798349",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "나만의 특별한 민생회복스티커"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741444",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "HEADLINE",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003798350",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "다양한 디자인 시안 중 내 취향대로 PICK!"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741445",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003798351",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "가성비 좋은 다양한 상품들 구경하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741446",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003798352",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "믿고 쓰는 하나사인몰에서 만나는 민생템"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741447",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000003798353",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "더 쉽고 빠른 제작, 하나사인몰이라면 가능합니다"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000039741448",
+        "nccAdId": "nad-a001-01-000000400747605",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-07-24T13:57:03.000Z",
+        "editTm": "2025-07-24T13:57:03.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000437556573",
+    "nccAdgroupId": "grp-a001-01-000000055116164",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "TEXT_45",
+    "ad": {
+      "description": "각종 게시판 및 안전표지판, 스티커제작, 안내판, 안전용품, 맞춤형 인쇄물 제작",
+      "headline": "하나사인몰 신규몰 OPEN!",
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr",
+        "punyCode": "https://www.hanasignmall.kr"
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr",
+        "punyCode": "https://www.hanasignmall.kr"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-11-17T06:07:04.000Z",
+    "regTm": "2025-11-17T06:06:59.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE"
+  },
+  {
+    "nccAdId": "nad-a001-01-000000453819926",
+    "nccAdgroupId": "grp-a001-01-000000059642024",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046",
+        "punyCode": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046"
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046",
+        "punyCode": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-12-26T06:25:34.000Z",
+    "regTm": "2025-12-26T06:25:30.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002206366",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "{keyword:바닥시트}원하는곳 어디든 부착"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072870845",
+        "nccAdId": "nad-a001-01-000000453819926",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:25:30.000Z",
+        "editTm": "2025-12-26T15:25:30.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206367",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "{keyword:금속스티커}특수시트 전문쇼핑몰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072870846",
+        "nccAdId": "nad-a001-01-000000453819926",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:25:30.000Z",
+        "editTm": "2025-12-26T15:25:30.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206368",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "쉽고 빠른설치 가능{keyword:바닥표지판}"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072870847",
+        "nccAdId": "nad-a001-01-000000453819926",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:25:30.000Z",
+        "editTm": "2025-12-26T15:25:30.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206369",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "오래가는 내구성, 깔끔한 마감처리 보장드립니다"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072870848",
+        "nccAdId": "nad-a001-01-000000453819926",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-12-26T15:25:30.000Z",
+        "editTm": "2025-12-26T15:25:30.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002206370",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "방향 표시 스티커부터 금속 스티커까지 한 곳에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072870849",
+        "nccAdId": "nad-a001-01-000000453819926",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-12-26T15:25:30.000Z",
+        "editTm": "2025-12-26T15:25:30.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000453820612",
+    "nccAdgroupId": "grp-a001-01-000000059642024",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046",
+        "punyCode": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046"
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046",
+        "punyCode": "https://www.hanasignmall.kr/board/gallery4_list.php?EvProID=2046"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2025-12-26T06:26:54.000Z",
+    "regTm": "2025-12-26T06:26:47.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002218957",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "알루미늄 시트로 튼튼"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072871216",
+        "nccAdId": "nad-a001-01-000000453820612",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:26:47.000Z",
+        "editTm": "2025-12-26T15:26:47.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218958",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "어느 바닥이든 착착착"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072871217",
+        "nccAdId": "nad-a001-01-000000453820612",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:26:47.000Z",
+        "editTm": "2025-12-26T15:26:47.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218959",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "시인성도 한번에"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072871218",
+        "nccAdId": "nad-a001-01-000000453820612",
+        "linkType": "HEADLINE",
+        "regTm": "2025-12-26T15:26:47.000Z",
+        "editTm": "2025-12-26T15:26:47.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218960",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "쉽고 빠른 부착으로 시간 절약까지 한번에"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072871219",
+        "nccAdId": "nad-a001-01-000000453820612",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-12-26T15:26:47.000Z",
+        "editTm": "2025-12-26T15:26:47.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002218961",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "오래써도 변함없는 품질 하나사인몰 시트지"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000072871220",
+        "nccAdId": "nad-a001-01-000000453820612",
+        "linkType": "DESCRIPTION",
+        "regTm": "2025-12-26T15:26:47.000Z",
+        "editTm": "2025-12-26T15:26:47.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000456304009",
+    "nccAdgroupId": "grp-a001-01-000000059975490",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://m.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch=",
+        "punyCode": "https://m.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch="
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch=",
+        "punyCode": "https://www.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch="
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-01-05T02:41:59.000Z",
+    "regTm": "2026-01-02T06:59:40.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002546941",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "고품격 수목장 명패"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698072",
+        "nccAdId": "nad-a001-01-000000456304009",
+        "linkType": "HEADLINE",
+        "regTm": "2026-01-02T15:59:40.000Z",
+        "editTm": "2026-01-02T15:59:40.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546942",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "영원한 안식처, 특별한 표시"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698073",
+        "nccAdId": "nad-a001-01-000000456304009",
+        "linkType": "HEADLINE",
+        "regTm": "2026-01-02T15:59:40.000Z",
+        "editTm": "2026-01-02T15:59:40.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546943",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "추모공원용 고급 표찰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698074",
+        "nccAdId": "nad-a001-01-000000456304009",
+        "linkType": "HEADLINE",
+        "regTm": "2026-01-02T15:59:40.000Z",
+        "editTm": "2026-01-02T15:59:40.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546944",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "수목장부터 공원까지, 다양한 장소 필요 물품 완비"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698075",
+        "nccAdId": "nad-a001-01-000000456304009",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-01-02T15:59:40.000Z",
+        "editTm": "2026-01-02T15:59:40.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546945",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "오래도록 간직될 소중한 기억, 여기에 새겨보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698076",
+        "nccAdId": "nad-a001-01-000000456304009",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-01-02T15:59:40.000Z",
+        "editTm": "2026-01-02T15:59:40.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546946",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "단 하나뿐인 표찰, 하나사인몰에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698077",
+        "nccAdId": "nad-a001-01-000000456304009",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-01-02T15:59:40.000Z",
+        "editTm": "2026-01-02T15:59:40.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000456304460",
+    "nccAdgroupId": "grp-a001-01-000000059975490",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://m.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch=",
+        "punyCode": "https://m.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch="
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch=",
+        "punyCode": "https://www.hanasignmall.kr/Search.php?GetSearch=%25EC%2588%2598%25EB%25AA%25A9%25ED%2591%259C%25EC%25B0%25B0&CCode=02&CateCou=1&GsNumsSearch="
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-01-05T02:41:59.000Z",
+    "regTm": "2026-01-02T07:00:19.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000002546803",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "고품격 수목표찰 제작소"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698536",
+        "nccAdId": "nad-a001-01-000000456304460",
+        "linkType": "HEADLINE",
+        "regTm": "2026-01-02T16:00:19.000Z",
+        "editTm": "2026-01-02T16:00:19.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546804",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "차원이 다른 수목표찰"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698537",
+        "nccAdId": "nad-a001-01-000000456304460",
+        "linkType": "HEADLINE",
+        "regTm": "2026-01-02T16:00:19.000Z",
+        "editTm": "2026-01-02T16:00:19.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546805",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "나무마다 개성있는 명패 달기"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698538",
+        "nccAdId": "nad-a001-01-000000456304460",
+        "linkType": "HEADLINE",
+        "regTm": "2026-01-02T16:00:19.000Z",
+        "editTm": "2026-01-02T16:00:19.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546806",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "빛바램 걱정 없이 반영구적으로 사용 가능한 나무 표찰, 지금 바로 주문하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698539",
+        "nccAdId": "nad-a001-01-000000456304460",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-01-02T16:00:19.000Z",
+        "editTm": "2026-01-02T16:00:19.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546807",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "기억에 남는 특별한 선물, 수목표찰 제작은 하나사인몰에서"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698540",
+        "nccAdId": "nad-a001-01-000000456304460",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-01-02T16:00:19.000Z",
+        "editTm": "2026-01-02T16:00:19.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000002546808",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "감각적인 디자인부터 꼼꼼한 제작까지 한 번에 해결하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000074698541",
+        "nccAdId": "nad-a001-01-000000456304460",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-01-02T16:00:19.000Z",
+        "editTm": "2026-01-02T16:00:19.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000499558301",
+    "nccAdgroupId": "grp-a001-01-000000064491715",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr",
+        "punyCode": "https://www.hanasignmall.kr"
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr",
+        "punyCode": "https://www.hanasignmall.kr"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-04-03T01:01:32.000Z",
+    "regTm": "2026-04-03T01:01:27.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000011393726",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "요일마다 다른 차량 통제?"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632750",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "HEADLINE",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011393727",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "믿고 쓰는 품질 보장 제도"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632751",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "HEADLINE",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011393728",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "선택 아닌 필수! 부착하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632752",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "HEADLINE",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011393729",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "규제 맞춤 제작 스티커"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632753",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "HEADLINE",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011393730",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "간편한 차량 통제를 위해, 하나사인몰에서 준비하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632754",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011393731",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "깔끔한 디자인부터 눈에 띄는 시안까지 다 있다!"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632755",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011393732",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "일상 속 편리함을 더해줄 다양한 사인물들, 하나사인몰에서 만나보세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000106632756",
+        "nccAdId": "nad-a001-01-000000499558301",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-04-03T10:01:27.000Z",
+        "editTm": "2026-04-03T10:01:27.000Z"
+      }
+    ]
+  },
+  {
+    "nccAdId": "nad-a001-01-000000494988571",
+    "nccAdgroupId": "grp-a001-01-000000064491715",
+    "customerId": 1558945,
+    "inspectStatus": "APPROVED",
+    "type": "RSA_AD",
+    "ad": {
+      "mobile": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr",
+        "punyCode": "https://www.hanasignmall.kr"
+      },
+      "pc": {
+        "display": "https://www.hanasignmall.kr",
+        "final": "https://www.hanasignmall.kr",
+        "punyCode": "https://www.hanasignmall.kr"
+      }
+    },
+    "adAttr": {},
+    "userLock": false,
+    "enable": true,
+    "delFlag": false,
+    "editTm": "2026-03-25T06:38:08.000Z",
+    "regTm": "2026-03-25T06:38:02.000Z",
+    "status": "ELIGIBLE",
+    "statusReason": "ELIGIBLE",
+    "assets": [
+      {
+        "nccAssetId": "ast-a001-000-000000011072655",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "요일제주차스티커"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330530",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "HEADLINE",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011072656",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "5부제안내판"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330531",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "HEADLINE",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011072657",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "5부제주차스티커"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330532",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "HEADLINE",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011072658",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "요일제입간판"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330533",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "HEADLINE",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011072659",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "합리적인 가격대의 요일제 스티커&안내판 모음전"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330534",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011072660",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "편리한 요일제 안내판도 역시 하나사인몰에서"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330535",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      },
+      {
+        "nccAssetId": "ast-a001-000-000000011072661",
+        "customerId": 1558945,
+        "assetType": "TEXT",
+        "assetData": {
+          "text": "눈에 띄는 요일제 입간판 필요하신가요? 하나사인몰에서 제작하세요"
+        },
+        "inspectStatus": "APPROVED",
+        "nccAdAssetLinkId": "alk-a001-01-000000104330536",
+        "nccAdId": "nad-a001-01-000000494988571",
+        "linkType": "DESCRIPTION",
+        "regTm": "2026-03-25T15:38:02.000Z",
+        "editTm": "2026-03-25T15:38:02.000Z"
+      }
+    ]
+  }
+]
