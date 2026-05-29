@@ -216,35 +216,6 @@
     .compare-table th, .compare-table td { padding: 12px 10px; font-size: 13px; }
     .popup { width: calc(100vw - 32px); }
   }
-
-  .opinion-toggle {
-    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-    font-size: 12px; color: var(--text-muted); font-weight: 600;
-    user-select: none; margin-right: 8px;
-  }
-  .opinion-toggle input { cursor: pointer; accent-color: #03c75a; width: 14px; height: 14px; }
-  .opinion-toggle:hover { color: var(--text); }
-  .popup-opinion {
-    padding: 14px 16px;
-    background: linear-gradient(135deg, rgba(96,165,250,0.08), rgba(3,199,90,0.05));
-    border-bottom: 1px solid var(--border-light);
-    font-size: 13px; line-height: 1.7;
-  }
-  .popup-opinion .op-row { display: flex; gap: 8px; margin: 4px 0; align-items: flex-start; }
-  .popup-opinion .op-tag {
-    display: inline-block; padding: 1px 8px; border-radius: 4px;
-    font-size: 10px; font-weight: 800; flex-shrink: 0; letter-spacing: 0.3px;
-    min-width: 36px; text-align: center;
-  }
-  .popup-opinion .op-tag.ok { background: rgba(3,199,90,0.18); color: #86efac; }
-  .popup-opinion .op-tag.warn { background: rgba(250,204,21,0.18); color: var(--gold); }
-  .popup-opinion .op-tag.no { background: rgba(239,68,68,0.18); color: #fca5a5; }
-  .popup-opinion .op-tag.info { background: rgba(96,165,250,0.18); color: #93c5fd; }
-  .popup-opinion .op-text { color: var(--text); font-weight: 500; line-height: 1.55; }
-  .popup-opinion .op-text b { color: var(--text); font-weight: 800; }
-  .popup-opinion .op-text .v { color: #86efac; font-weight: 700; }
-  .popup-opinion .op-text .x { color: #fca5a5; font-weight: 700; }
-
 </style>
 </head><body>
 <div class="container">
@@ -316,13 +287,10 @@ function openPopup(week, type, ch, anchorEl){
   pop.style.left = (left + offset) + 'px';
   pop.style.top = (top + offset) + 'px';
   
-  const popId = 'pop_' + popupIdx;
-  // week, type, ch를 data-* 속성으로 안전하게 저장
-  let html = `<div class="popup-head ${isAd?'ad':'sales'}" data-popid="${popId}">
+  let html = `<div class="popup-head ${isAd?'ad':'sales'}">
     <div class="title">${title}</div>
-    <label class="opinion-toggle"><input type="checkbox" class="op-cb"> 💡 효율 의견</label>
     <button class="popup-close" aria-label="닫기">×</button>
-  </div><div id="${popId}_op" class="popup-opinion" style="display:none"></div><div class="popup-body">`;
+  </div><div class="popup-body">`;
   if(items.length === 0){
     html += '<div style="padding:20px;color:#94a3b8;font-size:13px;text-align:center">데이터 없음</div>';
   } else if(isAd){
@@ -344,29 +312,6 @@ function openPopup(week, type, ch, anchorEl){
   
   // 닫기
   pop.querySelector('.popup-close').addEventListener('click', () => pop.remove());
-  
-  // 효율 의견 토글
-  const cb = pop.querySelector('.op-cb');
-  if (cb) {
-    pop.dataset.week = week;
-    pop.dataset.type = type;
-    pop.dataset.ch = ch;
-    cb.addEventListener('change', () => {
-      const div = pop.querySelector('.popup-opinion');
-      if (cb.checked) {
-        const rows = type === 'ad' ? analyzeAd(week) : analyzeSales(week, ch);
-        let opHtml = '';
-        rows.forEach(r => {
-          const tagLabel = {ok:'강점', warn:'주의', no:'약점', info:'정보'}[r.tag] || '';
-          opHtml += `<div class="op-row"><span class="op-tag ${r.tag}">${tagLabel}</span><span class="op-text">${r.html}</span></div>`;
-        });
-        div.innerHTML = opHtml;
-        div.style.display = 'block';
-      } else {
-        div.style.display = 'none';
-      }
-    });
-  }
   
   // 드래그
   const head = pop.querySelector('.popup-head');
@@ -410,114 +355,6 @@ function openPopup(week, type, ch, anchorEl){
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-
-function categorize(kw) {
-  const t = String(kw);
-  if (/주차스티커|오뚜기|주차증|주차금지/.test(t)) return '주차스티커';
-  if (/게시판|승강기|엘리베이터|포켓|알림판/.test(t)) return '게시판';
-  if (/입간판|A형|말뚝|매립식/.test(t)) return '입간판';
-  if (/안내판|표지판|표찰/.test(t)) return '안내판';
-  if (/피난안내도|피난|대피|비상구/.test(t)) return '피난안내도';
-  if (/현수막|배너/.test(t)) return '현수막';
-  if (/시트지|실사|PVC/.test(t)) return '시트지';
-  if (/스티커/.test(t)) return '스티커';
-  if (/포맥스|페트|폼보드|아크릴/.test(t)) return '재질';
-  return '기타';
-}
-
-function fmtWon(n){
-  if (!n) return '0원';
-  if (n >= 100000000) return (n/100000000).toFixed(2) + '억';
-  if (n >= 10000000) return (n/10000000).toFixed(1) + '천만';
-  if (n >= 10000) return (n/10000).toFixed(0) + '만원';
-  return Number(n).toLocaleString('ko-KR') + '원';
-}
-
-function analyzeAd(week) {
-  const d = POPUP_DATA[week];
-  if (!d || !d.ad_click) return [{tag:'no', html:'데이터 없음'}];
-  const items = d.ad_click;
-  const top3 = items.slice(0, 3);
-  const total = items.reduce((s, x) => s + x[1], 0);
-  const top3_clk = top3.reduce((s, x) => s + x[1], 0);
-  const conc = total ? Math.round(top3_clk / total * 100) : 0;
-  
-  const cats = {};
-  items.forEach(x => {
-    const c = categorize(x[0]);
-    cats[c] = (cats[c] || 0) + x[1];
-  });
-  const cat_sorted = Object.entries(cats).sort((a, b) => b[1] - a[1]);
-  const top_cat = cat_sorted[0] || ['', 0];
-  const top_cat_pct = total ? Math.round(top_cat[1] / total * 100) : 0;
-  
-  const sales = (d.sales && d.sales['전체']) || [];
-  const sales_kws = new Set(sales.map(x => x[0]));
-  const matched = top3.filter(x => sales_kws.has(x[0]));
-  
-  const rows = [];
-  rows.push({tag:'info', html:`상위 3 키워드 <b>${top3.map(x => escapeHtml(x[0])).join(', ')}</b>`});
-  rows.push({tag:'info', html:`상위 3이 전체 클릭의 <b>${conc}%</b> · 1위 카테고리 <b>${top_cat[0]}</b>(${top_cat_pct}%)`});
-  if (matched.length >= 2) {
-    rows.push({tag:'ok', html:`상위 3 중 <span class="v">${matched.length}개</span>가 매출에도 등장 — 광고↔매출 매칭 양호`});
-  } else if (matched.length === 1) {
-    rows.push({tag:'warn', html:`상위 3 중 1개만 매출 매칭 — 클릭은 많은데 매출 안 나는 키워드 검토 필요`});
-  } else {
-    rows.push({tag:'no', html:`상위 3 중 <span class="x">0개</span>만 매출 매칭 — 광고 키워드와 매출 키워드 따로 노는 상태`});
-  }
-  return rows;
-}
-
-function analyzeSales(week, ch) {
-  const d = POPUP_DATA[week];
-  if (!d || !d.sales || !d.sales[ch]) return [{tag:'no', html:'데이터 없음'}];
-  const items = d.sales[ch];
-  if (items.length === 0) return [{tag:'no', html:'매출 없음'}];
-  
-  const total = items.reduce((s, x) => s + (x[2] || 0), 0);
-  const total_n = items.reduce((s, x) => s + (x[1] || 0), 0);
-  const top3 = items.slice(0, 3);
-  const top3_v = top3.reduce((s, x) => s + (x[2] || 0), 0);
-  const conc = total ? Math.round(top3_v / total * 100) : 0;
-  
-  const cats = {};
-  items.forEach(x => {
-    const c = categorize(x[0]);
-    if (!cats[c]) cats[c] = {n:0, v:0};
-    cats[c].n += x[1] || 0;
-    cats[c].v += x[2] || 0;
-  });
-  const cat_sorted = Object.entries(cats).sort((a, b) => b[1].v - a[1].v);
-  const top_cat = cat_sorted[0];
-  const top_cat_pct = total ? Math.round(top_cat[1].v / total * 100) : 0;
-  
-  const avg = total_n ? Math.round(total / total_n) : 0;
-  const top1_avg = top3[0] && top3[0][1] ? Math.round(top3[0][2] / top3[0][1]) : 0;
-  
-  const ad_kws = new Set((d.ad_click || []).map(x => x[0]));
-  const matched_in_ad = top3.filter(x => ad_kws.has(x[0])).length;
-  
-  const rows = [];
-  rows.push({tag:'info', html:`총 <b>${fmtWon(total)}</b> · ${total_n}건 · 평균 ${fmtWon(avg)}/건`});
-  if (top3[0]) {
-    rows.push({tag:'info', html:`1위 키워드 <b>${escapeHtml(top3[0][0])}</b> <span class="v">${fmtWon(top3[0][2])}</span> (전체의 ${total?Math.round(top3[0][2]/total*100):0}%)`});
-  }
-  rows.push({tag:'info', html:`상위 카테고리 <b>${top_cat[0]}</b> ${fmtWon(top_cat[1].v)} (<b>${top_cat_pct}%</b>) · 집중도 상위 3=${conc}%`});
-  
-  if (top_cat_pct >= 50) {
-    rows.push({tag:'ok', html:`<b>${top_cat[0]}</b> 카테고리에 매출 절반 이상 집중 — 광고 우선순위 명확`});
-  }
-  if (matched_in_ad >= 2) {
-    rows.push({tag:'ok', html:`매출 상위 3 중 <span class="v">${matched_in_ad}개</span>가 광고 노출도 강함 — 효자 확인`});
-  } else if (matched_in_ad === 0) {
-    rows.push({tag:'warn', html:`매출 상위 3 중 광고 상위 매칭 <span class="x">0개</span> — 광고 키워드 확대 후보`});
-  }
-  if (top1_avg >= avg * 2 && top1_avg >= 1000000) {
-    rows.push({tag:'ok', html:`1위 키워드 단가 <b>${fmtWon(top1_avg)}</b> 평균의 ${(top1_avg/avg).toFixed(1)}배 — 고단가`});
-  }
-  return rows;
-}
-
 
 function showTab(i){
   document.querySelectorAll('.tab-btn').forEach((b,idx)=>b.classList.toggle('active', idx===i));
