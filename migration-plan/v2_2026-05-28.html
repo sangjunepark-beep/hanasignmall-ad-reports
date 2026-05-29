@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>파워링크 .com → .kr 이전 — 미팅 자료 v2</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+<style>
+  :root{--bg:#0a0e1a;--bg-2:#131a2b;--bg-3:#1a2238;--border:#2d3a58;
+    --text:#f1f5f9;--text-muted:#94a3b8;--text-dim:#64748b;
+    --green:#03c75a;--green-bg:rgba(3,199,90,0.1);--green-dim:#028a3f;
+    --orange:#fb923c;--orange-bg:rgba(251,146,60,0.12);--orange-dim:#c2470a;
+    --red:#ef4444;--red-bg:rgba(239,68,68,0.1);--gold:#facc15;--gold-bg:rgba(250,204,21,0.08)}
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--bg);color:var(--text);
+    font-size:16px;line-height:1.6}
+  .container{max-width:1400px;margin:0 auto;padding:56px 28px 100px}
+  .header{margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+  h1{font-size:38px;font-weight:800;margin:0 0 12px;letter-spacing:-1px;line-height:1.2}
+  h1 .accent{background:linear-gradient(90deg,var(--green),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .subtitle{color:var(--text-muted);font-size:17px}
+  .badge-v2{display:inline-block;padding:4px 10px;background:var(--red-bg);color:#fca5a5;
+    border-radius:6px;font-size:13px;font-weight:700;margin-left:8px}
+  .meta{color:var(--text-dim);font-size:14px;margin-top:14px}
+  section{margin-top:56px}
+  h2{font-size:26px;font-weight:700;margin:0 0 22px;display:flex;align-items:center;gap:14px;letter-spacing:-0.5px}
+  h2 .num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    background:var(--green);color:#021c0f;border-radius:10px;font-size:20px;font-weight:800}
+  h2 .sub{font-size:15px;color:var(--text-muted);font-weight:500}
+  .alert{background:var(--red-bg);border:2px solid var(--red);border-radius:14px;
+    padding:22px 26px;font-size:17px;line-height:1.65}
+  .alert b{color:#fca5a5}
+  .alert .strikethrough{text-decoration:line-through;color:var(--text-dim);font-weight:400}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .side{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:24px}
+  .side.com{border-color:var(--orange-dim)}
+  .side.kr{border-color:var(--green-dim)}
+  .side-head{font-size:18px;font-weight:800;margin-bottom:18px;padding-bottom:12px;
+    border-bottom:1px solid var(--border)}
+  .side.com .side-head{color:var(--orange)}
+  .side.kr .side-head{color:var(--green)}
+  .side-row{display:flex;justify-content:space-between;align-items:baseline;margin:10px 0;font-size:15px}
+  .side-row span{color:var(--text-muted)}
+  .side-row b{color:var(--text);font-variant-numeric:tabular-nums;font-weight:700}
+  .side-divider{margin:14px 0 12px;height:1px;background:var(--border)}
+  .side-main{font-size:24px;font-weight:800;margin-top:8px;font-variant-numeric:tabular-nums}
+  .side.com .side-main{color:var(--orange)}
+  .side.kr .side-main{color:var(--green)}
+  table.t{width:100%;border-collapse:separate;border-spacing:0;
+    background:var(--bg-2);border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:15px}
+  table.t th{background:var(--bg-3);color:var(--text-muted);font-weight:600;padding:14px 16px;
+    text-align:left;font-size:13px;border-bottom:2px solid var(--border)}
+  table.t td{padding:14px 16px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}
+  table.t tbody tr:last-child td{border-bottom:none}
+  table.t .r{text-align:right}
+  table.t .com-cell{color:var(--orange);font-weight:700}
+  table.t .kr-cell{color:var(--green);font-weight:700}
+  table.t .winner{background:var(--gold-bg);color:var(--gold);font-weight:800}
+  .limit-box{background:var(--gold-bg);border-left:4px solid var(--gold);border-radius:10px;
+    padding:18px 22px;margin:20px 0;font-size:15px;line-height:1.65;color:#fde68a}
+  .phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .phase{background:var(--bg-2);border:1px solid var(--border);border-radius:14px;padding:24px}
+  .phase.p1{border-color:var(--green-dim)}
+  .phase.p2{border-color:var(--gold)}
+  .phase.p3{border-color:var(--red)}
+  .phase-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;
+    padding-bottom:12px;border-bottom:1px solid var(--border)}
+  .phase-no{font-size:13px;color:var(--text-muted);font-weight:700;letter-spacing:0.5px}
+  .phase-badge{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700}
+  .phase.p1 .phase-badge{background:var(--green-bg);color:var(--green)}
+  .phase.p2 .phase-badge{background:var(--gold-bg);color:var(--gold)}
+  .phase.p3 .phase-badge{background:var(--red-bg);color:#fca5a5}
+  .phase-name{font-size:19px;font-weight:800;margin-bottom:18px}
+  .phase-stat{display:flex;justify-content:space-between;margin:8px 0;font-size:14px}
+  .phase-stat span{color:var(--text-muted)}
+  .phase-stat b{color:var(--text);font-variant-numeric:tabular-nums;font-weight:700}
+  .phase-action{margin-top:16px;padding-top:12px;border-top:1px solid var(--border);
+    font-size:13px;color:var(--text-muted);line-height:1.55}
+  .warn-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .warn-box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:20px}
+  .warn-box.red{border-color:var(--red);background:var(--red-bg)}
+  .warn-box.green{border-color:var(--green-dim);background:var(--green-bg)}
+  .warn-box h3{margin:0 0 12px;font-size:16px;font-weight:700}
+  .warn-box.red h3{color:#fca5a5}
+  .warn-box.green h3{color:var(--green)}
+  .warn-box ul{margin:0;padding-left:20px;font-size:14px;line-height:1.7;color:var(--text-muted)}
+  .warn-box li{margin-bottom:6px}
+  .warn-box b{color:var(--text)}
+  .decision{background:var(--bg-2);border:2px solid var(--gold);border-radius:14px;padding:24px}
+  .decision h3{color:var(--gold);margin:0 0 14px;font-size:18px}
+  .decision ol{margin:0;padding-left:24px;line-height:1.9}
+  .decision li{color:var(--text);font-size:15px}
+  .decision li b{color:var(--gold)}
+  footer{margin-top:60px;padding-top:28px;border-top:1px solid var(--border);
+    color:var(--text-dim);font-size:13px;text-align:center}
+  @media (max-width:1000px){
+    .compare-grid,.phase-grid,.warn-grid{grid-template-columns:1fr}
+    h1{font-size:28px}h2{font-size:22px}
+  }
+</style></head><body>
+<div class="container">
+<header class="header">
+  <h1>파워링크 <span class="accent">.com → .kr 이전</span> <span class="badge-v2">v2 정정</span></h1>
+  <div class="subtitle">광고 매체 vs 매출 채널 정확한 매핑 · 미팅 검토 자료</div>
+  <div class="meta">생성 2026년 05월 29일 00:21 · 분석 기간 5/1~5/27 영업일 17일 · 네이버 B파워링크 + 구글애즈 + 자사몰 매출 통합</div>
+</header>
+
+<section>
+<div class="alert">
+<b>이전 분석 정정</b><br>
+<span class="strikethrough">".kr이 ROAS 868%로 .com 대비 3배 효율"</span> <b>← 잘못된 분석</b><br><br>
+.kr엔 네이버 파워링크가 거의 없고 매출은 <b>구글애즈</b>가 견인. 광고 매체 따로 봐야 정확한 비교 가능.
+17일 영업일 합산 시 광고비 1원당 자사몰 매출은 <b>.com 389% vs .kr 282%</b> — <b>.com이 오히려 1.4배 효율 우위</b>.
+</div>
+</section>
+
+<section>
+<h2><span class="num">1</span>광고 매체별 정확한 매핑 <span class="sub">· 17일 영업일</span></h2>
+<div class="compare-grid">
+  <div class="side com">
+    <div class="side-head">.com 고도몰</div>
+    <div class="side-row"><span>네이버 B 파워링크</span><b>253만원</b></div>
+    <div class="side-row"><span>· 클릭</span><b>2,617</b></div>
+    <div class="side-row"><span>· 노출</span><b>495,404</b></div>
+    <div class="side-row"><span>구글애즈</span><b>0원</b></div>
+    <div class="side-divider"></div>
+    <div class="side-row"><span style="font-weight:700;color:var(--text)">광고비 합계</span><b style="font-size:18px">2,527,424원</b></div>
+    <div class="side-row"><span style="font-weight:700;color:var(--text)">자사몰 매출 (고도몰5)</span><b style="font-size:18px">9,849,900원</b></div>
+    <div class="side-row"><span>· 건수</span><b>88건</b></div>
+    <div class="side-main">광고비 1원당 매출 390%</div>
+  </div>
+  <div class="side kr">
+    <div class="side-head">.kr 신규몰</div>
+    <div class="side-row"><span>네이버 B 파워링크</span><b>44만원</b></div>
+    <div class="side-row"><span>· 클릭</span><b>959</b></div>
+    <div class="side-row"><span>· 노출</span><b>14,826</b></div>
+    <div class="side-row"><span>구글애즈</span><b>114만원</b></div>
+    <div class="side-row"><span>· 클릭</span><b>262</b></div>
+    <div class="side-row"><span>· 노출</span><b>2,185</b></div>
+    <div class="side-row"><span>· 전환 (구글애즈)</span><b>115</b></div>
+    <div class="side-divider"></div>
+    <div class="side-row"><span style="font-weight:700;color:var(--text)">광고비 합계</span><b style="font-size:18px">1,574,118원</b></div>
+    <div class="side-row"><span style="font-weight:700;color:var(--text)">자사몰 매출 (신규몰)</span><b style="font-size:18px">4,439,400원</b></div>
+    <div class="side-row"><span>· 건수</span><b>36건</b></div>
+    <div class="side-main">광고비 1원당 매출 282%</div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2><span class="num">2</span>핵심 비교 표</h2>
+<table class="t">
+  <thead><tr><th>지표</th><th class="r">.com 고도몰</th><th class="r">.kr 신규몰</th><th class="r">우위</th></tr></thead>
+  <tbody>
+    <tr><td>광고비 합계</td><td class="r com-cell">2,527,424원</td><td class="r kr-cell">1,574,118원</td><td class="r">.com 1.6배</td></tr>
+    <tr><td>광고 클릭</td><td class="r com-cell">2,617</td><td class="r kr-cell">1,221</td><td class="r">.com 2.1배</td></tr>
+    <tr><td>자사몰 매출</td><td class="r com-cell">9,849,900원</td><td class="r kr-cell">4,439,400원</td><td class="r">.com 2.2배</td></tr>
+    <tr><td>광고비 1원당 매출</td><td class="r winner">390%</td><td class="r kr-cell">282%</td><td class="r">.com 1.4배</td></tr>
+    <tr><td>매출 건수</td><td class="r com-cell">88건</td><td class="r kr-cell">36건</td><td class="r">.com 2.4배</td></tr>
+    <tr><td>클릭당 매출</td><td class="r com-cell">3,763.0원</td><td class="r kr-cell">3,635.0원</td><td class="r">.com 1.0배</td></tr>
+  </tbody>
+</table>
+<div class="limit-box">
+<b>측정 한계 명시:</b> 위 표의 "매출"은 광고 직접 기여만이 아닌 <b>자사몰 전체 매출</b>(자연유입·SEO·북마크·구글애즈 합산). 네이버 B 파워링크 광고 콘솔 전환 데이터(b_conv)가 현재 0으로 수집됨 — 별건 점검 필요. 광고 직접 기여 매출을 측정하려면 콘솔 conv 수집 복구가 선행.
+</div>
+</section>
+
+<section>
+<h2><span class="num">3</span>대표 의도 vs 데이터</h2>
+<div class="warn-grid">
+  <div class="warn-box red">
+    <h3>⚠ 데이터가 보여주는 사실</h3>
+    <ul>
+      <li><b>.com이 광고비 1원당 매출 더 높음</b> (390% vs 282%)</li>
+      <li>단순 이전 = 효율 자동 향상 <b>증거 없음</b></li>
+      <li>.kr 광고비 65%는 구글애즈, 35%만 네이버. 파워링크 이전 ≠ .kr 광고 효율 향상</li>
+      <li>.com 매출은 자연유입 비중 클 가능성 — 광고 끄면 매출도 일부 함께 감소 가능</li>
+      <li>광고 직접 기여 매출 측정 불가 (b_conv 0) → 정확한 판단 데이터 부족</li>
+    </ul>
+  </div>
+  <div class="warn-box green">
+    <h3>✓ 그럼에도 이전을 진행한다면</h3>
+    <ul>
+      <li>사이트 통합·일원화 같은 <b>비효율 외 이유</b>가 있는지 확인</li>
+      <li>광고 직접 기여 매출 측정 체계 먼저 구축 (b_conv 수집 복구)</li>
+      <li>.kr 사이트 트래픽·전환율 .com 수준 도달 가능한지 검증</li>
+      <li>Phase 1 소규모 광고그룹 33개로 <b>학습</b> → 매출 영향 측정 후 결정</li>
+      <li>.com 사이트는 유지 (검색·북마크 자연유입 보존)</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2><span class="num">4</span>3단계 이전 플랜 <span class="sub">· 진행 시 안전 절차</span></h2>
+<div class="phase-grid">
+  <div class="phase p1">
+    <div class="phase-head"><span class="phase-no">PHASE 1</span><span class="phase-badge">안전·학습</span></div>
+    <div class="phase-name">소규모 33개 그룹</div>
+    <div class="phase-stat"><span>광고비 비중</span><b>17.7%</b></div>
+    <div class="phase-stat"><span>17일 광고비</span><b>약 28만원</b></div>
+    <div class="phase-stat"><span>기간</span><b>1~2주</b></div>
+    <div class="phase-action">
+      소액 광고그룹부터 URL을 .com→.kr 교체. 매출 영향이 가장 작은 그룹이라 <b>학습용</b>.
+      이전 전후 자사몰 매출 변동 + 광고비 효율 측정.
+    </div>
+  </div>
+  <div class="phase p2">
+    <div class="phase-head"><span class="phase-no">PHASE 2</span><span class="phase-badge">중규모</span></div>
+    <div class="phase-name">주력 4개 그룹</div>
+    <div class="phase-stat"><span>광고비 비중</span><b>27.6%</b></div>
+    <div class="phase-stat"><span>17일 광고비</span><b>약 43만원</b></div>
+    <div class="phase-stat"><span>기간</span><b>3주</b></div>
+    <div class="phase-action">
+      Phase 1 결과가 <b>positive 또는 중립</b>일 때만 진행.
+      소방안전관리자현황표·요일제·블랙오뚜기·주력주차금지 4개 그룹.
+    </div>
+  </div>
+  <div class="phase p3">
+    <div class="phase-head"><span class="phase-no">PHASE 3</span><span class="phase-badge">집중·신중</span></div>
+    <div class="phase-name">"01 게시판" 단독</div>
+    <div class="phase-stat"><span>광고비 비중</span><b>54.7%</b></div>
+    <div class="phase-stat"><span>17일 광고비</span><b>약 86만원</b></div>
+    <div class="phase-stat"><span>기간</span><b>별도 결재</b></div>
+    <div class="phase-action">
+      .com 광고비의 절반 이상.
+      Phase 2 완료 후 <b>매출 +α / 변동 없음</b>일 때만 진행.
+      그렇지 않으면 .com 유지 권장.
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2><span class="num">5</span>롤백 트리거</h2>
+<table class="t">
+  <thead><tr><th>지표</th><th class="r">경고 (1단계 후퇴)</th><th class="r">롤백 (즉시 .com 복귀)</th></tr></thead>
+  <tbody>
+    <tr><td>해당 광고그룹 클릭당 매출</td><td class="r">−15% 이상</td><td class="r">−30% 이상</td></tr>
+    <tr><td>자사몰 일매출 (.com + .kr 합)</td><td class="r">전주 대비 −15%</td><td class="r">전주 대비 −25%</td></tr>
+    <tr><td>CPC 평균</td><td class="r">기존 대비 +30%</td><td class="r">기존 대비 +50%</td></tr>
+    <tr><td>판단 주기</td><td class="r">매일 09시 자동 갱신 보고서 확인</td><td class="r">대표 즉시 결재</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2><span class="num">6</span>대표 미팅 결정 사항</h2>
+<div class="decision">
+  <h3>이번 미팅에서 답 받아올 항목</h3>
+  <ol>
+    <li><b>이전 의도 재확인</b> — 효율 향상이 아니라 사이트 통합·일원화 같은 다른 이유라면 데이터와 무관하게 진행 가능</li>
+    <li><b>측정 한계 인지 후 진행 여부</b> — 광고 직접 기여 매출 측정 불가 상태에서 진행할지</li>
+    <li><b>b_conv 수집 복구 우선순위</b> — 광고 콘솔 전환 데이터 복구를 먼저 할지, 이전을 먼저 할지</li>
+    <li><b>Phase 1 시작 시점</b> — .kr 상품 동일 + 판매 중이라 즉시 시작 가능. GO 여부</li>
+    <li><b>롤백 임계치</b> — 자사몰 합산 매출 −15% 동의?</li>
+    <li><b>Phase 3 (게시판) 결정 보류</b> — Phase 1·2 결과 보고 별도 회의 동의</li>
+  </ol>
+</div>
+</section>
+
+<footer>하나사인몰 웹팀 · 네이버 + 구글애즈 통합 분석 · 미팅 검토 자료 v2</footer>
+</div></body></html>
