@@ -3,105 +3,138 @@
 <title>신규몰(.kr) 고객동선 개선요청 — 개발팀 전달용</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#0f1116;color:#e7e9ee;line-height:1.6;padding:26px 16px 90px}
+body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#0f1116;color:#e7e9ee;line-height:1.65;padding:26px 16px 90px;font-size:16px}
 .wrap{max-width:1040px;margin:0 auto}
-h1{font-size:24px;font-weight:800;letter-spacing:-.5px}
-.sub{color:#9aa3b2;font-size:13px;margin-top:6px}
-.ctx{background:#161a23;border:1px solid #2a3142;border-radius:12px;padding:16px 18px;margin:18px 0;font-size:13.5px;color:#c7cdd8}
+h1{font-size:28px;font-weight:800;letter-spacing:-.5px}
+.sub{color:#9aa3b2;font-size:15px;margin-top:6px}
+.ctx{background:#161a23;border:1px solid #2a3142;border-radius:14px;padding:16px 20px;margin:18px 0;font-size:15px;color:#c7cdd8;line-height:1.7}
 .ctx b{color:#7cc0ff}
+.ctx.warn{background:#1a1410;border-color:#5a3a1a}
+.ctx.warn b{color:#ffb979}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
 .kpi{background:#13181f;border:1px solid #2a3142;border-radius:12px;padding:14px 16px}
-.kpi .t{font-size:12px;color:#9aa3b2;font-weight:700}
-.kpi .v{font-size:15px;font-weight:800;margin-top:8px}
+.kpi .t{font-size:13px;color:#9aa3b2;font-weight:700}
+.kpi .v{font-size:16px;font-weight:800;margin-top:8px;line-height:1.4}
 .kpi .k{color:#7ee0a8}.kpi .c{color:#ff8a8a}
-.kpi .cmp{font-size:11.5px;color:#7a8396;margin-top:4px}
-h2{font-size:18px;font-weight:800;margin:30px 0 6px;padding-left:10px;border-left:4px solid #4a7fd6}
-.note{font-size:12.5px;color:#7a8396;margin-bottom:12px}
-.iss{border:1px solid #2a3142;border-radius:12px;margin-bottom:16px;overflow:hidden}
+.kpi .cmp{font-size:12px;color:#7a8396;margin-top:5px;line-height:1.5}
+h2{font-size:22px;font-weight:800;margin:30px 0 8px;padding-left:12px;border-left:4px solid #4a7fd6}
+.note{font-size:13.5px;color:#7a8396;margin-bottom:12px}
+.iss{border:1px solid #2a3142;border-radius:12px;margin-bottom:18px;overflow:hidden}
 .ihead{display:flex;align-items:center;gap:10px;padding:13px 16px;background:#1a2030}
-.sev{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.sev{font-size:12px;font-weight:800;padding:3px 10px;border-radius:20px;white-space:nowrap}
 .sev.high{background:#3a1f24;color:#ff9a9a}.sev.mid{background:#33310f;color:#ecd98a}.sev.low{background:#16331f;color:#8ee8b4}
-.ititle{font-size:15px;font-weight:800}
-.ibody{padding:14px 16px;font-size:13.5px}
+.ititle{font-size:17px;font-weight:800}
+.ibody{padding:14px 17px;font-size:14.5px}
 .ibody table{width:100%;border-collapse:collapse;margin-top:4px}
-.ibody td{padding:7px 10px;vertical-align:top;border-bottom:1px solid #1c2230;font-size:13px}
-.ibody td.l{width:120px;color:#9aa3b2;font-weight:700;white-space:nowrap}
-.ibody .data{color:#e9d27a}
+.ibody td{padding:8px 10px;vertical-align:top;border-bottom:1px solid #1c2230;font-size:14px;line-height:1.6}
+.ibody td.l{width:110px;color:#9aa3b2;font-weight:700;white-space:nowrap}
+.ibody .data{color:#e9d27a;font-weight:700}
 .improve{margin-top:14px;background:#11161f;border:1px solid #27384f;border-radius:10px;padding:14px 16px}
-.improve .ih{font-size:13px;font-weight:800;color:#7cc0ff;margin-bottom:10px}
-.step{position:relative;padding:6px 0 6px 26px;font-size:13px;border-bottom:1px dashed #20283600}
+.improve .ih{font-size:14px;font-weight:800;color:#7cc0ff;margin-bottom:10px}
+.step{position:relative;padding:6px 0 6px 26px;font-size:14px;line-height:1.6}
 .step:before{content:"▸";position:absolute;left:6px;color:#4a7fd6;font-weight:800}
 .step b{color:#cfe3ff}
-.target{margin-top:10px;font-size:12.5px;color:#8ee8b4;background:#10241a;border:1px solid #1f4630;border-radius:7px;padding:8px 11px}
+.target{margin-top:10px;font-size:13.5px;color:#8ee8b4;background:#10241a;border:1px solid #1f4630;border-radius:7px;padding:9px 12px;line-height:1.6}
 .target b{color:#aef0c8}
-pre{background:#0a0d12;border:1px solid #222a38;border-radius:8px;padding:11px 13px;margin:9px 0 2px;overflow-x:auto;font-size:12px;color:#c7d3e2;line-height:1.5;font-family:ui-monospace,Menlo,Consolas,monospace}
-pre .c{color:#6b9a6b}.pre .k{color:#7cc0ff}
-.eff{display:inline-block;font-size:11px;font-weight:700;color:#9aa3b2;border:1px solid #2a3142;border-radius:6px;padding:2px 8px;margin-top:8px}
+pre{background:#0a0d12;border:1px solid #222a38;border-radius:8px;padding:11px 13px;margin:9px 0 2px;overflow-x:auto;font-size:12.5px;color:#c7d3e2;line-height:1.55;font-family:ui-monospace,Menlo,Consolas,monospace}
+pre .c{color:#6b9a6b}
+.eff{display:inline-block;font-size:12px;font-weight:700;color:#9aa3b2;border:1px solid #2a3142;border-radius:6px;padding:3px 9px;margin-top:10px}
 .pri{counter-reset:p;margin-top:8px}
-.pri .it{background:#161a23;border:1px solid #2a3142;border-radius:10px;padding:12px 16px 12px 46px;position:relative;margin-bottom:9px;font-size:13.5px}
-.pri .it:before{counter-increment:p;content:counter(p);position:absolute;left:13px;top:11px;width:22px;height:22px;background:#4a7fd6;color:#fff;border-radius:50%;text-align:center;font-weight:800;font-size:12px;line-height:22px}
-.pri .it .meta{font-size:11.5px;color:#7a8396;margin-top:3px}
-.foot{margin-top:30px;color:#69707e;font-size:11.5px;text-align:center}
-@media(max-width:760px){.kpis{grid-template-columns:1fr}}
+.pri .it{background:#161a23;border:1px solid #2a3142;border-radius:10px;padding:13px 17px 13px 46px;position:relative;margin-bottom:10px;font-size:14.5px}
+.pri .it:before{counter-increment:p;content:counter(p);position:absolute;left:13px;top:12px;width:22px;height:22px;background:#4a7fd6;color:#fff;border-radius:50%;text-align:center;font-weight:800;font-size:12.5px;line-height:22px}
+.pri .it .meta{font-size:12.5px;color:#7a8396;margin-top:4px;line-height:1.55}
+.tbl{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
+.tbl th{background:#1a2030;color:#aeb6c4;font-size:12.5px;font-weight:700;padding:9px 8px;text-align:left;border-bottom:1px solid #2a3142}
+.tbl td{padding:9px 8px;border-bottom:1px solid #1c2230;vertical-align:top;line-height:1.55}
+.tbl td.l{color:#9aa3b2;font-weight:700;white-space:nowrap;width:140px}
+.qbox{background:#1a1410;border:1px solid #5a3a1a;border-radius:10px;padding:14px 17px;margin-top:14px;font-size:14px;line-height:1.65}
+.qbox b{color:#ffb979}
+.foot{margin-top:30px;color:#69707e;font-size:12.5px;text-align:center;line-height:1.7}
+@media(max-width:760px){
+  body{font-size:15px;padding:18px 12px 80px}
+  h1{font-size:22px}
+  .sub{font-size:13.5px}
+  .ctx{font-size:14px;padding:13px 15px;line-height:1.65}
+  .kpis{grid-template-columns:1fr}
+  .kpi .v{font-size:15px}
+  h2{font-size:18px}
+  .iss{margin-bottom:14px}
+  .ihead{flex-wrap:wrap;padding:11px 13px}
+  .ititle{font-size:15.5px;line-height:1.4}
+  .ibody{padding:12px 14px;font-size:13.5px}
+  .ibody td{font-size:13px;padding:7px 8px}
+  .ibody td.l{width:90px}
+  .improve{padding:12px 14px}
+  .step{font-size:13.5px}
+  .target{font-size:13px}
+  pre{font-size:11.5px}
+  .pri .it{font-size:13.5px;padding:12px 14px 12px 42px}
+  .tbl{font-size:12.5px;display:block;overflow-x:auto}
+  .tbl td.l{width:100px}
+  .qbox{font-size:13.5px}
+}
 </style></head><body><div class="wrap">
 
 <h1>신규몰(.kr) 고객동선 개선요청</h1>
-<div class="sub">개발팀 전달용 · 네이버 파워링크(모바일 유입) 고객 관점 · 구몰(고도몰5 / m.hanasignmall.com) 대비 · 2026-06-01 점검</div>
+<div class="sub">개발팀 전달용 · 모바일 광고 유입 동선 점검 · 2026-06-01 (v2: 측정 정정 + 수용기준·회신요청 추가)</div>
 
 <div class="ctx">
-<b>배경</b> — .com 파워링크 광고를 .kr(신규몰)로 이전 검토 중. 광고 클릭은 대부분 <b>모바일</b>이고, 사인물은 <b>전화·카카오톡 상담 → 주문</b> 비중이 큰 업종. "광고를 옮기기 전에 .kr이 모바일 광고 랜딩으로서 문제가 없는지"를 먼저 점검함. 아래는 실제 두 사이트를 모바일 환경(iPhone Safari UA)으로 받아 <b>직접 측정·교차검증</b>한 결과와 <b>구체적 개선 방향</b>.
+<b>배경</b> — .com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 <b>모바일 중심</b>이고, 사인물 업종 특성상 매출의 <b>90%가 전화·카톡 상담 주문(CS)</b>. 광고 이전 전에 .kr이 모바일 광고 랜딩으로서 무리가 없는지 점검한 결과와 개선 방향입니다. 본 문서는 <b>모바일 UA(iPhone Safari)</b>로 양쪽 사이트를 직접 측정한 결과 기반입니다.
 </div>
 
-<h2>핵심 측정값 (모바일 UA 실측)</h2>
-<div class="kpis">
-<div class="kpi"><div class="t">모바일 메인 HTML 용량</div><div class="v"><span class="c">신규몰 910KB</span> vs <span class="k">구몰 134KB</span></div><div class="cmp">신규몰이 약 6.8배 무거움</div></div>
-<div class="kpi"><div class="t">메인 &lt;img&gt; 태그 수</div><div class="v"><span class="c">신규몰 493개</span> vs <span class="k">구몰 78개</span></div><div class="cmp">상세페이지 로드 시 총 전송량 약 47.8MB</div></div>
-<div class="kpi"><div class="t">전화 클릭통화(tel:) 링크</div><div class="v"><span class="c">신규몰 메인 0건</span> vs <span class="k">구몰 2건</span></div><div class="cmp">구몰=tel:1644-7523 / 카카오 상담 상단 고정</div></div>
+<div class="ctx warn">
+<b>이 문서가 의도하지 않는 것</b> — "지금 .kr이 부족하다"는 책임 추궁이 아닙니다. 광고 이전 전 <b>모바일 유입 동선을 함께 다듬자</b>는 협업 요청입니다. 우선순위·일정·구현 방식은 개발팀 의견에 따라 조정합니다.
 </div>
+
+<h2>핵심 측정값 (iPhone Safari UA · 직접 측정)</h2>
+<div class="kpis">
+<div class="kpi"><div class="t">모바일 메인 HTML 크기</div><div class="v"><span class="c">신규몰 647KB</span> · <span class="k">구몰 130KB</span></div><div class="cmp">신규몰이 약 5배 무거움 (모바일 도메인 m.hanasignmall.kr 기준)</div></div>
+<div class="kpi"><div class="t">모바일 메인 &lt;img&gt; 태그 수</div><div class="v"><span class="c">신규몰 376개</span> · <span class="k">구몰 78개</span></div><div class="cmp">실제 전송 이미지·총 페이로드는 별도 측정 필요(아래 1번 참고)</div></div>
+<div class="kpi"><div class="t">모바일 메인 tel: 링크</div><div class="v"><span class="c">신규몰 0건</span> · <span class="k">구몰 2건</span></div><div class="cmp">구몰=tel:1644-7523 / 상단 카카오 상담 고정</div></div>
+</div>
+<div class="note">※ 외부 script 15개·stylesheet 11개(신규몰), 모바일 도메인 m.hanasignmall.kr 존재 확인. 1차 작성 때 데스크톱 응답값(910KB)을 모바일로 오기재한 부분 정정.</div>
 
 <h2>문제점 + 개선 방향 (심각도순)</h2>
-<div class="note">각 항목: 현상 / 구몰 비교 / 왜 중요 / <b>구체적 개선 방향(방법·기준·예시·목표)</b>. 모두 모바일 광고 유입 고객 기준.</div>
+<div class="note">각 항목: 현상 → 비교 → 영향 → <b>개선 방향</b>. 모두 모바일 광고 유입 기준.</div>
 
-<!-- ISSUE 1 -->
 <div class="iss">
-<div class="ihead"><span class="sev high">심각 상</span><span class="ititle">1. 모바일 페이지가 너무 무거움 — 광고 이탈 직결</span></div>
+<div class="ihead"><span class="sev high">심각 상</span><span class="ititle">1. 모바일 페이지 무게 — 광고 이탈 가능성</span></div>
 <div class="ibody">
 <table>
-<tr><td class="l">신규몰 현상</td><td>모바일 메인 HTML <span class="data">910KB</span>, 메인 이미지 태그 <span class="data">493개</span>. 게시판 상세 로드 시 리소스 233개·전송량 <span class="data">약 47.8MB</span>·load 완료 <span class="data">5.5초</span>. 800KB대 비최적화 상세 이미지 다수.</td></tr>
-<tr><td class="l">구몰은</td><td>모바일 접속 시 <span class="data">m.hanasignmall.com 전용 사이트로 302 분기</span>. 메인 134KB·이미지 78개.</td></tr>
-<tr><td class="l">왜 중요</td><td>광고는 클릭당 과금. LTE에서 47MB·5.5초면 첫 화면 전에 이탈 → <b>광고비만 쓰고 전환 0</b>. .kr 광고 직접매출 0의 유력 원인.</td></tr>
+<tr><td class="l">현상</td><td>모바일 도메인(m.hanasignmall.kr) 메인 HTML <span class="data">647KB</span>, 메인 이미지 태그 <span class="data">376개</span>. 상품 상세에 비최적화 long-image 다수 존재.</td></tr>
+<tr><td class="l">구몰 비교</td><td>m.hanasignmall.com 메인 130KB / 이미지 78개. 모바일 전용 페이지로 경량.</td></tr>
+<tr><td class="l">영향</td><td>광고 클릭당 과금 환경에서 첫 화면 진입 전 이탈 가능. <b>유력 가설 중 하나</b>이며 단정은 아닙니다(LCP·이탈률 실측은 GA/RUM 데이터 별도 확인 필요).</td></tr>
 </table>
 <div class="improve">
 <div class="ih">개선 방향</div>
-<div class="step"><b>① 상세 이미지 포맷·용량 표준화</b> — 상품 상세 long-image를 WebP로 변환(JPG 대비 25~35% 감량), 폭 max 1080px로 리사이즈, 장당 <b>200KB 이하</b> 목표. 기존 800KB대 → 일괄 배치 변환.</div>
-<div class="step"><b>② lazy-load 적용</b> — 첫 화면 밖 이미지는 지연 로딩. 상세 long-image는 화면 진입 시 순차 로딩(아래 예시).</div>
-<pre><span class="c">&lt;!-- 상세 이미지: 네이티브 lazy-load + 비율 고정으로 CLS 방지 --&gt;</span>
+<div class="step"><b>① 상세 이미지 표준화 (상품유형 분기)</b> — 일반 상품 상세 long-image는 WebP·max 1080px·<b>200KB/장 목표</b>. 단, <b>시안·도면·실측 이미지가 견적 의사결정에 직접 영향</b>인 상품은 원본 해상도 유지(상품 마스터에 유형 플래그 권장).</div>
+<div class="step"><b>② lazy-load</b> — 첫 화면 밖 이미지는 native lazy + 비율 고정으로 CLS 방지.</div>
+<pre><span class="c">&lt;!-- 상세 이미지 예시 (프레임워크 맞게 조정) --&gt;</span>
 &lt;img src="/data/goods/47202_detail_01.webp"
      loading="lazy" decoding="async"
      width="1080" height="1480" alt="홀로그램 주차스티커 상세"&gt;</pre>
-<div class="step"><b>③ 메인 이미지 개수 축소</b> — 493개 → 첫 화면 노출분만 즉시 로딩, 나머지 carousel/탭 콘텐츠는 클릭 시 로딩(지연).</div>
-<div class="step"><b>④ 정적 리소스 캐시·압축</b> — 이미지 CDN 또는 서버 <b>Cache-Control: max-age 30일</b>, gzip/brotli 적용, HTTP/2 유지.</div>
-<div class="step"><b>⑤ 광고 랜딩 경량 모드(선택)</b> — 파워링크 유입(utm 파라미터 감지) 시 핵심 정보(대표이미지·가격·상담버튼·주문옵션)만 먼저 렌더, 부가 콘텐츠 후순위.</div>
-<div class="target"><b>목표</b> — 광고 랜딩 상품 페이지 모바일 LCP 2.5초 이내, 첫 화면 표시 3초 이내, 상세 총 전송량 47MB → 10MB 이하.</div>
-<span class="eff">난이도 중 · 효과 최상 · 광고 이전 전 1순위</span>
+<div class="step"><b>③ 메인 이미지 수 축소</b> — 376개 → 첫 화면 노출분만 즉시 로딩, carousel/탭 콘텐츠는 클릭 시 로딩.</div>
+<div class="step"><b>④ 정적 리소스 캐시·압축</b> — 이미지 CDN 또는 <b>Cache-Control: max-age 30d</b>, gzip/brotli, HTTP/2.</div>
+<div class="step"><b>⑤ 광고 랜딩 경량 모드 (선택)</b> — utm 파라미터 감지 시 핵심 정보(대표이미지·가격·상담·옵션)만 우선 렌더.</div>
+<div class="target"><b>목표</b> — 광고 랜딩 페이지 모바일 LCP 2.5초 이내, 상세 총 전송량 직전 대비 −30%.</div>
+<span class="eff">난이도 중 · 효과 큼 · 광고 이전 병행 가능</span>
 </div></div></div>
 
-<!-- ISSUE 2 -->
 <div class="iss">
-<div class="ihead"><span class="sev high">심각 상</span><span class="ititle">2. 모바일에 전화·카톡 상담 진입구가 없음 — CS 주문 경로 차단</span></div>
+<div class="ihead"><span class="sev high">심각 상</span><span class="ititle">2. 모바일 메인에 전화·카톡 상담 진입구 부재 — CS 주문 경로 약화</span></div>
 <div class="ibody">
 <table>
-<tr><td class="l">신규몰 현상</td><td>모바일 메인에 <span class="data">작동하는 tel: 클릭통화 0건</span>. 번호(032-468-7162, 1644-7523)는 텍스트로만 → 탭해도 전화 안 걸림. 카카오 상담 링크도 메인엔 없고 우측 챗봇 위젯에만 의존. 상세 tel은 <span class="data">tel:16447523</span>(하이픈 없는 비표준).</td></tr>
-<tr><td class="l">구몰은</td><td>모바일 전 페이지 상단에 <b>"카카오톡 ID: 하나사인몰 [상담하기]"</b> 상시 + <span class="data">href="tel:1644-7523"</span> 클릭통화 일관. 카카오 채널(pf.kakao.com) 정상.</td></tr>
-<tr><td class="l">왜 중요</td><td>사인물은 주문제작·규격·시공 문의가 많아 <b>전화·카톡 → CS 결제</b> 비중 큼. 광고를 .kr로 옮기면 클릭은 가는데 상담 입구가 약해 <b>CS 전환까지 끊길 위험</b>. (적자·본전 광고가 CS 매출 입구일 수 있다는 우려와 직결)</td></tr>
+<tr><td class="l">현상</td><td>모바일 메인에 <span class="data">tel: 클릭통화 링크 0건</span>. 번호는 텍스트로만 표기. 카카오 상담은 우측 챗봇 위젯에 한정. 상세의 일부 tel은 <span class="data">tel:16447523</span>(하이픈 없음, 비표준 표기).</td></tr>
+<tr><td class="l">구몰 비교</td><td>모바일 전 페이지 상단 카카오 상담 + tel:1644-7523 클릭통화 일관 적용.</td></tr>
+<tr><td class="l">영향</td><td>사인물 주문은 규격·시안·시공 문의가 많아 <b>전화·카톡 → CS 결제</b> 비중 큼. 광고 .kr 이전 시 상담 진입이 약하면 CS 전환까지 약화 가능.</td></tr>
 </table>
 <div class="improve">
 <div class="ih">개선 방향</div>
-<div class="step"><b>① 모바일 하단 고정 상담바(sticky CTA)</b> — 전 페이지 화면 하단에 <b>전화걸기 / 카카오톡 상담</b> 2버튼 항상 노출. 스크롤 무관 고정.</div>
-<pre><span class="c">&lt;!-- 모바일 전용 하단 고정 상담바 --&gt;</span>
+<div class="step"><b>① 모바일 하단 고정 상담바 (sticky CTA)</b> — 전 페이지 화면 하단에 <b>전화 / 카톡상담</b> 2버튼 상시 노출.</div>
+<pre><span class="c">&lt;!-- 예시 (프레임워크 맞게 조정) --&gt;</span>
 &lt;div class="m-callbar"&gt;
   &lt;a href="tel:1644-7523"&gt;📞 전화상담&lt;/a&gt;
-  &lt;a href="https://pf.kakao.com/_하나채널ID/chat"&gt;💬 카톡상담&lt;/a&gt;
+  &lt;a href="https://pf.kakao.com/_[카카오채널ID]/chat"&gt;💬 카톡상담&lt;/a&gt;
 &lt;/div&gt;
 &lt;style&gt;
 .m-callbar{position:fixed;left:0;right:0;bottom:0;z-index:9999;
@@ -110,51 +143,76 @@ pre .c{color:#6b9a6b}.pre .k{color:#7cc0ff}
   font-weight:700;font-size:16px;color:#fff}
 .m-callbar a:nth-child(1){background:#2b6cff}
 .m-callbar a:nth-child(2){background:#fae100;color:#3c1e1e}
-@media(min-width:768px){.m-callbar{display:none}} <span class="c">/* PC 숨김 */</span>
+@media(min-width:768px){.m-callbar{display:none}}
 &lt;/style&gt;</pre>
-<div class="step"><b>② tel 표기 표준화</b> — 사이트 전역 전화번호를 <b>tel:1644-7523</b> 형식으로 통일(하이픈 포함). 텍스트 번호도 모두 a href 처리.</div>
-<div class="step"><b>③ 카카오 채널 연결</b> — 구몰이 쓰는 카카오 채널(pf.kakao.com/_하나채널)을 신규몰에도 동일 연결. 상담 유입을 한 채널로 합산 관리.</div>
-<div class="step"><b>④ 상품 상세 내 상담 버튼</b> — 주문제작 상품은 "구매하기" 옆에 <b>"규격·시안 문의"</b> 버튼(전화/카톡) 병치. 이미 있는 "실시간 전문상담원 상담하기"를 전화·카톡과 묶어 노출.</div>
-<div class="step"><b>⑤ 상담 유입 추적</b> — 상담바 클릭에 이벤트 파라미터(어느 상품·광고에서 눌렀는지) 부착 → 추후 "광고→상담→CS결제" 경로 측정 기반 마련.</div>
-<div class="target"><b>목표</b> — 모바일 전 페이지에서 2탭 이내 전화·카톡 도달. 광고 적자로 보이던 그룹의 CS 기여를 측정 가능하게.</div>
-<span class="eff">난이도 하 · 효과 최상 · 광고 이전 전 1순위</span>
+<div class="step"><b>② tel 표기 표준화</b> — 전역 <b>tel:1644-7523</b>(하이픈 포함)으로 통일, 텍스트 번호도 모두 a href 처리.</div>
+<div class="step"><b>③ 카카오 채널 — 합산 아님, 라우팅·태깅 설계 선행</b> — 채널별(.com / .kr / 스마트스토어)로 <b>상담 출처가 구분 가능한 태깅</b>이 우선. 합쳐버리면 채널 효율 판단·해피톡 분석이 오염됩니다. <b>합산 여부·운영 방식은 웹팀과 별도 협의</b>.</div>
+<div class="step"><b>④ 상품 상세 내 상담 CTA</b> — 주문제작 상품은 "구매하기" 옆에 "규격·시안 문의" 버튼(전화/카톡) 병치. 사인물 특화 동선(시안 업로드·도면 첨부·견적 폼)은 본 문서 범위 외, 별도 기획.</div>
+<div class="step"><b>⑤ 상담 진입 추적</b> — 상담바 클릭에 이벤트 파라미터(상품·광고 출처) 부착 → "광고 → 상담 → CS 결제" 측정 기반 마련.</div>
+<div class="target"><b>목표</b> — 모바일 전 페이지에서 2탭 이내 전화·카톡 도달. 광고 적자로 보이던 그룹의 CS 기여 측정 가능화.</div>
+<span class="eff">난이도 하 · 효과 큼 · 광고 이전 전 1순위 (핫픽스 권장)</span>
 </div></div></div>
 
-<!-- ISSUE 3 -->
 <div class="iss">
-<div class="ihead"><span class="sev mid">심각 중</span><span class="ititle">3. 반응형 단일 페이지 — 무게 문제가 모바일에 그대로 전가</span></div>
+<div class="ihead"><span class="sev mid">심각 중</span><span class="ititle">3. 모바일 도메인은 있으나 경량화는 부족</span></div>
 <div class="ibody">
 <table>
-<tr><td class="l">신규몰 현상</td><td>모바일 UA로도 같은 URL·같은 페이지 반환(반응형). viewport meta는 정상이나 1번의 무게가 모바일에 경량화 없이 노출. 외부 script 25개·stylesheet 11개.</td></tr>
-<tr><td class="l">구몰은</td><td>모바일 전용(m.) 별도 운영으로 모바일 맞춤 경량 제공.</td></tr>
+<tr><td class="l">현상</td><td>m.hanasignmall.kr 모바일 도메인 <b>실재</b>(JS 리다이렉트). 다만 메인 647KB로 구몰 m.도메인(130KB)의 약 5배. script 15개·stylesheet 11개.</td></tr>
+<tr><td class="l">구몰 비교</td><td>m.hanasignmall.com이 모바일 맞춤 경량 콘텐츠로 분리 운영.</td></tr>
+<tr><td class="l">영향</td><td>도메인은 있으나 콘텐츠 무게 그대로 → 모바일 체감 동일.</td></tr>
 </table>
 <div class="improve">
 <div class="ih">개선 방향</div>
-<div class="step"><b>① 모바일 조건부 로딩</b> — 반응형 구조 유지하되, PC 전용 위젯/슬라이더/대형 배너는 모바일에서 <b>로드 자체를 스킵</b>(CSS display:none만으로는 다운로드가 일어나므로 JS 조건 분기로 미주입).</div>
-<div class="step"><b>② script 통합·지연</b> — 외부 script 25개 중 비필수(애널리틱스·위젯)는 <b>defer/async</b> + 첫 인터랙션 후 로딩. CSS 11개는 빌드 시 번들·압축.</div>
-<div class="step"><b>③ 공통 컴포넌트화</b> — 상담바·헤더·가격박스 등을 공통 모듈로 빼서 PC/모바일 분기 유지비 최소화.</div>
-<div class="step"><b>④ (대안 검토)</b> — 단기 개선이 한계면, 구몰처럼 광고 랜딩용 <b>모바일 경량 템플릿</b> 별도 운영도 옵션. 단 유지보수 이중화 부담 고려.</div>
-<div class="target"><b>목표</b> — 모바일 초기 로딩 리소스(JS/CSS) 30% 이상 감축. 1번 목표와 연동.</div>
+<div class="step"><b>① 모바일 조건부 로딩</b> — PC 전용 위젯/슬라이더/대형 배너는 모바일에서 <b>로드 자체 스킵</b>(display:none만으론 다운로드 발생).</div>
+<div class="step"><b>② script 통합·지연</b> — 비필수 script는 defer/async + 첫 인터랙션 후 로딩. CSS 11개는 빌드 시 번들·압축.</div>
+<div class="step"><b>③ 공통 컴포넌트화</b> — 상담바·헤더·가격박스 공통 모듈 → PC/모바일 분기 유지비 최소화.</div>
+<div class="target"><b>목표</b> — 모바일 초기 로딩 JS/CSS 30% 이상 감축. 1번과 연동.</div>
 <span class="eff">난이도 중 · 효과 중</span>
 </div></div></div>
 
-<!-- ISSUE 4 -->
 <div class="iss">
-<div class="ihead"><span class="sev low">양호</span><span class="ititle">4. 검색·필터·배송표기는 신규몰이 양호 (유지)</span></div>
+<div class="ihead"><span class="sev low">양호</span><span class="ititle">4. 검색·필터·배송표기는 신규몰 양호 (유지 권고)</span></div>
 <div class="ibody"><table>
-<tr><td class="l">확인됨</td><td>"주차스티커" 검색 시 45~47건 + 카테고리 패싯 + EASY서치 필터(업종/소재/디자인/두께/사이즈) 정상. 배송정보(무료배송/제주·도서 +6,000원/배송 14일) 명확. 강제 회원가입 없음. <b>이 부분은 손댈 필요 없음.</b></td></tr>
-<tr><td class="l">유지 권고</td><td>1·2번 개선 시 이 검색·필터 UX는 그대로 보존. 경량화 과정에서 필터 동작 깨지지 않게 회귀 테스트.</td></tr>
+<tr><td class="l">확인됨</td><td>"주차스티커" 검색 45~47건 + 카테고리 패싯 + EASY서치 필터(업종/소재/디자인/두께/사이즈) 정상 동작. 배송정보(무료배송·제주 도서 +6,000원·배송 14일) 명확. 강제 회원가입 없음. <b>이 부분은 손댈 필요 없음.</b></td></tr>
+<tr><td class="l">유지 권고</td><td>1·2번 개선 시 위 UX 보존. 경량화 과정에서 필터 회귀 테스트 필수.</td></tr>
 </table></div></div>
 
 <h2>개발팀 실행 우선순위</h2>
 <div class="pri">
-<div class="it"><b>모바일 하단 고정 전화·카톡 상담바</b><div class="meta">난이도 하 / 효과 최상 / 1~2일 — 가장 빠르고 효과 큰 작업. 먼저 배포 권장.</div></div>
-<div class="it"><b>모바일 이미지 최적화 + lazy-load</b><div class="meta">난이도 중 / 효과 최상 / 광고 랜딩 상품 페이지 우선 → 전 상품 확대. 47MB→10MB 목표.</div></div>
-<div class="it"><b>모바일 조건부 리소스 로딩(경량화)</b><div class="meta">난이도 중 / 효과 중 / 2번과 연동 진행.</div></div>
+<div class="it"><b>모바일 하단 고정 전화·카톡 상담바 (핫픽스)</b><div class="meta">난이도 하 / 효과 큼 / 예상 1~3일 (개발팀 일정 협의) — 광고 이전 전 1순위.</div></div>
+<div class="it"><b>모바일 이미지 최적화 + lazy-load</b><div class="meta">난이도 중 / 효과 큼 / 광고 랜딩 상품 페이지 우선 → 전 상품 확대. 1번과 병행 가능.</div></div>
+<div class="it"><b>모바일 조건부 리소스 로딩 (경량화)</b><div class="meta">난이도 중 / 효과 중 / 2번과 연동.</div></div>
 </div>
-<div class="ctx" style="margin-top:14px"><b>광고 이전 게이트</b> — 위 1·2번(상담바 + 이미지 최적화)은 <b>광고를 .kr로 옮기기 전 선결 조건</b>으로 권장. 이게 안 되면 "UI는 좋은데 전환은 더 떨어지는" 역설이 발생.</div>
 
-<div class="foot">하나사인몰 웹팀 · 신규몰 고객동선 개선요청(개선방향 포함) · 삼중 검증(직접 동선 점검 + 교차검증 서브에이전트 + 모바일 UA 실측) · 2026-06-01<br>
-※ 픽셀 단위 모바일 레이아웃(터치 타깃·깨짐)은 실제 스마트폰/크롬 디바이스 모드에서 추가 확인 권장. 위 결론·수치는 모바일 UA 실측 HTML·성능 측정 기반. 예시 코드는 방향 제시용으로 실제 적용 시 신규몰 프레임워크에 맞게 조정.</div>
+<div class="ctx warn"><b>🚦 광고 이전 진행 방식</b> — 1번(상담바)은 광고 이전 <b>선결</b>, 2·3번은 <b>병행</b>으로 분리합니다. 게이트 한 덩어리로 묶지 않습니다. 1번 완료 시점에 .com 광고 일부(1~2개 그룹)부터 시범 이전 → 2~4주 CS 추이 확인 후 확대.</div>
+
+<h2>수용 기준 (테스트·검수)</h2>
+<table class="tbl">
+<thead><tr><th>항목</th><th>기준</th></tr></thead>
+<tbody>
+<tr><td class="l">테스트 디바이스</td><td>iPhone 13/14 Safari, Galaxy S22 Chrome (최소 2종)</td></tr>
+<tr><td class="l">네트워크 조건</td><td>Chrome DevTools "Fast 3G" / "4G" 시뮬레이션 + 실측 모바일 LTE</td></tr>
+<tr><td class="l">합격선 (이슈 1)</td><td>광고 랜딩 상품 페이지 LCP ≤ 2.5초, 총 전송량 직전 대비 −30%</td></tr>
+<tr><td class="l">합격선 (이슈 2)</td><td>모바일 전 페이지에서 2탭 이내 전화·카톡 도달. 상담바 클릭 이벤트 GA/GTM 정상 수집</td></tr>
+<tr><td class="l">합격선 (이슈 3)</td><td>모바일 초기 JS/CSS 전송량 −30% 이상</td></tr>
+<tr><td class="l">파일럿 상품 (5개)</td><td>웹팀에서 선정·전달 예정 (게시판·주차스티커·입간판·현수막 카테고리 대표 상품)</td></tr>
+<tr><td class="l">검수 담당</td><td>웹팀 박상준 차장 (구현·QA 회신 채널 단일화)</td></tr>
+<tr><td class="l">롤백 트리거</td><td>① 상담바 적용 후 카카오/전화 인입 ≥10% 감소 ② 이미지 최적화 후 시안·도면 클레임 발생 ③ 검색/필터 UX 회귀</td></tr>
+<tr><td class="l">회귀 테스트 범위</td><td>"주차스티커·게시판·입간판" 카테고리 검색 → 필터 → 상세 → 옵션 → 장바구니 → 주문 동선 전체</td></tr>
+</tbody>
+</table>
+
+<h2>착수 전 개발팀 회신 요청</h2>
+<div class="qbox">
+<b>① 카카오 채널 ID</b> — 신규몰 연결할 채널 ID(pf.kakao.com/_xxxxx) 및 운영 주체(웹팀 vs 개발팀)<br>
+<b>② utm 파라미터 명세</b> — 광고 링크에 부착할 utm_source/medium/campaign 키 규칙 및 GA/GTM 수집 여부<br>
+<b>③ 프레임워크·상품 마스터 구조</b> — 신규몰 프론트 프레임워크(React? 자체 템플릿?) 및 상품 마스터에 "상세 이미지 유형" 플래그 추가 가능 여부<br>
+<br>
+<span style="color:#aeb6c4;font-size:13px">위 3건 회신 후 본 요청서의 코드 예시·구체 사양을 신규몰 환경에 맞게 재조정합니다.</span>
+</div>
+
+<div class="foot">하나사인몰 웹팀 · 신규몰 고객동선 개선요청 · v2(2026-06-01) · 측정 정정 + 수용기준·회신요청 추가 · 페어 문서: 광고이전 점검표<br>
+※ 본 요청서의 측정 수치는 iPhone Safari UA 정적 측정 기반. LCP·이탈률 등 실측 RUM 데이터는 별도 확인 필요.
+</div>
 
 </div></body></html>
