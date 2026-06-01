@@ -84,7 +84,7 @@ pre .c{color:#6b9a6b}
 </style></head><body><div class="wrap">
 
 <h1>신규몰(.kr) 모바일 페이지 최적화 요청</h1>
-<div class="sub">개발팀 전달용 · 모바일 광고 유입 페이지 무게·로딩 속도 개선 · 2026-06-01 (v5.1: 이미지 자동화·모바일 경량화 친절 설명 추가)</div>
+<div class="sub">개발팀 전달용 · 모바일 광고 유입 페이지 무게·로딩 속도 개선 · 2026-06-01 (v5.2: 비용 한눈에 보기 추가 — 추가 결제 0원 시나리오 명시)</div>
 
 <div class="ctx">
 <b>배경</b> — .com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 <b>모바일 중심</b>이고, 사인물 업종 특성상 매출의 <b>90%가 전화·카톡 상담 주문(CS)</b>. 광고 이전 전에 .kr 모바일 페이지 로딩 속도가 광고 랜딩으로서 무리가 없는지 점검한 결과와 개선 방향입니다. 본 문서는 <b>모바일 UA(iPhone Safari)</b>로 직접 측정한 결과 기반입니다.
@@ -129,6 +129,23 @@ hanasm.avif  (160KB) ──── 구형 브라우저 (둘 다 미지원) ──
 <tr><td class="l">고객 체감</td><td>같은 이미지를 더 빨리 받음. 페이지 로딩·LCP 단축.</td></tr>
 <tr><td class="l">사인물 특수</td><td><b>시안·도면·실측 이미지는 변환 제외</b>(견적 의사결정 영향). 상품 마스터에 유형 플래그 권장(catalog / proof / drawing).</td></tr>
 </table>
+
+<div class="cmpx" style="margin-top:14px">
+<table>
+<thead><tr><th colspan="3" style="background:#11161f;color:#aef0c8;font-size:13.5px">💰 비용 한눈에 보기 — <span style="color:#7ee0a8">추가 결제 0원 시나리오 가능</span></th></tr></thead>
+<thead><tr><th>옵션</th><th style="text-align:left">월 비용</th><th style="text-align:left">조건</th></tr></thead>
+<tbody>
+<tr class="rec"><td class="lab">C. 일괄 스크립트</td><td><b style="color:#7ee0a8">0원</b></td><td>기존 서버 사용. 디스크 2~3배 사용량 증가만 부담.</td></tr>
+<tr class="rec"><td class="lab">B. 서버 변환 (sharp/nginx)</td><td><b style="color:#7ee0a8">0원</b></td><td>기존 서버 사용. CPU 부담 약간 증가.</td></tr>
+<tr class="rec"><td class="lab">A. 자체 imgproxy</td><td><b style="color:#7ee0a8">0원</b></td><td>기존 서버 사용. 오픈소스 SW 무료.</td></tr>
+<tr><td class="lab">D. Cloudflare Polish</td><td><b style="color:#e9d27a">0 ~ $25</b></td><td>Cloudflare Pro 이미 사용 중이면 토글만(추가 0원). 신규 가입 시 $25/월.</td></tr>
+<tr><td class="lab">A. Cloudflare Images</td><td><b style="color:#ffb979">$5 ~ $30 예상</b></td><td>저장 $5/10만장 + 전송 $1/10만장. 자사 이미지 수·트래픽 따라 변동.</td></tr>
+<tr><td class="lab">A. imgix</td><td><b style="color:#ffb979">트래픽 비례</b></td><td>요청 수·변환 수 기반 종량제.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="ctx" style="margin-top:10px;padding:12px 16px;font-size:13.5px"><b style="color:#aef0c8">💡 결정 요지</b> — <b>월 고정비 0원</b>으로 가고 싶으면 C / B / 자체 imgproxy. <b>운영 부담 최소화</b>를 원하면 D(Cloudflare Pro). <b>현재 신규몰이 Cloudflare 사용 중인지부터 회신받아야</b> 옵션이 결정됩니다(아래 회신 요청 ① 참조).</div>
 
 <div class="cmpx">
 <table>
@@ -233,7 +250,7 @@ PC용 큰 배너 이미지     ✗ 모바일에서도 다운로드      ──�
 <span style="color:#aeb6c4;font-size:13px">위 3건 회신 후 본 요청서의 코드 예시·구체 사양을 신규몰 환경에 맞게 재조정합니다.</span>
 </div>
 
-<div class="foot">하나사인몰 웹팀 · 신규몰 모바일 페이지 최적화 요청 · v5.1(2026-06-01) · 이미지 자동화 + 모바일 경량화 둘 다 친절 설명 추가<br>
+<div class="foot">하나사인몰 웹팀 · 신규몰 모바일 페이지 최적화 요청 · v5.2(2026-06-01) · 비용 한눈에 보기 추가<br>
 ※ 본 요청서의 측정 수치는 iPhone Safari UA 정적 측정 기반. LCP·이탈률 등 실측 RUM 데이터는 별도 확인 필요.
 </div>
 
