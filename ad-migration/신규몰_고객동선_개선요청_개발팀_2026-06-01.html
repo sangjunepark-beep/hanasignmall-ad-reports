@@ -84,7 +84,7 @@ pre .c{color:#6b9a6b}
 </style></head><body><div class="wrap">
 
 <h1>신규몰(.kr) 모바일 페이지 최적화 요청</h1>
-<div class="sub">개발팀 전달용 · 모바일 광고 유입 페이지 무게·로딩 속도 개선 · 2026-06-01 (v5: 이미지 자동화 인프라 결정 중심)</div>
+<div class="sub">개발팀 전달용 · 모바일 광고 유입 페이지 무게·로딩 속도 개선 · 2026-06-01 (v5.1: 이미지 자동화·모바일 경량화 친절 설명 추가)</div>
 
 <div class="ctx">
 <b>배경</b> — .com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 <b>모바일 중심</b>이고, 사인물 업종 특성상 매출의 <b>90%가 전화·카톡 상담 주문(CS)</b>. 광고 이전 전에 .kr 모바일 페이지 로딩 속도가 광고 랜딩으로서 무리가 없는지 점검한 결과와 개선 방향입니다. 본 문서는 <b>모바일 UA(iPhone Safari)</b>로 직접 측정한 결과 기반입니다.
@@ -169,8 +169,24 @@ hanasm.avif  (160KB) ──── 구형 브라우저 (둘 다 미지원) ──
 <tr><td class="l">영향</td><td>도메인은 있으나 콘텐츠 무게 그대로 → 모바일 체감 동일.</td></tr>
 </table>
 <div class="improve">
-<div class="ih">개선 방향</div>
-<div class="step"><b>① 모바일 조건부 로딩</b> — PC 전용 위젯/슬라이더/대형 배너는 모바일에서 <b>로드 자체 스킵</b>(display:none만으론 다운로드 발생).</div>
+<div class="ih">개선 방향 — 핵심: 모바일에서 안 쓰는 코드는 다운로드도 막기</div>
+
+<div class="step"><b>① 모바일 조건부 로딩 (개념)</b> — PC 화면용 슬라이더·큰 배너·통계 위젯 등은 <b>모바일에서 안 보여도 다운로드는 일어남</b>. CSS로 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">display:none</code> 처리해도 파일은 받아옴. 모바일에서는 <b>해당 코드를 페이지에 끼워 넣지 않는 방식</b>으로 전환.</div>
+
+<div class="flow">[현재]                                  [개선 후]
+PC용 슬라이더 JS (80KB)  ✗ 모바일에서도 다운로드      ──→  ✓ 모바일 다운로드 안 함
+PC용 큰 배너 이미지     ✗ 모바일에서도 다운로드      ──→  ✓ 모바일 다운로드 안 함
+애널리틱스/추천 위젯    ✗ 페이지 진입 즉시 다운로드  ──→  ✓ 첫 클릭/스크롤 후 다운로드</div>
+
+<table style="margin-top:10px">
+<tr><td class="l">1번과 차이</td><td><b>1번</b> = 같은 이미지를 더 가벼운 포맷으로 바꾸기. <b>2번</b> = 모바일에서 안 쓰는 코드/이미지를 아예 안 받게 막기. 둘 다 합치면 전송량 큰 폭 감소.</td></tr>
+<tr><td class="l">고객 체감</td><td>페이지 첫 화면이 더 빨리 뜸. 데이터 소비량·배터리 절약.</td></tr>
+<tr><td class="l">운영자 영향</td><td>없음. 인프라/빌드 설정 변경만.</td></tr>
+</table>
+
+<div class="step"><b>② script 통합·지연</b> — 외부 script 15개 중 비필수(애널리틱스·추천 위젯·소셜 공유 등)는 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">defer</code>/<code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">async</code> 속성으로 페이지 로딩 차단 방지 + 첫 인터랙션(클릭·스크롤) 후 로딩. CSS 11개는 빌드 시 하나로 번들·압축(파일 개수 줄이면 요청 횟수 감소).</div>
+
+<div class="step"><b>③ 공통 컴포넌트화</b> — 헤더·가격박스·하단 영역 등 PC/모바일 양쪽에서 쓰는 부분은 공통 모듈로 빼서 분기 유지비 최소화(향후 수정 시 한 군데만 고치면 됨).</div>
 <div class="step"><b>② script 통합·지연</b> — 비필수 script는 defer/async + 첫 인터랙션 후 로딩. CSS 11개는 빌드 시 번들·압축.</div>
 <div class="step"><b>③ 공통 컴포넌트화</b> — 헤더·가격박스 공통 모듈 → PC/모바일 분기 유지비 최소화.</div>
 <div class="target"><b>목표</b> — 모바일 초기 로딩 JS/CSS 30% 이상 감축. 1번과 연동.</div>
@@ -217,7 +233,7 @@ hanasm.avif  (160KB) ──── 구형 브라우저 (둘 다 미지원) ──
 <span style="color:#aeb6c4;font-size:13px">위 3건 회신 후 본 요청서의 코드 예시·구체 사양을 신규몰 환경에 맞게 재조정합니다.</span>
 </div>
 
-<div class="foot">하나사인몰 웹팀 · 신규몰 모바일 페이지 최적화 요청 · v5(2026-06-01) · 이미지 자동화 중심(콜CTA 항목 제외) · 페어 문서: 광고이전 점검표 v7<br>
+<div class="foot">하나사인몰 웹팀 · 신규몰 모바일 페이지 최적화 요청 · v5.1(2026-06-01) · 이미지 자동화 + 모바일 경량화 둘 다 친절 설명 추가<br>
 ※ 본 요청서의 측정 수치는 iPhone Safari UA 정적 측정 기반. LCP·이탈률 등 실측 RUM 데이터는 별도 확인 필요.
 </div>
 
