@@ -73,49 +73,98 @@ details>div,details>table,details>summary{padding-left:12px;padding-right:12px}
 .mt .lnd{white-space:normal;max-width:200px;font-size:10.5px}
 .foot{font-size:11.5px}
 }
-.bm{font-size:11.5px;color:#7cc0ff;margin-left:8px;font-weight:700}.adr{font-size:11.5px;color:#9aa3b2;margin-left:4px;font-weight:600}.exec{background:#13181f;border:1px solid #4a7fd6;border-radius:14px;padding:18px 22px;margin:0 0 28px;box-shadow:0 4px 24px rgba(74,127,214,0.12)}
-.exec-h{font-size:16px;font-weight:800;color:#7cc0ff;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #2a3142}
-.exec-sub{font-size:13px;color:#cfe0f0;font-weight:500;margin-left:6px}
-.exec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 14px}
-.exec-card{background:#0d1117;border-radius:10px;padding:12px 14px;border:1px solid #2a3142}
-.exec-card.good{border-color:#3fbf7f;border-left:3px solid #3fbf7f}
-.exec-card.bad{border-color:#ff8a8a;border-left:3px solid #ff8a8a}
-.exec-card.warn{border-color:#ffb979;border-left:3px solid #ffb979}
-.exec-tit{font-size:12px;font-weight:800;margin-bottom:4px;letter-spacing:0.3px}
+.bm{font-size:11.5px;color:#7cc0ff;margin-left:8px;font-weight:700}.adr{font-size:11.5px;color:#9aa3b2;margin-left:4px;font-weight:600}.exec{background:#13181f;border:1px solid #4a7fd6;border-radius:14px;padding:22px 26px;margin:0 0 30px;box-shadow:0 4px 24px rgba(74,127,214,0.12)}
+.exec-h{font-size:17px;font-weight:800;color:#7cc0ff;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #2a3142}
+.exec-sub{font-size:13px;color:#9aa3b2;font-weight:500;margin-left:8px}
+.exec-line{font-size:15px;line-height:1.75;color:#cfe0f0;margin:0 0 16px}
+.exec-line b{color:#fff}
+.exec-line .num{color:#7cc0ff;font-weight:800}
+.exec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 18px}
+.exec-card{background:#0d1117;border-radius:10px;padding:14px 16px;border:1px solid #2a3142}
+.exec-card.good{border-left:4px solid #3fbf7f}
+.exec-card.bad{border-left:4px solid #ff8a8a}
+.exec-card.warn{border-left:4px solid #ffb979}
+.exec-tit{font-size:13px;font-weight:800;margin-bottom:6px}
 .exec-card.good .exec-tit{color:#7ee0a8}
 .exec-card.bad .exec-tit{color:#ff8a8a}
 .exec-card.warn .exec-tit{color:#ffb979}
-.exec-num{font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.5px}
-.exec-txt{font-size:12.5px;color:#9aa3b2;line-height:1.6}
-.exec-txt .ts{color:#7a8396;font-size:11.5px}
-.exec-action{font-size:14.5px;color:#cfe0f0;background:#161a23;border-radius:8px;padding:11px 14px;line-height:1.7}
-.exec-action b{color:#7cc0ff}
-.exec-insight{font-size:12.5px;color:#cfe0f0;background:#2a2014;border-left:3px solid #ffb979;border-radius:6px;padding:9px 13px;margin-top:10px;line-height:1.6}
-@media(max-width:760px){.exec{padding:14px 16px}.exec-grid{grid-template-columns:1fr;gap:8px}.exec-h{font-size:14.5px}.exec-num{font-size:20px}.exec-txt{font-size:12px}.exec-action{font-size:13.5px}}
+.exec-num{font-size:22px;font-weight:800;color:#fff;margin-bottom:6px}
+.exec-meta{font-size:12px;color:#7a8396;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #1c2230;line-height:1.55}
+.exec-list{font-size:12.5px;line-height:1.75;color:#cfe0f0}
+.exec-list div{display:flex;justify-content:space-between;align-items:baseline}
+.exec-list .r{color:#7cc0ff;font-weight:700;font-size:11.5px;margin-left:8px;flex:none}
+.exec-card.bad .exec-list .r,.exec-card.warn .exec-list .r{color:#ff9a9a}
+.exec-action{background:#161a23;border-radius:10px;padding:14px 18px;margin:0 0 14px;border:1px solid #2a3142}
+.act-h{font-size:13.5px;font-weight:800;color:#7cc0ff;margin-bottom:8px}
+.act-line{font-size:14px;line-height:1.85;color:#cfe0f0}
+.act-line b{color:#fff}
+.act-line .num{color:#7cc0ff;font-weight:800}
+.exec-insight{font-size:13px;color:#cfe0f0;background:#2a2014;border-left:3px solid #ffb979;border-radius:6px;padding:12px 15px;line-height:1.7;margin:0 0 12px}
+.exec-insight b{color:#ffd479}
+.exec-insight .num{color:#7cc0ff}
+.exec-insight .warn-t{color:#ffa64d}
+.exec-foot{font-size:11.5px;color:#69707e;line-height:1.6;padding-top:8px;border-top:1px solid #1c2230}
+@media(max-width:760px){.exec{padding:16px 18px}.exec-grid{grid-template-columns:1fr;gap:10px}.exec-h{font-size:15.5px}.exec-num{font-size:20px}.exec-list{font-size:12px}.exec-line{font-size:13.5px}.act-line{font-size:13px}.exec-insight{font-size:12.5px}}
 .krtag{display:inline-block;font-size:10.5px;font-weight:700;color:#8ee8b4;background:#1a2e23;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:middle}.exec-insight{background:#2a2014;border-left:3px solid #ffb979;padding-left:14px;border-radius:6px;margin-top:14px}.exec-insight b{color:#ffd479}</style></head><body><div class="wrap">
 <h1>자사몰 광고 이전 검토</h1>
 <div class="sub">.com 네이버 검색광고를 신규몰(.kr)로 이전 검토 · 최근 3개월(2026-02-06~05-05)</div>
 <div class="exec">
-<div class="exec-h">📋 임원 보고 <span class="exec-sub">· 광고비 1,421만 · 광고매출 1,394만 · ROAS 98% · 3개월</span></div>
+<div class="exec-h">📋 임원 보고 요약 <span class="exec-sub">2026-02-06 ~ 05-05 · 네이버 광고 API 직접 추적</span></div>
+
+<div class="exec-line"><b>3개월 광고 운영</b>: 광고비 <b class="num">1,421만</b> 집행, 직접 광고매출 <b class="num">1,394만</b> 회수 (전체 ROAS <b class="num">98%</b>) — 본전 수준, 광고그룹별 편차 큼.</div>
+
 <div class="exec-grid">
 <div class="exec-card good">
-<div class="exec-tit">✅ 유지</div>
+<div class="exec-tit">✅ 유지 (효율 광고)</div>
 <div class="exec-num">5개</div>
-<div class="exec-txt">도어사인 · 상호메인 · 단차주의 · 방화문 · 주차금지</div>
+<div class="exec-meta">광고비 38만 → 매출 487만 · ROAS 200%+</div>
+<div class="exec-list">
+<div>도어사인/문패 <span class="r">3,897%</span></div>
+<div>00 상호/메인 <span class="r">1,071%</span></div>
+<div>08 단차주의 <span class="r">285%</span></div>
+<div>03 방화문스티커 <span class="r">273%</span></div>
+<div>주차금지// <span class="r">238%</span></div>
 </div>
+</div>
+
 <div class="exec-card bad">
-<div class="exec-tit">⛔ 정리</div>
-<div class="exec-num">7개 · -335만</div>
-<div class="exec-txt">바닥시트 · 현수막 · 요일제 · 수목표찰 · 말뚝안내판 · MSDS · 매트</div>
+<div class="exec-tit">⛔ 정리 (.com 광고매출 0)</div>
+<div class="exec-num">7개</div>
+<div class="exec-meta">광고비 335만 → 광고매출 0원</div>
+<div class="exec-list">
+<div>13 바닥시트 (93만) <span class="krtag">이미.kr</span></div>
+<div>현수막 (79만)</div>
+<div>요일제 (60만) <span class="krtag">이미.kr</span></div>
+<div>14 수목표찰 (48만) <span class="krtag">이미.kr</span></div>
+<div>04 말뚝안내판 (23만)</div>
+<div>MSDS (17만) · 매트 (15만)</div>
 </div>
+</div>
+
 <div class="exec-card warn">
-<div class="exec-tit">⚠️ 보류</div>
+<div class="exec-tit">⚠️ 보류 (CS 1억+ 대형)</div>
 <div class="exec-num">3개</div>
-<div class="exec-txt">게시판 · 주차스티커 · 인쇄물 스티커<br><span class="ts">CS 1억+ · 데이터 누적 후 판단</span></div>
+<div class="exec-meta">전화·카톡 주문 비중 큼 · 시범 이전만</div>
+<div class="exec-list">
+<div>01 게시판 <span class="r">CS 1.59억</span></div>
+<div>06 주차스티커 <span class="r">CS 1.62억</span></div>
+<div>인쇄물 스티커 <span class="r">CS 2.39억</span></div>
 </div>
 </div>
-<div class="exec-action">결정: <b>① 7개 끄기</b> · <b>② 5개 유지</b> · <b>③ 3개 데이터 누적</b></div>
-<div class="exec-insight">⚡ .kr에 4개 이미 이전 중(바닥시트·요일제·수목표찰·테스트). 구글애즈 전환추적 미설치 — 효과 측정 전에 추가 이전 보류.</div>
+</div>
+
+<div class="exec-action">
+<div class="act-h">의사결정 권고</div>
+<div class="act-line"><b>①</b> 정리 대상 7개 즉시 일시정지 → <b class="num">월 112만</b> 광고비 절감</div>
+<div class="act-line"><b>②</b> 유지 대상 5개 .com 유지 + 신규몰 구글애즈 전환 추적코드 설치</div>
+<div class="act-line"><b>③</b> 보류 3개는 추적 데이터 <b>2~4주</b> 누적 후 이전 판단</div>
+</div>
+
+<div class="exec-insight">
+<b>⚡ 핵심 인사이트</b> — 전체 44개 광고그룹 중 <b class="num">4개는 이미 신규몰(.kr)로 이전 완료</b> (13 바닥시트·요일제·14 수목표찰·신규몰테스트). 그러나 <b class="warn-t">.kr 광고(구글애즈)의 실질 매출 연결은 아직 미확인 상태</b> — 전환 추적 코드 미설치로 광고→결제 매출이 잡히지 않음. <b>잔여 .com 광고 일괄 이전 전에 .kr 추적코드 설치·2~4주 데이터 누적부터</b> 우선.
+</div>
+
+<div class="exec-foot">* CS(매출의 72%, 사인몰 직원수주 = 전화·카톡 주문)는 광고 출처 측정 불가. ROAS 98%는 카드결제 직접 추적분만.</div>
 </div>
 
 <div class="sec"><div class="sh" style="border-color:#3fbf7f"><span class="st" style="color:#3fbf7f">🟢 옮겨도 OK</span> <span class="sd">신규몰 온라인 매출 ≥ 고도몰 — 온라인 매출 빠질 우려 낮음 <span style="color:#ffb979">· 단, <b>CS 1억+은 시범 이전</b>, 로딩 최적화 병행</span></span></div><div class="grid"><div class="cc" style="border-color:#5a3a1a"><div class="ch"><span class="cn">주차스티커</span> <span style="font-size:13px;font-weight:800;color:#ffb979;background:#3a2a14;padding:2px 7px;border-radius:10px;margin-left:6px">⚠️ CS 1.62억 · 시범 이전</span></div><div class="adline">📢 네이버<b>(.com)</b> 광고비 257만 · 파워링크 매출 146만(ROAS 57%) &nbsp;|&nbsp; 🔍 구글<b>(.kr)</b> 72만 · 전환 90</div><div class="seclab">💻 몰 전체 온라인 매출 <span class="secm">(자사몰 카드결제 · 3개월, 광고 출처 무관)</span></div><div class="bars"><div class="brow"><span class="bl">고도몰</span><span class="bt"><span class="bf" style="width:46%;background:#6c8cff"></span></span><span class="bv">126만</span><span class="bm">광고 146만</span></div><div class="brow"><span class="bl">신규몰</span><span class="bt"><span class="bf" style="width:100%;background:#3fbf7f"></span></span><span class="bv">272만</span></div></div><div class="csline">📞 CS매출 <b>1.62억</b> <span class="csm">사인몰 직원수주(전화·카톡) · 광고그룹별 분리 불가</span></div></div><div class="cc"><div class="ch"><span class="cn">방화문</span></div><div class="adline">📢 네이버<b>(.com)</b> 광고비 9만 · 파워링크 매출 25만(ROAS 273%)</div><div class="seclab">💻 몰 전체 온라인 매출 <span class="secm">(자사몰 카드결제 · 3개월, 광고 출처 무관)</span></div><div class="bars"><div class="brow"><span class="bl">고도몰</span><span class="bt"><span class="bf" style="width:30%;background:#6c8cff"></span></span><span class="bv">37만</span><span class="bm">광고 25만</span></div><div class="brow"><span class="bl">신규몰</span><span class="bt"><span class="bf" style="width:100%;background:#3fbf7f"></span></span><span class="bv">125만</span></div></div><div class="csline">📞 CS매출 <b>466만</b> <span class="csm">사인몰 직원수주(전화·카톡) · 광고그룹별 분리 불가</span></div></div><div class="cc"><div class="ch"><span class="cn">엘리베이터</span></div><div class="adline">📢 네이버<b>(.com)</b> 광고비 3,977 · 파워링크 매출 0(ROAS 0%)</div><div class="seclab">💻 몰 전체 온라인 매출 <span class="secm">(자사몰 카드결제 · 3개월, 광고 출처 무관)</span></div><div class="bars"><div class="brow"><span class="bl">고도몰</span><span class="bt"><span class="bf" style="width:75%;background:#6c8cff"></span></span><span class="bv">12만</span></div><div class="brow"><span class="bl">신규몰</span><span class="bt"><span class="bf" style="width:100%;background:#3fbf7f"></span></span><span class="bv">16만</span></div></div><div class="csline">📞 CS매출 <b>626만</b> <span class="csm">사인몰 직원수주(전화·카톡) · 광고그룹별 분리 불가</span></div></div><div class="cc"><div class="ch"><span class="cn">수목표찰</span></div><div class="adline">📢 네이버<b>(.com)</b> 광고비 48만 · 파워링크 매출 0(ROAS 0%)</div><div class="seclab">💻 몰 전체 온라인 매출 <span class="secm">(자사몰 카드결제 · 3개월, 광고 출처 무관)</span></div><div class="bars"><div class="brow"><span class="bl">고도몰</span><span class="bt"><span class="bf" style="width:0%;background:#6c8cff"></span></span><span class="bv">0</span></div><div class="brow"><span class="bl">신규몰</span><span class="bt"><span class="bf" style="width:100%;background:#3fbf7f"></span></span><span class="bv">11만</span></div></div><div class="csline">📞 CS매출 <b>171만</b> <span class="csm">사인몰 직원수주(전화·카톡) · 광고그룹별 분리 불가</span></div></div></div></div>
