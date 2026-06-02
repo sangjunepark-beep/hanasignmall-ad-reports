@@ -45,6 +45,21 @@ code{background:#0a0d12;padding:1px 6px;border-radius:3px;font-size:12.5px;font-
 <h1>신규몰(.kr) 모바일 페이지 최적화 요청</h1>
 <div class="sub">개발팀 전달용 · 2026-06-01 · 광고 이전 전 모바일 로딩 속도 점검</div>
 
+<div style="background:#2a1a0e;border:1px solid #7a4a1e;border-radius:14px;padding:18px 22px;margin-top:20px">
+<div style="font-size:16px;font-weight:800;color:#ffd596;margin-bottom:10px">📌 대표 보고 — 광고 이전보다 이 작업이 먼저인 이유</div>
+<table class="tbl" style="margin-top:4px">
+<tr><td class="l" style="color:#ffd596">현재 상황</td><td>.com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 모바일 중심.</td></tr>
+<tr><td class="l" style="color:#ffd596">문제</td><td>현 .kr 모바일은 첫 화면 진입 시 약 <b style="color:#ff8a8a">30MB</b>를 다운로드(이미지 376개·HTML 압축 꺼짐). 모바일 데이터망에서 첫 화면 뜨기 전 이탈 가능성 큼.</td></tr>
+<tr><td class="l" style="color:#ffd596">지금 그대로 이전 시</td><td><b style="color:#ff8a8a">광고비 손실</b>. 클릭당 과금 광고에서 페이지 안 뜨면 광고 효율이 거의 0으로 떨어질 수 있음.</td></tr>
+<tr><td class="l" style="color:#ffd596">작업 후 이전 시</td><td>같은 광고비로 모바일 첫 화면 1MB 이하 도달. 페이지 빠르게 뜨면 상품 조회·전화 문의 전환율 회복 기대.</td></tr>
+<tr><td class="l" style="color:#ffd596">필요 비용</td><td><b style="color:#aef0c8">추가 결제 없음</b>. 신규몰 .kr가 자체 운영 서버라 외부 결제·신규 계약 불필요. 개발팀 작업 시간만 발생.</td></tr>
+<tr><td class="l" style="color:#ffd596">예상 기간</td><td>1~2주 (압축 활성 30분 / 이미지 변환 1~2일 / lazy-load 1일 / 검수 포함)</td></tr>
+<tr><td class="l" style="color:#ffd596">진행 방식</td><td>광고 이전을 완전히 막진 않음. 작업 시작 시점부터 .com 광고 1~2개 그룹부터 시범 이전 병행 → 2~4주 문의 추이 보고 확대.</td></tr>
+<tr><td class="l" style="color:#ffd596">리스크</td><td>안 하면: 광고비 낭비. 하면: 디스크 약간 추가, 시안·도면 원본은 보존 처리.</td></tr>
+</table>
+<div style="margin-top:10px;font-size:13px;color:#cfb888;line-height:1.6">※ 아래 1~7번은 개발팀에 전달할 기술 명세입니다.</div>
+</div>
+
 <h2>1. 한눈에 보는 결론</h2>
 <table class="tbl">
 <tr><td class="l">필요한 작업</td><td>① HTML 압축 켜기 → ② 이미지 캐시 헤더 추가 → ③ 이미지 WebP/AVIF 변환 → ④ lazy-load + picture 폴백 → ⑤ 첫 화면 이미지 수 축소 → ⑥ 비필수 JS/CSS 지연</td></tr>
