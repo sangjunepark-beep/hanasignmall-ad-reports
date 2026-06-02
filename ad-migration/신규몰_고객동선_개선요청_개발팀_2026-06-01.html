@@ -7,136 +7,115 @@ body{font-family:-apple-system,'Malgun Gothic',sans-serif;background:#0f1116;col
 .wrap{max-width:1040px;margin:0 auto}
 h1{font-size:28px;font-weight:800;letter-spacing:-.5px}
 .sub{color:#9aa3b2;font-size:15px;margin-top:6px}
-.ctx{background:#161a23;border:1px solid #2a3142;border-radius:14px;padding:16px 20px;margin:18px 0;font-size:15px;color:#c7cdd8;line-height:1.7}
-.ctx b{color:#7cc0ff}
-.ctx.warn{background:#1a1410;border-color:#5a3a1a}
-.ctx.warn b{color:#ffb979}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
-.kpi{background:#13181f;border:1px solid #2a3142;border-radius:12px;padding:14px 16px}
-.kpi .t{font-size:13px;color:#9aa3b2;font-weight:700}
-.kpi .v{font-size:16px;font-weight:800;margin-top:8px;line-height:1.4}
-.kpi .k{color:#7ee0a8}.kpi .c{color:#ff8a8a}
-.kpi .cmp{font-size:12px;color:#7a8396;margin-top:5px;line-height:1.5}
-h2{font-size:22px;font-weight:800;margin:30px 0 8px;padding-left:12px;border-left:4px solid #4a7fd6}
-.note{font-size:13.5px;color:#7a8396;margin-bottom:12px}
-.iss{border:1px solid #2a3142;border-radius:12px;margin-bottom:18px;overflow:hidden}
-.ihead{display:flex;align-items:center;gap:10px;padding:13px 16px;background:#1a2030}
-.sev{font-size:12px;font-weight:800;padding:3px 10px;border-radius:20px;white-space:nowrap}
-.sev.high{background:#3a1f24;color:#ff9a9a}.sev.mid{background:#33310f;color:#ecd98a}.sev.low{background:#16331f;color:#8ee8b4}
-.ititle{font-size:17px;font-weight:800}
-.ibody{padding:14px 17px;font-size:14.5px}
-.ibody table{width:100%;border-collapse:collapse;margin-top:4px}
-.ibody td{padding:8px 10px;vertical-align:top;border-bottom:1px solid #1c2230;font-size:14px;line-height:1.6}
-.ibody td.l{width:110px;color:#9aa3b2;font-weight:700;white-space:nowrap}
-.ibody .data{color:#e9d27a;font-weight:700}
-.improve{margin-top:14px;background:#11161f;border:1px solid #27384f;border-radius:10px;padding:14px 16px}
-.improve .ih{font-size:14px;font-weight:800;color:#7cc0ff;margin-bottom:10px}
-.step{position:relative;padding:6px 0 6px 26px;font-size:14px;line-height:1.6}
-.step:before{content:"▸";position:absolute;left:6px;color:#4a7fd6;font-weight:800}
-.step b{color:#cfe3ff}
-.target{margin-top:10px;font-size:13.5px;color:#8ee8b4;background:#10241a;border:1px solid #1f4630;border-radius:7px;padding:9px 12px;line-height:1.6}
-.target b{color:#aef0c8}
-pre{background:#0a0d12;border:1px solid #222a38;border-radius:8px;padding:11px 13px;margin:9px 0 2px;overflow-x:auto;font-size:12.5px;color:#c7d3e2;line-height:1.55;font-family:ui-monospace,Menlo,Consolas,monospace}
+h2{font-size:22px;font-weight:800;margin:30px 0 12px;padding-left:12px;border-left:4px solid #4a7fd6}
+.tbl{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+.tbl th{background:#1a2030;color:#aeb6c4;font-size:12.5px;font-weight:700;padding:9px 10px;text-align:left;border-bottom:1px solid #2a3142}
+.tbl td{padding:9px 10px;border-bottom:1px solid #1c2230;vertical-align:top;line-height:1.55}
+.tbl td.l{color:#9aa3b2;font-weight:700;white-space:nowrap;width:160px}
+.tbl td .d{color:#e9d27a;font-weight:700}
+.tbl td .bad{color:#ff8a8a;font-weight:700}
+.tbl td .ok{color:#8ee8b4;font-weight:700}
+.pri{counter-reset:p;margin-top:6px}
+.pri .it{background:#161a23;border:1px solid #2a3142;border-radius:10px;padding:14px 17px 14px 50px;position:relative;margin-bottom:10px}
+.pri .it:before{counter-increment:p;content:counter(p);position:absolute;left:14px;top:14px;width:26px;height:26px;background:#4a7fd6;color:#fff;border-radius:50%;text-align:center;font-weight:800;font-size:13px;line-height:26px}
+.pri .it .t{font-size:15.5px;font-weight:800;color:#cfe3ff}
+.pri .it .why{margin-top:6px;font-size:13.5px;color:#aeb6c4;line-height:1.6}
+.pri .it .meta{margin-top:6px;font-size:12.5px;color:#7a8396}
+.pri .it .meta b{color:#8ee8b4}
+pre{background:#0a0d12;border:1px solid #222a38;border-radius:8px;padding:12px 14px;margin:8px 0;overflow-x:auto;font-size:12.5px;color:#c7d3e2;line-height:1.6;font-family:ui-monospace,Menlo,Consolas,monospace}
 pre .c{color:#6b9a6b}
-.eff{display:inline-block;font-size:12px;font-weight:700;color:#9aa3b2;border:1px solid #2a3142;border-radius:6px;padding:3px 9px;margin-top:10px}
-.pri{counter-reset:p;margin-top:8px}
-.pri .it{background:#161a23;border:1px solid #2a3142;border-radius:10px;padding:13px 17px 13px 46px;position:relative;margin-bottom:10px;font-size:14.5px}
-.pri .it:before{counter-increment:p;content:counter(p);position:absolute;left:13px;top:12px;width:22px;height:22px;background:#4a7fd6;color:#fff;border-radius:50%;text-align:center;font-weight:800;font-size:12.5px;line-height:22px}
-.pri .it .meta{font-size:12.5px;color:#7a8396;margin-top:4px;line-height:1.55}
-.tbl{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
-.tbl th{background:#1a2030;color:#aeb6c4;font-size:12.5px;font-weight:700;padding:9px 8px;text-align:left;border-bottom:1px solid #2a3142}
-.tbl td{padding:9px 8px;border-bottom:1px solid #1c2230;vertical-align:top;line-height:1.55}
-.tbl td.l{color:#9aa3b2;font-weight:700;white-space:nowrap;width:140px}
-.qbox{background:#1a1410;border:1px solid #5a3a1a;border-radius:10px;padding:14px 17px;margin-top:14px;font-size:14px;line-height:1.65}
-.qbox b{color:#ffb979}
-.cmpx{margin-top:10px;border:1px solid #27384f;border-radius:8px;overflow:hidden}
-.cmpx table{width:100%;border-collapse:collapse;font-size:13.5px}
-.cmpx th{background:#1a2030;color:#aeb6c4;font-size:12.5px;font-weight:700;padding:9px 8px;text-align:left;border-bottom:1px solid #2a3142}
-.cmpx td{padding:9px 8px;border-bottom:1px solid #1c2230;vertical-align:top;line-height:1.55}
-.cmpx td.lab{color:#cfe3ff;font-weight:700;white-space:nowrap;width:130px}
-.cmpx tr.rec{background:#10241a}
-.cmpx tr.rec td.lab{color:#aef0c8}
-.flow{background:#0a0d12;border:1px solid #222a38;border-radius:8px;padding:13px 15px;margin:10px 0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#c7d3e2;line-height:1.7;overflow-x:auto;white-space:pre}
-.foot{margin-top:30px;color:#69707e;font-size:12.5px;text-align:center;line-height:1.7}
+code{background:#0a0d12;padding:1px 6px;border-radius:3px;font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.sec{background:#13181f;border:1px solid #2a3142;border-radius:12px;padding:16px 18px;margin-top:14px}
+.sec .h{font-size:15px;font-weight:800;color:#7cc0ff;margin-bottom:10px}
+.note{font-size:13px;color:#7a8396;margin-top:10px;line-height:1.6}
+.foot{margin-top:32px;color:#69707e;font-size:12.5px;text-align:center;line-height:1.7}
 @media(max-width:760px){
   body{font-size:15px;padding:18px 12px 80px}
   h1{font-size:22px}
-  .sub{font-size:13.5px}
-  .ctx{font-size:14px;padding:13px 15px;line-height:1.65}
-  .kpis{grid-template-columns:1fr}
-  .kpi .v{font-size:15px}
   h2{font-size:18px}
-  .iss{margin-bottom:14px}
-  .ihead{flex-wrap:wrap;padding:11px 13px}
-  .ititle{font-size:15.5px;line-height:1.4}
-  .ibody{padding:12px 14px;font-size:13.5px}
-  .ibody td{font-size:13px;padding:7px 8px}
-  .ibody td.l{width:90px}
-  .improve{padding:12px 14px}
-  .step{font-size:13.5px}
-  .target{font-size:13px}
-  pre,.flow{font-size:11.5px}
-  .pri .it{font-size:13.5px;padding:12px 14px 12px 42px}
-  .tbl,.cmpx table{font-size:12.5px;display:block;overflow-x:auto}
-  .tbl td.l,.cmpx td.lab{width:100px}
-  .qbox{font-size:13.5px}
+  .tbl{font-size:13px;display:block;overflow-x:auto}
+  .tbl td.l{width:120px}
+  pre{font-size:11.5px}
+  .pri .it{padding:13px 14px 13px 46px}
+  .pri .it:before{left:12px;top:13px}
+  .pri .it .t{font-size:14.5px}
 }
 </style></head><body><div class="wrap">
 
 <h1>신규몰(.kr) 모바일 페이지 최적화 요청</h1>
-<div class="sub">개발팀 전달용 · 모바일 광고 유입 페이지 무게·로딩 속도 개선 · 2026-06-01 (v5.3: 실측 보강 — 이미지 페이로드 ≈30MB·HTML 압축 0%·자체 호스팅 확인·우선순위 재배치)</div>
+<div class="sub">개발팀 전달용 · 2026-06-01 · 광고 이전 전 모바일 로딩 속도 점검</div>
 
-<div class="ctx">
-<b>배경</b> — .com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 <b>모바일 중심</b>이고, 사인물 업종 특성상 매출의 <b>90%가 전화·카톡 상담 주문(CS)</b>(사내 추정). 광고 이전 전에 .kr 모바일 페이지 로딩 속도가 광고 랜딩으로서 무리가 없는지 점검한 결과와 개선 방향입니다. 본 문서는 <b>모바일 UA(iPhone Safari)</b>로 직접 측정한 결과 기반입니다.
-</div>
-
-<div class="ctx" style="background:#10241a;border-color:#1f4630">
-<b style="color:#aef0c8">🟢 호스팅 환경 확인 (v5.3 추가)</b> — 신규몰 .kr는 <b>자체 호스팅</b>(IP 49.247.31.206, Apache + PHP/7.4.33)으로 확인됨. .com과 별개 환경(.com=godomall SaaS, GD5SESSID + godo CDN). 즉 <b>Apache 설정(mod_deflate/mod_expires/mod_rewrite)·PHP 코드·이미지 디렉토리 모두 개발팀이 직접 제어 가능</b>. SaaS 제약 없음. 본 요청서의 모든 작업이 <b>추가 결제 0원으로 가능</b>(디스크 추가만 발생). 단 PHP/7.4.33은 보안 패치 종료(EOL)라 별도 검토 권장.
-</div>
-
-<div class="ctx warn">
-<b>이 문서가 의도하지 않는 것</b> — "지금 .kr이 부족하다"는 책임 추궁이 아닙니다. 광고 이전 전 <b>모바일 페이지 무게를 함께 다듬자</b>는 협업 요청입니다. 우선순위·일정·구현 방식은 개발팀 의견에 따라 조정합니다.
-</div>
-
-<h2>핵심 측정값 (iPhone Safari UA · 직접 측정)</h2>
-<div class="kpis">
-<div class="kpi"><div class="t">모바일 페이지 전체 전송량 <b style="color:#ff8a8a">(v5.3 신규)</b></div><div class="v"><span class="c">신규몰 ≈30MB</span></div><div class="cmp">고유 이미지 252개 × 평균 128KB. HTML 부담의 약 50배 = <b>진짜 본질</b></div></div>
-<div class="kpi"><div class="t">HTML 압축 상태 <b style="color:#ff8a8a">(v5.3 신규)</b></div><div class="v"><span class="c">gzip 0%</span></div><div class="cmp">Content-Encoding 헤더 없음. mod_deflate 활성 시 647KB → ~130KB 즉시 절감</div></div>
-<div class="kpi"><div class="t">모바일 메인 HTML 크기</div><div class="v"><span class="c">신규몰 647KB</span> · <span class="k">구몰 130KB</span></div><div class="cmp">신규몰이 약 5배 무거움 (압축 활성 시 동급으로 떨어짐)</div></div>
-<div class="kpi"><div class="t">모바일 메인 &lt;img&gt; 태그 수</div><div class="v"><span class="c">신규몰 376개</span> · <span class="k">구몰 78개</span></div><div class="cmp">고유 URL 252개. WebP 변환 시 79% 절감 실측</div></div>
-<div class="kpi"><div class="t">외부 리소스 (script src · stylesheet)</div><div class="v"><span class="k">신규몰 14 · 10</span> · <span class="c">구몰 32 · 13</span></div><div class="cmp">실측: <b>구몰이 더 많음</b>. 신규몰 부하 원인은 외부 리소스 수가 아니라 HTML 본문 + 이미지</div></div>
-<div class="kpi"><div class="t">이미지 Cache-Control <b style="color:#ff8a8a">(v5.3 신규)</b></div><div class="v"><span class="c">미설정</span></div><div class="cmp">ETag/Last-Modified만 존재. max-age 추가 시 재방문 ~99% 절감</div></div>
-</div>
-<div class="note">※ 모바일 도메인 m.hanasignmall.kr 존재 확인. <b>신규몰 모바일 `/`는 302→`/main-product.php?CateType=1`로 자동 분기</b>(=비교 기준은 카테고리1 페이지). 1차 작성 때 데스크톱 응답값(910KB)을 모바일로 오기재한 부분은 v5.1에서 정정 완료.</div>
-
-<div class="ctx warn" style="margin-top:14px">
-<b>📍 v5.3 핵심 변경 — 우선순위 재배치</b><br>
-v5.2까지 "HTML 5배(647 vs 130KB)"를 첫 KPI로 강조했으나, 실측해보니 <b>이미지 페이로드 ≈30MB</b>가 HTML의 약 50배 부담. 또한 <b>HTML gzip 압축이 0%로 꺼져 있어 mod_deflate 한 줄로 80% 절감 가능</b>. 따라서 작업 우선순위를 <b>① 압축·캐시 헤더 활성(즉효, 30분) → ② 이미지 변환(WebP 79% 실측) → ③ lazy-load → ④ 이미지 수 축소 → ⑤ JS/CSS 다이어트</b>로 재배치합니다.
-</div>
-
-<h2>문제점 + 개선 방향</h2>
-
-<!-- ISSUE 1 -->
-<div class="iss">
-<div class="ihead"><span class="sev high">심각 상</span><span class="ititle">1. 모바일 페이지 무게 — 광고 이탈 가능성</span></div>
-<div class="ibody">
-<table>
-<tr><td class="l">현상</td><td>m.hanasignmall.kr 카테고리1 페이지(=모바일 사실상 메인) HTML <span class="data">647KB(비압축)</span>, 이미지 태그 <span class="data">376개(고유 252개)</span>, <b>실측 이미지 페이로드 ≈30MB</b>(평균 128KB × 252). 가장 큰 1장 319KB.</td></tr>
-<tr><td class="l">구몰 비교</td><td>m.hanasignmall.com 메인 130KB / 이미지 78개. 구몰은 godo CDN 통해 서빙.</td></tr>
-<tr><td class="l">압축·캐시</td><td><b>신규몰 HTML Content-Encoding 없음(gzip 0%)</b>. 이미지 응답에 Cache-Control 없음(ETag/Last-Modified만 존재). v5.3 신규 발견.</td></tr>
-<tr><td class="l">이미지 경로</td><td>실제 경로 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">/gsfiles_room/{YYYY}/{MM}/{hash}.jpg</code> 및 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">/gsfiles_room/BanImg/main/</code>. 카테고리1 페이지 기준 상위 폴더: BanImg/main 94개, 2023/11 69개, 2023/12 56개.</td></tr>
-<tr><td class="l">영향</td><td>광고 클릭당 과금 환경에서 첫 화면 진입 전 이탈 가능. <b>유력 가설 중 하나</b>(LCP·이탈률 실측은 GA/RUM 별도 확인 필요).</td></tr>
+<h2>1. 한눈에 보는 결론</h2>
+<table class="tbl">
+<tr><td class="l">필요한 작업</td><td>① HTML 압축 켜기 → ② 이미지 캐시 헤더 추가 → ③ 이미지 WebP/AVIF 변환 → ④ lazy-load + picture 폴백 → ⑤ 첫 화면 이미지 수 축소 → ⑥ 비필수 JS/CSS 지연</td></tr>
+<tr><td class="l">예상 효과</td><td>모바일 첫 로딩 전송량 <span class="bad">≈30MB</span> → <span class="ok">≤1MB</span> (실측 기반 추정)</td></tr>
+<tr><td class="l">추가 비용</td><td>없음 (Apache 설정·PHP 코드·디스크 추가만 발생)</td></tr>
+<tr><td class="l">목표 LCP</td><td>광고 랜딩 모바일 <span class="ok">≤ 2.5초</span></td></tr>
 </table>
 
-<div class="improve">
-<div class="ih">개선 방향 — 핵심: ⓪ 압축·캐시 헤더 즉시 활성(최우선) + 이미지 변환 자동화</div>
+<h2>2. 현재 상태 (모바일 UA 직접 측정)</h2>
+<table class="tbl">
+<tr><td class="l">측정 URL</td><td><code>https://m.hanasignmall.kr/</code> → 302 → <code>/main-product.php?CateType=1</code></td></tr>
+<tr><td class="l">HTML 크기</td><td><span class="bad">647KB (비압축)</span> · gzip/brotli <b>꺼져 있음</b></td></tr>
+<tr><td class="l">이미지 태그 수</td><td><span class="bad">376개</span> (고유 URL 252개)</td></tr>
+<tr><td class="l">이미지 전송 총량</td><td><span class="bad">≈30MB</span> (평균 128KB × 252개, 가장 큰 1장 319KB)</td></tr>
+<tr><td class="l">이미지 경로</td><td><code>/gsfiles_room/{YYYY}/{MM}/</code> · <code>/gsfiles_room/BanImg/main/</code></td></tr>
+<tr><td class="l">이미지 캐시 헤더</td><td><span class="bad">Cache-Control 없음</span> (ETag/Last-Modified만 존재)</td></tr>
+<tr><td class="l">이미지 포맷</td><td>전부 JPG/PNG. WebP/AVIF/&lt;picture&gt;/lazy-load 사용 안 함 (0건)</td></tr>
+<tr><td class="l">외부 리소스</td><td>script src 14개 · stylesheet 10개 (참고: 구몰 .com은 32·13으로 더 많음)</td></tr>
+<tr><td class="l">호스팅 환경</td><td>자체 호스팅 (IP 49.247.31.206 · Apache · PHP 7.4.33)</td></tr>
+</table>
 
-<div class="step"><b>⓪ 압축·캐시 헤더 활성 (v5.3 최우선 — 자체 호스팅 확인됨, 30분 작업)</b> — Apache <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">mod_deflate</code> + <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">mod_expires</code> 활성. HTML 647KB → ~130KB(-80%) 즉시 절감, 이미지 재방문 99% 절감. <b>코드 변경 없음, .htaccess 한 파일</b>.</div>
+<h2>3. 작업 요청 (우선순위 순)</h2>
 
-<pre><span class="c"># /.htaccess 또는 Apache conf</span>
-&lt;IfModule mod_deflate.c&gt;
+<div class="pri">
+
+<div class="it">
+<div class="t">HTML 응답 압축 켜기 (gzip/brotli)</div>
+<div class="why">현재 HTML 647KB가 비압축으로 전송. mod_deflate 활성 시 약 130KB로 줄어듦 (텍스트 80% 절감).</div>
+<div class="meta">난이도 <b>하</b> · 작업량 <b>30분</b> · 효과 <b>즉효</b> · .htaccess 한 파일</div>
+</div>
+
+<div class="it">
+<div class="t">이미지 Cache-Control 헤더 추가</div>
+<div class="why">현재 이미지에 max-age 없음. 재방문 시 매번 304 검증 발생. <code>Cache-Control: public, max-age=31536000, immutable</code> 추가 시 재방문 거의 0 요청.</div>
+<div class="meta">난이도 <b>하</b> · 작업량 <b>30분</b> · 효과 <b>재방문 시 큼</b> · mod_expires</div>
+</div>
+
+<div class="it">
+<div class="t">이미지 WebP/AVIF 자동 변환·서빙</div>
+<div class="why">원본 JPG 유지하고, WebP·AVIF 사본을 같은 폴더에 함께 두기. mod_rewrite로 Accept 헤더 보고 자동 분기. 신규몰 이미지 샘플 10장 WebP 변환 시 평균 79% 절감 실측.</div>
+<div class="meta">난이도 <b>중</b> · 작업량 <b>1~2일</b> · 효과 <b>전송량 30MB → ~6MB</b> · 디스크 약간 추가</div>
+</div>
+
+<div class="it">
+<div class="t">lazy-load + picture 폴백</div>
+<div class="why">현재 0건 적용. 첫 화면 밖 이미지가 즉시 다 다운로드됨. native lazy + picture 태그 적용 시 첫 화면 1MB 미만으로 떨어짐.</div>
+<div class="meta">난이도 <b>중</b> · 작업량 <b>1일</b> · 효과 <b>초기 로딩 큼</b> · PHP 템플릿 속성 추가</div>
+</div>
+
+<div class="it">
+<div class="t">첫 화면 이미지 수 축소</div>
+<div class="why">현재 376개 이미지 태그. carousel·탭 안 콘텐츠는 클릭 시 로딩으로 전환. UX·SEO 회귀 테스트 별도 필요.</div>
+<div class="meta">난이도 <b>중</b> · 작업량 <b>1일</b> · 효과 <b>큼</b> · 메인 템플릿 수정</div>
+</div>
+
+<div class="it">
+<div class="t">비필수 JS/CSS 지연 로딩</div>
+<div class="why">외부 script 14개 중 애널리틱스·추천 위젯·소셜 공유 등 비필수는 defer/async + 첫 인터랙션 후 로딩. CSS 10개는 번들·압축.</div>
+<div class="meta">난이도 <b>중</b> · 작업량 <b>1일</b> · 효과 <b>중</b> · 앞 작업 대비 부수적</div>
+</div>
+
+</div>
+
+<h2>4. 구현 가이드</h2>
+
+<div class="sec">
+<div class="h">4-1. 압축·캐시 헤더 (.htaccess 또는 Apache conf)</div>
+<pre>&lt;IfModule mod_deflate.c&gt;
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
 &lt;/IfModule&gt;
+
 &lt;IfModule mod_expires.c&gt;
   ExpiresActive On
   ExpiresByType image/jpeg "access plus 1 year"
@@ -145,148 +124,67 @@ v5.2까지 "HTML 5배(647 vs 130KB)"를 첫 KPI로 강조했으나, 실측해보
   ExpiresByType text/css "access plus 30 days"
   ExpiresByType application/javascript "access plus 30 days"
 &lt;/IfModule&gt;
+
 Header set Cache-Control "public, immutable" env=is_static</pre>
-
-<div class="step"><b>① 이미지 포맷 자동 변환 (운영자 부담 0 · WebP 79% 절감 실측)</b> — 원본 JPG는 그대로 두고, <b>더 가벼운 포맷(AVIF / WebP)</b>으로 자동 변환·서빙. 운영자는 평소처럼 JPG 업로드, 변환·서빙은 인프라가 처리. <b>실측 — 신규몰 이미지 샘플 10장(평균 152KB) WebP(q80) 변환 시 318KB로 79% 절감</b>.</div>
-
-<div class="flow">[서버 저장]                            [브라우저 요청]                   [응답]
-hanasm.jpg   (800KB) ──── iPhone Safari (AVIF 지원) ──→ hanasm.avif (160KB)
-hanasm.webp  (240KB) ──── Android Chrome (AVIF 지원) ──→ hanasm.avif (160KB)
-hanasm.avif  (160KB) ──── 구형 브라우저 (둘 다 미지원) ──→ hanasm.jpg  (800KB)</div>
-
-<table style="margin-top:10px">
-<tr><td class="l">포맷별 크기</td><td>JPG 100% (기준) · WebP <b>21%</b>(실측, 신규몰 샘플 q80 기준 — 신규몰 JPG가 일반 대비 비효율 인코딩이라 절감폭 큼) · 일반적 가정 WebP ~70% / AVIF ~50%. 화질 손실은 사람 눈으로 거의 인식 불가(q80 설정 기준).</td></tr>
-<tr><td class="l">고객 체감</td><td>같은 이미지를 더 빨리 받음. 페이지 로딩·LCP 단축.</td></tr>
-<tr><td class="l">사인물 특수</td><td><b>시안·도면·실측 이미지는 변환 제외</b>(견적 의사결정 영향). 상품 마스터에 유형 플래그 권장(catalog / proof / drawing).</td></tr>
-</table>
-
-<div class="cmpx" style="margin-top:14px">
-<table>
-<thead><tr><th colspan="3" style="background:#11161f;color:#aef0c8;font-size:13.5px">💰 비용 한눈에 보기 — <span style="color:#7ee0a8">추가 결제 0원 시나리오 가능</span></th></tr></thead>
-<thead><tr><th>옵션</th><th style="text-align:left">월 비용</th><th style="text-align:left">조건</th></tr></thead>
-<tbody>
-<tr class="rec"><td class="lab">C. 일괄 스크립트</td><td><b style="color:#7ee0a8">0원</b></td><td>기존 서버 사용. 디스크 2~3배 사용량 증가만 부담.</td></tr>
-<tr class="rec"><td class="lab">B. 서버 변환 (sharp/nginx)</td><td><b style="color:#7ee0a8">0원</b></td><td>기존 서버 사용. CPU 부담 약간 증가.</td></tr>
-<tr class="rec"><td class="lab">A. 자체 imgproxy</td><td><b style="color:#7ee0a8">0원</b></td><td>기존 서버 사용. 오픈소스 SW 무료.</td></tr>
-<tr><td class="lab">D. Cloudflare Polish</td><td><b style="color:#e9d27a">0 ~ $25</b></td><td>Cloudflare Pro 이미 사용 중이면 토글만(추가 0원). 신규 가입 시 $25/월.</td></tr>
-<tr><td class="lab">A. Cloudflare Images</td><td><b style="color:#ffb979">$5 ~ $30 예상</b></td><td>저장 $5/10만장 + 전송 $1/10만장. 자사 이미지 수·트래픽 따라 변동.</td></tr>
-<tr><td class="lab">A. imgix</td><td><b style="color:#ffb979">트래픽 비례</b></td><td>요청 수·변환 수 기반 종량제.</td></tr>
-</tbody>
-</table>
 </div>
 
-<div class="ctx" style="margin-top:10px;padding:12px 16px;font-size:13.5px"><b style="color:#aef0c8">💡 결정 요지</b> — <b>월 고정비 0원</b>으로 가고 싶으면 C / B / 자체 imgproxy. <b>운영 부담 최소화</b>를 원하면 D(Cloudflare Pro). <b>현재 신규몰이 Cloudflare 사용 중인지부터 회신받아야</b> 옵션이 결정됩니다(아래 회신 요청 ① 참조).</div>
-
-<div class="cmpx">
-<table>
-<thead><tr><th colspan="2" style="background:#11161f;color:#7cc0ff;font-size:13.5px">변환 방식 비교 (운영자 부담 없는 자동화가 핵심)</th></tr></thead>
-<tbody>
-<tr class="rec"><td class="lab">D. Cloudflare Polish (1순위 검토)</td><td>현재 Cloudflare <b>Pro 플랜 사용 중이면 토글만</b>으로 자동 WebP/AVIF 변환·캐시. 코드 변경 0줄. <b>현재 Cloudflare 사용 여부부터 확인</b>.</td></tr>
-<tr><td class="lab">A. 변환 CDN</td><td><b>Cloudflare Images / imgix / 자체 imgproxy</b>. 이미지 URL에 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">?w=1080&amp;fmt=webp</code> 파라미터로 자동 변환·캐싱. <b>원본 보존</b>. Cloudflare Images 가격: 저장 $5/10만장 + 전송 $1/10만장 + 변환 $0.5/1,000건. imgproxy는 SW 라이선스만 무료(서버·트래픽 별도).</td></tr>
-<tr><td class="lab">B. 서버 변환</td><td>nginx <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">image_filter</code> 또는 sharp/imagemagick으로 첫 요청 시 변환→캐시. <b>주의</b>: nginx image_filter WebP는 libgd가 WebP 지원으로 빌드돼야 함. sharp는 동시 워커 제한·메모리 모니터링 필수.</td></tr>
-<tr class="rec"><td class="lab">C. 일괄 변환 스크립트</td><td>서버 이미지 디렉토리 스캔 → sharp/imagemagick으로 AVIF·WebP 변환해 원본 옆에 저장(<code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">.jpg</code> + <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">.webp</code> + <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">.avif</code>) → nginx rewrite로 Accept 헤더 기반 응답. <b>함정</b>: 디스크 2~3배 + <b>신규 업로드 hook 없으면 6개월 뒤 재발</b>. <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">Vary: Accept</code> 헤더 필수.</td></tr>
-<tr class="rec"><td class="lab">권장 결정 순서</td><td><b>① D 가능 여부 확인 → ② 불가 시 C(기존 자산 정리) + A 또는 B(신규 업로드 자동 변환)</b>. 셋 중 하나 골라 운영자 부담 0 + 신규 업로드 자동화 둘 다 만족.</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="step"><b>② lazy-load + picture 폴백</b> — 현재 신규몰 HTML 내 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">loading="lazy"</code> 0개·<code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">&lt;picture&gt;</code> 0개·<code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">.webp/.avif</code> 0개(=완전 미적용 상태 실측). 첫 화면 밖 이미지는 native lazy + 비율 고정으로 CLS 방지:</div>
-<pre><span class="c">&lt;!-- 실제 신규몰 이미지 경로 예시 (/gsfiles_room/ 사용 중) --&gt;</span>
-<span class="c">&lt;!-- AVIF 우선, WebP 폴백, JPG 최종 폴백 --&gt;</span>
+<div class="sec">
+<div class="h">4-2. picture 태그 (PHP 템플릿)</div>
+<pre><span class="c">&lt;!-- AVIF 우선 → WebP 폴백 → JPG 최종 폴백, lazy-load 적용 --&gt;</span>
 &lt;picture&gt;
   &lt;source srcset="/gsfiles_room/2023/11/{hash}.avif" type="image/avif"&gt;
   &lt;source srcset="/gsfiles_room/2023/11/{hash}.webp" type="image/webp"&gt;
   &lt;img src="/gsfiles_room/2023/11/{hash}.jpg"
        loading="lazy" decoding="async"
-       width="1080" height="1480" alt="홀로그램 주차스티커 상세"&gt;
+       width="1080" height="1480" alt="상품명"&gt;
 &lt;/picture&gt;</pre>
-<div class="step"><b>③ 메인 이미지 수 축소</b> — 376개(고유 252개) → 첫 화면 노출분만 즉시 로딩, carousel/탭 콘텐츠는 클릭 시 로딩. <b>UX·SEO 회귀 테스트 필수</b>.</div>
-<div class="step"><b>④ 정적 리소스 캐시·압축 = ⓪과 통합</b> — 위 ⓪ 항목으로 격상. <b>Cache-Control: max-age=31536000, immutable</b>(이미지·CSS·JS), gzip/brotli(HTML·CSS·JS), HTTP/2.</div>
-<div class="step"><b>⑤ 광고 랜딩 경량 모드 (선택)</b> — utm 파라미터 감지 시 핵심 정보(대표이미지·가격·옵션)만 우선 렌더. <b>⓪+①+②가 잘 되면 불필요할 수 있음</b>.</div>
-<div class="target"><b>목표</b> — 광고 랜딩 페이지 모바일 LCP ≤ 2.5초, 상세 총 전송량 직전 대비 −30%, 시안·도면 원본 보존.</div>
-<span class="eff">난이도 중 · 효과 큼 · 광고 이전 병행 가능</span>
-</div></div></div>
-
-<!-- ISSUE 2 -->
-<div class="iss">
-<div class="ihead"><span class="sev mid">심각 중</span><span class="ititle">2. 모바일 리소스 경량화 — 콘텐츠 다이어트</span></div>
-<div class="ibody">
-<table>
-<tr><td class="l">현상</td><td>m.hanasignmall.kr 모바일 도메인 <b>실재</b>. 메인(=카테고리1) 647KB(비압축)로 구몰(130KB)의 약 5배. 외부 script src <b>14개</b>·stylesheet <b>10개</b>(실측 재측정).</td></tr>
-<tr><td class="l">구몰 비교</td><td>실측: 구몰 외부 script src 32개·stylesheet 13개 — <b>외부 리소스 수는 오히려 구몰이 더 많음</b>. 신규몰 부하 원인은 외부 리소스 수가 아니라 HTML 본문 크기 + 이미지 페이로드.</td></tr>
-<tr><td class="l">영향</td><td>외부 리소스 효과는 ①②④ 대비 부수적. 단 비필수 script defer/async로 초기 로딩 지연 자체는 줄일 수 있음.</td></tr>
-</table>
-<div class="improve">
-<div class="ih">개선 방향 — 핵심: 모바일에서 안 쓰는 코드는 다운로드도 막기</div>
-
-<div class="step"><b>① 모바일 조건부 로딩 (개념)</b> — PC 화면용 슬라이더·큰 배너·통계 위젯 등은 <b>모바일에서 안 보여도 다운로드는 일어남</b>. CSS로 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">display:none</code> 처리해도 파일은 받아옴. 모바일에서는 <b>해당 코드를 페이지에 끼워 넣지 않는 방식</b>으로 전환.</div>
-
-<div class="flow">[현재]                                  [개선 후]
-PC용 슬라이더 JS (80KB)  ✗ 모바일에서도 다운로드      ──→  ✓ 모바일 다운로드 안 함
-PC용 큰 배너 이미지     ✗ 모바일에서도 다운로드      ──→  ✓ 모바일 다운로드 안 함
-애널리틱스/추천 위젯    ✗ 페이지 진입 즉시 다운로드  ──→  ✓ 첫 클릭/스크롤 후 다운로드</div>
-
-<table style="margin-top:10px">
-<tr><td class="l">1번과 차이</td><td><b>1번</b> = 같은 이미지를 더 가벼운 포맷으로 바꾸기. <b>2번</b> = 모바일에서 안 쓰는 코드/이미지를 아예 안 받게 막기. 둘 다 합치면 전송량 큰 폭 감소.</td></tr>
-<tr><td class="l">고객 체감</td><td>페이지 첫 화면이 더 빨리 뜸. 데이터 소비량·배터리 절약.</td></tr>
-<tr><td class="l">운영자 영향</td><td>없음. 인프라/빌드 설정 변경만.</td></tr>
-</table>
-
-<div class="step"><b>② script 통합·지연</b> — 외부 script <b>14개</b> 중 비필수(애널리틱스·추천 위젯·소셜 공유 등)는 <code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">defer</code>/<code style="background:#0a0d12;padding:1px 5px;border-radius:3px;font-size:12.5px">async</code> 속성으로 페이지 로딩 차단 방지 + 첫 인터랙션(클릭·스크롤) 후 로딩. CSS <b>10개</b>는 빌드 시 하나로 번들·압축(파일 개수 줄이면 요청 횟수 감소).</div>
-
-<div class="step"><b>③ 공통 컴포넌트화</b> — 헤더·가격박스·하단 영역 등 PC/모바일 양쪽에서 쓰는 부분은 공통 모듈로 빼서 분기 유지비 최소화(향후 수정 시 한 군데만 고치면 됨).</div>
-<div class="step"><b>② script 통합·지연</b> — 비필수 script는 defer/async + 첫 인터랙션 후 로딩. CSS 11개는 빌드 시 번들·압축.</div>
-<div class="step"><b>③ 공통 컴포넌트화</b> — 헤더·가격박스 공통 모듈 → PC/모바일 분기 유지비 최소화.</div>
-<div class="target"><b>목표</b> — 모바일 초기 로딩 JS/CSS 30% 이상 감축. 1번과 연동.</div>
-<span class="eff">난이도 중 · 효과 중</span>
-</div></div></div>
-
-<!-- ISSUE 3 -->
-<div class="iss">
-<div class="ihead"><span class="sev low">양호</span><span class="ititle">3. 검색·필터·배송표기·상담 진입구는 양호 (유지 권고)</span></div>
-<div class="ibody"><table>
-<tr><td class="l">확인됨</td><td>"주차스티커" 검색 45~47건 + 카테고리 패싯 + EASY서치 필터 정상(<b>화면 측정 기준 — 검색은 JS 동적 처리</b>). 배송정보 명확. 강제 회원가입 없음. <b>상담 진입구(콜배너·1:1채팅 등)는 별도 검토 대상 아님</b>.</td></tr>
-<tr><td class="l">유지 권고</td><td>1·2번 개선 시 위 UX 보존. 경량화 과정에서 필터·상담 회귀 테스트 필수.</td></tr>
-</table></div></div>
-
-<h2>개발팀 실행 우선순위 (v5.3 재배치)</h2>
-<div class="pri">
-<div class="it"><b>압축·캐시 헤더 활성 (mod_deflate + mod_expires)</b><div class="meta">난이도 <b>하</b> / 효과 <b>큼</b> / 작업량 30분 / 비용 <b>0원</b>. HTML 647KB → ~130KB 즉시 절감. 이미지 재방문 99% 절감. .htaccess 한 파일 수정.</div></div>
-<div class="it"><b>이미지 변환 자동화 (WebP/AVIF · C+B 순서)</b><div class="meta">난이도 중 / 효과 <b>매우 큼</b> / 비용 0원(자체 호스팅 확인됨) / 디스크 추가만 발생. 일괄 변환 + 신규 업로드 훅 + Accept 헤더 분기. <b>WebP 79% 절감 실측</b>. Cloudflare 신규 가입은 불필요(기존 자체 변환으로 충분).</div></div>
-<div class="it"><b>lazy-load + picture 폴백 적용</b><div class="meta">난이도 중 / 효과 큼 / PHP 템플릿 속성 추가. 현재 적용 0%. 첫 화면 외 이미지 즉시 로드 차단.</div></div>
-<div class="it"><b>메인 이미지 수 축소 (376→첫 화면)</b><div class="meta">난이도 중 / 효과 큼 / UX·SEO 회귀 테스트 별도 필요.</div></div>
-<div class="it"><b>모바일 JS/CSS 다이어트 (defer/async + 조건부 로딩)</b><div class="meta">난이도 중 / 효과 중 / 앞 단계 효과 대비 부수적.</div></div>
+<div class="note">시안·도면 이미지는 변환 제외 (견적 의사결정에 영향). 별도 디렉토리 분리 권장: <code>/gsfiles_room/drawing/</code> → 변환 스크립트 <code>--exclude drawing</code>.</div>
 </div>
 
-<div class="ctx warn"><b>🚦 광고 이전 진행 방식</b> — 게이트로 묶지 않습니다. <b>이미지 자동화 인프라 결정 시점부터 .com 광고 일부(1~2개 그룹)부터 시범 이전 병행</b> → 2~4주 CS 추이 확인 후 확대.</div>
-
-<h2>수용 기준 (테스트·검수)</h2>
+<div class="sec">
+<div class="h">4-3. 이미지 변환 방식 선택지</div>
 <table class="tbl">
-<thead><tr><th>항목</th><th>기준</th></tr></thead>
-<tbody>
+<thead><tr><th>방식</th><th>월 비용</th><th>특징</th></tr></thead>
+<tr><td class="l">A. 일괄 변환 스크립트</td><td><span class="ok">0원</span></td><td>cwebp/imagemagick으로 폴더 스캔 → WebP/AVIF 생성. cron 주기 실행. <b>신규 업로드 훅 필수</b> (없으면 6개월 뒤 재발). 디스크 2~3배.</td></tr>
+<tr><td class="l">B. 서버 변환 (sharp/nginx)</td><td><span class="ok">0원</span></td><td>첫 요청 시 변환→캐시. CPU 약간 증가. <code>Vary: Accept</code> 헤더 필수.</td></tr>
+<tr><td class="l">C. 자체 imgproxy</td><td><span class="ok">0원</span></td><td>오픈소스. URL 파라미터로 변환·리사이즈. 원본 보존.</td></tr>
+<tr><td class="l">D. Cloudflare Polish</td><td><span class="ok">0원</span> / $25</td><td>Cloudflare Pro 토글만으로 자동 변환. 신규 가입 시 $25/월. 코드 변경 없음.</td></tr>
+<tr><td class="l">E. Cloudflare Images</td><td>$5~$30</td><td>저장+전송 종량제.</td></tr>
+</table>
+<div class="note">권장: <b>A(기존 이미지 일괄 변환) + B(신규 업로드 자동 변환) 조합</b>. Cloudflare 신규 가입은 불필요.</div>
+</div>
+
+<h2>5. 합격 기준 · 테스트</h2>
+<table class="tbl">
 <tr><td class="l">테스트 디바이스</td><td>iPhone 13/14 Safari, Galaxy S22 Chrome (최소 2종)</td></tr>
 <tr><td class="l">네트워크 조건</td><td>Chrome DevTools "Fast 3G" / "4G" + 실측 모바일 LTE</td></tr>
-<tr><td class="l">합격선 (이슈 1)</td><td>광고 랜딩 LCP ≤ 2.5초, 총 전송량 직전 대비 −30%, 시안·도면 원본 보존 확인, picture 폴백 정상 동작</td></tr>
-<tr><td class="l">합격선 (이슈 2)</td><td>모바일 초기 JS/CSS 전송량 −30% 이상</td></tr>
-<tr><td class="l">파일럿 상품 (5개)</td><td>웹팀에서 선정·전달 예정 (게시판·주차스티커·입간판·현수막 카테고리 대표, 시안형/카탈로그형 혼합)</td></tr>
-<tr><td class="l">검수 담당</td><td>웹팀 박상준 차장 (구현·QA 회신 채널 단일화)</td></tr>
-<tr><td class="l">롤백 트리거</td><td>① 시안·도면 클레임 발생 ② 검색/필터 UX 회귀 ③ 카테고리 주간 CS 매출 −15% 하락</td></tr>
-<tr><td class="l">회귀 테스트 범위</td><td>"주차스티커·게시판·입간판" 카테고리 검색 → 필터 → 상세 → 옵션 → 장바구니 → 주문 동선 전체</td></tr>
-</tbody>
+<tr><td class="l">합격선 ①</td><td>광고 랜딩 LCP ≤ 2.5초</td></tr>
+<tr><td class="l">합격선 ②</td><td>모바일 첫 화면 총 전송량 -90% 이상 (현재 ≈30MB → 목표 ≤3MB, 이상적 ≤1MB)</td></tr>
+<tr><td class="l">합격선 ③</td><td>시안·도면 원본 보존 확인, picture 폴백 정상 동작</td></tr>
+<tr><td class="l">파일럿 상품</td><td>5개 (웹팀 선정·전달 — 게시판·주차스티커·입간판·현수막 카테고리 대표)</td></tr>
+<tr><td class="l">회귀 테스트 범위</td><td>"주차스티커·게시판·입간판" 검색 → 필터 → 상세 → 옵션 → 장바구니 → 주문 전체</td></tr>
+<tr><td class="l">롤백 조건</td><td>① 시안·도면 클레임 발생 ② 검색/필터 UX 회귀 ③ 카테고리 주간 CS 매출 -15% 하락</td></tr>
+<tr><td class="l">검수 담당</td><td>웹팀 박상준 차장</td></tr>
 </table>
 
-<h2>개발팀 검토 요청</h2>
-<div class="qbox">
-<b>전반적인 정합성·실현가능성 검토 부탁드립니다.</b><br>
-<br>
-본 요청서의 측정값(HTML 크기·이미지 페이로드·압축 상태·외부 리소스 수치 등)과 개선안(압축 활성·이미지 변환·lazy-load·캐시 헤더)이 신규몰 .kr 실제 환경에 비추어 정확한지, 그리고 실행 가능한지 확인해보시고 의견 회신해주시면 그에 맞춰 우선순위·일정·구현 방식을 함께 조율하겠습니다.<br>
-<br>
-<span style="color:#aeb6c4;font-size:13px">※ 호스팅 환경·CDN 사용 여부·이미지 디렉토리 정책·프레임워크 등은 외부 측정만으로 확정 불가능한 부분이라, 추정으로 적은 부분 있으면 알려주시면 보고서에 반영하겠습니다.</span>
-</div>
+<h2>6. 광고 이전 진행 방식</h2>
+<table class="tbl">
+<tr><td class="l">게이트 여부</td><td>묶지 않음 (병행 진행)</td></tr>
+<tr><td class="l">시작 시점</td><td>이미지 변환 방식 결정 직후</td></tr>
+<tr><td class="l">시범 범위</td><td>.com 광고 1~2개 그룹 우선 이전</td></tr>
+<tr><td class="l">확대 기준</td><td>2~4주 CS 추이 확인 후</td></tr>
+</table>
 
-<div class="foot">하나사인몰 웹팀 · 신규몰 모바일 페이지 최적화 요청 · v5.3(2026-06-01) · 실측 보강<br>
-v5.3 변경: 호스팅 환경 확인(자체 호스팅) · HTML gzip 0% 발견 · 이미지 페이로드 ≈30MB 실측 · WebP 79% 절감 실측 · 외부 리소스 양쪽 표기 · 이미지 경로 /gsfiles_room/ 정정 · 우선순위 재배치(압축 활성을 최우선으로)<br>
-※ 본 요청서의 측정 수치는 iPhone Safari UA 정적 측정 기반. LCP·이탈률 등 실측 RUM 데이터는 별도 확인 필요. 검색 결과 건수(45~47건)는 화면 측정.
+<h2>7. 검토 요청</h2>
+<table class="tbl">
+<tr><td class="l">정합성</td><td>측정값(HTML·이미지·압축·외부 리소스)이 실환경과 일치하는지</td></tr>
+<tr><td class="l">실현가능성</td><td>위 6개 작업 실행 가능 여부, 일정 산정</td></tr>
+<tr><td class="l">정정 사항</td><td>호스팅·CDN·이미지 디렉토리·프레임워크 관련 추정 부분 정정</td></tr>
+<tr><td class="l">후속</td><td>회신 의견 → 우선순위·일정·구현 방식 함께 조율</td></tr>
+</table>
+
+<div class="foot">하나사인몰 웹팀 · 2026-06-01<br>
+측정 기준: iPhone Safari UA 정적 측정. LCP·이탈률 실측 RUM 데이터는 GA/RUM 별도 확인 필요.
 </div>
 
 </div></body></html>
