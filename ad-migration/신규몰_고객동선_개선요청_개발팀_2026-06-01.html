@@ -46,18 +46,18 @@ code{background:#0a0d12;padding:1px 6px;border-radius:3px;font-size:12.5px;font-
 <div class="sub">개발팀 전달용 · 2026-06-01 · 광고 이전 전 모바일 로딩 속도 점검</div>
 
 <div style="background:#2a1a0e;border:1px solid #7a4a1e;border-radius:14px;padding:18px 22px;margin-top:20px">
-<div style="font-size:16px;font-weight:800;color:#ffd596;margin-bottom:10px">📌 대표 보고 — 광고 이전보다 이 작업이 먼저인 이유</div>
+<div style="font-size:16px;font-weight:800;color:#ffd596;margin-bottom:10px">📌 광고 이전 전 점검 요지</div>
 <table class="tbl" style="margin-top:4px">
-<tr><td class="l" style="color:#ffd596">현재 상황</td><td>.com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 모바일 중심.</td></tr>
-<tr><td class="l" style="color:#ffd596">문제</td><td>현 .kr 모바일은 첫 화면 진입 시 약 <b style="color:#ff8a8a">30MB</b>를 다운로드(이미지 376개·HTML 압축 꺼짐). 모바일 데이터망에서 첫 화면 뜨기 전 이탈 가능성 큼.</td></tr>
-<tr><td class="l" style="color:#ffd596">지금 그대로 이전 시</td><td><b style="color:#ff8a8a">광고비 손실</b>. 클릭당 과금 광고에서 페이지 안 뜨면 광고 효율이 거의 0으로 떨어질 수 있음.</td></tr>
-<tr><td class="l" style="color:#ffd596">작업 후 이전 시</td><td>같은 광고비로 모바일 첫 화면 1MB 이하 도달. 페이지 빠르게 뜨면 상품 조회·전화 문의 전환율 회복 기대.</td></tr>
-<tr><td class="l" style="color:#ffd596">필요 비용</td><td><b style="color:#aef0c8">추가 결제 없음</b>. 신규몰 .kr가 자체 운영 서버라 외부 결제·신규 계약 불필요. 개발팀 작업 시간만 발생.</td></tr>
-<tr><td class="l" style="color:#ffd596">예상 기간</td><td>1~2주 (압축 활성 30분 / 이미지 변환 1~2일 / lazy-load 1일 / 검수 포함)</td></tr>
-<tr><td class="l" style="color:#ffd596">진행 방식</td><td>광고 이전을 완전히 막진 않음. 작업 시작 시점부터 .com 광고 1~2개 그룹부터 시범 이전 병행 → 2~4주 문의 추이 보고 확대.</td></tr>
-<tr><td class="l" style="color:#ffd596">리스크</td><td>안 하면: 광고비 낭비. 하면: 디스크 약간 추가, 시안·도면 원본은 보존 처리.</td></tr>
+<tr><td class="l" style="color:#ffd596">배경</td><td>.com 파워링크 광고를 신규몰(.kr)로 이전 검토 중. 광고 클릭은 모바일 중심.</td></tr>
+<tr><td class="l" style="color:#ffd596">현 상태 점검</td><td>신규몰 모바일 첫 화면 전송량 약 <b>30MB</b> 수준(이미지 376개·HTML 압축 미적용). 모바일 환경에서 로딩 지연 우려 있음.</td></tr>
+<tr><td class="l" style="color:#ffd596">보완 없이 이전 시</td><td>모바일 로딩 지연으로 광고 클릭 후 이탈이 늘어날 수 있음 → 광고 효율 저하 가능성.</td></tr>
+<tr><td class="l" style="color:#ffd596">보완 후 이전 시</td><td>모바일 첫 화면이 가벼워져 광고비 대비 상품 조회·전화 문의 전환이 개선될 여지.</td></tr>
+<tr><td class="l" style="color:#ffd596">필요 비용</td><td>외부 결제·신규 계약 없음 (자체 운영 서버). 개발팀 작업 시간만 발생.</td></tr>
+<tr><td class="l" style="color:#ffd596">예상 기간</td><td>1~2주 (개발팀 일정·우선순위에 따라 조정 가능)</td></tr>
+<tr><td class="l" style="color:#ffd596">진행 방식</td><td>광고 이전을 게이트로 묶지 않음. 작업 진행과 동시에 .com 광고 1~2개 그룹부터 시범 이전 병행 → 2~4주 문의 추이 보고 확대 여부 결정.</td></tr>
+<tr><td class="l" style="color:#ffd596">유의 사항</td><td>시안·도면 이미지는 원본 보존 처리. 디스크 사용량 일부 증가 (변환본 저장).</td></tr>
 </table>
-<div style="margin-top:10px;font-size:13px;color:#cfb888;line-height:1.6">※ 아래 1~7번은 개발팀에 전달할 기술 명세입니다.</div>
+<div style="margin-top:10px;font-size:13px;color:#cfb888;line-height:1.6">※ 본 박스는 사업 배경 안내용. 기술 세부사항은 아래 1~7번(개발팀 명세) 참조.</div>
 </div>
 
 <h2>1. 한눈에 보는 결론</h2>
