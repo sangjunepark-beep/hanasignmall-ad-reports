@@ -7,7 +7,7 @@
   python3 build_report.py            # 어제 KST
   python3 build_report.py 2026-04-28 # 특정 날짜
 """
-import csv, io, json, urllib.request, urllib.parse, hmac, hashlib, base64, time, sys, datetime, ssl, os
+import csv, io, json, urllib.request, urllib.parse, urllib.error, hmac, hashlib, base64, time, sys, datetime, ssl, os
 from collections import defaultdict
 
 SHEET = "1Yuw_8we4nEzL1nslHI66LHBBE_uWc-ErALzhn2vvLGI"
@@ -62,6 +62,11 @@ def n_req(key, secret, cid, m, p, body=None):
     H = {"X-Timestamp":ts,"X-API-KEY":key,"X-Customer":cid,"X-Signature":sig,"Content-Type":"application/json"}
     data = json.dumps(body).encode() if body else None
     try: return json.loads(urllib.request.urlopen(urllib.request.Request(N_BASE+p,data=data,method=m,headers=H),context=ctx,timeout=20).read())
+    except urllib.error.HTTPError as e:
+        body_txt = ""
+        try: body_txt = e.read().decode("utf-8","replace")[:500]
+        except: pass
+        print(f"  N {m} {p} err: HTTP {e.code} body={body_txt}", file=sys.stderr); return None
     except Exception as e: print(f"  N {m} {p} err: {e}",file=sys.stderr); return None
 
 def n_stat(key, secret, cid, reportTp, max_wait=120):
