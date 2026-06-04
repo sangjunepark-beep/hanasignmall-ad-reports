@@ -123,6 +123,14 @@ buy_map = {}
 print("  [A API 직접 호출]", file=sys.stderr)
 a_camps_api = n_req(A_KEY,A_SEC,A_CID,"GET","/ncc/campaigns") or []
 a_cidx = {c["nccCampaignId"]:c["name"] for c in a_camps_api if isinstance(c,dict)}
+_a_tp = {}
+for c in a_camps_api:
+    if isinstance(c,dict):
+        _tp = c.get("campaignTp","?"); _a_tp[_tp] = _a_tp.get(_tp,0)+1
+print(f"  [A] campaignTp 분포: {_a_tp}", file=sys.stderr)
+for c in a_camps_api:
+    if isinstance(c,dict) and c.get("campaignTp") not in (None,"WEB_SITE"):
+        print(f"  [A] 비-파워링크: tp={c.get('campaignTp')} id={c.get('nccCampaignId')} name={c.get('name')} status={c.get('status')}", file=sys.stderr)
 a_adgs_api = n_req(A_KEY,A_SEC,A_CID,"GET","/ncc/adgroups") or []
 a_aidx = {a["nccAdgroupId"]:a["name"] for a in a_adgs_api if isinstance(a,dict)}
 tsv = n_stat(A_KEY,A_SEC,A_CID,"AD")
@@ -327,6 +335,14 @@ print(f"  A 광고비={a_total['cost']:,} 매출={a_buy_total['v']:,}", file=sys
 print("[2] B", file=sys.stderr)
 b_camps_api = n_req(B_KEY,B_SEC,B_CID,"GET","/ncc/campaigns") or []
 b_cidx = {c["nccCampaignId"]:c["name"] for c in b_camps_api if isinstance(c,dict)}
+_b_tp = {}
+for c in b_camps_api:
+    if isinstance(c,dict):
+        _tp = c.get("campaignTp","?"); _b_tp[_tp] = _b_tp.get(_tp,0)+1
+print(f"  [B] campaignTp 분포: {_b_tp}", file=sys.stderr)
+for c in b_camps_api:
+    if isinstance(c,dict) and c.get("campaignTp") not in (None,"WEB_SITE"):
+        print(f"  [B] 비-파워링크: tp={c.get('campaignTp')} id={c.get('nccCampaignId')} name={c.get('name')} status={c.get('status')}", file=sys.stderr)
 b_camp_active = defaultdict(int)
 b_adgs_api = n_req(B_KEY,B_SEC,B_CID,"GET","/ncc/adgroups") or []
 b_aidx = {a["nccAdgroupId"]:{"name":a["name"],"cid":a.get("nccCampaignId"),"status":a.get("status","")} for a in b_adgs_api if isinstance(a,dict)}
