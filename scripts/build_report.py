@@ -1218,6 +1218,64 @@ new_src = _renumber_main(new_src)
 
 new_src = new_src.replace("</body>", overlay_js + "\n</body>", 1)
 
+# === 상단 날짜 내비게이션 (◀ 날짜/캘린더 ▶) — ceo-report/날짜.html 간 이동 === #
+DATE_NAV = r"""
+<!-- date-nav: 상단 날짜 내비게이션 (◀ 날짜/캘린더 ▶) -->
+<style>
+#dateNav{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 16px;padding:10px 0}
+#dateNav button{background:var(--card,#131826);border:1px solid var(--line,#252b3d);color:var(--ink,#f1f3f8);width:38px;height:38px;border-radius:10px;font-size:14px;cursor:pointer;transition:.15s}
+#dateNav button:hover{background:var(--card2,#1a2030);border-color:var(--blue,#3b82f6)}
+#dateNav .dn-date{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--card,#131826);border:1px solid var(--line,#252b3d);border-radius:10px;padding:8px 18px;cursor:pointer;transition:.15s}
+#dateNav .dn-date:hover{border-color:var(--blue,#3b82f6)}
+#dateNav .dn-date .dn-cal{font-size:15px}
+#dateNav .dn-date #dnLabel{font-size:16px;font-weight:700;color:var(--ink,#f1f3f8);letter-spacing:.3px}
+#dateNav .dn-date input[type=date]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;padding:0}
+</style>
+<script>
+(function(){
+  var MIN='2026-05-05';
+  var WD=['일','월','화','수','목','금','토'];
+  function pad(n){return (n<10?'0':'')+n;}
+  function fmt(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  function parse(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function init(){
+    var cur=null;
+    var el=document.querySelector('.head .date');
+    var m=el&&el.textContent.match(/(\d{4}-\d{2}-\d{2})/);
+    if(m)cur=m[1];
+    if(!cur){m=location.pathname.match(/(\d{4}-\d{2}-\d{2})\.html/);if(m)cur=m[1];}
+    if(!cur)return;
+    var nav=document.createElement('div');nav.id='dateNav';
+    nav.innerHTML='<button id="dnPrev" title="이전 날짜">&#9664;</button>'+
+      '<span class="dn-date"><span class="dn-cal">&#128197;</span><span id="dnLabel"></span>'+
+      '<input type="date" id="dnPick" min="'+MIN+'"></span>'+
+      '<button id="dnNext" title="다음 날짜">&#9654;</button>';
+    var wrap=document.querySelector('.wrap')||document.body;
+    wrap.insertBefore(nav,wrap.firstChild);
+    var d=parse(cur);
+    document.getElementById('dnLabel').textContent=cur+' ('+WD[d.getDay()]+')';
+    var pick=document.getElementById('dnPick');
+    pick.value=cur;
+    function go(ds){
+      if(ds<MIN){alert('보고서는 '+MIN+'부터 있습니다.');return;}
+      var url=ds+'.html';
+      fetch(url,{method:'HEAD'}).then(function(r){
+        if(r.ok)location.href=url;
+        else alert(ds+' 보고서가 아직 없습니다.');
+      }).catch(function(){location.href=url;});
+    }
+    document.getElementById('dnPrev').onclick=function(){var n=new Date(d);n.setDate(n.getDate()-1);go(fmt(n));};
+    document.getElementById('dnNext').onclick=function(){var n=new Date(d);n.setDate(n.getDate()+1);go(fmt(n));};
+    pick.onchange=function(){if(this.value&&this.value!==cur)go(this.value);};
+    nav.querySelector('.dn-date').onclick=function(){try{pick.showPicker();}catch(e){}};
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}
+  else{init();}
+})();
+</script>
+"""
+new_src = new_src.replace("</body>", DATE_NAV + "\n</body>", 1)
+
 OUT = os.path.join(WORKSPACE, f"네이버광고_1차보고대시보드_{TARGET}.html")
 open(OUT,"w",encoding="utf-8").write(new_src)
 print(f"[saved] {OUT} ({len(new_src):,}chars)", file=sys.stderr)
