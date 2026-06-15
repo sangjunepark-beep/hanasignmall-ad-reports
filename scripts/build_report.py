@@ -429,7 +429,7 @@ def gq(query):
     if not g_tok: return None
     try:
         return json.loads(urllib.request.urlopen(
-            urllib.request.Request(f"https://googleads.googleapis.com/v20/customers/{G_CID}/googleAds:searchStream",
+            urllib.request.Request(f"https://googleads.googleapis.com/v24/customers/{G_CID}/googleAds:searchStream",
                                     data=json.dumps({"query":query}).encode(),method="POST",
                                     headers={"Authorization":f"Bearer {g_tok}","developer-token":G_DEV,
                                              "login-customer-id":G_MCC,"Content-Type":"application/json"}),
@@ -598,6 +598,7 @@ D = {
               "campaigns":g_camps,"devices":g_devices,
               "search_terms":g_search_terms,"trend":g_trend,
               "keywords_top": g_keywords_top if 'g_keywords_top' in dir() else [],
+              "fetch_ok": g_tok is not None,
               "ctr":g_ctr,"cpc":g_cpc,"roas":g_roas},
     "device_a":{"M":{"imp":0,"clk":0,"cost":0},"P":{"imp":0,"clk":0,"cost":0}},
     "hour_a":{f"{h:02d}":{"imp":0,"clk":0,"cost":0} for h in range(24)},
@@ -838,6 +839,19 @@ overlay_js = """
     var g = D.google||{}, total = g.total||{}, dev = g.devices||{};
     var panel = document.getElementById('p-google');
     if(!panel) return;
+    // === 방어: 구글 데이터 수집 실패면 0/잔상 대신 경고 (2026-06-16) ===
+    if(g.fetch_ok === false){
+      var _kpi = panel.querySelector('.kpi');
+      if(_kpi && !panel.querySelector('.g-fail-banner')){
+        _kpi.insertAdjacentHTML('beforebegin',
+          '<div class="g-fail-banner" style="background:#3a1212;border:1px solid #ef4444;color:#fca5a5;padding:13px 16px;border-radius:10px;margin-bottom:14px;font-weight:600">⚠ 구글애즈 데이터 수집 실패 — 이 날짜는 구글 API에서 값을 못 받았습니다 (토큰/권한 확인 필요). 아래 숫자는 무효입니다.</div>');
+      }
+      panel.querySelectorAll('.kpi .card .val').forEach(function(v){ v.textContent='—'; });
+      panel.querySelectorAll('.kpi .card .sub').forEach(function(s){ s.textContent=''; });
+      panel.querySelectorAll('details.aux tbody').forEach(function(tb){ tb.innerHTML='<tr><td colspan="9" style="padding:14px;color:#fca5a5">데이터 없음 (수집 실패)</td></tr>'; });
+      panel.querySelectorAll('tr.gh').forEach(function(r){ r.style.display='none'; });
+      return;
+    }
     var cards = panel.querySelectorAll('.kpi .card');
     if(cards[0]){ var v=cards[0].querySelector('.val'); if(v) v.textContent=fmtN(total.imp); }
     if(cards[1]){
