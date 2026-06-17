@@ -42,6 +42,51 @@ print(f"[start] TARGET={TARGET} ({WEEKDAY})", file=sys.stderr)
 
 ctx = ssl._create_unverified_context()
 
+# ── 톱니 감시판: 단계 상태 추적 (2026-06-17 추가) ──────────────
+import traceback as _wd_tb
+_WD = [
+    {"name":"네이버A수집","status":"대기","ts":"","error":""},
+    {"name":"네이버B수집","status":"대기","ts":"","error":""},
+    {"name":"구글애즈수집","status":"대기","ts":"","error":""},
+    {"name":"HTML빌드","status":"대기","ts":"","error":""},
+    {"name":"깃헙배포","status":"대기","ts":"","error":""},
+]
+_WD_CUR = [0]
+def _wd_t(): return datetime.datetime.now().strftime("%H:%M:%S")
+def _wd_payload():
+    return json.dumps({"updated": datetime.datetime.now().isoformat(),
+                       "target": TARGET, "stages": _WD}, ensure_ascii=False, indent=2).encode("utf-8")
+def _wd_push():
+    pat=os.environ.get("GITHUB_PAT",""); owner=os.environ.get("GITHUB_OWNER",""); repo=os.environ.get("GITHUB_REPO","")
+    if not (pat and owner and repo): return
+    api=f"https://api.github.com/repos/{owner}/{repo}/contents/status.json"
+    sha=None
+    try:
+        r=urllib.request.Request(api, headers={"Authorization":f"Bearer {pat}","Accept":"application/vnd.github+json"})
+        sha=json.loads(urllib.request.urlopen(r,context=ctx,timeout=15).read()).get("sha")
+    except: pass
+    body={"message":f"watchdog status {TARGET} [skip ci]","content":base64.b64encode(_wd_payload()).decode()}
+    if sha: body["sha"]=sha
+    try:
+        r=urllib.request.Request(api, data=json.dumps(body).encode(), method="PUT",
+            headers={"Authorization":f"Bearer {pat}","Accept":"application/vnd.github+json","Content-Type":"application/json"})
+        urllib.request.urlopen(r,context=ctx,timeout=20).read()
+    except Exception as e:
+        print(f"  [watchdog] push err: {e}", file=sys.stderr)
+def _wd_enter(i):
+    _WD_CUR[0]=i
+    if _WD[i]["status"]=="대기": _WD[i]["status"]="진행"; _WD[i]["ts"]=_wd_t()
+def _wd_done(i):
+    _WD[i]["status"]="ok"; _WD[i]["ts"]=_wd_t()
+def _wd_crash(et,ev,tb):
+    i=_WD_CUR[0]
+    _WD[i]["status"]="fault"; _WD[i]["ts"]=_wd_t()
+    _WD[i]["error"]="".join(_wd_tb.format_exception_only(et,ev)).strip()[:300]
+    _wd_push()
+    sys.__excepthook__(et,ev,tb)
+sys.excepthook=_wd_crash
+# ──────────────────────────────────────────────────────────
+
 def to_int(s,d=0):
     try: return int(float((s or "0").replace(",","")))
     except: return d
@@ -93,6 +138,7 @@ def n_stat(key, secret, cid, reportTp, max_wait=120):
 
 # === A 데이터 === #
 print("[1] A", file=sys.stderr)
+_wd_enter(0)
 def _mall_of(u):
     if not u: return ""
     if "/hanasign/" in u: return "하나몰"
@@ -332,6 +378,7 @@ print(f"  A 광고비={a_total['cost']:,} 매출={a_buy_total['v']:,}", file=sys
 
 
 # === B 데이터 === #
+_wd_done(0); _wd_enter(1)
 print("[2] B", file=sys.stderr)
 b_camps_api = n_req(B_KEY,B_SEC,B_CID,"GET","/ncc/campaigns") or []
 b_cidx = {c["nccCampaignId"]:c["name"] for c in b_camps_api if isinstance(c,dict)}
@@ -412,6 +459,7 @@ print(f"  B 광고비={b_total['cost']:,} 매출={b_conv['v']:,}", file=sys.stde
 
 
 # === G 데이터 === #
+_wd_done(1); _wd_enter(2)
 print("[3] Google Ads", file=sys.stderr)
 g_total = {"cost":0,"clk":0,"imp":0,"conv":0}
 g_camps=[]; g_search_terms=[]; g_trend=[]; g_devices={}; g_buy={"n":0,"v":0}
@@ -607,6 +655,7 @@ D = {
 
 
 # === HTML 빌드 === #
+_wd_done(2); _wd_enter(3)
 print("[4] HTML 빌드", file=sys.stderr)
 TEMPLATE = os.path.join(WORKSPACE, "네이버광고_1차보고대시보드_2026-04-27.html")
 if not os.path.exists(TEMPLATE):
@@ -1301,6 +1350,7 @@ new_src = new_src.replace("</body>", DATE_NAV + "\n</body>", 1)
 OUT = os.path.join(WORKSPACE, f"네이버광고_1차보고대시보드_{TARGET}.html")
 open(OUT,"w",encoding="utf-8").write(new_src)
 print(f"[saved] {OUT} ({len(new_src):,}chars)", file=sys.stderr)
+_wd_done(3); _wd_enter(4)
 
 # === GitHub Pages 업로드 (매일 09:00 같은 URL 유지) === #
 GH_PAT = os.environ.get("GITHUB_PAT","")
@@ -1331,6 +1381,10 @@ if GH_PAT and GH_OWNER and GH_REPO:
     ok2 = gh_put(f"ceo-report/{TARGET}.html", content, msg)
     if ok1 and ok2:
         print(f"  [GH push] latest.html + {TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/latest.html", file=sys.stderr)
+        _wd_done(4)
+    else:
+        _WD[4]["status"]="fault"; _WD[4]["ts"]=_wd_t(); _WD[4]["error"]="ceo-report 파일 푸시 실패(gh_put)"
+    _wd_push()
 else:
     print("  [GH push] 환경변수 미설정 — 스킵", file=sys.stderr)
 
