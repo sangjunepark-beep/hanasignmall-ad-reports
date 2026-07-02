@@ -1293,6 +1293,8 @@ DATE_NAV = r"""
 .dn-date .dn-cal{font-size:13px}
 .dn-date #dnLabel{font-size:16px;font-weight:700;color:#fff;letter-spacing:.3px}
 .dn-date input[type=date]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;padding:0}
+.dn-date input[type=date]::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer}
+.head::before,.head::after{pointer-events:none}
 #dateNav{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 16px;padding:10px 0}
 </style>
 <script>
