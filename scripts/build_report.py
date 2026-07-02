@@ -1383,26 +1383,6 @@ if GH_PAT and GH_OWNER and GH_REPO:
     ok2 = gh_put(f"ceo-report/{TARGET}.html", content, msg)
     if ok1 and ok2:
         print(f"  [GH push] latest.html + {TARGET}.html → https://{GH_OWNER}.github.io/{GH_REPO}/ceo-report/latest.html", file=sys.stderr)
-
-    # === 기간별 집계용 일별 KPI 누적 (ceo-report/daily-kpi.json) === #
-    kpi_entry = {"date": TARGET,
-        "a": {"imp": a_total["imp"], "clk": a_total["clk"], "cost": a_total["cost"],
-              "cart_n": a_cart_total["n"], "cart_v": a_cart_total["v"],
-              "buy_n": a_buy_total["n"], "buy_v": a_buy_total["v"]},
-        "c": {"imp": combined["imp"], "clk": combined["clk"], "cost": combined["cost"], "buy_v": combined["buy_v"]}}
-    kpi_path = "ceo-report/daily-kpi.json"
-    kpi_list = []
-    try:
-        api = f"https://api.github.com/repos/{GH_OWNER}/{GH_REPO}/contents/{kpi_path}"
-        req = urllib.request.Request(api, headers={"Authorization":f"Bearer {GH_PAT}","Accept":"application/vnd.github+json"})
-        j = json.loads(urllib.request.urlopen(req,context=ctx,timeout=15).read())
-        kpi_list = json.loads(base64.b64decode(j["content"]).decode("utf-8"))
-    except Exception as e:
-        print(f"  [kpi json] 기존본 로드 실패({e}) — 새로 생성", file=sys.stderr)
-    kpi_list = [x for x in kpi_list if x.get("date") != TARGET] + [kpi_entry]
-    kpi_list.sort(key=lambda x: x["date"])
-    if gh_put(kpi_path, json.dumps(kpi_list,ensure_ascii=False,separators=(",",":")).encode("utf-8"), f"daily-kpi {TARGET}"):
-        print(f"  [GH push] daily-kpi.json ({len(kpi_list)}일)", file=sys.stderr)
         _wd_done(4)
     else:
         _WD[4]["status"]="fault"; _WD[4]["ts"]=_wd_t(); _WD[4]["error"]="ceo-report 파일 푸시 실패(gh_put)"
