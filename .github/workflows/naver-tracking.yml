@@ -1,0 +1,34 @@
+name: Naver Tracking URL Setup (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'list(조회) 또는 apply(변경)'
+        required: true
+        default: 'list'
+      new_mode:
+        description: 'apply 시 trackingMode 값'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Naver tracking
+        env:
+          A_KEY: ${{ secrets.NAVER_A_KEY }}
+          A_SEC: ${{ secrets.NAVER_A_SEC }}
+          B_KEY: ${{ secrets.NAVER_B_KEY }}
+          B_SEC: ${{ secrets.NAVER_B_SEC }}
+          MODE: ${{ github.event.inputs.mode }}
+          NEW_MODE: ${{ github.event.inputs.new_mode }}
+        run: python scripts/naver_tracking.py
