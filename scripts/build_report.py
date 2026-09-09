@@ -229,8 +229,8 @@ print(f"  A dedupe: raw {_a_raw_count} → unique {len(all_rows)} rows", file=sy
 
 # === ADVoost 데이터 합산 (콘솔과 일치) === #
 # 2026-05-18 차장 지시: CSV stale(5/7 데이터 11일째 합산) 이슈로 일시 제외.
-# 재개 조건: ADVoost CSV에 일자 컬럼 포함 형식으로 다운로드 가능 확인 후 ADVOOST_ENABLED=True
-ADVOOST_ENABLED = False
+# 2026-09-09 재개: 광고주센터에서 일자별 수집 가능해져 CSV에 '일자' 컬럼 추가, 그날치만 합산(stale 차단)
+ADVOOST_ENABLED = True
 advoost = {"cost":0,"imp":0,"clk":0,"rows":0}
 ADV_PATHS = [
     os.path.join(WORKSPACE, "애드부스트", "result.csv"),
@@ -246,7 +246,9 @@ if ADVOOST_ENABLED:
                 ic = hdr.index('총비용') if '총비용' in hdr else -1
                 ii = hdr.index('노출수') if '노출수' in hdr else -1
                 il = hdr.index('클릭수') if '클릭수' in hdr else -1
+                idt = hdr.index('일자') if '일자' in hdr else -1
                 for r in rdr:
+                    if idt>=0 and len(r)>idt and r[idt].strip() != TARGET: continue
                     if ic>=0 and len(r)>ic: advoost["cost"] += to_int(r[ic])
                     if ii>=0 and len(r)>ii: advoost["imp"] += to_int(r[ii])
                     if il>=0 and len(r)>il: advoost["clk"] += to_int(r[il])
