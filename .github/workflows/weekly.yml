@@ -45,4 +45,5 @@ jobs:
           END="${{ github.event.inputs.end_date }}"
           DAYS="${{ github.event.inputs.days }}"
           if [ -z "$DAYS" ]; then DAYS="7"; fi
+          if [ -z "$END" ]; then END=$(TZ=Asia/Seoul date -d yesterday +%F); fi
           python build_weekly.py $END $DAYS
